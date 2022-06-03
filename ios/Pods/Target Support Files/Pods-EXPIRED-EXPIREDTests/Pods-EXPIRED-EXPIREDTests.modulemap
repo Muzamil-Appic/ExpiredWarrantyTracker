@@ -1,0 +1,6 @@
+module Pods_EXPIRED_EXPIREDTests {
+  umbrella header "Pods-EXPIRED-EXPIREDTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

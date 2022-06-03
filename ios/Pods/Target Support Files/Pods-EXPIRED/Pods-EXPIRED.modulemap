@@ -1,0 +1,6 @@
+module Pods_EXPIRED {
+  umbrella header "Pods-EXPIRED-umbrella.h"
+
+  export *
+  module * { export * }
+}
