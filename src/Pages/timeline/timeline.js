@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-
+import Entypo from 'react-native-vector-icons/Entypo'
 const Timeline = () => {
   return (
     <View>
-      <Text>timeline</Text>
+      <Entypo name='back-in-time' size={30}/>
     </View>
   )
 }

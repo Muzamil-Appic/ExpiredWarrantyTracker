@@ -11,6 +11,7 @@ import Evyiconopensvg from '../../Assets/Svg/Evyiconopensvg.svg'
 const Signin = ({ navigation }) => {
 
 
+  const [firstname, setfirstname] = useState('')
   const [signinenables, setsigninenables] = useState(true)
   return (
     <SafeAreaView style={Styles.container}>
@@ -51,7 +52,7 @@ const Signin = ({ navigation }) => {
               <Text style={{ color: Colors.black, fontSize: FontSize.font20, fontWeight: '700' }}>Login To Your Account</Text>
             </View>
 
-            <View style={{ height: rh(12), marginTop: rh(7), marginHorizontal: rw(5), justifyContent: "space-around" }}>
+            <View style={{ height: rh(12), marginTop: rh(7), marginHorizontal: rw(5), justifyContent: "space-evenly" }}>
               <View style={Styles.txtinptouterview}>
                 <TextInput placeholder='Email' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
               </View>
@@ -89,7 +90,7 @@ const Signin = ({ navigation }) => {
 
               <View style={[Styles.txtinptouterview, { flexDirection: 'row' }]}>
                 <TextInput placeholder='Password' placeholderTextColor={Colors.borderbottomcolor} style={Styles.password} />
-                <View style={{ right: rw(8), marginTop: rh(4) }}>
+                <View style={{ right: rw(8), marginTop: rh(4), }}>
                   < Evyiconopensvg width={'22px'} height={'15px'} />
                 </View>
               </View>
@@ -103,7 +104,7 @@ const Signin = ({ navigation }) => {
 
             </View>
             <View style={{ height: rh(9), marginTop: rh(5) }}>
-              <TouchableOpacity style={Styles.loginsignupbtn} onPress={() => navigation.navigate('Onboardingone')}>
+              <TouchableOpacity style={Styles.loginsignupbtn} onPress={() => navigation.navigate('signin')}>
                 <Text style={Styles.loginsignuptext}>
                   Sign up
                 </Text>

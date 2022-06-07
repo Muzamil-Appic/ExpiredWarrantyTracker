@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EXPIRED.iml" filepath="$PROJECT_DIR$/.idea/modules/EXPIRED.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/EXPIRED.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/EXPIRED.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-695565864/EXPIRED.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/-695565864/EXPIRED.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-137506832/EXPIRED.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/-137506832/EXPIRED.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-606109619/EXPIRED.react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/-606109619/EXPIRED.react-native-svg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-175618809/EXPIRED.react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/-175618809/EXPIRED.react-native-vector-icons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2115042366/react-native-gradle-plugin.iml" filepath="$PROJECT_DIR$/.idea/modules/-2115042366/react-native-gradle-plugin.iml" />
+    </modules>
+  </component>
+</project>
