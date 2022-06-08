@@ -4,12 +4,12 @@
         "source": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/res/drawable-mdpi/src_assets_photos_boardingthree.png"
     },
     {
-        "merged": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
-    },
-    {
         "merged": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
         "merged": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/merged_res/debug/drawable-xxhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
