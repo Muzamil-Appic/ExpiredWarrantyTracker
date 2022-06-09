@@ -144,9 +144,13 @@
     <orderEntry type="library" name="Gradle: androidx.autofill:autofill:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-okhttp3:2.5.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: org.webkit:android-jsc:r250230@aar" level="project" />
+    <orderEntry type="module" module-name="EXPIRED.react-native-firebase_auth" />
+    <orderEntry type="module" module-name="EXPIRED.react-native-firebase_firestore" />
+    <orderEntry type="module" module-name="EXPIRED.react-native-firebase_app" />
     <orderEntry type="module" module-name="EXPIRED.react-native-screens" />
     <orderEntry type="module" module-name="EXPIRED.react-native-svg" />
     <orderEntry type="module" module-name="EXPIRED.react-native-vector-icons" />
+    <orderEntry type="module" module-name="EXPIRED.react-native-linear-gradient" />
     <orderEntry type="module" module-name="EXPIRED.react-native-safe-area-context" />
   </component>
 </module>

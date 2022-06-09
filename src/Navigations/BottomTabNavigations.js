@@ -9,7 +9,7 @@ import Settings from '../Pages/settings/settings';
 import Addrecipts from '../Pages/addreceipts/addrecipts'
 import Colors from '../Global/Colors';
 import { responsiveHeight as rh, responsiveScreenWidth as rw } from 'react-native-responsive-dimensions';
-
+import Styles from './BottomTabs.Styles'
 
 import TimeLineYellow from '../Assets/Svg/TimeLineYellow.svg'
 import SearchWhite from '../Assets/Svg/SearchWhite.svg'
@@ -53,12 +53,7 @@ const BottomTabNavigations = () => {
                     tabBarIcon: tintcolor => {
                         return (
                             <View
-                                style={{
-                                    marginTop: rh(3),
-                                    //  left: rw(5),
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}>
+                                style={Styles.bottommainview}>
                                 {tintcolor.focused ? (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
                                         <TimeLineYellow height={'37px'} width={'37px'} />
@@ -84,13 +79,7 @@ const BottomTabNavigations = () => {
                     tabBarIcon: tintcolor => {
                         return (
                             <View
-                                style={{
-                                    marginTop: rh(3),
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    // left: rw(2),
-
-                                }}>
+                                style={Styles.bottommainview}>
                                 {tintcolor.focused ? (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
                                         <CategoryYellow width={'32px'} height={'27.5px'} />
@@ -120,14 +109,10 @@ const BottomTabNavigations = () => {
                                 style={{
                                     height: rw(22),
                                     bottom: rh(3),
-                                    backgroundColor: '#FFF9F9',
                                     width: rw(22),
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     borderRadius: 100,
-                                    elevation: 0.5
-
-
                                 }}>
 
                                 <View>
@@ -149,13 +134,8 @@ const BottomTabNavigations = () => {
                     tabBarIcon: tintcolor => {
                         return (
                             <View
-                                style={{
-                                    marginTop: rh(3),
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    // left: rw(2),
+                                style={Styles.bottommainview}>
 
-                                }}>
                                 {tintcolor.focused ? (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
                                         <SearchYellow width={'30.21px'} height={'30px'} />
@@ -181,13 +161,7 @@ const BottomTabNavigations = () => {
                     tabBarIcon: tintcolor => {
                         return (
                             <View
-                                style={{
-                                    marginTop: rh(3),
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    // left: rw(2),
-
-                                }}>
+                                style={Styles.bottommainview}>
                                 {tintcolor.focused ? (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
                                         <SettingsYellow width={'30.21px'} height={'30px'} />

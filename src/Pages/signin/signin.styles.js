@@ -8,16 +8,17 @@ const Styles = StyleSheet.create({
         backgroundColor: Colors.yellow,
     },
     loginsignupbutton: {
-        height: rh('7'),
+        top: rh(2),
         justifyContent: "flex-end",
         alignSelf: "flex-end",
+
     },
-    loginsignuptext: { color: Colors.white, fontFamily: 'Inter-Regular', fontWeight: '400', fontSize: FontSize.font14 },
+    loginsignuptext: { color: Colors.white, fontFamily: 'Inter-Regular', fontWeight: '500', fontSize: FontSize.font16 },
     txtinptinner: { borderBottomWidth: 2, borderColor: Colors.borderbottomcolor, padding: 0, paddingBottom: rh(1), fontSize: FontSize.font14, paddingLeft: rw(1), },
-    txtinptouterview:{ borderColor: Colors.borderbottomcolor,height:rh(8) },
-    password:{ padding: 0, width: rw(90), borderBottomWidth: 2, borderColor: Colors.borderbottomcolor, fontSize: FontSize.font14, paddingLeft: rw(1), paddingTop: rh(2) },
-    loginsignupbtn:{ backgroundColor: Colors.yellow, justifyContent: "center", alignItems: 'center', height: rh(8), borderRadius: 8, marginHorizontal: rw(4) },
-    loginsignupbtntext:{ color: Colors.white, fontSize: FontSize.font16, fontWeight: '500', fontFamily: 'Inter-Regular' }
+    txtinptouterview: { borderColor: Colors.borderbottomcolor, height: rh(8) },
+    password: { padding: 0, width: rw(90), borderBottomWidth: 2, borderColor: Colors.borderbottomcolor, fontSize: FontSize.font14, paddingLeft: rw(1), paddingTop: rh(2), height: rh(8),  },
+    loginsignupbtn: { backgroundColor: Colors.yellow, justifyContent: "center", alignItems: 'center', height: rh(7), borderRadius: 8, marginHorizontal: rw(5) },
+    loginsignupbtntext: { color: Colors.white, fontSize: FontSize.font16, fontWeight: '500', fontFamily: 'Inter-Regular' }
 
 })
 export default Styles;

@@ -34,10 +34,10 @@ const renderfunction = ({ item }) => {
     return (
         <View style={{ flex: 1, }}>
             <View style={{ marginTop: rh(10), justifyContent: 'center', alignItems: 'center' }}>
-                <Image source={item.image} style={{ height: rw(64), width: rw(65) }} />
+                <Image source={item.image} style={{ height: rw(70), width: rw(65) }} />
             </View>
-            <View style={{ marginTop: rw(15) }}>
-                <Text style={{ color: Colors.yellow, fontSize: FontSize.font20, textAlign: 'center', fontFamily: 'Roboto-Medium', fontWeight: '500' }}>{item.title}</Text>
+            <View style={{ marginTop: rw(10) }}>
+                <Text style={{ color: Colors.yellow, fontSize: FontSize.font20, textAlign: 'center', fontFamily: 'Roboto-Medium', fontWeight: '700' }}>{item.title}</Text>
             </View>
             <View style={{ padding: rw(3) }}>
                 <Text style={{ color: Colors.black, textAlign: 'center', fontSize: FontSize.fon15 }}>{item.text}</Text>
@@ -49,7 +49,7 @@ const renderfunction = ({ item }) => {
 const renderDoneButton = () => {
     return (
         <View style={{ height: rh(10), marginTop: rh(2) }}>
-            <Text style={{ color: Colors.yellow, fontSize: FontSize.font18 }}>Done</Text>
+            <Text style={{ color: Colors.yellow, fontSize: FontSize.font20, fontWeight: '700' }}>Done</Text>
         </View>
     )
 }
@@ -58,7 +58,7 @@ const renderDoneButton = () => {
 const renderNextButton = () => {
     return (
         <View style={{ height: rh(10), marginTop: rh(2) }}>
-            <Text style={{ color: Colors.yellow, fontSize: FontSize.font18 }}>Next</Text>
+            <Text style={{ color: Colors.yellow, fontSize: FontSize.font20, fontWeight: '700' }}>Next</Text>
         </View>
     )
 }
@@ -66,7 +66,7 @@ const renderNextButton = () => {
 const renderskipbutton = () => {
     return (
         <View style={{ height: rh(10), marginTop: rh(2) }}>
-            <Text style={{ color: Colors.yellow, fontSize: FontSize.font18 }}>Skip</Text>
+            <Text style={{ color: Colors.yellow, fontSize: FontSize.font20, fontWeight: '700' }}>Skip</Text>
         </View>
     )
 }
