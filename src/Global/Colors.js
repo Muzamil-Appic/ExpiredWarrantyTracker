@@ -6,7 +6,8 @@ const Colors = {
     borderbottomcolor: '#606060',
     tabebartext: '#909090',
     green: '#00CB5D',
-    gry: '#717171'
+    gry: '#717171',
+    red:'#CB0000',
 
 }
 export default Colors;

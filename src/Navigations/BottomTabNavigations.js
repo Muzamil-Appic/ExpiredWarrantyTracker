@@ -20,6 +20,8 @@ import TimeLineWhite from '../Assets/Svg/TimeLineWhite.svg'
 import SearchYellow from '../Assets/Svg/SearchYellow.svg'
 import SettingsYellow from '../Assets/Svg/SettingsYellow.svg'
 import AddRecipts from '../Assets/Svg/AddRecipts.svg'
+import Addproduct from '../Pages/addproduct/addproduct';
+import Addproductstepone from '../Pages/addproduct/addproduct';
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigations = () => {
@@ -76,6 +78,7 @@ const BottomTabNavigations = () => {
                 component={Category}
                 options={{
                     tabBarLabel: '',
+
                     tabBarIcon: tintcolor => {
                         return (
                             <View
@@ -99,10 +102,11 @@ const BottomTabNavigations = () => {
 
 
             <Tab.Screen
-                name="AddRecipts"
-                component={Addrecipts}
+                name="Addproductstepone"
+                component={Addproductstepone}
                 options={{
                     tabBarLabel: '',
+                    tabBarStyle: { display: "none" },
                     tabBarIcon: tintcolor => {
                         return (
                             <View
@@ -112,13 +116,12 @@ const BottomTabNavigations = () => {
                                     width: rw(22),
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    borderRadius: 100,
+
                                 }}>
 
                                 <View>
                                     <AddRecipts width={'53px'} height={'53px'} />
                                 </View>
-
                             </View>
                         );
                     },

@@ -11,6 +11,9 @@ import Upgradetoexpiredpro from '../Pages/upgradetoexpiredpro/upgradetoexpiredpr
 import Defaultcurrency from '../Pages/defaultcurrency/defaultcurrency';
 import Feedback from '../Pages/feedback/feedback'
 import About from '../Pages/about/about';
+import Addproduct from '../Pages/addproduct/addproduct';
+import Addproductsteptwo from '../Pages/addproduct/addproductsteptwo';
+import AddProductStepthree from '../Pages/addproduct/addproductstepthree';
 
 
 const Stack = createNativeStackNavigator();
@@ -29,6 +32,8 @@ const StackNavigations = () => {
         <Stack.Screen name='defaultcurrency' component={Defaultcurrency} />
         <Stack.Screen name="feedback" component={Feedback} />
         <Stack.Screen name='about' component={About} />
+        <Stack.Screen name='addproductsteptwo' component={Addproductsteptwo} />
+        <Stack.Screen name='AddProductStepthree' component={AddProductStepthree} />
       </Stack.Navigator>
     </NavigationContainer>
   )
