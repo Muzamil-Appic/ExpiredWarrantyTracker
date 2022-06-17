@@ -4,6 +4,23 @@
             "outputFile": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sk/values-sk.xml",
             "map": [
                 {
+                    "source": "/Users/macbook/.gradle/caches/transforms-3/195a4529b8fa216aba72cfffe860218d/transformed/jetified-ucrop-2.2.6-native/res/values-sk/values-sk.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,182",
+                        "endColumns": "69,56,50",
+                        "endOffsets": "120,177,228"
+                    },
+                    "to": {
+                        "startLines": "53,54,55",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "5695,5765,5822",
+                        "endColumns": "69,56,50",
+                        "endOffsets": "5760,5817,5868"
+                    }
+                },
+                {
                     "source": "/Users/macbook/.gradle/caches/transforms-3/c7a27c777039b4c0b459e61365c89d71/transformed/core-1.5.0/res/values-sk/values-sk.xml",
                     "from": {
                         "startLines": "2",

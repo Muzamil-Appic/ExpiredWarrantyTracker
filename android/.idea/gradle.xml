@@ -26,6 +26,8 @@
             <option value="$PROJECT_DIR$/../node_modules/@react-native-firebase/auth/android" />
             <option value="$PROJECT_DIR$/../node_modules/@react-native-firebase/firestore/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-gradle-plugin" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-image-crop-picker/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-image-picker/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-linear-gradient/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-safe-area-context/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-screens/android" />

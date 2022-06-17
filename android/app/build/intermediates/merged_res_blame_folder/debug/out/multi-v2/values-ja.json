@@ -55,6 +55,23 @@
                     }
                 },
                 {
+                    "source": "/Users/macbook/.gradle/caches/transforms-3/195a4529b8fa216aba72cfffe860218d/transformed/jetified-ucrop-2.2.6-native/res/values-ja/values-ja.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,97,153,208,257,301",
+                        "endColumns": "41,55,54,48,43,42",
+                        "endOffsets": "92,148,203,252,296,339"
+                    },
+                    "to": {
+                        "startLines": "53,54,55,56,57,58",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "5214,5256,5312,5367,5416,5460",
+                        "endColumns": "41,55,54,48,43,42",
+                        "endOffsets": "5251,5307,5362,5411,5455,5498"
+                    }
+                },
+                {
                     "source": "/Users/macbook/.gradle/caches/transforms-3/c7a27c777039b4c0b459e61365c89d71/transformed/core-1.5.0/res/values-ja/values-ja.xml",
                     "from": {
                         "startLines": "2",

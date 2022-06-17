@@ -87,6 +87,23 @@
                         "endColumns": "104,150,124,107,157,127,119,103,156,106,153,126,155,180,66,60,76",
                         "endOffsets": "2899,3050,3175,3283,3441,3569,3689,3793,4086,4193,4347,4474,4630,4811,4878,4939,5016"
                     }
+                },
+                {
+                    "source": "/Users/macbook/.gradle/caches/transforms-3/195a4529b8fa216aba72cfffe860218d/transformed/jetified-ucrop-2.2.6-native/res/values-it/values-it.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,120,179",
+                        "endColumns": "64,58,50",
+                        "endOffsets": "115,174,225"
+                    },
+                    "to": {
+                        "startLines": "53,54,55",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "5615,5680,5739",
+                        "endColumns": "64,58,50",
+                        "endOffsets": "5675,5734,5785"
+                    }
                 }
             ]
         }
