@@ -6,7 +6,6 @@ import Timeline from '../Pages/timeline/timeline';
 import Category from '../Pages/category/category';
 import Search from '../Pages/search/search';
 import Settings from '../Pages/settings/settings';
-import Addrecipts from '../Pages/addreceipts/addrecipts'
 import Colors from '../Global/Colors';
 import { responsiveHeight as rh, responsiveScreenWidth as rw } from 'react-native-responsive-dimensions';
 import Styles from './BottomTabs.Styles'

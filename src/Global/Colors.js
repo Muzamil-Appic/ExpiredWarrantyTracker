@@ -8,6 +8,7 @@ const Colors = {
     green: '#00CB5D',
     gry: '#717171',
     red:'#CB0000',
+    bk:'#DCDBDB',
 
 }
 export default Colors;

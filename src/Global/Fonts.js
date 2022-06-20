@@ -1,3 +1,6 @@
+import { Dimensions } from "react-native";
+const siz = Dimensions.get('window').height
+
 const FontSize = {
     font8: 8,
     font9: 9,
@@ -24,6 +27,7 @@ const FontSize = {
     font30: 30,
     font36: 36,
 
+    font02: siz * 0.02
 
 };
 export default FontSize;

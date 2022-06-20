@@ -13,6 +13,8 @@ import {
     launchCamera,
     launchImageLibrary
 } from 'react-native-image-picker';
+import ImagePicker from 'react-native-image-crop-picker';
+
 
 const Addproductsteptwo = ({ navigation }) => {
     const [filePath, setFilePath] = useState({});
@@ -62,10 +64,10 @@ const Addproductsteptwo = ({ navigation }) => {
             mediaType: type,
             maxWidth: 300,
             maxHeight: 550,
-            quality: 1,
-            videoQuality: 'low',
-            durationLimit: 30, //Video max duration in seconds
-            saveToPhotos: true,
+            // quality: 1,
+            // videoQuality: 'low',
+            // durationLimit: 30, //Video max duration in seconds
+            // saveToPhotos: true,
         };
         let isCameraPermitted = await requestCameraPermission();
         let isStoragePermitted = await requestExternalWritePermission();
@@ -132,6 +134,18 @@ const Addproductsteptwo = ({ navigation }) => {
         });
     };
 
+    async function imgcamera() {
+        console.log("Ok");
+        ImagePicker.openPicker({
+            width: 1000,
+            height: 1000,
+            cropping: true
+        }).then(image => {
+            console.log(image);
+        });
+
+    }
+
 
 
 
@@ -150,7 +164,7 @@ const Addproductsteptwo = ({ navigation }) => {
                 </View>
 
                 <View style={{ flexDirection: "row", height: rh(10), marginTop: rh(3), justifyContent: 'center' }}>
-                    <TouchableOpacity onPress={() => captureImage('photo')}>
+                    <TouchableOpacity onPress={() => imgcamera()}>
                         <View style={{ borderRightWidth: 1, borderColor: Colors.gry, height: rh(10), width: rw(50), flexDirection: "row", alignItems: 'center', }}>
                             <View style={{ marginLeft: rw(5) }}>
                                 <CameraSvg width={'55px'} height={'55px'} />

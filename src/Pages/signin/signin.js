@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Alert } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Alert, Dimensions } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Styles from './signin.styles'
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
