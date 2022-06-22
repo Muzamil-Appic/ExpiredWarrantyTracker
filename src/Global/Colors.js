@@ -9,6 +9,7 @@ const Colors = {
     gry: '#717171',
     red:'#CB0000',
     bk:'#DCDBDB',
+    
 
 }
 export default Colors;

@@ -1504,6 +1504,7 @@ drawable rn_edit_text_material
 drawable src_assets_photos_boardingone
 drawable src_assets_photos_boardingthree
 drawable src_assets_photos_boardingtwo
+drawable src_assets_photos_oicone
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light

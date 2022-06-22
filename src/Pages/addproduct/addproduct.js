@@ -9,7 +9,7 @@ import Styles from './addproduct.Styles'
 
 const Addproductstepone = ({ navigation }) => {
     const [prductname, setprductname] = useState('')
-
+    const siz = Dimensions.get('window').height
 
     return (
         <SafeAreaView style={Styles.container}>
@@ -23,11 +23,11 @@ const Addproductstepone = ({ navigation }) => {
                     <Text style={Styles.textstep}>Step 1 of 4</Text>
                     <Text style={Styles.secondhadding}>Product Name</Text>
                 </View>
-                <View style={{ height: rh(8), borderBottomWidth: 1, borderColor: Colors.yellow, marginTop: rh(3) }}>
-                    <Text style={{ fontFamily: 'Inter-Light', fontSize: FontSize.font13, color: Colors.gry }}>Product Name</Text>
-                    <TextInput style={{ padding: 0, paddingTop: rh(1), fontSize: FontSize.font18 }} onChangeText={e => setprductname(e)} />
+                <View style={Styles.addproductpartview}>
+                    <Text style={Styles.addproductparttext}>Product Name</Text>
+                    <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprductname(e)} />
                 </View>
-                <View style={{ flex: 1, alignSelf: 'flex-end', justifyContent: 'flex-end' }}>
+                <View style={Styles.nextanssavedbuttonview}>
                     <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('addproductsteptwo')}>
                         <Text style={Styles.bottombtntext}>Next</Text>
                     </TouchableOpacity>

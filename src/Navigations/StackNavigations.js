@@ -14,6 +14,7 @@ import About from '../Pages/about/about';
 import Addproduct from '../Pages/addproduct/addproduct';
 import Addproductsteptwo from '../Pages/addproduct/addproductsteptwo';
 import AddProductStepthree from '../Pages/addproduct/addproductstepthree';
+import Addadditionalpart from '../Pages/addproduct/addadditionalpart';
 
 
 const Stack = createNativeStackNavigator();
@@ -34,6 +35,7 @@ const StackNavigations = () => {
         <Stack.Screen name='about' component={About} />
         <Stack.Screen name='addproductsteptwo' component={Addproductsteptwo} />
         <Stack.Screen name='AddProductStepthree' component={AddProductStepthree} />
+        <Stack.Screen name='Addadditionalpart' component={Addadditionalpart} />
       </Stack.Navigator>
     </NavigationContainer>
   )

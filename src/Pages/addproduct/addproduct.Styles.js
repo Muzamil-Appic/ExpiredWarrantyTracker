@@ -1,7 +1,8 @@
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
-import { Dimensions, FlatList, ScrollView, Modal, StyleSheet } from 'react-native'
+import { Dimensions, FlatList, ScrollView, Modal, StyleSheet, } from 'react-native'
 import Colors from '../../Global/Colors';
 import FontSize from '../../Global/Fonts';
+const siz = Dimensions.get('window').height
 const Styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -9,7 +10,7 @@ const Styles = StyleSheet.create({
 
     },
     textstep: { color: Colors.black, fontWeight: '400', fontFamily: 'Inter-Regular', fontSize: FontSize.font16 },
-    secondhadding: { color: Colors.black, fontFamily: 'Inter-Medium', fontSize: FontSize.font24 },
+    secondhadding: { color: Colors.black, fontFamily: 'Inter-Medium', fontSize: FontSize.font22 },
     bottombtn: { backgroundColor: Colors.yellow, height: rh(6), width: rw(20), justifyContent: "center", alignItems: 'center', marginBottom: rh(3), borderRadius: 5 },
     bottombtntext: { textAlign: 'center', color: Colors.white, fontSize: FontSize.fon15 },
     imageStyle: {
@@ -19,5 +20,24 @@ const Styles = StyleSheet.create({
     },
     txtdate: { fontWeight: '400', fontSize: FontSize.font18, color: Colors.black, fontFamily: 'Inter-Regular', paddingTop: rh(3), textAlign: 'center' },
     headingtext: { fontWeight: '400', fontSize: FontSize.fon15, color: Colors.gry, fontFamily: 'Inter-Regular' },
+    nextanssavedbuttonview: { flex: 1, alignSelf: 'flex-end', justifyContent: 'flex-end' },
+    lifetimewarrantindurations: { flexDirection: "row", alignContent: "center", alignItems: 'center', height: rh(5) },
+    dateandpurchasedouterview: { flexDirection: 'row', width: rw(89), height: rh(8), justifyContent: 'space-between', marginVertical: rh(2), },
+    dateandpurchasesdinnerview: { alignItems: 'center', alignContent: "center", height: rh(7) },
+    durationview: { flexDirection: "row", height: rh(4), justifyContent: 'flex-start', alignContent: "center", alignItems: 'center', },
+    monthandyearbuttonouterview: { height: rh(13), width: rw(100), justifyContent: 'space-between', marginTop: rh(2) },
+    monthsandyearbuttoninerview: { flexDirection: "row", height: rh(5), width: rw(100), justifyContent: "space-between" },
+    inneryellewbuttons: { flexDirection: "row", height: rh(7), width: rw(25), justifyContent: 'space-between', right: rw(12) },
+    bottomlineview: { backgroundColor: Colors.borderbottomcolor, width: rw(100), height: rh(0.5), marginTop: rh(2) },
+    toggleouterviewmain: { height: rh(3), width: rw(12), backgroundColor: '#C4C4C4', borderRadius: 20, },
+    toggleoffstyle: { backgroundColor: Colors.gry, height: rh(4), width: rw(7), borderRadius: 100, bottom: rh(0.5) },
+    toggleonstyle: { backgroundColor: Colors.yellow, height: rh(4), width: rw(7), borderRadius: 100, bottom: rh(0.5), alignSelf: 'flex-end' },
+    monthsandweeksouterview: { flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: rw(8), marginTop: rh(2) },
+    weeksandmonthsbtn: { width: rw(30), height: rh(5), justifyContent: 'center', backgroundColor: Colors.bk, borderRadius: 5, },
+    weeksmonthsinnertext: { textAlign: 'center', fontSize: FontSize.fon15 },
+    addproductpartview: { height: rh(8), borderBottomWidth: 1, borderColor: Colors.yellow, marginTop: rh(3), },
+    addproductparttext: { fontFamily: 'Inter-Light', fontSize: FontSize.font14, color: Colors.gry },
+    addproductparttextinput: { padding: 0, fontSize: siz * 0.03, marginTop: 7 },
+
 })
 export default Styles;

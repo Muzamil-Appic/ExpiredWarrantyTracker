@@ -160,7 +160,7 @@ const Addproductsteptwo = ({ navigation }) => {
                 <View style={{ marginTop: rh(2) }}>
                     <Text style={Styles.textstep}>Step 2 of 4</Text>
                     <Text style={Styles.secondhadding}>Capture your receipt and </Text>
-                    <Text style={[Styles.secondhadding, { bottom: rh(1) }]}>warranty card</Text>
+                    <Text style={[Styles.secondhadding, { bottom: 5 }]}>warranty card</Text>
                 </View>
 
                 <View style={{ flexDirection: "row", height: rh(10), marginTop: rh(3), justifyContent: 'center' }}>
@@ -202,7 +202,7 @@ const Addproductsteptwo = ({ navigation }) => {
                 /> */}
 
 
-                <View style={{ flex: 1, alignSelf: 'flex-end', justifyContent: 'flex-end' }}>
+                <View style={Styles.nextanssavedbuttonview}>
                     <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('AddProductStepthree')}>
                         <Text style={Styles.bottombtntext}>Next</Text>
                     </TouchableOpacity>

@@ -3,11 +3,12 @@ import { Dimensions, FlatList, ScrollView, Modal, StyleSheet } from 'react-nativ
 
 
 const Styles = StyleSheet.create({
-    bottommainview:{
+    bottommainview: {
         marginTop: rh(2),
         //  left: rw(5),
         justifyContent: 'center',
         alignItems: 'center',
+        width: rw(20)
     },
 })
 export default Styles

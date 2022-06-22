@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Timeline from '../Pages/timeline/timeline';
@@ -22,7 +22,7 @@ import AddRecipts from '../Assets/Svg/AddRecipts.svg'
 import Addproduct from '../Pages/addproduct/addproduct';
 import Addproductstepone from '../Pages/addproduct/addproduct';
 const Tab = createBottomTabNavigator();
-
+const siz = Dimensions.get('window').height
 const BottomTabNavigations = () => {
     return (
 
@@ -57,13 +57,13 @@ const BottomTabNavigations = () => {
                                 style={Styles.bottommainview}>
                                 {tintcolor.focused ? (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
-                                        <TimeLineYellow height={'37px'} width={'37px'} />
+                                        <TimeLineYellow height={siz * 0.05} width={siz * 0.05} />
                                         <Text style={{ color: '#000000' }} >Timeline</Text>
                                     </View>
                                 ) : (
 
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
-                                        <TimeLineWhite height={'28px'} width={'29px'} />
+                                        <TimeLineWhite height={siz * 0.04} width={siz * 0.04} />
                                         <Text style={{ color: Colors.tabebartext, top: 2 }} >Timeline</Text>
                                     </View>
                                 )}
@@ -84,12 +84,12 @@ const BottomTabNavigations = () => {
                                 style={Styles.bottommainview}>
                                 {tintcolor.focused ? (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
-                                        <CategoryYellow width={'32px'} height={'27.5px'} />
+                                        <CategoryYellow height={siz * 0.04} width={siz * 0.05} />
                                         <Text style={{ color: '#000000' }} >Category</Text>
                                     </View>
                                 ) : (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
-                                        <CategoryWhite width={'32px'} height={'27.5px'} />
+                                        <CategoryWhite height={siz * 0.04} width={siz * 0.05} />
                                         <Text style={{ color: Colors.tabebartext, top: 2 }} >Category</Text>
                                     </View>
                                 )}
@@ -111,15 +111,13 @@ const BottomTabNavigations = () => {
                             <View
                                 style={{
                                     height: rw(22),
-                                    bottom: rh(3),
+                                    bottom: rh(3.5),
                                     width: rw(22),
                                     justifyContent: 'center',
                                     alignItems: 'center',
-
                                 }}>
-
                                 <View>
-                                    <AddRecipts width={'53px'} height={'53px'} />
+                                    <AddRecipts height={siz * 0.08} width={siz * 0.08} />
                                 </View>
                             </View>
                         );
@@ -140,12 +138,12 @@ const BottomTabNavigations = () => {
 
                                 {tintcolor.focused ? (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
-                                        <SearchYellow width={'30.21px'} height={'30px'} />
+                                        <SearchYellow height={siz * 0.05} width={siz * 0.05} />
                                         <Text style={{ color: '#000000' }} >Search</Text>
                                     </View>
                                 ) : (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
-                                        <SearchWhite width={'32px'} height={'27.5px'} />
+                                        <SearchWhite height={siz * 0.05} width={siz * 0.05} />
                                         <Text style={{ color: Colors.tabebartext }} >Search</Text>
                                     </View>
                                 )}
@@ -166,12 +164,12 @@ const BottomTabNavigations = () => {
                                 style={Styles.bottommainview}>
                                 {tintcolor.focused ? (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
-                                        <SettingsYellow width={'30.21px'} height={'30px'} />
+                                        <SettingsYellow height={siz * 0.05} width={siz * 0.05} />
                                         <Text style={{ color: '#000000' }} >Settings</Text>
                                     </View>
                                 ) : (
                                     <View style={{ alignSelf: "center", justifyContent: 'center', alignItems: 'center' }}>
-                                        <SettingsWhite width={'28.80px'} height={'29.5px'} />
+                                        <SettingsWhite height={siz * 0.05} width={siz * 0.05} />
                                         <Text style={{ color: Colors.tabebartext, }} >Settings</Text>
                                     </View>
                                 )}
