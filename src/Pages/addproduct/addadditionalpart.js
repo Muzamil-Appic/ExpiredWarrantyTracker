@@ -50,9 +50,9 @@ const Addadditionalpart = ({ navigation }) => {
 
     return (
         <SafeAreaView style={Styles.container}>
-            <View style={{ flex: 1, marginHorizontal: rh(3) }}>
-                <View style={{ height: rh(8), marginTop: rh(2), width: rw(100), }}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
+            <View style={{ flex: 1, marginHorizontal: rw(5) }}>
+                <View style={{ height: rh(8), marginTop: rh(2), width: rw(100) }}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={{ right: 6 }}>
                         <Entypo name='cross' size={30} color={Colors.yellow} />
                     </TouchableOpacity>
                     <View style={{ width: rw(50), marginTop: rh(1) }}>
@@ -71,7 +71,7 @@ const Addadditionalpart = ({ navigation }) => {
 
                             <View style={Styles.durationview}>
                                 <TouchableOpacity onPress={() => setdurationenabled(true)}>
-                                    <FontAwesome name='circle' size={25} color={Colors.yellow} />
+                                    <FontAwesome name='circle' size={20} color={Colors.yellow} />
                                 </TouchableOpacity>
                                 <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
                             </View>
@@ -120,7 +120,7 @@ const Addadditionalpart = ({ navigation }) => {
 
                             <View style={{ height: rh(10), marginTop: rh(2) }}>
                                 <Text style={Styles.headingtext}>Date OF Expiry</Text>
-                                <Text style={styless.dat} >05-04-199Fß</Text>
+                                <Text style={styless.dat} >05-04-199F</Text>
                             </View>
 
 

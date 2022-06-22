@@ -160,13 +160,13 @@ const Addproductsteptwo = ({ navigation }) => {
                 <View style={{ marginTop: rh(2) }}>
                     <Text style={Styles.textstep}>Step 2 of 4</Text>
                     <Text style={Styles.secondhadding}>Capture your receipt and </Text>
-                    <Text style={[Styles.secondhadding, { bottom: 5 }]}>warranty card</Text>
+                    <Text style={[Styles.secondhadding,]}>warranty card</Text>
                 </View>
 
                 <View style={{ flexDirection: "row", height: rh(10), marginTop: rh(3), justifyContent: 'center' }}>
                     <TouchableOpacity onPress={() => imgcamera()}>
                         <View style={{ borderRightWidth: 1, borderColor: Colors.gry, height: rh(10), width: rw(50), flexDirection: "row", alignItems: 'center', }}>
-                            <View style={{ marginLeft: rw(5) }}>
+                            <View style={{ marginLeft: rw(6) }}>
                                 <CameraSvg width={'55px'} height={'55px'} />
                             </View>
                             <Text style={{ color: Colors.gry, fontWeight: '500', fontSize: FontSize.font18, fontFamily: 'Inter-Medium', textAlign: 'center', marginLeft: rw(2) }}>Camera</Text>

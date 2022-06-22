@@ -7,9 +7,10 @@ const Colors = {
     tabebartext: '#909090',
     green: '#00CB5D',
     gry: '#717171',
-    red:'#CB0000',
-    bk:'#DCDBDB',
-    
+    red: '#CB0000',
+    bk: '#DCDBDB',
+    togglebackgroundcolor: '#C4C4C4',
+
 
 }
 export default Colors;

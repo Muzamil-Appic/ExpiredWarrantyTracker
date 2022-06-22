@@ -9,15 +9,15 @@ import Signinsvg from '../../Assets/Svg/Signinsvg.svg'
 import Evyiconopensvg from '../../Assets/Svg/Evyiconopensvg.svg'
 import Loaders from '../../Components/Loaders'
 
-import auth from '@react-native-firebase/auth';
-import { firebase } from '@react-native-firebase/auth'
-import firestore from '@react-native-firebase/firestore'
+// import auth from '@react-native-firebase/auth';
+// import { firebase } from '@react-native-firebase/auth'
+// import firestore from '@react-native-firebase/firestore'
 
 
 const Signin = ({ navigation }) => {
 
 
-  const firestorereference = firestore().collection('Users')
+  // const firestorereference = firestore().collection('Users')
 
   const [firstname, setfirstname] = useState('')
   const [signinenables, setsigninenables] = useState(true)
@@ -90,62 +90,62 @@ const Signin = ({ navigation }) => {
 
   }
 
-  const SignupFunction = async () => {
-    if (firstname === '') {
-      alert("Please Enter First Name")
-      return;
-    }
-    if (surename === '') {
-      alert("Please Enter Sure Name")
-      return;
-    }
-    if (signupemail === '') {
-      alert("Please Enter Email")
-      return;
-    }
-    if (signuppassword === '') {
-      alert("Please Enter Password")
-      return;
-    }
-    if (signupconfirmpassword === '') {
-      alert("Please Enter Confirm Password")
-      return;
-    }
+  // const SignupFunction = async () => {
+  //   if (firstname === '') {
+  //     alert("Please Enter First Name")
+  //     return;
+  //   }
+  //   if (surename === '') {
+  //     alert("Please Enter Sure Name")
+  //     return;
+  //   }
+  //   if (signupemail === '') {
+  //     alert("Please Enter Email")
+  //     return;
+  //   }
+  //   if (signuppassword === '') {
+  //     alert("Please Enter Password")
+  //     return;
+  //   }
+  //   if (signupconfirmpassword === '') {
+  //     alert("Please Enter Confirm Password")
+  //     return;
+  //   }
 
-    if (signupconfirmpassword !== signuppassword) {
-      alert("Passwords Are Not Same")
-      return;
-    }
+  //   if (signupconfirmpassword !== signuppassword) {
+  //     alert("Passwords Are Not Same")
+  //     return;
+  //   }
 
-    setsignuploader(true)
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(signupemail.trim(), signuppassword)
-      .then((loggeduser) => {
-        const userdata = firestorereference.doc(signupemail)
-        userdata.set({
-          firstname: firstname,
-          surename: surename,
-          email: signupemail,
-          userid: signupemail
+  //   setsignuploader(true)
+  //   await firebase
+  //     .auth()
+  //     .createUserWithEmailAndPassword(signupemail.trim(), signuppassword)
+  //     .then((loggeduser) => {
+  //       const userdata = firestorereference.doc(signupemail)
+  //       userdata.set({
+  //         firstname: firstname,
+  //         surename: surename,
+  //         email: signupemail,
+  //         userid: signupemail
 
-        }).then(() => {
-          signupempty();
-          setsigninenables(true)
-          setsignuploader(false)
+  //       }).then(() => {
+  //         signupempty();
+  //         setsigninenables(true)
+  //         setsignuploader(false)
 
-        })
-      })
-      .catch((error) => {
-        setsignuploader(false)
-        alert(error)
-        console.log("Signup Error---->", error);
-      })
-
-
+  //       })
+  //     })
+  //     .catch((error) => {
+  //       setsignuploader(false)
+  //       alert(error)
+  //       console.log("Signup Error---->", error);
+  //     })
 
 
-  }
+
+
+  // }
 
 
 

@@ -52,216 +52,349 @@ const AddProductStepthree = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={Styles.container}>
-            <ScrollView contentContainerStyle={{ marginHorizontal: rh(3), flexGrow: 1, }}>
-                <View style={{ height: rh(4), marginTop: rh(2) }}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <YellowBackSvg width={'20.67px'} height={'20.67px'} />
-                    </TouchableOpacity>
-                </View>
-                <View style={{ marginTop: rh(2) }}>
-                    <Text style={Styles.textstep}>Step 3 of 4</Text>
-                    <Text style={Styles.secondhadding}>Warranty Details</Text>
-                </View>
+            <View style={{ marginHorizontal: rw(5) }}>
 
-
-                <View style={Styles.dateandpurchasedouterview}>
-                    <View style={Styles.dateandpurchasesdinnerview}>
-                        <View>
-                            <Text style={[Styles.headingtext,]}>Date of Purchase</Text>
+                <ScrollView contentContainerStyle={{ flexGrow: 1, }} showsVerticalScrollIndicator={false}>
+                    <View style={{ flex: 1 }}>
+                        <View style={{ height: rh(4), marginTop: rh(2) }}>
+                            <TouchableOpacity onPress={() => navigation.goBack()}>
+                                <YellowBackSvg width={'20.67px'} height={'20.67px'} />
+                            </TouchableOpacity>
                         </View>
-                        <TouchableOpacity>
-                            <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>05-04-199</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={Styles.dateandpurchasesdinnerview}>
-                        <Text style={Styles.headingtext}>Date of Expiry</Text>
-                        <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>05-04-199</Text>
-                    </View>
-                </View>
-
-
-                <View style={{ marginTop: rh(1.5), height: rh(4) }}>
-                    <Text style={Styles.headingtext}>Warranty Period</Text>
-                </View>
-
-                <View style={{ marginTop: rh(2), flex: 1 }}>
-                    {durationenabled ?
-                        <View style={{ width: rw(100), flex: 1 }}>
-
-                            <View style={Styles.durationview}>
-                                <TouchableOpacity onPress={() => setdurationenabled(true)}>
-                                    <FontAwesome name='circle' size={25} color={Colors.yellow} />
+                        <View style={{ marginTop: rh(2) }}>
+                            <Text style={Styles.textstep}>Step 3 of 4</Text>
+                            <Text style={Styles.secondhadding}>Warranty Details</Text>
+                        </View>
+                        <View style={Styles.dateandpurchasedouterview}>
+                            <View style={Styles.dateandpurchasesdinnerview}>
+                                <View>
+                                    <Text style={[Styles.headingtext,]}>Date of Purchase</Text>
+                                </View>
+                                <TouchableOpacity>
+                                    <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>05-04-1999</Text>
                                 </TouchableOpacity>
-                                <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
                             </View>
-
-                            <View style={Styles.monthandyearbuttonouterview}>
-                                <View style={Styles.monthsandyearbuttoninerview}>
-                                    <View style={{ width: rw(20), marginLeft: rw(7) }}>
-                                        <Text style={Styles.headingtext}>{durationsyears} Years</Text>
-                                    </View>
-                                    <View style={Styles.inneryellewbuttons}>
-                                        <TouchableOpacity onPress={() => lessyears()}>
-                                            <AntDesign name='minuscircleo' size={20} color={Colors.black} />
-                                        </TouchableOpacity>
-                                        <Text>{durationsyears}</Text>
-                                        <TouchableOpacity onPress={() => addyears()}>
-                                            <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-                                <View style={Styles.monthsandyearbuttoninerview}>
-                                    <View style={{ width: rw(20), marginLeft: rw(7) }}>
-                                        <Text style={Styles.headingtext}>{monthsdurations} Months</Text>
-                                    </View>
-                                    <View style={Styles.inneryellewbuttons}>
-                                        <TouchableOpacity onPress={() => lessmonth()}>
-                                            <AntDesign name='minuscircleo' size={20} color={Colors.black} />
-                                        </TouchableOpacity>
-                                        <Text>{monthsdurations}</Text>
-                                        <TouchableOpacity onPress={() => addmonth()}>
-                                            <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-
+                            <View style={Styles.dateandpurchasesdinnerview}>
+                                <Text style={Styles.headingtext}>Date of Expiry</Text>
+                                <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>05-04-1999</Text>
                             </View>
-                            <View>
-                            </View>
+                        </View>
 
-                            <View style={Styles.lifetimewarrantindurations}>
-                                <TouchableOpacity onPress={() => setdurationenabled(false)}>
-                                    <Entypo name='circle' size={25} color={Colors.black} />
-                                </TouchableOpacity>
-                                <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Lifetime Warranty</Text>
-                            </View>
-                            <View style={Styles.bottomlineview}>
-                            </View>
+                        <View style={{ marginTop: rh(1.5), height: rh(4) }}>
+                            <Text style={Styles.headingtext}>Warranty Period</Text>
+                        </View>
+
+                        <View style={{ marginTop: rh(2), flex: 1 }}>
+                            {durationenabled ?
 
 
-
-
-                            <View style={{ flex: 1, }}>
-                                <View style={{ height: rh(5), width: rw(89), flexDirection: "row", alignContent: 'center', alignItems: 'center', justifyContent: "space-between", top: rh(1) }}>
-                                    <View>
-                                        <Text style={Styles.secondhadding}>Extended Warranty?</Text>
-                                    </View>
-                                    {extendwarrantyenabled ?
-                                        <View style={Styles.toggleouterviewmain}>
-                                            <TouchableOpacity onPress={() => { setextendwarrantyenabled(false), setenabledextendwarranty(true) }} style={{ justifyContent: 'center' }}>
-                                                <View style={Styles.toggleoffstyle}>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </View>
-                                        :
-                                        <View style={Styles.toggleouterviewmain}>
-                                            <TouchableOpacity onPress={() => { { setextendwarrantyenabled(true), setenabledextendwarranty(false) } }} style={{ justifyContent: 'center' }}>
-                                                <View style={Styles.toggleonstyle}>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </View>
-                                    }
-
-
-
-                                </View>
 
                                 <View style={{ flex: 1 }}>
-                                    {enabledextendwarranty ?
-                                        <View>
-                                            <View style={Styles.addproductpartview}>
-                                                <Text style={Styles.addproductparttext}>Product Name</Text>
-                                                <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprductname(e)} />
+                                    <View style={Styles.durationview}>
+                                        <TouchableOpacity onPress={() => setdurationenabled(true)}>
+                                            <FontAwesome name='circle' size={25} color={Colors.yellow} />
+                                        </TouchableOpacity>
+                                        <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
+                                    </View>
+
+                                    <View style={Styles.monthandyearbuttonouterview}>
+                                        <View style={Styles.monthsandyearbuttoninerview}>
+                                            <View style={{ width: rw(20), marginLeft: rw(7) }}>
+                                                <Text style={Styles.headingtext}>{durationsyears} Years</Text>
                                             </View>
-
-                                            <View style={{ width: rw(100), flex: 1 }}>
-
-                                                <View style={Styles.durationview}>
-                                                    <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
-                                                </View>
-
-                                                <View style={Styles.monthandyearbuttonouterview}>
-                                                    <View style={Styles.monthsandyearbuttoninerview}>
-                                                        <View style={{ width: rw(20), marginLeft: rw(7) }}>
-                                                            <Text style={Styles.headingtext}>{durationsyears} Years</Text>
-                                                        </View>
-                                                        <View style={Styles.inneryellewbuttons}>
-                                                            <TouchableOpacity onPress={() => lessyears()}>
-                                                                <AntDesign name='minuscircleo' size={20} color={Colors.black} />
-                                                            </TouchableOpacity>
-                                                            <Text>{durationsyears}</Text>
-                                                            <TouchableOpacity onPress={() => addyears()}>
-                                                                <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
-                                                            </TouchableOpacity>
-                                                        </View>
-                                                    </View>
-                                                    <View style={Styles.monthsandyearbuttoninerview}>
-                                                        <View style={{ width: rw(20), marginLeft: rw(7) }}>
-                                                            <Text style={Styles.headingtext}>{monthsdurations} Months</Text>
-                                                        </View>
-                                                        <View style={Styles.inneryellewbuttons}>
-                                                            <TouchableOpacity onPress={() => lessmonth()}>
-                                                                <AntDesign name='minuscircleo' size={20} color={Colors.black} />
-                                                            </TouchableOpacity>
-                                                            <Text>{monthsdurations}</Text>
-                                                            <TouchableOpacity onPress={() => addmonth()}>
-                                                                <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
-                                                            </TouchableOpacity>
-                                                        </View>
-                                                    </View>
-
-                                                </View>
-                                                <View>
-                                                </View>
-
-
-
-
-
-
-
-
-
-
+                                            <View style={Styles.inneryellewbuttons}>
+                                                <TouchableOpacity onPress={() => lessyears()}>
+                                                    <AntDesign name='minuscircleo' size={20} color={Colors.black} />
+                                                </TouchableOpacity>
+                                                <Text>{durationsyears}</Text>
+                                                <TouchableOpacity onPress={() => addyears()}>
+                                                    <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
+                                                </TouchableOpacity>
                                             </View>
                                         </View>
-                                        :
-                                        null
-                                    }
-
-                                    <View style={{ height: rh(5), width: rw(100), marginTop: rh(2), justifyContent: 'space-between', flexDirection: "row", alignContent: 'center', alignItems: 'center' }}>
-                                        <View style={{ width: rw(50) }}>
-                                            <Text style={[Styles.secondhadding, { fontSize: FontSize.font20 }]}>Multipart Warranty</Text>
+                                        <View style={Styles.monthsandyearbuttoninerview}>
+                                            <View style={{ width: rw(20), marginLeft: rw(7) }}>
+                                                <Text style={Styles.headingtext}>{monthsdurations} Months</Text>
+                                            </View>
+                                            <View style={Styles.inneryellewbuttons}>
+                                                <TouchableOpacity onPress={() => lessmonth()}>
+                                                    <AntDesign name='minuscircleo' size={20} color={Colors.black} />
+                                                </TouchableOpacity>
+                                                <Text>{monthsdurations}</Text>
+                                                <TouchableOpacity onPress={() => addmonth()}>
+                                                    <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
+                                                </TouchableOpacity>
+                                            </View>
                                         </View>
+                                    </View>
 
-                                        <View style={{ width: rw(10), right: rw(13) }}>
-                                            {multiparttoggles ?
+                                    <View style={Styles.lifetimewarrantindurations}>
+                                        <TouchableOpacity onPress={() => setdurationenabled(false)}>
+                                            <Entypo name='circle' size={20} color={Colors.black} />
+                                        </TouchableOpacity>
+                                        <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Lifetime Warranty</Text>
+                                    </View>
+                                    <View style={Styles.bottomlineview}>
+                                    </View>
 
+
+
+
+                                    <View style={{ flex: 1, }}>
+                                        <View style={Styles.warrantymultipartexpiryview}>
+                                            <View>
+                                                <Text style={Styles.secondhadding}>Extended Warranty</Text>
+                                            </View>
+                                            {extendwarrantyenabled ?
                                                 <View style={Styles.toggleouterviewmain}>
-                                                    <TouchableOpacity onPress={() => { setmultiparttoggles(false), setadditionalpart(false) }} style={{ justifyContent: 'center' }}>
-                                                        <View style={Styles.toggleonstyle}>
-                                                        </View>
-                                                    </TouchableOpacity>
-                                                </View>
-                                                :
-
-                                                <View style={{ height: rh(3), width: rw(12), backgroundColor: '#C4C4C4', borderRadius: 13, }}>
-                                                    <TouchableOpacity onPress={() => { setmultiparttoggles(true), setadditionalpart(true) }}>
+                                                    <TouchableOpacity onPress={() => { setextendwarrantyenabled(false), setenabledextendwarranty(true) }} style={{ justifyContent: 'center' }}>
                                                         <View style={Styles.toggleoffstyle}>
                                                         </View>
                                                     </TouchableOpacity>
                                                 </View>
+                                                :
+                                                <View style={Styles.toggleouterviewmain}>
+                                                    <TouchableOpacity onPress={() => { { setextendwarrantyenabled(true), setenabledextendwarranty(false) } }} style={{ justifyContent: 'center' }}>
+                                                        <View style={Styles.toggleonstyle}>
+                                                        </View>
+                                                    </TouchableOpacity>
+                                                </View>
+                                            }
 
+                                        </View>
+
+
+
+                                        <View style={{ flex: 1 }}>
+                                            {enabledextendwarranty ?
+                                                <View style={{ flex: 1 }}>
+                                                    <View style={Styles.addproductpartview}>
+                                                        <Text style={Styles.addproductparttext}>Product Name</Text>
+                                                        <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprductname(e)} />
+                                                    </View>
+
+                                                    <View style={{ flex: 1 }}>
+
+                                                        <View style={Styles.durationview}>
+                                                            <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
+                                                        </View>
+
+                                                        <View style={Styles.monthandyearbuttonouterview}>
+                                                            <View style={Styles.monthsandyearbuttoninerview}>
+                                                                <View style={{ width: rw(20), marginLeft: rw(7) }}>
+                                                                    <Text style={Styles.headingtext}>{durationsyears} Years</Text>
+                                                                </View>
+                                                                <View style={Styles.inneryellewbuttons}>
+                                                                    <TouchableOpacity onPress={() => lessyears()}>
+                                                                        <AntDesign name='minuscircleo' size={20} color={Colors.black} />
+                                                                    </TouchableOpacity>
+                                                                    <Text>{durationsyears}</Text>
+                                                                    <TouchableOpacity onPress={() => addyears()}>
+                                                                        <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
+                                                                    </TouchableOpacity>
+                                                                </View>
+                                                            </View>
+                                                            <View style={Styles.monthsandyearbuttoninerview}>
+                                                                <View style={{ width: rw(20), marginLeft: rw(7) }}>
+                                                                    <Text style={Styles.headingtext}>{monthsdurations} Months</Text>
+                                                                </View>
+                                                                <View style={Styles.inneryellewbuttons}>
+                                                                    <TouchableOpacity onPress={() => lessmonth()}>
+                                                                        <AntDesign name='minuscircleo' size={20} color={Colors.black} />
+                                                                    </TouchableOpacity>
+                                                                    <Text>{monthsdurations}</Text>
+                                                                    <TouchableOpacity onPress={() => addmonth()}>
+                                                                        <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
+                                                                    </TouchableOpacity>
+                                                                </View>
+                                                            </View>
+
+                                                        </View>
+                                                        <View>
+                                                        </View>
+
+
+
+
+
+
+
+
+
+
+                                                    </View>
+                                                </View>
+                                                :
+                                                null
+                                            }
+
+                                            <View style={{ flex: 1 }}>
+                                                <View style={Styles.warrantymultipartexpiryview}>
+                                                    <View style={{ top: 5 }}>
+                                                        <Text style={[Styles.secondhadding]}>Multipart Warranty</Text>
+                                                    </View>
+
+
+                                                    {multiparttoggles ?
+
+                                                        <View style={Styles.toggleouterviewmain}>
+                                                            <TouchableOpacity onPress={() => { setmultiparttoggles(false), setadditionalpart(false) }}>
+                                                                <View style={Styles.toggleonstyle}>
+                                                                </View>
+                                                            </TouchableOpacity>
+                                                        </View>
+                                                        :
+
+                                                        <View style={Styles.toggleouterviewmain}>
+                                                            <TouchableOpacity onPress={() => { setmultiparttoggles(true), setadditionalpart(true) }}>
+                                                                <View style={Styles.toggleoffstyle}>
+                                                                </View>
+                                                            </TouchableOpacity>
+                                                        </View>
+
+                                                    }
+
+
+                                                </View>
+
+                                            </View>
+
+
+                                            {additionalpart ?
+                                                <View style={Styles.addadditionalpartouterview}>
+                                                    <TouchableOpacity style={{ alignContent: 'center', flexDirection: 'row' }} onPress={() => navigation.navigate('Addadditionalpart')}>
+                                                        <View style={{ flexDirection: "row", width: rw(50), alignItems: "center", left: rw(5) }}>
+                                                            <AntDesign name='pluscircle' size={siz * 0.02} color={Colors.yellow} />
+                                                            <Text style={{ fontSize: siz * 0.02, color: Colors.black, left: rw(4) }}>Add additional part</Text>
+                                                        </View>
+                                                    </TouchableOpacity>
+                                                </View>
+                                                :
+                                                null
                                             }
 
 
+
+                                            <View style={{ height: rh(5), width: rw(89), marginTop: rh(2), justifyContent: 'space-between', flexDirection: "row", alignContent: 'center', alignItems: 'center' }}>
+                                                <Text style={[Styles.secondhadding]}>Allow Expiry Notifications</Text>
+
+                                                {allowexpirynotificationstoggled ?
+
+                                                    <View style={Styles.toggleouterviewmain}>
+                                                        <TouchableOpacity onPress={() => { setallowexpirynotificationstoggled(false), setallowexpirynotifications(true) }} style={{ justifyContent: 'center' }}>
+                                                            <View style={Styles.toggleoffstyle}>
+                                                            </View>
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                    :
+
+                                                    <View style={Styles.toggleouterviewmain}>
+                                                        <TouchableOpacity onPress={() => { setallowexpirynotificationstoggled(true), setallowexpirynotifications(false) }}>
+                                                            <View style={Styles.toggleonstyle}>
+                                                            </View>
+                                                        </TouchableOpacity>
+                                                    </View>
+
+                                                }
+
+
+
+                                            </View>
+                                            {allowexpirynotifications ?
+                                                <View style={{ height: rh(29), width: rw(90) }}>
+                                                    <View style={Styles.monthsandweeksouterview}>
+                                                        <TouchableOpacity style={Styles.weeksandmonthsbtn} onPress={() => setwarrantydays('14')}>
+                                                            <Text style={Styles.weeksmonthsinnertext}>2 weeks before</Text>
+                                                        </TouchableOpacity>
+
+                                                        <TouchableOpacity style={Styles.weeksandmonthsbtn} onPress={() => setwarrantydays('30')}>
+                                                            <Text style={Styles.weeksmonthsinnertext}>1 month before</Text>
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                    <View style={Styles.monthsandweeksouterview}>
+                                                        <TouchableOpacity style={Styles.weeksandmonthsbtn} onPress={() => setwarrantydays('60')}>
+                                                            <Text style={Styles.weeksmonthsinnertext}>2 month before</Text>
+                                                        </TouchableOpacity>
+                                                        <TouchableOpacity style={Styles.weeksandmonthsbtn} onPress={() => setwarrantydays('90')}>
+                                                            <Text style={Styles.weeksmonthsinnertext}>3 month before</Text>
+                                                        </TouchableOpacity>
+                                                    </View>
+
+                                                    <View style={{ height: rh(8), width: rw(30), marginTop: rh(5) }}>
+                                                        <Text>Number of Days</Text>
+                                                        <View style={{ borderBottomColor: Colors.yellow, borderBottomWidth: 1, }}>
+                                                            <TextInput value={warrantydays} placeholder={'0'} style={{ padding: 0, paddingTop: rh(2), fontSize: siz * 0.02 }} />
+                                                        </View>
+                                                    </View>
+                                                </View>
+                                                :
+                                                null
+                                            }
+
+
+
                                         </View>
+
+
+                                    </View>
+
+                                </View>
+
+
+
+
+
+
+
+
+                                :
+                                <View style={{ flex: 1, }}>
+                                    <View style={Styles.durationview}>
+                                        <TouchableOpacity onPress={() => setdurationenabled(true)}>
+                                            <Entypo name='circle' size={20} color={Colors.black} />
+                                        </TouchableOpacity>
+                                        <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
+                                    </View>
+                                    <View style={{ flexDirection: "row", alignContent: "center", alignItems: 'center', height: rh(5) }}>
+                                        <TouchableOpacity>
+                                            <FontAwesome name='circle' size={22} color={Colors.yellow} />
+                                        </TouchableOpacity>
+                                        <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Life Time Warranty</Text>
+                                    </View>
+                                    <View style={Styles.bottomlineview}>
+                                    </View>
+
+                                    <View style={Styles.warrantymultipartexpiryview}>
+                                        <View >
+                                            <Text style={[Styles.secondhadding]}>Multipart Warranty</Text>
+                                        </View>
+
+
+                                        {multipletoggled ?
+
+                                            <View style={Styles.toggleouterviewmain}>
+                                                <TouchableOpacity onPress={() => { setmultipletoggled(false), setadditionalpart(true) }} style={{ justifyContent: 'center' }}>
+                                                    <View style={Styles.toggleoffstyle}>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </View>
+                                            :
+
+                                            <View style={Styles.toggleouterviewmain}>
+                                                <TouchableOpacity onPress={() => { setmultipletoggled(true), setadditionalpart(false) }}>
+                                                    <View style={Styles.toggleonstyle}>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </View>
+
+                                        }
+
 
                                     </View>
 
 
                                     {additionalpart ?
-                                        <View style={{ height: rh(5), backgroundColor: '#DCDBDB', width: rw(89), borderRadius: 5, justifyContent: 'center' }}>
+                                        <View style={Styles.addadditionalpartouterview}>
                                             <TouchableOpacity style={{ alignContent: 'center', flexDirection: 'row' }} onPress={() => navigation.navigate('Addadditionalpart')}>
                                                 <View style={{ flexDirection: "row", width: rw(50), alignItems: "center", left: rw(5) }}>
                                                     <AntDesign name='pluscircle' size={siz * 0.02} color={Colors.yellow} />
@@ -272,38 +405,32 @@ const AddProductStepthree = ({ navigation }) => {
                                         :
                                         null
                                     }
+                                    <View style={{ height: rh(5), width: rw(89), marginTop: rh(2), justifyContent: 'space-between', flexDirection: "row", alignContent: 'center', alignItems: 'center' }}>
+
+                                        <Text style={[Styles.secondhadding]}>Allow Expiry Notifications</Text>
+
+
+                                        {allowexpirynotificationstoggled ?
+
+                                            <View style={Styles.toggleouterviewmain}>
+                                                <TouchableOpacity onPress={() => { setallowexpirynotificationstoggled(false), setallowexpirynotifications(true) }} style={{ justifyContent: 'center' }}>
+                                                    <View style={Styles.toggleoffstyle}>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </View>
+                                            :
+
+                                            <View style={Styles.toggleouterviewmain}>
+                                                <TouchableOpacity onPress={() => { setallowexpirynotificationstoggled(true), setallowexpirynotifications(false) }}>
+                                                    <View style={Styles.toggleonstyle}>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </View>
+
+                                        }
 
 
 
-
-
-                                    <View style={{ height: rh(5), width: rw(100), marginTop: rh(2), justifyContent: 'space-between', flexDirection: "row", alignContent: 'center', alignItems: 'center' }}>
-                                        <View style={{ width: rw(70) }}>
-                                            <Text style={[Styles.secondhadding, { fontSize: FontSize.font20 }]}>Allow Expiry Notifications?</Text>
-                                        </View>
-
-                                        <View style={{ width: rw(10), right: rw(13) }}>
-                                            {allowexpirynotificationstoggled ?
-
-                                                <View style={Styles.toggleouterviewmain}>
-                                                    <TouchableOpacity onPress={() => { setallowexpirynotificationstoggled(false), setallowexpirynotifications(true) }} style={{ justifyContent: 'center' }}>
-                                                        <View style={Styles.toggleoffstyle}>
-                                                        </View>
-                                                    </TouchableOpacity>
-                                                </View>
-                                                :
-
-                                                <View style={Styles.toggleouterviewmain}>
-                                                    <TouchableOpacity onPress={() => { setallowexpirynotificationstoggled(true), setallowexpirynotifications(false) }}>
-                                                        <View style={Styles.toggleonstyle}>
-                                                        </View>
-                                                    </TouchableOpacity>
-                                                </View>
-
-                                            }
-
-
-                                        </View>
 
                                     </View>
                                     {allowexpirynotifications ?
@@ -339,166 +466,28 @@ const AddProductStepthree = ({ navigation }) => {
 
 
 
+
+
                                 </View>
 
+                            }
 
-                            </View>
 
                         </View>
+                    </View>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        :
-                        <View style={{ height: rh(30), }}>
-                            <View style={{ flexDirection: "row", alignContent: "center", alignItems: 'center', height: rh(5) }}>
-                                <TouchableOpacity onPress={() => setdurationenabled(true
-                                )}>
-                                    <Entypo name='circle' size={25} color={Colors.black} />
-                                </TouchableOpacity>
-                                <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
-                            </View>
-                            <View style={{ flexDirection: "row", alignContent: "center", alignItems: 'center', height: rh(5) }}>
-                                <TouchableOpacity>
-                                    <FontAwesome name='circle' size={25} color={Colors.yellow} />
-                                </TouchableOpacity>
-                                <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Life Time Warranty</Text>
-                            </View>
-                            <View style={{ backgroundColor: Colors.borderbottomcolor, width: rw(100), height: rh(0.3), marginTop: rh(2) }}>
-                            </View>
-                            <View style={{ height: rh(5), width: rw(100), marginTop: rh(2), justifyContent: 'space-between', flexDirection: "row", alignContent: 'center', alignItems: 'center' }}>
-                                <View style={{ width: rw(50) }}>
-                                    <Text style={[Styles.secondhadding, { fontSize: FontSize.font20 }]}>Multipart Warranty</Text>
-                                </View>
-
-                                <View style={{ width: rw(10), right: rw(13) }}>
-                                    {multipletoggled ?
-
-                                        <View style={Styles.toggleouterviewmain}>
-                                            <TouchableOpacity onPress={() => { setmultipletoggled(false), setadditionalpart(true) }} style={{ justifyContent: 'center' }}>
-                                                <View style={Styles.toggleoffstyle}>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </View>
-                                        :
-
-                                        <View style={{ height: rh(3), width: rw(12), backgroundColor: '#C4C4C4', borderRadius: 13, }}>
-                                            <TouchableOpacity onPress={() => { setmultipletoggled(true), setadditionalpart(false) }}>
-                                                <View style={Styles.toggleonstyle}>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </View>
-
-                                    }
-
-
-                                </View>
-
-                            </View>
-                            {additionalpart ?
-                                <View style={{ height: rh(5), backgroundColor: '#DCDBDB', width: rw(89), borderRadius: 5, justifyContent: 'center' }}>
-                                    <TouchableOpacity style={{ alignContent: 'center', flexDirection: 'row' }} onPress={() => navigation.navigate('Addadditionalpart')}>
-                                        <View style={{ flexDirection: "row", width: rw(50), alignItems: "center", left: rw(5) }}>
-                                            <AntDesign name='pluscircle' size={siz * 0.02} color={Colors.yellow} />
-                                            <Text style={{ fontSize: siz * 0.02, color: Colors.black, left: rw(4) }}>Add additional part</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                </View>
-                                :
-                                null
-                            }
-                            <View style={{ height: rh(5), width: rw(100), marginTop: rh(2), justifyContent: 'space-between', flexDirection: "row", alignContent: 'center', alignItems: 'center' }}>
-                                <View style={{ width: rw(70) }}>
-                                    <Text style={[Styles.secondhadding, { fontSize: FontSize.font20 }]}>Allow Expiry Notifications?</Text>
-                                </View>
-
-                                <View style={{ width: rw(10), right: rw(13) }}>
-                                    {allowexpirynotificationstoggled ?
-
-                                        <View style={Styles.toggleouterviewmain}>
-                                            <TouchableOpacity onPress={() => { setallowexpirynotificationstoggled(false), setallowexpirynotifications(true) }} style={{ justifyContent: 'center' }}>
-                                                <View style={Styles.toggleoffstyle}>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </View>
-                                        :
-
-                                        <View style={Styles.toggleouterviewmain}>
-                                            <TouchableOpacity onPress={() => { setallowexpirynotificationstoggled(true), setallowexpirynotifications(false) }}>
-                                                <View style={Styles.toggleonstyle}>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </View>
-
-                                    }
-
-
-                                </View>
-
-                            </View>
-                            {allowexpirynotifications ?
-                                <View style={{ height: rh(29), width: rw(90) }}>
-                                    <View style={Styles.monthsandweeksouterview}>
-                                        <TouchableOpacity style={Styles.weeksandmonthsbtn} onPress={() => setwarrantydays('14')}>
-                                            <Text style={Styles.weeksmonthsinnertext}>2 weeks before</Text>
-                                        </TouchableOpacity>
-
-                                        <TouchableOpacity style={Styles.weeksandmonthsbtn} onPress={() => setwarrantydays('30')}>
-                                            <Text style={Styles.weeksmonthsinnertext}>1 month before</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                    <View style={Styles.monthsandweeksouterview}>
-                                        <TouchableOpacity style={Styles.weeksandmonthsbtn} onPress={() => setwarrantydays('60')}>
-                                            <Text style={Styles.weeksmonthsinnertext}>2 month before</Text>
-                                        </TouchableOpacity>
-                                        <TouchableOpacity style={Styles.weeksandmonthsbtn} onPress={() => setwarrantydays('90')}>
-                                            <Text style={Styles.weeksmonthsinnertext}>3 month before</Text>
-                                        </TouchableOpacity>
-                                    </View>
-
-                                    <View style={{ height: rh(8), width: rw(30), marginTop: rh(5) }}>
-                                        <Text>Number of Days</Text>
-                                        <View style={{ borderBottomColor: Colors.yellow, borderBottomWidth: 1, }}>
-                                            <TextInput value={warrantydays} placeholder={'0'} style={{ padding: 0, paddingTop: rh(2), fontSize: siz * 0.02 }} />
-                                        </View>
-                                    </View>
-                                </View>
-                                :
-                                null
-                            }
+                    <View style={{ flex: 1, justifyContent: 'flex-end', alignContent: "flex-end", alignItems: "flex-end", alignSelf: 'flex-end', }}>
+                        <View style={Styles.nextanssavedbuttonview}>
+                            <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('Addproductstepfourcategory')}>
+                                <Text style={Styles.bottombtntext}>Next</Text>
+                            </TouchableOpacity>
                         </View>
+                    </View>
 
-                    }
+                </ScrollView>
 
-                </View>
-
-
-                <View style={{ height: rh(7), elevation: 5, justifyContent: 'flex-end', alignSelf: 'flex-end', width: rw(20), marginTop: rh(10) }}>
-                    <TouchableOpacity style={Styles.bottombtn}>
-                        <Text style={Styles.bottombtntext}>Next</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
-
+            </View >
         </SafeAreaView >
     )
 }
