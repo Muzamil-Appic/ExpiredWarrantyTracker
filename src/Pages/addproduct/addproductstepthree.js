@@ -54,7 +54,7 @@ const AddProductStepthree = ({ navigation }) => {
         <SafeAreaView style={Styles.container}>
             <View style={{ marginHorizontal: rw(5) }}>
 
-                <ScrollView contentContainerStyle={{ flexGrow: 1, }} showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }}>
                     <View style={{ flex: 1 }}>
                         <View style={{ height: rh(4), marginTop: rh(2) }}>
                             <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -477,17 +477,16 @@ const AddProductStepthree = ({ navigation }) => {
                     </View>
 
 
-                    <View style={{ flex: 1, justifyContent: 'flex-end', alignContent: "flex-end", alignItems: "flex-end", alignSelf: 'flex-end', }}>
-                        <View style={Styles.nextanssavedbuttonview}>
-                            <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('Addproductstepfourcategory')}>
-                                <Text style={Styles.bottombtntext}>Next</Text>
-                            </TouchableOpacity>
-                        </View>
+                    <View style={{ height: rh(15), width: rw(90), }}>
                     </View>
 
                 </ScrollView>
-
             </View >
+            <View style={[Styles.nextanssavedbuttonview, { marginHorizontal: rw(3) }]}>
+                <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('Addproductstepfourcategory')}>
+                    <Text style={Styles.bottombtntext}>Next</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView >
     )
 }

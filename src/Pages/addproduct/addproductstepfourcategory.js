@@ -25,7 +25,7 @@ const Addproductstepfourcategory = ({ navigation }) => {
   const categoriesrenderfunction = ({ item }) => {
     return (
       <View style={{ height: rh(10), borderBottomColor: Colors.bk, borderBottomWidth: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-between", }}>
-        <View style={{ flexDirection: "row", alignItems: 'center', width: rw(85) }}>
+        <View style={{ flexDirection: "row", alignItems: 'center', width: rw(84) }}>
           <MaterialIcons name='folder' size={40} color={item.categorycolor} />
           <Text numberOfLines={1} style={{ fontSize: FontSize.font20, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Medium', left: rw(4) }}>{item.categoryname}</Text>
         </View>
@@ -37,7 +37,7 @@ const Addproductstepfourcategory = ({ navigation }) => {
   }
   return (
     <SafeAreaView style={Styles.container}>
-      <View style={{ flex: 1, marginHorizontal: rw(3) }}>
+      <View style={{ flex: 1, marginHorizontal: rw(5) }}>
         <ScrollView style={{ flexGrow: 1 }}>
           <View style={{ height: rh(4), marginTop: rh(2) }}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -58,9 +58,7 @@ const Addproductstepfourcategory = ({ navigation }) => {
           </View>
 
 
-          <FlatList data={useraddedcategories}
-            renderItem={categoriesrenderfunction}
-            keyExtractor={item => item.id} />
+        
 
 
 

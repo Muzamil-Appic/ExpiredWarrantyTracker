@@ -9,7 +9,6 @@ import Settings from '../Pages/settings/settings';
 import Colors from '../Global/Colors';
 import { responsiveHeight as rh, responsiveScreenWidth as rw } from 'react-native-responsive-dimensions';
 import Styles from './BottomTabs.Styles'
-
 import TimeLineYellow from '../Assets/Svg/TimeLineYellow.svg'
 import SearchWhite from '../Assets/Svg/SearchWhite.svg'
 import SettingsWhite from '../Assets/Svg/SettingsWhite.svg'
@@ -111,7 +110,7 @@ const BottomTabNavigations = () => {
                             <View
                                 style={{
                                     height: rw(22),
-                                    bottom: rh(3.5),
+                                    bottom: rh(3),
                                     width: rw(22),
                                     justifyContent: 'center',
                                     alignItems: 'center',

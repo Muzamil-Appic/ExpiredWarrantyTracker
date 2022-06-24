@@ -16,8 +16,11 @@ import Addproductsteptwo from '../Pages/addproduct/addproductsteptwo';
 import AddProductStepthree from '../Pages/addproduct/addproductstepthree';
 import Addadditionalpart from '../Pages/addproduct/addadditionalpart';
 import Addproductstepfourcategory from '../Pages/addproduct/addproductstepfourcategory';
-import Createcategory from '../Pages/createcategory/createcategory';
 import Addproductstepfiveoptional from '../Pages/addproduct/addproductstepfiveoptional';
+import Createcategory from '../Pages/category/createcategory';
+import Categoriesdetails from '../Pages/category/categoriesdetails';
+import Receiptsdetails from '../Pages/receiptsdetails/receiptsdetails';
+import Edit from '../Pages/edit/edit';
 
 
 const Stack = createNativeStackNavigator();
@@ -42,6 +45,9 @@ const StackNavigations = () => {
         <Stack.Screen name='Addproductstepfourcategory' component={Addproductstepfourcategory} />
         <Stack.Screen name='Createcategory' component={Createcategory} />
         <Stack.Screen name='Addproductstepfiveoptional' component={Addproductstepfiveoptional} />
+        <Stack.Screen name='Categoriesdetails' component={Categoriesdetails} />
+        <Stack.Screen name='Receiptsdetails' component={Receiptsdetails} />
+        <Stack.Screen name='Edit' component={Edit} />
       </Stack.Navigator>
     </NavigationContainer>
   )

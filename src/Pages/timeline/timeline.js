@@ -1,11 +1,18 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import YellowBackSvg from '../../Assets/Svg/YellowBackSvg.svg'
+import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
 import Entypo from 'react-native-vector-icons/Entypo'
+import Colors from '../../Global/Colors'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import FontSize from '../../Global/Fonts'
 const Timeline = () => {
   return (
-    <View>
-      <Entypo name='back-in-time' size={30}/>
-    </View>
+    <SafeAreaView>
+
+    </SafeAreaView>
   )
 }
 

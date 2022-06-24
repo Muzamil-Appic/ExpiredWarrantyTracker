@@ -22,12 +22,11 @@ const Settings = ({ navigation }) => {
 
   return (
     <SafeAreaView style={Styles.container}>
-      <View style={{ top: rh(1), }}>
+      <View style={{ height: rh(9), justifyContent: "center", borderBottomColor: Colors.bk, borderBottomWidth: 2 }}>
         <Text style={{ fontFamily: 'Inter-Medium', fontWeight: '700', fontSize: FontSize.font24, color: Colors.black, paddingLeft: rw(5) }}>Settings</Text>
       </View>
-      <View style={{ marginTop: rh(2.5), borderBottomColor: '#909090', borderWidth: 0.5 }}>
-      </View>
-      <LinearGradient colors={['#F205DBB2', '#9411E8B2', '#0B23FBB2']} style={{ marginTop: rh(3), marginHorizontal: rw(5), height: rh(19), borderRadius: 12 }}>
+
+      <LinearGradient colors={['#F205DBB2', '#9411E8B2', '#0B23FBB2']} style={{ marginTop: rh(1.5), marginHorizontal: rw(5), height: rh(19), borderRadius: 12 }}>
         <View style={{ justifyContent: 'space-evenly', height: rh(19), alignItems: 'center' }}>
           <Text style={{ fontFamily: 'Inter-Medium', fontWeight: '500', fontSize: FontSize.font22, color: Colors.white, textAlign: 'center' }}>EXPIRED PRO</Text>
           <TouchableOpacity style={{ backgroundColor: Colors.green, height: rh(7), width: rw(35), justifyContent: 'center', borderRadius: 10, elevation: 5 }} onPress={() => navigation.navigate('upgradetoexpiredpro')}>
@@ -101,7 +100,7 @@ const Settings = ({ navigation }) => {
             <Text style={Styles.innertext}>About</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={{ marginLeft: rw(5), marginTop: rh(2) }} onPress={()=>navigation.navigate('signin')}>
+        <TouchableOpacity style={{ marginLeft: rw(5), marginTop: rh(2) }} onPress={() => navigation.navigate('signin')}>
           <Text style={{ color: Colors.yellow, fontSize: 20, fontFamily: 'Inter-Regular', fontWeight: '600', }}>Log Out </Text>
         </TouchableOpacity>
       </View>
