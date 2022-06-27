@@ -8,9 +8,10 @@ import Colors from '../../Global/Colors'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontSize from '../../Global/Fonts'
+import Styles from './timeline.Styles'
 const Timeline = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={Styles.container}>
 
     </SafeAreaView>
   )

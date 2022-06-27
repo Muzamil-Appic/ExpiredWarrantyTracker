@@ -6,9 +6,10 @@ const Styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.white,
-
     },
-
+    textsubhadding: { fontSize: FontSize.font13, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Regular', marginTop: rh(1) },
+    boldheadding: { fontSize: FontSize.font18, color: Colors.black, fontFamily: 'Inter-Medium', fontWeight: "700" },
+    lightbold: { fontSize: FontSize.font16, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Medium', marginTop: rh(1) },
 
 })
 export default Styles;

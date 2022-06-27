@@ -52,6 +52,10 @@
         "source": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/res/drawable-mdpi/src_assets_photos_boardingone.png"
     },
     {
+        "merged": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/merged_res/debug/drawable-mdpi_src_assets_photos_phonephoto.jpeg.flat",
+        "source": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/res/drawable-mdpi/src_assets_photos_phonephoto.jpeg"
+    },
+    {
         "merged": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
     },

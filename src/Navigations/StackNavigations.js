@@ -21,6 +21,13 @@ import Createcategory from '../Pages/category/createcategory';
 import Categoriesdetails from '../Pages/category/categoriesdetails';
 import Receiptsdetails from '../Pages/receiptsdetails/receiptsdetails';
 import Edit from '../Pages/edit/edit';
+import Editproduct from '../Pages/editproduct/editproduct';
+import Editproductimage from '../Pages/editproduct/editproductimage';
+import Editproductcategory from '../Pages/editproduct/editproductcategory';
+import EditproductName from '../Pages/editproduct/editproduct';
+import Editproductwarrantydetailsandnotifications from '../Pages/editproduct/editproductwarrantydetailsandnotifications';
+import Editadditionalpart from '../Pages/editproduct/editadditionalpart';
+import Editproductadditionalstep from '../Pages/editproduct/editproductadditionalstep';
 
 
 const Stack = createNativeStackNavigator();
@@ -48,6 +55,14 @@ const StackNavigations = () => {
         <Stack.Screen name='Categoriesdetails' component={Categoriesdetails} />
         <Stack.Screen name='Receiptsdetails' component={Receiptsdetails} />
         <Stack.Screen name='Edit' component={Edit} />
+        <Stack.Screen name='EditproductName' component={EditproductName} />
+        <Stack.Screen name='Editproductimage' component={Editproductimage} />
+        <Stack.Screen name='Editproductcategory' component={Editproductcategory} />
+        <Stack.Screen name='Editproductwarrantydetailsandnotifications' component={Editproductwarrantydetailsandnotifications} />
+        <Stack.Screen name='Editadditionalpart' component={Editadditionalpart} />
+        <Stack.Screen name='Editproductadditionalstep' component={Editproductadditionalstep} />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   )

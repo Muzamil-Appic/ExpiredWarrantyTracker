@@ -10,6 +10,7 @@ const Styles = StyleSheet.create({
     },
     editouterview: { height: rh(8), justifyContent: 'center', alignContent: 'center', borderBottomColor: Colors.bk, borderBottomWidth: 2, width: rw(90), alignSelf: 'center' },
     btntext: { fontSize: FontSize.font18, color: Colors.black, left: rw(3) },
+    boldheadding:{ fontSize: FontSize.font18, color: Colors.black, fontFamily: 'Inter-Medium', fontWeight: "700" },
 
 })
 export default Styles;
