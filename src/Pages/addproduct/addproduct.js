@@ -23,8 +23,8 @@ const Addproductstepone = ({ navigation }) => {
                     <Text style={Styles.textstep}>Step 1 of 4</Text>
                     <Text style={Styles.secondhadding}>Product Name</Text>
                 </View>
+                <Text style={Styles.addproductparttext}>Product Name</Text>
                 <View style={Styles.addproductpartview}>
-                    <Text style={Styles.addproductparttext}>Product Name</Text>
                     <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprductname(e)} />
                 </View>
                 <View style={Styles.nextanssavedbuttonview}>

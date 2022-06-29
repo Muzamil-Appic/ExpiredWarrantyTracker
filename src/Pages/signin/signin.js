@@ -154,7 +154,7 @@ const Signin = ({ navigation }) => {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }}>
         {signinenables ?
           <View style={Styles.loginsignupbutton}>
-            <View style={{ flexDirection: "row", width: rw('40'), justifyContent: 'space-around' }}>
+            <View style={{ flexDirection: "row", width: rw('40'), justifyContent: 'space-around', }}>
               <View style={{ borderBottomWidth: 1, borderColor: Colors.white, paddingBottom: 4 }}>
                 <TouchableOpacity >
                   <Text style={Styles.loginsignuptext}>Sign In</Text>
@@ -188,15 +188,24 @@ const Signin = ({ navigation }) => {
               <Text style={{ color: Colors.black, fontSize: FontSize.font20, fontWeight: '700' }}>Login To Your Account</Text>
             </View>
 
-            <View style={{ height: rh(12), marginTop: rh(7), marginHorizontal: rw(5), justifyContent: "space-evenly" }}>
+            <View style={{ height: rh(14), marginTop: rh(8), marginHorizontal: rw(5), justifyContent: 'space-around', }}>
               <View style={Styles.txtinptouterview}>
-                <TextInput onChangeText={e => setsignemail(e)} keyboardType='email-address' placeholder='Email' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
+                <TextInput onChangeText={e => setsignupemail(e)} keyboardType='email-address' placeholder='Email' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
               </View>
-              <View style={[Styles.txtinptouterview, { flexDirection: 'row' }]}>
-                <TextInput onChangeText={e => setsigninpasswprd(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={Styles.password} />
-                <View style={{ right: rw(8), marginTop: rh(4) }}>
-                  < Evyiconopensvg width={'22px'} height={'15px'} />
-                </View>
+              <View style={[Styles.txtinptouterview, { flexDirection: 'row', }]}>
+                <TextInput onChangeText={e => setsignuppassword(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
+                {signupeye ?
+
+
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(true)}>
+                    < Evyiconopensvg width={'22px'} height={'15px'} />
+                  </TouchableOpacity>
+                  :
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(false)}>
+                    < Evyiconopensvg width={'22px'} height={'15px'} />
+                  </TouchableOpacity>
+                }
+
               </View>
             </View>
             <View style={{ height: rh(9), marginTop: rh(5) }}>
@@ -229,28 +238,34 @@ const Signin = ({ navigation }) => {
               </View>
 
               <View style={[Styles.txtinptouterview, { flexDirection: 'row', }]}>
-                <TextInput onChangeText={e => setsignuppassword(e)} placeholder='Password' secureTextEntry={signupeye} placeholderTextColor={Colors.borderbottomcolor} style={Styles.password} />
+                <TextInput onChangeText={e => setsigninpasswprd(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
                 {signupeye ?
-                  <TouchableOpacity onpress={() => setsignupeye(true)}>
-                    <View style={{ right: rw(8), marginTop: rh(4) }}>
-                      < Evyiconopensvg width={'22px'} height={'15px'} />
-                    </View>
+
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(true)}>
+                    < Evyiconopensvg width={'22px'} height={'15px'} />
                   </TouchableOpacity>
                   :
-                  <TouchableOpacity onpress={() => setsignupeye(false)}>
-                    <View style={{ right: rw(8), marginTop: rh(4) }}>
-                      < Evyiconopensvg width={'22px'} height={'15px'} />
-                    </View>
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(false)}>
+                    < Evyiconopensvg width={'22px'} height={'15px'} />
                   </TouchableOpacity>
                 }
 
               </View>
 
-              <View style={[Styles.txtinptouterview, { flexDirection: 'row' }]}>
-                <TextInput onChangeText={e => setsignupconfirmpassword(e)} placeholder='Confirm Password' secureTextEntry={true} placeholderTextColor={Colors.borderbottomcolor} style={Styles.password} />
-                <View style={{ right: rw(8), marginTop: rh(4) }}>
-                  < Evyiconopensvg width={'22px'} height={'15px'} />
-                </View>
+              <View style={[Styles.txtinptouterview, { flexDirection: 'row', }]}>
+                <TextInput onChangeText={e => setsignuppassword(e)} placeholder='Confirm Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
+                {signupeye ?
+
+
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(true)}>
+                    < Evyiconopensvg width={'22px'} height={'15px'} />
+                  </TouchableOpacity>
+                  :
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(false)}>
+                    < Evyiconopensvg width={'22px'} height={'15px'} />
+                  </TouchableOpacity>
+                }
+
               </View>
 
             </View>

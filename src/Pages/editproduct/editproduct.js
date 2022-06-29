@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import YellowBackSvg from '../../Assets/Svg/YellowBackSvg.svg'
 import Styles from './addproduct.Styles'
 
-const EditproductName = ({ navigation }) => {
+const Editproduct = ({ navigation }) => {
     const [prductname, setprductname] = useState('')
     const siz = Dimensions.get('window').height
 
@@ -19,16 +19,17 @@ const EditproductName = ({ navigation }) => {
                         <YellowBackSvg width={'20.67px'} height={'20.67px'} />
                     </TouchableOpacity>
                 </View>
-                <View style={{ marginTop: rh(1) }}>
+                <View style={{ marginTop: rh(2) }}>
+
                     <Text style={Styles.secondhadding}>Product Name</Text>
                 </View>
+                <Text style={Styles.addproductparttext}>Product Name</Text>
                 <View style={Styles.addproductpartview}>
-                    <Text style={Styles.addproductparttext}>Product Name</Text>
                     <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprductname(e)} />
                 </View>
                 <View style={Styles.nextanssavedbuttonview}>
-                    <TouchableOpacity style={Styles.bottombtn} onPress={() => { console.log("DOne"); }}>
-                        <Text style={Styles.bottombtntext}>Save</Text>
+                    <TouchableOpacity style={Styles.bottombtn} >
+                        <Text style={Styles.bottombtntext}>Add</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -37,4 +38,4 @@ const EditproductName = ({ navigation }) => {
     )
 }
 
-export default EditproductName
+export default Editproduct

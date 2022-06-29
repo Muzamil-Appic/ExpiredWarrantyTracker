@@ -1,5 +1,5 @@
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
-import { Dimensions, FlatList, ScrollView, Modal, StyleSheet, Image, View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { Dimensions, FlatList, ScrollView, Modal, StyleSheet, Image, View, Text, TouchableOpacity, TextInput, Linking, Platform } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Colors from '../../Global/Colors';
 import FontSize from '../../Global/Fonts';
@@ -14,19 +14,30 @@ import EditPencilSvg from '../../Assets/Svg/EditPencilSvg.svg'
 import ShareSvg from '../../Assets/Svg/ShareSvg.svg'
 import BG from '../../Assets/photos/Oicone.png'
 import { ImageHeaderScrollView, TriggeringView } from 'react-native-image-header-scroll-view';
-
 const imageheight = Dimensions.get('window').height
 const imagwidth = Dimensions.get('window').width
 
-
 const Receiptsdetails = ({ navigation }) => {
 
-    return (
+    const dd = "03452163841"
 
+    const openDialScreen = () => {
+        let number = '';
+        if (Platform.OS === 'ios') {
+            number = 'telprompt:${091123456789}';
+        } else {
+            number = 'tel:${091123456789}';
+        }
+        Linking.openURL(number);
+    };
+
+
+
+    return (
         <SafeAreaView style={Styles.container}>
             <ImageHeaderScrollView
                 maxHeight={350}
-                minHeight={40}
+                minHeight={0}
                 showsVerticalScrollIndicator={false}
                 // minOverlayOpacity={0.5}
                 // overlayColor={Colors.gry}
@@ -62,8 +73,8 @@ const Receiptsdetails = ({ navigation }) => {
                             <Text style={{ fontSize: FontSize.font16, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium', left: rw(3) }}>Personal</Text>
                         </View>
                         <View>
-                            <Text style={{ fontSize: FontSize.font16, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Medium' }}>7 Feb 2022</Text>
-                            <Text style={{ color: Colors.gry, fontSize: FontSize.font12, top: 5 }}>Purchase Date</Text>
+                            <Text style={{ fontSize: FontSize.font16, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Medium', marginTop: rh(1) }}>7 Feb 2022</Text>
+                            <Text style={{ color: Colors.gry, fontSize: FontSize.font12, }}>Purchase Date</Text>
                         </View>
                     </View>
                     <View style={{ width: rw(100), borderBottomColor: Colors.gry, borderBottomWidth: 3, }}>
@@ -81,10 +92,10 @@ const Receiptsdetails = ({ navigation }) => {
                     <View style={{ marginHorizontal: rw(4), borderBottomColor: Colors.gry, borderBottomWidth: 1 }}>
                         <View style={{ marginTop: rh(2) }}>
                             <Text style={Styles.boldheadding}>Product Info</Text>
-                            <Text style={Styles.textsubhadding}>Modal Number</Text>
-                            <Text style={Styles.lightbold}>Itel L6006</Text>
-                            <Text style={Styles.textsubhadding}>Price</Text>
-                            <Text style={{ fontSize: FontSize.font16, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Medium', marginTop: rh(1) }}>0</Text>
+                            <Text style={[Styles.textsubhadding, { marginTop: rh(1) }]}>Modal Number</Text>
+                            <Text style={[Styles.lightbold,]}>Itel L6006</Text>
+                            <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Price</Text>
+                            <Text style={Styles.lightbold}>0</Text>
                             <View style={{ height: rh(2) }}>
                             </View>
                         </View>
@@ -97,17 +108,67 @@ const Receiptsdetails = ({ navigation }) => {
                             <Text style={Styles.textsubhadding}>Purchased Date</Text>
                             <Text style={Styles.textsubhadding}>Duration</Text>
                         </View>
-                        <View style={{ marginTop: rh(0.5), flexDirection: "row", width: rw(80), justifyContent: 'space-between' }}>
-                            <Text style={Styles.lightbold}>7 Feb 2022</Text>
-                            <Text style={Styles.lightbold}>1 year</Text>
+                        <View style={{ flexDirection: "row", width: rw(80), justifyContent: 'space-between' }}>
+                            <Text style={[Styles.lightbold,]}>7 Feb 2022</Text>
+                            <Text style={[Styles.lightbold,]}>15 year</Text>
                         </View>
                         <View style={{ height: rh(2) }}>
                         </View>
                     </View>
                     <View style={{ marginHorizontal: rw(4), borderBottomColor: Colors.gry, borderBottomWidth: 1, }}>
+                        <View style={{ marginTop: rh(2) }}>
+                            <Text style={Styles.boldheadding}>Extended Warranty</Text>
+                        </View>
+                        <View style={{ marginTop: rh(0.5), flexDirection: "row", width: rw(80), justifyContent: 'space-between' }}>
+                            <Text style={Styles.textsubhadding}>Provider</Text>
+                            <Text style={Styles.textsubhadding}>Duration</Text>
+                        </View>
+                        <View style={{ flexDirection: "row", width: rw(80), justifyContent: 'space-between' }}>
+                            <Text style={[Styles.lightbold,]}>stratapro</Text>
+                            <Text style={[Styles.lightbold,]}>1 year</Text>
+                        </View>
+                        <View style={{ height: rh(2) }}>
+                        </View>
+                    </View>
+
+
+
+
+                    <View style={{ marginHorizontal: rw(4), borderBottomColor: Colors.gry, borderBottomWidth: 1, }}>
+                        <View style={{ marginTop: rh(2) }}>
+                            <Text style={Styles.boldheadding}>Merchant</Text>
+                        </View>
+
+                        <Text style={[Styles.textsubhadding, { marginTop: rh(1) }]}>Provider</Text>
+                        <Text style={[Styles.lightbold,]}>stratapro</Text>
+
+                        <View>
+                            <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Location</Text>
+                            <Text style={[Styles.lightbold,]}>1912 Sampson Street,Denver</Text>
+                        </View>
+
+                        <View >
+                            <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Contact Number</Text>
+                            <View style={{ flexDirection: "row", width: rw(90), justifyContent: 'space-between', alignItems: "center", alignContent: "center", }}>
+                                <Text style={[Styles.lightbold,]}>454-454-655</Text>
+                                <TouchableOpacity onPress={() => openDialScreen()}>
+                                    <MaterialIcons name='call' size={30} color={Colors.yellow} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+
+
+                        <View style={{ height: rh(2) }}>
+                        </View>
+                    </View>
+
+
+
+                    <View style={{ marginHorizontal: rw(4), borderBottomColor: Colors.gry, borderBottomWidth: 1, }}>
                         <Text style={[Styles.boldheadding, { marginVertical: rh(2) }]}>Notes</Text>
                         <View style={{ paddingLeft: 10, paddingRight: 10, paddingBottom: 10 }}>
-                            <Text style={[Styles.textsubhadding, { marginTop: rh(0) }]}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of typescrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+                            <Text style={[Styles.textsubhadding, { marginTop: rh(0), lineHeight: 19 }]}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of typescrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
                                 electronic typesetting, remaining essentially unchanged. It was popularised
                             </Text>
                         </View>
@@ -116,10 +177,17 @@ const Receiptsdetails = ({ navigation }) => {
                     </View>
 
 
-                    <View style={{ marginHorizontal: rw(4), justifyContent: "center", alignContent: "center" }}>
+                    <View style={{ marginHorizontal: rw(4), justifyContent: "center", alignContent: "center", borderBottomColor: Colors.gry, borderBottomWidth: 1, paddingBottom: rh(2) }}>
                         <Text style={[Styles.boldheadding, { marginTop: rh(1) }]}>Product Images</Text>
-                        <TouchableOpacity style={{ alignSelf: 'center', }}>
-                            <Image source={require('../../Assets/photos/Oicone.png')} resizeMode={'contain'} style={{ height: imageheight / 2, width: imagwidth / 1.2, }} />
+                        <TouchableOpacity style={{ alignSelf: 'center', marginTop: rh(3) }}>
+                            <Image source={require('../../Assets/photos/PhonePhoto.jpeg')} resizeMode={'contain'} resizeMethod={'resize'} style={{ height: imageheight / 1.5, width: imagwidth / 1.4, borderLeftWidth: 1, borderRadius: 10 }} />
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={{ marginHorizontal: rw(4), justifyContent: "center", alignContent: "center" }}>
+                        <Text style={[Styles.boldheadding, { marginTop: rh(1) }]}>Receipts</Text>
+                        <TouchableOpacity style={{ alignSelf: 'center', marginTop: rh(3) }}>
+                            <Image source={require('../../Assets/photos/PhonePhoto.jpeg')} resizeMode={'contain'} resizeMethod={'resize'} style={{ height: imageheight / 1.5, width: imagwidth / 1.4, borderLeftWidth: 1, borderRadius: 10 }} />
                         </TouchableOpacity>
                     </View>
 
@@ -163,4 +231,3 @@ export default Receiptsdetails
 
 
 
-{/* F */ }

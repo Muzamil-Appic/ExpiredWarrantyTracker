@@ -1,5 +1,5 @@
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
-import { Dimensions, FlatList, ScrollView, Modal, StyleSheet, View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { Dimensions, FlatList, ScrollView, Modal, StyleSheet, View, Text, TouchableOpacity, TextInput, TouchableHighlight, TouchableOpacityBase } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Colors from '../../Global/Colors';
 import FontSize from '../../Global/Fonts';
@@ -65,22 +65,26 @@ const AddProductStepthree = ({ navigation }) => {
                             <Text style={Styles.textstep}>Step 3 of 4</Text>
                             <Text style={Styles.secondhadding}>Warranty Details</Text>
                         </View>
+
                         <View style={Styles.dateandpurchasedouterview}>
+
                             <View style={Styles.dateandpurchasesdinnerview}>
-                                <View>
-                                    <Text style={[Styles.headingtext,]}>Date of Purchase</Text>
-                                </View>
+                                <Text style={[Styles.headingtext,]}>Date of Purchase</Text>
+                                <Text style={Styles.headingtext}>Date of Expiry</Text>
+                            </View>
+
+                            <View style={[Styles.dateandpurchasesdinnerview, { marginTop: rh(2) }]}>
                                 <TouchableOpacity>
                                     <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>05-04-1999</Text>
                                 </TouchableOpacity>
-                            </View>
-                            <View style={Styles.dateandpurchasesdinnerview}>
-                                <Text style={Styles.headingtext}>Date of Expiry</Text>
                                 <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>05-04-1999</Text>
                             </View>
                         </View>
 
-                        <View style={{ marginTop: rh(1.5), height: rh(4) }}>
+
+
+
+                        <View style={{ marginTop: rh(2.5) }}>
                             <Text style={Styles.headingtext}>Warranty Period</Text>
                         </View>
 
@@ -94,7 +98,7 @@ const AddProductStepthree = ({ navigation }) => {
                                         <TouchableOpacity onPress={() => setdurationenabled(true)}>
                                             <FontAwesome name='circle' size={25} color={Colors.yellow} />
                                         </TouchableOpacity>
-                                        <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
+                                        <Text style={[Styles.innersecondhadding, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
                                     </View>
 
                                     <View style={Styles.monthandyearbuttonouterview}>
@@ -143,7 +147,7 @@ const AddProductStepthree = ({ navigation }) => {
                                     <View style={{ flex: 1, }}>
                                         <View style={Styles.warrantymultipartexpiryview}>
                                             <View>
-                                                <Text style={Styles.secondhadding}>Extended Warranty</Text>
+                                                <Text style={Styles.innersecondhadding}>Extended Warranty</Text>
                                             </View>
                                             {extendwarrantyenabled ?
                                                 <View style={Styles.toggleouterviewmain}>
@@ -168,8 +172,8 @@ const AddProductStepthree = ({ navigation }) => {
                                         <View style={{ flex: 1 }}>
                                             {enabledextendwarranty ?
                                                 <View style={{ flex: 1 }}>
+                                                    <Text style={Styles.addproductparttext}>Provider name</Text>
                                                     <View style={Styles.addproductpartview}>
-                                                        <Text style={Styles.addproductparttext}>Product Name</Text>
                                                         <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprductname(e)} />
                                                     </View>
 
@@ -231,7 +235,7 @@ const AddProductStepthree = ({ navigation }) => {
                                             <View style={{ flex: 1 }}>
                                                 <View style={Styles.warrantymultipartexpiryview}>
                                                     <View style={{ top: 5 }}>
-                                                        <Text style={[Styles.secondhadding]}>Multipart Warranty</Text>
+                                                        <Text style={[Styles.innersecondhadding]}>Multipart Warranty</Text>
                                                     </View>
 
 
@@ -276,7 +280,7 @@ const AddProductStepthree = ({ navigation }) => {
 
 
                                             <View style={{ height: rh(5), width: rw(89), marginTop: rh(2), justifyContent: 'space-between', flexDirection: "row", alignContent: 'center', alignItems: 'center' }}>
-                                                <Text style={[Styles.secondhadding]}>Allow Expiry Notifications</Text>
+                                                <Text style={[Styles.innersecondhadding]}>Allow Expiry Notifications</Text>
 
                                                 {allowexpirynotificationstoggled ?
 
@@ -359,14 +363,14 @@ const AddProductStepthree = ({ navigation }) => {
                                         <TouchableOpacity>
                                             <FontAwesome name='circle' size={22} color={Colors.yellow} />
                                         </TouchableOpacity>
-                                        <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Life Time Warranty</Text>
+                                        <Text style={[Styles.innersecondhadding, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Life Time Warranty</Text>
                                     </View>
                                     <View style={Styles.bottomlineview}>
                                     </View>
 
                                     <View style={Styles.warrantymultipartexpiryview}>
                                         <View >
-                                            <Text style={[Styles.secondhadding]}>Multipart Warranty</Text>
+                                            <Text style={[Styles.innersecondhadding]}>Multipart Warranty</Text>
                                         </View>
 
 
@@ -407,7 +411,7 @@ const AddProductStepthree = ({ navigation }) => {
                                     }
                                     <View style={{ height: rh(5), width: rw(89), marginTop: rh(2), justifyContent: 'space-between', flexDirection: "row", alignContent: 'center', alignItems: 'center' }}>
 
-                                        <Text style={[Styles.secondhadding]}>Allow Expiry Notifications</Text>
+                                        <Text style={[Styles.innersecondhadding]}>Allow Expiry Notifications</Text>
 
 
                                         {allowexpirynotificationstoggled ?

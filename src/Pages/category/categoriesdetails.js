@@ -16,6 +16,9 @@ const Categoriesdetails = ({ navigation, route }) => {
     console.log('====================================');
 
 
+
+    const imageheight = Dimensions.get('window').height
+    const imagwidth = Dimensions.get('window').width
     const receipts = [
         {
             receiptid: 0,
@@ -38,13 +41,13 @@ const Categoriesdetails = ({ navigation, route }) => {
     const receiptsfunction = ({ item }) => {
         return (
             <View>
-                <TouchableOpacity onPress={()=>navigation.navigate('Reseiptsdetails')}>
-                    <View style={{ height: rh(20), marginHorizontal: rw(1.5), borderRadius: 10, flexDirection: "row", backgroundColor: '#EEEBEB', marginTop: rh(2), justifyContent: "flex-start", alignContent: "center", alignItems: 'center' }}>
-                        <Image source={require('../../Assets/photos/PhonePhoto.jpeg')} resizeMethod={'auto'} style={{ height: rh(20), width: rw(20), borderLeftWidth: 1, borderRadius: 10 }} />
-                        <View style={{ marginLeft: rw(5), height: rh(15) }}>
-                            <Text style={{ fontSize: FontSize.font21, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium', top: rh(1) }}>{item.receipttitle}</Text>
-                            <View style={{ marginTop: rh(3) }}>
-                                <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>{item.recipedexpirydate}</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetails')}>
+                    <View style={{ height: rh(17), marginHorizontal: rw(2), borderRadius: 10, flexDirection: "row", backgroundColor: '#EEEBEB', marginTop: rh(2), justifyContent: "flex-start", }}>
+                        <Image source={require('../../Assets/photos/PhonePhoto.jpeg')} resizeMode={'contain'} resizeMethod={'resize'} style={{ height: imageheight / 5.9, width: imagwidth / 5, borderLeftWidth: 1, borderRadius: 10 }} />
+                        <View style={{ marginLeft: rw(4) }}>
+                            <Text style={{ fontSize: FontSize.font21, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium', marginTop: rh(3) }}>{item.receipttitle}</Text>
+                            <View style={{ marginTop: rh(1) }}>
+                                <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light', }}>{item.recipedexpirydate}</Text>
                                 <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>{item.receiptsdatecompleted}</Text>
                             </View>
                         </View>
@@ -60,7 +63,7 @@ const Categoriesdetails = ({ navigation, route }) => {
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <YellowBackSvg width={'20.67px'} height={'20.67px'} />
                     </TouchableOpacity>
-                    <Text style={{ fontSize: FontSize.font25, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Regular', left: rw(8) }}>{route?.params}</Text>
+                    <Text style={{ fontSize: FontSize.font25, color: Colors.yellow, fontWeight: '500', fontFamily: 'Inter-Regular', left: rw(8), }}>{route?.params}</Text>
                 </View>
             </View>
 

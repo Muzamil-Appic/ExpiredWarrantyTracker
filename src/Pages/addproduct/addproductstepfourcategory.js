@@ -58,8 +58,11 @@ const Addproductstepfourcategory = ({ navigation }) => {
           </View>
 
 
-        
 
+          <FlatList data={useraddedcategories}
+            renderItem={categoriesrenderfunction}
+            keyExtractor={item => item.id}
+            contentContainerStyle={{ alignSelf: "center" }} />
 
 
         </ScrollView>

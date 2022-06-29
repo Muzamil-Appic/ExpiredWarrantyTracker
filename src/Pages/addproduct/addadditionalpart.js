@@ -59,9 +59,9 @@ const Addadditionalpart = ({ navigation }) => {
                         <Text style={[Styles.secondhadding]}>Add Multipart</Text>
                     </View>
                 </View>
-                <View style={[Styles.addproductpartview, { top: rh(3) }]}>
-                    <Text style={Styles.addproductparttext}>Part Name</Text>
-                    <TextInput placeholder='Part Name' style={Styles.addproductparttextinput} onChangeText={e => setaddpart(e)} />
+                <Text style={Styles.addproductparttext}>Product Name</Text>
+                <View style={Styles.addproductpartview}>
+                    <TextInput style={Styles.addproductparttextinput} onChangeText={e => setaddpart(e)} />
                 </View>
 
                 <View style={{ width: rw(100), flex: 1, marginTop: rh(5) }}>
@@ -73,7 +73,7 @@ const Addadditionalpart = ({ navigation }) => {
                                 <TouchableOpacity onPress={() => setdurationenabled(true)}>
                                     <FontAwesome name='circle' size={20} color={Colors.yellow} />
                                 </TouchableOpacity>
-                                <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
+                                <Text style={[Styles.innersecondhadding, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Duration</Text>
                             </View>
 
                             <View style={Styles.monthandyearbuttonouterview}>
@@ -114,7 +114,7 @@ const Addadditionalpart = ({ navigation }) => {
                                 <TouchableOpacity onPress={() => setdurationenabled(false)}>
                                     <Entypo name='circle' size={25} color={Colors.black} />
                                 </TouchableOpacity>
-                                <Text style={[Styles.txtdate, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Lifetime Warranty</Text>
+                                <Text style={[Styles.innersecondhadding, { paddingTop: rh(0), paddingLeft: rw(2) }]}>Lifetime Warranty</Text>
                             </View>
 
 
