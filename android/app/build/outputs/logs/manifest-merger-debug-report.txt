@@ -1,26 +1,27 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:1:1-19:12
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:1:1-19:12
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:1:1-19:12
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:1:1-19:12
-MERGED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:1:1-19:12
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:1:1-19:12
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:1:1-19:12
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:1:1-19:12
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:1:1-19:12
+MERGED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:1:1-19:12
 MERGED from [com.facebook.flipper:flipper:0.125.0] /Users/macbook/.gradle/caches/transforms-3/b24649aa5fbdef18d352a14cc6c09833/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:8:1-18:12
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.125.0] /Users/macbook/.gradle/caches/transforms-3/cb0f8ee3d831365a007596b52af2d38c/transformed/jetified-flipper-network-plugin-0.125.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] /Users/macbook/.gradle/caches/transforms-3/487c13a009eb3a56c85c6dec904c7ac2/transformed/jetified-flipper-fresco-plugin-0.125.0/AndroidManifest.xml:8:1-15:12
-MERGED from [:react-native-svg] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
-MERGED from [:react-native-vector-icons] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
-MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-13:12
-MERGED from [:react-native-firebase_firestore] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/firestore/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
-MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-27:12
-MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-33:12
-MERGED from [:react-native-image-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-21:12
-MERGED from [:react-native-safe-area-context] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
-MERGED from [:react-native-screens] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-svg] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-vector-icons] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-13:12
+MERGED from [:react-native-firebase_firestore] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/firestore/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-27:12
+MERGED from [:react-native-google-signin_google-signin] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-33:12
+MERGED from [:react-native-image-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-21:12
+MERGED from [:react-native-safe-area-context] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-screens] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:react-native:0.68.2] /Users/macbook/.gradle/caches/transforms-3/cf60852597d4cdef34ece634adbf18bf/transformed/jetified-react-native-0.68.2/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /Users/macbook/.gradle/caches/transforms-3/d73e4b15a522df654dcebb0c53861eb4/transformed/swiperefreshlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [org.webkit:android-jsc:r250230] /Users/macbook/.gradle/caches/transforms-3/009aa4a3ba80415e89a17f0fe8117d5e/transformed/jetified-android-jsc-r250230/AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-linear-gradient] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-linear-gradient/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-linear-gradient] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-linear-gradient/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:flipper:2.6.0] /Users/macbook/.gradle/caches/transforms-3/3daffeb6adb8accbd7a74d9ad7c67f8c/transformed/jetified-flipper-2.6.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:stetho:2.6.0] /Users/macbook/.gradle/caches/transforms-3/ac007b21fed6e17c1f975a479972a2ea/transformed/jetified-stetho-2.6.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:fresco:2.6.0] /Users/macbook/.gradle/caches/transforms-3/6eb473a7a301872eacf68cdec1baf350/transformed/jetified-fresco-2.6.0/AndroidManifest.xml:2:1-9:12
@@ -92,62 +93,62 @@ MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/macbook/.gra
 MERGED from [com.facebook.fresco:fbcore:2.6.0] /Users/macbook/.gradle/caches/transforms-3/71e0ddd7fb065b17878e77cc277aa7a6/transformed/jetified-fbcore-2.6.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/macbook/.gradle/caches/transforms-3/2c85dfd11aba7625b3c4098da3ff589f/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/macbook/.gradle/caches/transforms-3/1d499b31179eefb53ab418e98e4b73a2/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:2:1-11:12
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:2:1-13:12
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:2:1-13:12
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:2:1-13:12
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:2:1-13:12
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:2:1-13:12
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:2:1-13:12
 	package
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:1:70-91
-		INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:1:70-91
-		INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:1:70-91
+		INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:1:70-91
+		INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:1:1-19:12
-		INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:1:1-19:12
+		INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml
 	xmlns:tools
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:3:5-51
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:1:1-19:12
-		INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:1:1-19:12
+		INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:1:11-69
 uses-permission#android.permission.INTERNET
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:3:3-65
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:3:3-65
 MERGED from [com.facebook.flipper:flipper:0.125.0] /Users/macbook/.gradle/caches/transforms-3/b24649aa5fbdef18d352a14cc6c09833/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:15:5-67
 MERGED from [com.facebook.flipper:flipper:0.125.0] /Users/macbook/.gradle/caches/transforms-3/b24649aa5fbdef18d352a14cc6c09833/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:15:5-67
-MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
-MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
+MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
+MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.1.2] /Users/macbook/.gradle/caches/transforms-3/77193be723fe9231394208ef424cc1b4/transformed/jetified-firebase-firestore-24.1.2/AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.1.2] /Users/macbook/.gradle/caches/transforms-3/77193be723fe9231394208ef424cc1b4/transformed/jetified-firebase-firestore-24.1.2/AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.5] /Users/macbook/.gradle/caches/transforms-3/a09075b6c6c7e3cde0b6586b99041b0c/transformed/jetified-firebase-auth-21.0.5/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.5] /Users/macbook/.gradle/caches/transforms-3/a09075b6c6c7e3cde0b6586b99041b0c/transformed/jetified-firebase-auth-21.0.5/AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:3:20-62
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:3:20-62
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:4:3-78
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:4:3-78
 	android:name
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:4:20-75
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:4:20-75
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:5:3-79
-MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:5-81
-MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:5-81
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:5:3-79
+MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:5-81
+MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:5-81
 	android:name
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:5:20-76
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:5:20-76
 uses-permission#android.permission.CAMERA
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:6:3-63
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:6:3-63
 	android:name
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:6:20-60
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:6:20-60
 application
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:3-18:17
-MERGED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:3-18:17
-MERGED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:3-18:17
-MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-25:19
-MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-25:19
-MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:5-31:19
-MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:5-31:19
-MERGED from [:react-native-image-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-19:19
-MERGED from [:react-native-image-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-19:19
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:3-18:17
+MERGED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:3-18:17
+MERGED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:3-18:17
+MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-25:19
+MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-25:19
+MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:5-31:19
+MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:5-31:19
+MERGED from [:react-native-image-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-19:19
+MERGED from [:react-native-image-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-19:19
 MERGED from [com.facebook.react:react-native:0.68.2] /Users/macbook/.gradle/caches/transforms-3/cf60852597d4cdef34ece634adbf18bf/transformed/jetified-react-native-0.68.2/AndroidManifest.xml:9:5-20
 MERGED from [com.facebook.react:react-native:0.68.2] /Users/macbook/.gradle/caches/transforms-3/cf60852597d4cdef34ece634adbf18bf/transformed/jetified-react-native-0.68.2/AndroidManifest.xml:9:5-20
 MERGED from [com.facebook.soloader:soloader:0.10.3] /Users/macbook/.gradle/caches/transforms-3/4a6a3be9ffe07d37b8325f18fa5ff1b8/transformed/jetified-soloader-0.10.3/AndroidManifest.xml:11:5-20
@@ -181,91 +182,93 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/macb
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.5.0] /Users/macbook/.gradle/caches/transforms-3/c7a27c777039b4c0b459e61365c89d71/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:48-80
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:48-80
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:48-80
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:48-80
 	tools:ignore
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:10:9-48
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:10:9-48
 	android:roundIcon
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:116-161
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:116-161
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:116-161
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:116-161
 	tools:targetApi
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:9:9-29
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:9:9-29
 	android:icon
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:81-115
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:81-115
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:81-115
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:81-115
 	android:allowBackup
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:162-189
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:162-189
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:162-189
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:162-189
 	android:theme
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:190-221
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:190-221
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:190-221
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:190-221
 	android:usesCleartextTraffic
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:8:9-44
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:8:9-44
 	android:name
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:16-47
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:9:16-47
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:16-47
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:9:16-47
 activity#com.expired.MainActivity
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:10:5-17:16
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:10:5-17:16
 	android:screenOrientation
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:10:77-113
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:10:77-113
 	android:label
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:10:44-76
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:10:44-76
 	android:launchMode
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:10:192-223
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:10:192-223
 	android:windowSoftInputMode
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:10:224-263
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:10:224-263
 	android:exported
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:10:264-287
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:10:264-287
 	android:configChanges
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:10:114-191
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:10:114-191
 	android:name
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:10:15-43
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:10:15-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:13:7-16:23
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:13:7-16:23
 action#android.intent.action.MAIN
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:14:9-61
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:14:9-61
 	android:name
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:14:17-58
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:14:17-58
 category#android.intent.category.LAUNCHER
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:15:9-69
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:15:9-69
 	android:name
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml:15:19-66
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml:15:19-66
 uses-sdk
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml
 MERGED from [com.facebook.flipper:flipper:0.125.0] /Users/macbook/.gradle/caches/transforms-3/b24649aa5fbdef18d352a14cc6c09833/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper:0.125.0] /Users/macbook/.gradle/caches/transforms-3/b24649aa5fbdef18d352a14cc6c09833/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.125.0] /Users/macbook/.gradle/caches/transforms-3/cb0f8ee3d831365a007596b52af2d38c/transformed/jetified-flipper-network-plugin-0.125.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.125.0] /Users/macbook/.gradle/caches/transforms-3/cb0f8ee3d831365a007596b52af2d38c/transformed/jetified-flipper-network-plugin-0.125.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] /Users/macbook/.gradle/caches/transforms-3/487c13a009eb3a56c85c6dec904c7ac2/transformed/jetified-flipper-fresco-plugin-0.125.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] /Users/macbook/.gradle/caches/transforms-3/487c13a009eb3a56c85c6dec904c7ac2/transformed/jetified-flipper-fresco-plugin-0.125.0/AndroidManifest.xml:11:5-13:41
-MERGED from [:react-native-svg] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-svg] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-vector-icons] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-vector-icons] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-firebase_firestore] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/firestore/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-firebase_firestore] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/firestore/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-image-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-image-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-safe-area-context] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-safe-area-context] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-screens] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-screens] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-svg] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-svg] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-vector-icons] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-vector-icons] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-firebase_firestore] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/firestore/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-firebase_firestore] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/firestore/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-google-signin_google-signin] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-google-signin_google-signin] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-image-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-image-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-safe-area-context] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-safe-area-context] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-screens] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-screens] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.react:react-native:0.68.2] /Users/macbook/.gradle/caches/transforms-3/cf60852597d4cdef34ece634adbf18bf/transformed/jetified-react-native-0.68.2/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.react:react-native:0.68.2] /Users/macbook/.gradle/caches/transforms-3/cf60852597d4cdef34ece634adbf18bf/transformed/jetified-react-native-0.68.2/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /Users/macbook/.gradle/caches/transforms-3/d73e4b15a522df654dcebb0c53861eb4/transformed/swiperefreshlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /Users/macbook/.gradle/caches/transforms-3/d73e4b15a522df654dcebb0c53861eb4/transformed/swiperefreshlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [org.webkit:android-jsc:r250230] /Users/macbook/.gradle/caches/transforms-3/009aa4a3ba80415e89a17f0fe8117d5e/transformed/jetified-android-jsc-r250230/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r250230] /Users/macbook/.gradle/caches/transforms-3/009aa4a3ba80415e89a17f0fe8117d5e/transformed/jetified-android-jsc-r250230/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-linear-gradient] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-linear-gradient/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-linear-gradient] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-linear-gradient/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-linear-gradient] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-linear-gradient/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-linear-gradient] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-linear-gradient/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:flipper:2.6.0] /Users/macbook/.gradle/caches/transforms-3/3daffeb6adb8accbd7a74d9ad7c67f8c/transformed/jetified-flipper-2.6.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:flipper:2.6.0] /Users/macbook/.gradle/caches/transforms-3/3daffeb6adb8accbd7a74d9ad7c67f8c/transformed/jetified-flipper-2.6.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:stetho:2.6.0] /Users/macbook/.gradle/caches/transforms-3/ac007b21fed6e17c1f975a479972a2ea/transformed/jetified-stetho-2.6.0/AndroidManifest.xml:5:5-7:41
@@ -408,34 +411,34 @@ MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/macbook/.
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/macbook/.gradle/caches/transforms-3/2c85dfd11aba7625b3c4098da3ff589f/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/macbook/.gradle/caches/transforms-3/1d499b31179eefb53ab418e98e4b73a2/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/macbook/.gradle/caches/transforms-3/1d499b31179eefb53ab418e98e4b73a2/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml
-INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml
+INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:5:5-77
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:5:5-77
 	android:name
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:5:22-75
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:5:22-75
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:11:9-111
+ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:11:9-111
 	android:exported
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:11:84-108
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:11:84-108
 	android:name
-		ADDED from /Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/src/debug/AndroidManifest.xml:11:19-83
+		ADDED from /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/src/debug/AndroidManifest.xml:11:19-83
 uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from [com.facebook.flipper:flipper:0.125.0] /Users/macbook/.gradle/caches/transforms-3/b24649aa5fbdef18d352a14cc6c09833/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:16:5-76
 	android:name
 		ADDED from [com.facebook.flipper:flipper:0.125.0] /Users/macbook/.gradle/caches/transforms-3/b24649aa5fbdef18d352a14cc6c09833/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:16:22-73
 uses-permission#android.permission.WAKE_LOCK
-ADDED from [:react-native-firebase_auth] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-68
+ADDED from [:react-native-firebase_auth] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-68
 	android:name
-		ADDED from [:react-native-firebase_auth] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:22-65
+		ADDED from [:react-native-firebase_auth] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:22-65
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [:react-native-firebase_auth] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-79
+ADDED from [:react-native-firebase_auth] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.1.2] /Users/macbook/.gradle/caches/transforms-3/77193be723fe9231394208ef424cc1b4/transformed/jetified-firebase-firestore-24.1.2/AndroidManifest.xml:13:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.1.2] /Users/macbook/.gradle/caches/transforms-3/77193be723fe9231394208ef424cc1b4/transformed/jetified-firebase-firestore-24.1.2/AndroidManifest.xml:13:5-79
 MERGED from [io.grpc:grpc-android:1.44.1] /Users/macbook/.gradle/caches/transforms-3/3e0227f84a794711e3380077c729409a/transformed/jetified-grpc-android-1.44.1/AndroidManifest.xml:9:5-79
@@ -443,15 +446,15 @@ MERGED from [io.grpc:grpc-android:1.44.1] /Users/macbook/.gradle/caches/transfor
 MERGED from [com.google.firebase:firebase-auth:21.0.5] /Users/macbook/.gradle/caches/transforms-3/a09075b6c6c7e3cde0b6586b99041b0c/transformed/jetified-firebase-auth-21.0.5/AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-auth:21.0.5] /Users/macbook/.gradle/caches/transforms-3/a09075b6c6c7e3cde0b6586b99041b0c/transformed/jetified-firebase-auth-21.0.5/AndroidManifest.xml:24:5-79
 	android:name
-		ADDED from [:react-native-firebase_auth] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:22-76
+		ADDED from [:react-native-firebase_auth] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:22-76
 meta-data#app_data_collection_default_enabled
-ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-12:36
+ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-12:36
 	android:value
-		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-33
+		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-33
 	android:name
-		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-63
+		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-63
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:9-18:19
+ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:9-18:19
 MERGED from [com.google.firebase:firebase-firestore:24.1.2] /Users/macbook/.gradle/caches/transforms-3/77193be723fe9231394208ef424cc1b4/transformed/jetified-firebase-firestore-24.1.2/AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-firestore:24.1.2] /Users/macbook/.gradle/caches/transforms-3/77193be723fe9231394208ef424cc1b4/transformed/jetified-firebase-firestore-24.1.2/AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-auth:21.0.5] /Users/macbook/.gradle/caches/transforms-3/a09075b6c6c7e3cde0b6586b99041b0c/transformed/jetified-firebase-auth-21.0.5/AndroidManifest.xml:64:9-70:19
@@ -465,63 +468,63 @@ MERGED from [com.google.firebase:firebase-common:20.1.1] /Users/macbook/.gradle/
 	android:directBootAware
 		ADDED from [com.google.firebase:firebase-common:20.1.1] /Users/macbook/.gradle/caches/transforms-3/90b0264a270d302f6511f9161eff0e3e/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:35:13-43
 	android:name
-		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:18-89
+		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:18-89
 meta-data#com.google.firebase.components:io.invertase.firebase.app.ReactNativeFirebaseAppRegistrar
-ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:85
+ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:85
 	android:value
-		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-82
+		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-82
 	android:name
-		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-120
+		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-120
 provider#io.invertase.firebase.app.ReactNativeFirebaseAppInitProvider
-ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:9-24:38
+ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:9-24:38
 	android:authorities
-		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-86
+		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-86
 	android:exported
-		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-37
+		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-37
 	android:initOrder
-		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-35
+		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-35
 	android:name
-		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-88
+		ADDED from [:react-native-firebase_app] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-88
 queries
-ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-13:15
+ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-13:15
 intent#action:name:android.media.action.IMAGE_CAPTURE
-ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-12:18
+ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-12:18
 action#android.media.action.IMAGE_CAPTURE
-ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-73
+ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-73
 	android:name
-		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:21-70
+		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:21-70
 provider#androidx.core.content.FileProvider
-ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:9-26:20
+ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:9-26:20
 	android:grantUriPermissions
-		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-47
+		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-47
 	android:authorities
-		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-60
+		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-60
 	android:exported
-		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-37
+		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-37
 	android:name
-		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-62
+		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-62
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-25:58
+ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-25:58
 	android:resource
-		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:17-55
+		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:17-55
 	android:name
-		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-67
+		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-67
 activity#com.yalantis.ucrop.UCropActivity
-ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:9-30:72
+ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:9-30:72
 	android:theme
-		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:13-69
+		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:13-69
 	android:name
-		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-60
+		ADDED from [:react-native-image-crop-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-60
 provider#com.imagepicker.ImagePickerProvider
-ADDED from [:react-native-image-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-18:20
+ADDED from [:react-native-image-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-18:20
 	android:grantUriPermissions
-		ADDED from [:react-native-image-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-47
+		ADDED from [:react-native-image-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-47
 	android:authorities
-		ADDED from [:react-native-image-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-71
+		ADDED from [:react-native-image-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-71
 	android:exported
-		ADDED from [:react-native-image-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
+		ADDED from [:react-native-image-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
 	android:name
-		ADDED from [:react-native-image-picker] /Users/macbook/Desktop/EXPIRED/EXPIRED/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-63
+		ADDED from [:react-native-image-picker] /Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-63
 meta-data#com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar
 ADDED from [com.google.firebase:firebase-firestore:24.1.2] /Users/macbook/.gradle/caches/transforms-3/77193be723fe9231394208ef424cc1b4/transformed/jetified-firebase-firestore-24.1.2/AndroidManifest.xml:20:13-22:85
 	android:value

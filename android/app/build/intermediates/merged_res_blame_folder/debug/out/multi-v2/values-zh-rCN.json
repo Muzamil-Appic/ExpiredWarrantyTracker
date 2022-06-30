@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "/Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
                     "source": "/Users/macbook/.gradle/caches/transforms-3/a7da0ffaf9626d3a8436822864204695/transformed/jetified-play-services-base-18.0.1/res/values-zh-rCN/values.xml",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-iw/values-iw.xml",
+            "outputFile": "/Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "/Users/macbook/.gradle/caches/transforms-3/6dadbc8dcf8ca64485f05cdeae89eefb/transformed/jetified-play-services-basement-18.0.0/res/values-iw/values.xml",

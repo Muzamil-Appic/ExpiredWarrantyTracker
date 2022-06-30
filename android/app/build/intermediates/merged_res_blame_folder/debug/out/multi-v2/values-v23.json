@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "/Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "/Users/macbook/.gradle/caches/transforms-3/f0d432bfb1f738ed8a4d5951c666b5c5/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",

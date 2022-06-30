@@ -8,16 +8,33 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Signinsvg from '../../Assets/Svg/Signinsvg.svg'
 import Evyiconopensvg from '../../Assets/Svg/Evyiconopensvg.svg'
 import Loaders from '../../Components/Loaders'
+import auth from '@react-native-firebase/auth';
+import { firebase } from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 
-// import auth from '@react-native-firebase/auth';
-// import { firebase } from '@react-native-firebase/auth'
-// import firestore from '@react-native-firebase/firestore'
+
+
 
 
 const Signin = ({ navigation }) => {
 
 
-  // const firestorereference = firestore().collection('Users')
+
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '107511410686-rkub5qroeu5qv7hrpkegedurrccf5tci.apps.googleusercontent.com',
+
+    });
+  }, [])
+
+
+  const firestorereference = firestore().collection('Users')
 
   const [firstname, setfirstname] = useState('')
   const [signinenables, setsigninenables] = useState(true)
@@ -42,40 +59,55 @@ const Signin = ({ navigation }) => {
     }
     if (signinpasswprd === "") {
       alert("Please Enter Password First")
+      return;
     }
 
     setloginloader(true)
-    await firebase
-      .auth()
-      .signInWithEmailAndPassword(signemail.trim(), signinpasswprd)
-      .then((user) => {
-        console.log("user login information----->", user.user.email)
-        // AsyncStorage.setItem(
-        //   'userdetails',
-        //   JSON.stringify({
-        //     email: user.user.email,
-        //     id: user.user.email,
-        //   })
-        // )
+
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify()
+    };
+    fetch(`http://waqarulhaq.com/expired-warranty-tracker/login.php?email=${signemail}&password=${signinpasswprd}`, requestOptions)
+      .then(response => response.json())
+      .then(data => console.log(data))
+
+
+
+
+    signinempty()
+    setloginloader(false)
+    navigation.replace('BottomTabNavigations')
+    console.log("DONE dona DOne")
+      // await firebase
+      //   .auth()
+      //   .signInWithEmailAndPassword(signemail.trim(), signinpasswprd)
+      //   .then((user) => {
+      // console.log("user login information----->", user.user.email)
+      // AsyncStorage.setItem(
+      //   'userdetails',
+      //   JSON.stringify({
+      //     email: user.user.email,
+      //     id: user.user.email,
+      //   })
+      // )
+
+      // }
+      // ).
+      .then(() => {
+        signinempty()
+        setsigninenables(true)
+        setsignuploader(false)
+      })
+      .catch((error) => {
         signinempty()
         setloginloader(false)
-        navigation.replace('BottomTabNavigations')
-        console.log("DONE dona DOne");
-      }
-      )
-      .catch((error) => {
-        console.log('====================================');
+        alert(error.code)
         console.log(error);
-        console.log('====================================');
       })
-
-
-
-
   }
-
-
-
   const signupempty = () => {
     setsignupemail('')
     setfirstname('')
@@ -90,62 +122,171 @@ const Signin = ({ navigation }) => {
 
   }
 
-  // const SignupFunction = async () => {
-  //   if (firstname === '') {
-  //     alert("Please Enter First Name")
-  //     return;
-  //   }
-  //   if (surename === '') {
-  //     alert("Please Enter Sure Name")
-  //     return;
-  //   }
-  //   if (signupemail === '') {
-  //     alert("Please Enter Email")
-  //     return;
-  //   }
-  //   if (signuppassword === '') {
-  //     alert("Please Enter Password")
-  //     return;
-  //   }
-  //   if (signupconfirmpassword === '') {
-  //     alert("Please Enter Confirm Password")
-  //     return;
-  //   }
+  const SignupFunction = async () => {
+    if (firstname === '') {
+      alert("Please Enter First Name")
+      return;
+    }
+    if (surename === '') {
+      alert("Please Enter Sure Name")
+      return;
+    }
+    if (signupemail === '') {
+      alert("Please Enter Email")
+      return;
+    }
+    if (signuppassword === '') {
+      alert("Please Enter Password")
+      return;
+    }
+    if (signupconfirmpassword === '') {
+      alert("Please Enter Confirm Password")
+      return;
+    }
 
-  //   if (signupconfirmpassword !== signuppassword) {
-  //     alert("Passwords Are Not Same")
-  //     return;
-  //   }
+    if (signupconfirmpassword !== signuppassword) {
+      alert("Passwords Are Not Same")
+      return;
+    }
 
-  //   setsignuploader(true)
-  //   await firebase
-  //     .auth()
-  //     .createUserWithEmailAndPassword(signupemail.trim(), signuppassword)
-  //     .then((loggeduser) => {
-  //       const userdata = firestorereference.doc(signupemail)
-  //       userdata.set({
-  //         firstname: firstname,
-  //         surename: surename,
-  //         email: signupemail,
-  //         userid: signupemail
-
-  //       }).then(() => {
-  //         signupempty();
-  //         setsigninenables(true)
-  //         setsignuploader(false)
-
-  //       })
-  //     })
-  //     .catch((error) => {
-  //       setsignuploader(false)
-  //       alert(error)
-  //       console.log("Signup Error---->", error);
-  //     })
+    setsignuploader(true)
+    // var uniq = 'id-' + (new Date()).getTime();
+    //console.log(uniq);
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(signupemail.trim(), signuppassword)
+      .then((loggeduser) => {
+        const userdata = firestorereference.doc(signupemail)
+        console.log(loggeduser);
 
 
 
 
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify()
+        };
+        fetch(`http://waqarulhaq.com/expired-warranty-tracker/signup.php?email=${signupemail}&password=${signuppassword}&fname=${firstname}&lname=${surename}`, requestOptions)
+          .then(response => response.json())
+          .then(data => console.log(data))
+
+
+          // userdata.set({
+          //   firstname: firstname,
+          //   surename: surename,
+          //   email: signupemail,
+          //   userid: signupemail + uniq
+
+          // }).
+
+          .then(() => {
+            signupempty();
+            setsigninenables(true)
+            setsignuploader(false)
+
+          })
+      })
+      .catch((error) => {
+        setsignuploader(false)
+        alert(error)
+        console.log("Signup Error---->", error);
+      })
+
+
+
+
+  }
+
+
+
+
+
+  // async function onGoogleButtonPress() {
+  //   // Get the users ID token
+  //   const { idToken } = await GoogleSignin.signIn();
+  //   console.log("ok");
+  //   // Create a Google credential with the token
+  //   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+  //   // Sign-in the user with the credential
+  //   return auth().signInWithCredential(googleCredential);
   // }
+
+
+  async function onGoogleButtonPress() {
+    console.log("Step 1");
+    // setgoogleloader(true)
+    console.log("Step 2");
+    await GoogleSignin.hasPlayServices();
+    console.log("Step 3");
+    const userinfo = await GoogleSignin.signIn()
+    //   console.log("------->user infooooo909090", userinfo)
+
+    console.log("Step 4");
+    // console.log("------->user infooooo909090", userinfo)
+    const googleCredential = auth.GoogleAuthProvider.credential(userinfo.idToken);
+    //  console.log("googlecredential9090909", googleCredential)
+    const loggeduser = auth().signInWithCredential(googleCredential)
+      ///   console.log(userinfo)
+      // Sign-in the user with the credential
+      .then((loggeduser) => {
+        console.log(loggeduser);
+        if (loggeduser.additionalUserInfo.isNewUser === true) {
+          console.log("New User");
+          console.log(loggeduser.user.email)
+          console.log(loggeduser?.additionalUserInfo?.profile?.family_name)
+          console.log(loggeduser?.additionalUserInfo?.profile?.given_name)
+
+          const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify()
+          };
+          fetch(`http://waqarulhaq.com/expired-warranty-tracker/save-user-info.php?email=${loggeduser.user.email}&fname=${loggeduser?.additionalUserInfo?.profile?.given_name}&lname=${loggeduser?.additionalUserInfo?.profile?.family_name}&joinType=google`, requestOptions)
+            .then(response => response.json())
+            .then(data => console.log(data))
+          navigation.replace('BottomTabNavigations')
+        }
+
+        else {
+          navigation.replace('BottomTabNavigations')
+        }
+
+
+
+      })
+      .catch((error) => {
+        //  setgoogleloader(false)
+        alert(error)
+        console.log("Error---->", error);
+      })
+  }
+
+
+
+
+  // async function onGoogleButtonPress() {
+  //   try {
+  //     await GoogleSignin.hasPlayServices();
+  //     const userInfo = await GoogleSignin.signIn();
+  //     console.log('====================================');
+  //     console.log(userInfo);
+  //     console.log('====================================');
+  //   } catch (error) {
+  //     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+  //       // user cancelled the login flow
+  //     } else if (error.code === statusCodes.IN_PROGRESS) {
+  //       // operation (e.g. sign in) is in progress already
+  //     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+  //       // play services not available or outdated
+  //     } else {
+  //       // some other error happened
+  //     }
+  //   }
+  // };
+
+
 
 
 
@@ -190,18 +331,18 @@ const Signin = ({ navigation }) => {
 
             <View style={{ height: rh(14), marginTop: rh(8), marginHorizontal: rw(5), justifyContent: 'space-around', }}>
               <View style={Styles.txtinptouterview}>
-                <TextInput onChangeText={e => setsignupemail(e)} keyboardType='email-address' placeholder='Email' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
+                <TextInput onChangeText={e => setsignemail(e)} keyboardType='email-address' placeholder='Email' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
               </View>
               <View style={[Styles.txtinptouterview, { flexDirection: 'row', }]}>
-                <TextInput onChangeText={e => setsignuppassword(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
-                {signupeye ?
+                <TextInput onChangeText={e => setsigninpasswprd(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
+                {signineye ?
 
 
-                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(true)}>
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignineye(true)}>
                     < Evyiconopensvg width={'22px'} height={'15px'} />
                   </TouchableOpacity>
                   :
-                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(false)}>
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignineye(false)}>
                     < Evyiconopensvg width={'22px'} height={'15px'} />
                   </TouchableOpacity>
                 }
@@ -212,12 +353,19 @@ const Signin = ({ navigation }) => {
               {loginloader ?
                 <Loaders />
                 :
-                <TouchableOpacity style={Styles.loginsignupbtn} onPress={() => navigation.navigate('BottomTabNavigations')}>
+                <TouchableOpacity style={Styles.loginsignupbtn} onPress={() => LoginFunction()}>
                   <Text style={Styles.loginsignuptext}>
                     Sign In
                   </Text>
                 </TouchableOpacity>
               }
+            </View>
+
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: "center" }}>
+              <Text style={{ color: Colors.black, fontSize: FontSize.font14 }}>or continue with</Text>
+              <TouchableOpacity style={{ marginTop: rh(2), backgroundColor: Colors.green }} onPress={() => onGoogleButtonPress()}>
+                <Text>Google</Text>
+              </TouchableOpacity>
             </View>
           </View>
           :
@@ -238,7 +386,7 @@ const Signin = ({ navigation }) => {
               </View>
 
               <View style={[Styles.txtinptouterview, { flexDirection: 'row', }]}>
-                <TextInput onChangeText={e => setsigninpasswprd(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
+                <TextInput onChangeText={e => setsignuppassword(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
                 {signupeye ?
 
                   <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(true)}>
@@ -253,7 +401,7 @@ const Signin = ({ navigation }) => {
               </View>
 
               <View style={[Styles.txtinptouterview, { flexDirection: 'row', }]}>
-                <TextInput onChangeText={e => setsignuppassword(e)} placeholder='Confirm Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
+                <TextInput onChangeText={e => setsignupconfirmpassword(e)} placeholder='Confirm Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
                 {signupeye ?
 
 

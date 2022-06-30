@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macbook/Desktop/EXPIRED/EXPIRED/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pa/values-pa.xml",
+            "outputFile": "/Users/macbook/Desktop/Expirednewproject/ExpiredWarrantyTracker-main/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pa/values-pa.xml",
             "map": [
                 {
                     "source": "/Users/macbook/.gradle/caches/transforms-3/f4ba5a3ff76900f9d093d35a7e39019f/transformed/appcompat-1.3.0/res/values-pa/values-pa.xml",
