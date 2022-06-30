@@ -28,6 +28,9 @@ import EditproductName from '../Pages/editproduct/editproduct';
 import Editproductwarrantydetailsandnotifications from '../Pages/editproduct/editproductwarrantydetailsandnotifications';
 import Editadditionalpart from '../Pages/editproduct/editadditionalpart';
 import Editproductadditionalstep from '../Pages/editproduct/editproductadditionalstep';
+import Forgotpasswordemailscreen from '../Pages/forgotpassword/forgotpasswordemailscreen';
+import Forgotpasswordotpscreen from '../Pages/forgotpassword/forgotpasswordotpscreen';
+import Forgotpasswordchangepasswordscreen from '../Pages/forgotpassword/forgotpasswordchangepasswordxcreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -61,6 +64,10 @@ const StackNavigations = () => {
         <Stack.Screen name='Editproductwarrantydetailsandnotifications' component={Editproductwarrantydetailsandnotifications} />
         <Stack.Screen name='Editadditionalpart' component={Editadditionalpart} />
         <Stack.Screen name='Editproductadditionalstep' component={Editproductadditionalstep} />
+        <Stack.Screen name='Forgotpasswordemailscreen' component={Forgotpasswordemailscreen} />
+        <Stack.Screen name='Forgotpasswordotpscreen' component={Forgotpasswordotpscreen} />
+        <Stack.Screen name='Forgotpasswordchangepasswordscreen' component={Forgotpasswordchangepasswordscreen} />
+
 
 
       </Stack.Navigator>

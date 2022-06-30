@@ -20,7 +20,12 @@ const Styles = StyleSheet.create({
     txtinptinner: { padding: 0, fontSize: FontSize.font02, paddingLeft: rw(1), marginTop: rh(2), height: rh(6), },
     txtinptouterview: { borderColor: Colors.borderbottomcolor, height: rh(7), alignContent: "center", borderBottomWidth: 2, },
     loginsignupbtn: { backgroundColor: Colors.yellow, justifyContent: "center", alignItems: 'center', height: rh(7), borderRadius: 8, marginHorizontal: rw(5) },
-    loginsignupbtntext: { color: Colors.white, fontSize: FontSize.font16, fontWeight: '500', fontFamily: 'Inter-Regular' }
-
+    loginsignupbtntext: { color: Colors.white, fontSize: FontSize.font16, fontWeight: '500', fontFamily: 'Inter-Regular' },
+    fbgoogletext: {
+        fontSize: FontSize.font14,
+        color: Colors.black,
+        fontWeight: '600',
+        textAlign: 'center'
+    }
 })
 export default Styles;

@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Alert, Dimensions } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Alert, Dimensions, Platform } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Styles from './signin.styles'
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
@@ -16,7 +16,7 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-
+import GOogleGSvg from '../../Assets/Svg/GOogleGSvg.svg'
 
 
 
@@ -49,6 +49,7 @@ const Signin = ({ navigation }) => {
   const [signineye, setsignineye] = useState(true)
   const [signuploader, setsignuploader] = useState(false)
   const [loginloader, setloginloader] = useState(false)
+  const [googleloader, setfirst] = useState(false)
 
 
 
@@ -349,7 +350,7 @@ const Signin = ({ navigation }) => {
 
               </View>
             </View>
-            <View style={{ height: rh(9), marginTop: rh(5) }}>
+            <View style={{ height: rh(9), marginTop: rh(4), }}>
               {loginloader ?
                 <Loaders />
                 :
@@ -359,13 +360,99 @@ const Signin = ({ navigation }) => {
                   </Text>
                 </TouchableOpacity>
               }
+              <TouchableOpacity style={{ marginHorizontal: rw(5), marginTop: rh(1), }} onPress={() => navigation.navigate('Forgotpasswordemailscreen')}>
+                <Text style={{ textAlign: 'right', fontSize: FontSize.font14, color: Colors.yellow, fontWeight: '400', fontFamily: 'Inter-Regular' }}>Forgot Password</Text>
+              </TouchableOpacity>
+
             </View>
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: "center" }}>
-              <Text style={{ color: Colors.black, fontSize: FontSize.font14 }}>or continue with</Text>
-              <TouchableOpacity style={{ marginTop: rh(2), backgroundColor: Colors.green }} onPress={() => onGoogleButtonPress()}>
-                <Text>Google</Text>
-              </TouchableOpacity>
+
+
+
+
+
+
+
+
+
+              {Platform.OS === 'ios' && Platform.Version >= 13 ?
+                <View style={{ height: rh(16), width: rw(100), justifyContent: 'space-between', alignContent: "center", bottom: rh(10), alignItems: 'center' }}>
+
+                  <Text style={{ color: Colors.black, fontSize: FontSize.font14 }}>or continue with</Text>
+                  <AppleButton
+                    buttonStyle={AppleButton.Style.WHITE}
+                    buttonType={AppleButton.Type.SIGN_IN}
+                    style={{
+                      width: 160,
+                      height: 45,
+                    }}
+                    onPress={() => onAppleButtonPress()}
+                  />
+                  {googleloader ?
+                    <Loaders />
+                    :
+
+                    <TouchableOpacity style={{
+                      width: 160,
+                      height: 45,
+                      flexDirection: 'row',
+                      backgroundColor: Colors.white,
+                      justifyContent: "center",
+                      alignContent: 'center',
+                      alignItems: 'center',
+                      borderRadius: 6,
+                      borderWidth: 1
+
+
+                    }}
+                      onPress={() => onGoogleButtonPress()}
+                    >
+                      <View >
+                        <GOogleGSvg height={'15px'} width={'15px'} />
+                      </View>
+                      <Text style={Styles.fbgoogletext}>Continue with Google</Text>
+                    </TouchableOpacity>
+                  }
+
+                </View>
+                :
+                <View style={{ justifyContent: "center", alignItems: "center", }} >
+                  <View style={{ bottom: rh(5) }}>
+                    <Text style={{ color: Colors.black, fontSize: FontSize.font14 }}>or continue with</Text>
+                  </View>
+                  {googleloader ?
+                    <Loaders />
+                    :
+                    <TouchableOpacity style={{
+                      width: 160,
+                      height: 45,
+                      flexDirection: 'row',
+                      backgroundColor: Colors.white,
+                      justifyContent: "center",
+                      alignContent: 'center',
+                      alignItems: 'center',
+                      borderRadius: 6,
+                      borderWidth: 1,
+                    }}
+                      onPress={() => onGoogleButtonPress()}
+                    >
+                      <View style={{ right: rw(0.6), top: rh(0.1) }}>
+                        <GOogleGSvg height={'15px'} width={'15px'} />
+                      </View>
+                      <Text style={Styles.fbgoogletext}>Continue with Google</Text>
+                    </TouchableOpacity>
+                  }
+
+                </View>
+              }
+
+
+
+
+
+
+
             </View>
           </View>
           :
