@@ -9,39 +9,89 @@ import Styles from './category.Styles'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Entypo from 'react-native-vector-icons/Entypo'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useIsFocused } from '@react-navigation/native';
 const Category = ({ navigation }) => {
 
+  const [categorydata, setcategorydata] = useState([])
+  const [userkaemail, setuserkaemail] = useState('')
+  const isfocudes = useIsFocused()
+  useEffect(() => {
+    asyncvalues()
+    getcategories()
+  }, [isfocudes])
 
 
 
-  const useraddedcategories = [
-    { id: 1, categoryname: 'All', categorycolor: 'black', noofitems: "2 items" },
-    { id: 2, categoryname: 'Home', categorycolor: 'green', noofitems: "5 items" },
-    { id: 3, categoryname: 'Expired', categorycolor: 'yellow', noofitems: "9 items" },
-    { id: 4, categoryname: 'All', categorycolor: 'black', noofitems: "2 items" },
-    { id: 5, categoryname: 'Home', categorycolor: 'green', noofitems: "5 items" },
-    { id: 6, categoryname: 'Expired', categorycolor: 'yellow', noofitems: "9 items" },
-    { id: 7, categoryname: 'All', categorycolor: 'black', noofitems: "2 items" },
-    { id: 8, categoryname: 'Home', categorycolor: 'green', noofitems: "5 items" },
-    { id: 0, categoryname: 'Expired', categorycolor: 'yellow', noofitems: "9 items" },
-    { id: 11, categoryname: 'All', categorycolor: 'black', noofitems: "2 items" },
-    { id: 22, categoryname: 'Home', categorycolor: 'green', noofitems: "5 items" },
-    { id: 23, categoryname: 'Expired', categorycolor: 'pink', noofitems: "9 items" }
+
+  const asyncvalues = async () => {
+    await AsyncStorage.getItem('userdetails').then(async value => {
+      let data = JSON.parse(value);
+      console.log("------>", data);
+      setuserkaemail(data?.useremail)
+      console.log(data?.useremail);
+    })
+  }
 
 
 
-  ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const getcategories = async () => {
+
+
+
+
+
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify()
+    };
+    fetch(`http://waqarulhaq.com/expired-warranty-tracker/get-categories.php?email=${userkaemail}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log("--------------->", result);
+        setcategorydata(result.data)
+      })
+      .catch((error) => {
+
+        alert(error.code)
+        console.log(error);
+      })
+  }
+
+
+
   const categoriesrenderfunction = ({ item }) => {
+    console.log(item);
+    let muzamilkaconcate = '#' + item.color
+    console.log(muzamilkaconcate);
     return (
       <View style={{ height: rh(10), borderBottomColor: Colors.bk, borderBottomWidth: 1, justifyContent: 'center' }}>
-        <TouchableOpacity style={{ flexDirection: "row", alignItems: "center", width: rw(90) }} onPress={() => navigation.navigate('Categoriesdetails', item.categoryname)} >
+        <TouchableOpacity style={{ flexDirection: "row", alignItems: "center", width: rw(90), }} onPress={() => navigation.navigate('Categoriesdetails', item.name)} >
           <View>
-            <MaterialIcons name='folder' size={45} color={item.categorycolor} />
+            <MaterialIcons name='folder' size={45} color={muzamilkaconcate} />
           </View>
           <View style={{ left: rw(3) }}>
-            <Text numberOfLines={1} style={{ fontSize: FontSize.font19, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Medium', }}>{item.categoryname}</Text>
+            <Text numberOfLines={1} style={{ fontSize: FontSize.font19, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Medium', }}>{item.name}</Text>
             <Text style={{ color: Colors.gry, fontSize: FontSize.font12, fontWeight: '500', fontFamily: 'Inter-Medium', }}>
-              {item.noofitems}
+              5 Items
             </Text>
 
           </View>
@@ -62,7 +112,7 @@ const Category = ({ navigation }) => {
 
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <FlatList data={useraddedcategories}
+        <FlatList data={categorydata}
           renderItem={categoriesrenderfunction}
           keyExtractor={item => item.id}
           contentContainerStyle={{ alignSelf: "center" }} />

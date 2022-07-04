@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Alert, Dimensions, Platform } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, } from 'react'
 import Styles from './signin.styles'
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
 import Colors from '../../Global/Colors'
@@ -17,24 +17,21 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import GOogleGSvg from '../../Assets/Svg/GOogleGSvg.svg'
+import Toast from 'react-native-simple-toast';
 
-
-
-
+import ClosedEyeSvg from '../../Assets/Svg/ClosedEyeSvg.svg'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Signin = ({ navigation }) => {
-
-
 
 
   useEffect(() => {
     GoogleSignin.configure({
       webClientId: '107511410686-rkub5qroeu5qv7hrpkegedurrccf5tci.apps.googleusercontent.com',
-
     });
+
   }, [])
 
 
-  const firestorereference = firestore().collection('Users')
 
   const [firstname, setfirstname] = useState('')
   const [signinenables, setsigninenables] = useState(true)
@@ -53,19 +50,39 @@ const Signin = ({ navigation }) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const LoginFunction = async () => {
+    const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
+    const emailresult = (pattern.test(signemail))
+    if (emailresult === false) {
+      alert("Email Type must be Email")
+    }
     if (signemail === '') {
       alert("Please Enter Email First")
       return;
+
     }
+
+
     if (signinpasswprd === "") {
       alert("Please Enter Password First")
       return;
     }
 
     setloginloader(true)
-
-
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -73,34 +90,34 @@ const Signin = ({ navigation }) => {
     };
     fetch(`http://waqarulhaq.com/expired-warranty-tracker/login.php?email=${signemail}&password=${signinpasswprd}`, requestOptions)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(result => {
+        console.log(result?.data?.email);
+        if (result.msg === "User does not exist!") {
+          alert("User does not exist!")
+          signinempty()
+          setloginloader(false)
+        }
+        if (result.msg === "Wrong password!") {
+          alert("Wrong password!")
+          signinempty()
+          setloginloader(false)
+        }
+        if (result.msg === "Signed in successfully!") {
+          signinempty()
+          AsyncStorage.setItem(
+            'userdetails',
+            JSON.stringify({
+              useremail: result.data?.email,
+              userid: result.data?.ID,
+            })
+          )
 
+          navigation.navigate('BottomTabNavigations')
+          signinempty()
+          setloginloader(false)
+          Toast.show("Login Successfull")
+        }
 
-
-
-    signinempty()
-    setloginloader(false)
-    navigation.replace('BottomTabNavigations')
-    console.log("DONE dona DOne")
-      // await firebase
-      //   .auth()
-      //   .signInWithEmailAndPassword(signemail.trim(), signinpasswprd)
-      //   .then((user) => {
-      // console.log("user login information----->", user.user.email)
-      // AsyncStorage.setItem(
-      //   'userdetails',
-      //   JSON.stringify({
-      //     email: user.user.email,
-      //     id: user.user.email,
-      //   })
-      // )
-
-      // }
-      // ).
-      .then(() => {
-        signinempty()
-        setsigninenables(true)
-        setsignuploader(false)
       })
       .catch((error) => {
         signinempty()
@@ -109,6 +126,8 @@ const Signin = ({ navigation }) => {
         console.log(error);
       })
   }
+
+
   const signupempty = () => {
     setsignupemail('')
     setfirstname('')
@@ -118,12 +137,21 @@ const Signin = ({ navigation }) => {
   }
 
   const signinempty = () => {
-    setsigninpasswprd('')
-    setsignemail('')
+    setsigninpasswprd("")
+    setsignemail("")
 
   }
 
   const SignupFunction = async () => {
+
+
+    const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
+    const emailresult = (pattern.test(signupemail))
+    if (emailresult === false) {
+      alert("Email Type must be Email")
+    }
+
+
     if (firstname === '') {
       alert("Please Enter First Name")
       return;
@@ -145,74 +173,46 @@ const Signin = ({ navigation }) => {
       return;
     }
 
+    if (signuppassword.length < 4) {
+      alert("Password should be minimum 4 Numbers")
+      return;
+    }
     if (signupconfirmpassword !== signuppassword) {
       alert("Passwords Are Not Same")
       return;
     }
 
     setsignuploader(true)
-    // var uniq = 'id-' + (new Date()).getTime();
-    //console.log(uniq);
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(signupemail.trim(), signuppassword)
-      .then((loggeduser) => {
-        const userdata = firestorereference.doc(signupemail)
-        console.log(loggeduser);
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify()
+    };
+    fetch(`http://waqarulhaq.com/expired-warranty-tracker/signup.php?email=${signupemail}&password=${signuppassword}&fname=${firstname}&lname=${surename}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        if (result.msg === "Signed up successfully!") {
+          signupempty()
+          setsignuploader(false)
+          setsigninenables(true)
+          Toast.show("Signup Successfull")
+        }
+        if (result.msg === "User already exists!") {
+          signupempty()
+          setsignuploader(false)
+          alert("User already exists!")
 
+        }
 
-
-
-        const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify()
-        };
-        fetch(`http://waqarulhaq.com/expired-warranty-tracker/signup.php?email=${signupemail}&password=${signuppassword}&fname=${firstname}&lname=${surename}`, requestOptions)
-          .then(response => response.json())
-          .then(data => console.log(data))
-
-
-          // userdata.set({
-          //   firstname: firstname,
-          //   surename: surename,
-          //   email: signupemail,
-          //   userid: signupemail + uniq
-
-          // }).
-
-          .then(() => {
-            signupempty();
-            setsigninenables(true)
-            setsignuploader(false)
-
-          })
       })
       .catch((error) => {
+        signupempty()
         setsignuploader(false)
-        alert(error)
-        console.log("Signup Error---->", error);
+        alert(error.code)
+        console.log(error);
       })
-
-
-
-
   }
 
-
-
-
-
-  // async function onGoogleButtonPress() {
-  //   // Get the users ID token
-  //   const { idToken } = await GoogleSignin.signIn();
-  //   console.log("ok");
-  //   // Create a Google credential with the token
-  //   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-  //   // Sign-in the user with the credential
-  //   return auth().signInWithCredential(googleCredential);
-  // }
 
 
   async function onGoogleButtonPress() {
@@ -266,31 +266,6 @@ const Signin = ({ navigation }) => {
 
 
 
-
-  // async function onGoogleButtonPress() {
-  //   try {
-  //     await GoogleSignin.hasPlayServices();
-  //     const userInfo = await GoogleSignin.signIn();
-  //     console.log('====================================');
-  //     console.log(userInfo);
-  //     console.log('====================================');
-  //   } catch (error) {
-  //     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-  //       // user cancelled the login flow
-  //     } else if (error.code === statusCodes.IN_PROGRESS) {
-  //       // operation (e.g. sign in) is in progress already
-  //     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-  //       // play services not available or outdated
-  //     } else {
-  //       // some other error happened
-  //     }
-  //   }
-  // };
-
-
-
-
-
   return (
     <SafeAreaView style={Styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }}>
@@ -332,20 +307,22 @@ const Signin = ({ navigation }) => {
 
             <View style={{ height: rh(14), marginTop: rh(8), marginHorizontal: rw(5), justifyContent: 'space-around', }}>
               <View style={Styles.txtinptouterview}>
-                <TextInput onChangeText={e => setsignemail(e)} keyboardType='email-address' placeholder='Email' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
+                <TextInput onChangeText={e => setsignemail(e)} value={signemail} keyboardType='email-address' placeholder='Email' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
               </View>
-              <View style={[Styles.txtinptouterview, { flexDirection: 'row', }]}>
-                <TextInput onChangeText={e => setsigninpasswprd(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
+              <View style={[Styles.txtinptouterview, { flexDirection: 'row', marginTop: rh(3) }]}>
+                <TextInput value={signinpasswprd} onChangeText={e => setsigninpasswprd(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
                 {signineye ?
-
-
-                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignineye(true)}>
-                    < Evyiconopensvg width={'22px'} height={'15px'} />
-                  </TouchableOpacity>
+                  <View>
+                    <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(4) }} onPress={() => setsignineye(false)}>
+                      < Evyiconopensvg width={'22px'} height={'15px'} />
+                    </TouchableOpacity>
+                  </View>
                   :
-                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignineye(false)}>
-                    < Evyiconopensvg width={'22px'} height={'15px'} />
-                  </TouchableOpacity>
+                  <View>
+                    <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(4) }} onPress={() => setsignineye(true)}>
+                      < ClosedEyeSvg width={'22px'} height={'17px'} />
+                    </TouchableOpacity>
+                  </View>
                 }
 
               </View>
@@ -463,41 +440,39 @@ const Signin = ({ navigation }) => {
 
             <View style={{ flex: 1, marginTop: rh(7), marginHorizontal: rw(5), justifyContent: "space-around" }}>
               <View style={Styles.txtinptouterview}>
-                <TextInput onChangeText={e => setfirstname(e)} placeholder='First Name' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
+                <TextInput value={firstname} onChangeText={e => setfirstname(e)} placeholder='First Name' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
               </View>
               <View style={Styles.txtinptouterview}>
-                <TextInput onChangeText={e => setsurename(e)} placeholder='Sure Name' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
+                <TextInput value={surename} onChangeText={e => setsurename(e)} placeholder='Sure Name' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
               </View>
               <View style={Styles.txtinptouterview}>
-                <TextInput onChangeText={e => setsignupemail(e)} keyboardType='email-address' placeholder='Email' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
+                <TextInput value={signupemail} onChangeText={e => setsignupemail(e)} keyboardType='email-address' placeholder='Email' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
               </View>
 
               <View style={[Styles.txtinptouterview, { flexDirection: 'row', }]}>
-                <TextInput onChangeText={e => setsignuppassword(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
+                <TextInput value={signuppassword} onChangeText={e => setsignuppassword(e)} placeholder='Password' secureTextEntry={signupeye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
                 {signupeye ?
 
-                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(true)}>
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onPress={() => setsignupeye(false)}>
                     < Evyiconopensvg width={'22px'} height={'15px'} />
                   </TouchableOpacity>
                   :
-                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(false)}>
-                    < Evyiconopensvg width={'22px'} height={'15px'} />
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onPress={() => setsignupeye(true)}>
+                    < ClosedEyeSvg width={'22px'} height={'17px'} />
                   </TouchableOpacity>
                 }
 
               </View>
 
               <View style={[Styles.txtinptouterview, { flexDirection: 'row', }]}>
-                <TextInput onChangeText={e => setsignupconfirmpassword(e)} placeholder='Confirm Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
-                {signupeye ?
-
-
-                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(true)}>
+                <TextInput value={signupconfirmpassword} onChangeText={e => setsignupconfirmpassword(e)} placeholder='Confirm Password' secureTextEntry={signupconfirmeye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
+                {signupconfirmeye ?
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onPress={() => setsignupconfirmeye(false)}>
                     < Evyiconopensvg width={'22px'} height={'15px'} />
                   </TouchableOpacity>
                   :
-                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onpress={() => setsignupeye(false)}>
-                    < Evyiconopensvg width={'22px'} height={'15px'} />
+                  <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(3) }} onPress={() => setsignupconfirmeye(true)}>
+                    < ClosedEyeSvg width={'22px'} height={'17px'} />
                   </TouchableOpacity>
                 }
 
