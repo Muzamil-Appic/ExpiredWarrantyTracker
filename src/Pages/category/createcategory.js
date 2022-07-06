@@ -100,9 +100,6 @@ const Createcategory = ({ navigation }) => {
 
 
 
-
-
-
         // await fetch('http://waqarulhaq.com/expired-warranty-tracker/create-category.php', {
         //     method: 'POST',
         //     headers: {
@@ -195,7 +192,7 @@ const Createcategory = ({ navigation }) => {
 
     ]
     const renderfunction = ({ item }) => {
-       // console.log(item)
+        // console.log(item)
         return (
             <View style={{ marginTop: rh(3), flexDirection: "row", marginHorizontal: rw(3) }} >
                 <TouchableOpacity style={{ height: rh(7), width: rw(18) }} onPress={() => setcategorycolour(item.categorycolour)}>

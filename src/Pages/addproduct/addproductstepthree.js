@@ -9,7 +9,8 @@ import Styles from './addproduct.Styles'
 import Entypo from 'react-native-vector-icons/Entypo'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-
+import Moment from 'react-moment';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 const AddProductStepthree = ({ navigation }) => {
     const [prductname, setprductname] = useState('')
     const [durationenabled, setdurationenabled] = useState(true)
@@ -25,35 +26,75 @@ const AddProductStepthree = ({ navigation }) => {
     const [multiparttoggles, setmultiparttoggles] = useState(false)
     const [multipartfirstenabled, setmultipartfirstenabled] = useState(false)
     const siz = Dimensions.get('window').height
+    const [calenderdat, setcalenderdat] = useState('')
+    const [date, setDate] = useState(new Date())
+    const [open, setOpen] = useState(false)
+    const [newdate, setnewdate] = useState('');
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(true);
 
 
+
+    const [expirydate, setexpirydate] = useState(new Date().getDate())
+    const [expirymonth, setexpirymonth] = useState(new Date().getMonth() + 1)
+    const [expiryyear, setexpiryyear] = useState(new Date().getFullYear())
+
+
+    // console.log(expirydate, expirymonth, expiryyear);
 
     const addyears = () => {
         setdurationsyears(parseInt(durationsyears + 1))
+        setexpiryyear(expiryyear + 1)
     }
     const lessyears = () => {
         if (durationsyears === 0) {
             setdurationsyears(0)
         } else {
             setdurationsyears(parseInt(durationsyears - 1))
+            setexpiryyear(expiryyear - 1)
         }
     }
 
     const addmonth = () => {
         setmonthsdurations(parseInt(monthsdurations + 1))
+        setexpirymonth(expirymonth + 1)
     }
 
     const lessmonth = () => {
         if (monthsdurations === 0) {
             setmonthsdurations(0)
-        } else {
+        }
+        // if (monthsdurations === 13) {
+        //     setexpiryyear(expiryyear + 1) 
+        // }
+
+        else {
             setmonthsdurations(parseInt(monthsdurations - 1))
+            setexpirymonth(expirymonth - 1)
         }
     }
+
+
+
+
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    // const handleConfirm = (date) => {
+    //     console.warn("A date has been picked: ", date);
+    //     hideDatePicker();
+    // };
+
+
+
     return (
         <SafeAreaView style={Styles.container}>
             <View style={{ marginHorizontal: rw(5) }}>
-
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }}>
                     <View style={{ flex: 1 }}>
                         <View style={{ height: rh(4), marginTop: rh(2) }}>
@@ -74,14 +115,21 @@ const AddProductStepthree = ({ navigation }) => {
                             </View>
 
                             <View style={[Styles.dateandpurchasesdinnerview, { marginTop: rh(2) }]}>
-                                <TouchableOpacity>
-                                    <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>05-04-1999</Text>
+                                <TouchableOpacity onPress={() => showDatePicker()} >
+                                    <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>99</Text>
                                 </TouchableOpacity>
-                                <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>05-04-1999</Text>
+                                <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>{[expirydate, '/', expirymonth, '/', expiryyear]}</Text>
                             </View>
                         </View>
 
 
+                        <DateTimePickerModal
+                            date={date}
+                            isVisible={isDatePickerVisible}
+                            mode="date"
+                        // onConfirm={()=>handleConfirm()}
+                        //  onCancel={()=>hideDatePicker()}
+                        />
 
 
                         <View style={{ marginTop: rh(2.5) }}>

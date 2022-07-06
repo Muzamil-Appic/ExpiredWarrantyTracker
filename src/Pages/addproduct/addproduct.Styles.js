@@ -45,6 +45,13 @@ const Styles = StyleSheet.create({
     productproductmerchantnotes: { flexDirection: 'row', borderBottomWidth: 2, borderColor: Colors.bk, width: rw(90), height: rh(6), justifyContent: 'center', alignContent: 'center', alignItems: "center", },
     merchantinputouterview: { borderBottomColor: Colors.bk, width: rw(90), borderBottomWidth: 2, height: rh(6), justifyContent: 'center' },
     pagefiveheadings: { color: Colors.black, fontWeight: '600', fontFamily: 'Inter-Regular', fontSize: FontSize.font17 },
+
     txtinputsheaddings: { fontFamily: 'Inter-Light', fontSize: FontSize.font14, color: Colors.gry, marginTop: rh(0.5) },
-})
+
+    datePickerStyle: {
+        width: rh(50),
+        marginTop: 25,
+    },
+}
+)
 export default Styles;

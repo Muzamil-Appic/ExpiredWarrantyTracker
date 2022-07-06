@@ -11,10 +11,12 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] /Users/macbook/
 MERGED from [:react-native-svg] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-vector-icons] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-async-storage_async-storage] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-community_datetimepicker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-community/datetimepicker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-13:12
 MERGED from [:react-native-firebase_firestore] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-firebase/firestore/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-27:12
 MERGED from [:react-native-google-signin_google-signin] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-date-picker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-date-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-33:12
 MERGED from [:react-native-image-picker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-21:12
 MERGED from [:react-native-safe-area-context] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
@@ -91,6 +93,8 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/macbook/.g
 MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/macbook/.gradle/caches/transforms-3/522fa267deff15487438a819543bffba/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/macbook/.gradle/caches/transforms-3/e9f85a70bf02dee0e2804f7ecb2ce9b0/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/macbook/.gradle/caches/transforms-3/c2963c8c033fc797cae10332b9614f64/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
+MERGED from [com.github.henninghall:numberpickerview:v1.1.5] /Users/macbook/.gradle/caches/transforms-3/046a401f3e0dd164c11b39f0dd3288e6/transformed/jetified-numberpickerview-v1.1.5/AndroidManifest.xml:2:1-11:12
+MERGED from [net.time4j:time4j-android:4.8-2021a] /Users/macbook/.gradle/caches/transforms-3/37858222b02363b0aeeeedf8236a724e/transformed/jetified-time4j-android-4.8-2021a/AndroidManifest.xml:2:1-13:12
 MERGED from [com.facebook.fresco:fbcore:2.6.0] /Users/macbook/.gradle/caches/transforms-3/71e0ddd7fb065b17878e77cc277aa7a6/transformed/jetified-fbcore-2.6.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/macbook/.gradle/caches/transforms-3/2c85dfd11aba7625b3c4098da3ff589f/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/macbook/.gradle/caches/transforms-3/1d499b31179eefb53ab418e98e4b73a2/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:2:1-11:12
@@ -144,6 +148,8 @@ application
 ADDED from /Users/macbook/Desktop/ExpiredWarrantyTracker/android/app/src/main/AndroidManifest.xml:9:3-18:17
 MERGED from /Users/macbook/Desktop/ExpiredWarrantyTracker/android/app/src/main/AndroidManifest.xml:9:3-18:17
 MERGED from /Users/macbook/Desktop/ExpiredWarrantyTracker/android/app/src/main/AndroidManifest.xml:9:3-18:17
+MERGED from [:react-native-community_datetimepicker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-community/datetimepicker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-20
+MERGED from [:react-native-community_datetimepicker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-community/datetimepicker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-20
 MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-25:19
 MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-25:19
 MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:5-31:19
@@ -180,6 +186,8 @@ MERGED from [androidx.core:core:1.5.0] /Users/macbook/.gradle/caches/transforms-
 MERGED from [androidx.core:core:1.5.0] /Users/macbook/.gradle/caches/transforms-3/c7a27c777039b4c0b459e61365c89d71/transformed/core-1.5.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/macbook/.gradle/caches/transforms-3/841edcdf09de984158fea4d05205e665/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/macbook/.gradle/caches/transforms-3/841edcdf09de984158fea4d05205e665/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [net.time4j:time4j-android:4.8-2021a] /Users/macbook/.gradle/caches/transforms-3/37858222b02363b0aeeeedf8236a724e/transformed/jetified-time4j-android-4.8-2021a/AndroidManifest.xml:11:5-20
+MERGED from [net.time4j:time4j-android:4.8-2021a] /Users/macbook/.gradle/caches/transforms-3/37858222b02363b0aeeeedf8236a724e/transformed/jetified-time4j-android-4.8-2021a/AndroidManifest.xml:11:5-20
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.5.0] /Users/macbook/.gradle/caches/transforms-3/c7a27c777039b4c0b459e61365c89d71/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
 	android:label
@@ -248,6 +256,8 @@ MERGED from [:react-native-vector-icons] /Users/macbook/Desktop/ExpiredWarrantyT
 MERGED from [:react-native-vector-icons] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_datetimepicker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-community/datetimepicker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_datetimepicker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-community/datetimepicker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-firebase_auth] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-firebase_firestore] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-firebase/firestore/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
@@ -256,6 +266,8 @@ MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/ExpiredWarrantyT
 MERGED from [:react-native-firebase_app] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-google-signin_google-signin] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-google-signin_google-signin] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/@react-native-google-signin/google-signin/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-date-picker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-date-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-date-picker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-date-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-image-crop-picker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-image-picker] /Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
@@ -408,6 +420,10 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/macbook/.gradle/caches/transforms-3/e9f85a70bf02dee0e2804f7ecb2ce9b0/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/macbook/.gradle/caches/transforms-3/c2963c8c033fc797cae10332b9614f64/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/macbook/.gradle/caches/transforms-3/c2963c8c033fc797cae10332b9614f64/transformed/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.github.henninghall:numberpickerview:v1.1.5] /Users/macbook/.gradle/caches/transforms-3/046a401f3e0dd164c11b39f0dd3288e6/transformed/jetified-numberpickerview-v1.1.5/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.henninghall:numberpickerview:v1.1.5] /Users/macbook/.gradle/caches/transforms-3/046a401f3e0dd164c11b39f0dd3288e6/transformed/jetified-numberpickerview-v1.1.5/AndroidManifest.xml:7:5-9:41
+MERGED from [net.time4j:time4j-android:4.8-2021a] /Users/macbook/.gradle/caches/transforms-3/37858222b02363b0aeeeedf8236a724e/transformed/jetified-time4j-android-4.8-2021a/AndroidManifest.xml:7:5-9:41
+MERGED from [net.time4j:time4j-android:4.8-2021a] /Users/macbook/.gradle/caches/transforms-3/37858222b02363b0aeeeedf8236a724e/transformed/jetified-time4j-android-4.8-2021a/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.fresco:fbcore:2.6.0] /Users/macbook/.gradle/caches/transforms-3/71e0ddd7fb065b17878e77cc277aa7a6/transformed/jetified-fbcore-2.6.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:fbcore:2.6.0] /Users/macbook/.gradle/caches/transforms-3/71e0ddd7fb065b17878e77cc277aa7a6/transformed/jetified-fbcore-2.6.0/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/macbook/.gradle/caches/transforms-3/2c85dfd11aba7625b3c4098da3ff589f/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41

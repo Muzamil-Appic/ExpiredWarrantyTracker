@@ -28,7 +28,7 @@ const Addproductstepone = ({ navigation }) => {
                     <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprductname(e)} />
                 </View>
                 <View style={Styles.nextanssavedbuttonview}>
-                    <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('addproductsteptwo')}>
+                    <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('addproductsteptwo',)}>
                         <Text style={Styles.bottombtntext}>Next</Text>
                     </TouchableOpacity>
                 </View>
