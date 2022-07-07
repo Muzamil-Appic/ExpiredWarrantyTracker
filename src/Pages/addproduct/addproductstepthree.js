@@ -1,5 +1,5 @@
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
-import { Dimensions, FlatList, ScrollView, Modal, StyleSheet, View, Text, TouchableOpacity, TextInput, TouchableHighlight, TouchableOpacityBase } from 'react-native'
+import { Dimensions, Alert, FlatList, ScrollView, Modal, StyleSheet, View, Text, TouchableOpacity, TextInput, TouchableHighlight, TouchableOpacityBase } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Colors from '../../Global/Colors';
 import FontSize from '../../Global/Fonts';
@@ -9,9 +9,14 @@ import Styles from './addproduct.Styles'
 import Entypo from 'react-native-vector-icons/Entypo'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import Moment from 'react-moment';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import moment from 'moment';
 const AddProductStepthree = ({ navigation }) => {
+
+
+    // console.log('====================================', "This is Our Global Record");
+    // console.log(global.apiData);
+    // console.log('====================================');
     const [prductname, setprductname] = useState('')
     const [durationenabled, setdurationenabled] = useState(true)
     const [durationsyears, setdurationsyears] = useState(0)
@@ -27,18 +32,20 @@ const AddProductStepthree = ({ navigation }) => {
     const [multipartfirstenabled, setmultipartfirstenabled] = useState(false)
     const siz = Dimensions.get('window').height
     const [calenderdat, setcalenderdat] = useState('')
-    const [date, setDate] = useState(new Date())
+    const [date, setDate] = useState(moment().format("DD/MM/YYYY"))
     const [open, setOpen] = useState(false)
     const [newdate, setnewdate] = useState('');
-    const [isDatePickerVisible, setDatePickerVisibility] = useState(true);
-
-
-
+    const [providername, setprovidername] = useState('')
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
     const [expirydate, setexpirydate] = useState(new Date().getDate())
     const [expirymonth, setexpirymonth] = useState(new Date().getMonth() + 1)
     const [expiryyear, setexpiryyear] = useState(new Date().getFullYear())
 
 
+
+
+
+    console.log(date);
     // console.log(expirydate, expirymonth, expiryyear);
 
     const addyears = () => {
@@ -77,6 +84,7 @@ const AddProductStepthree = ({ navigation }) => {
 
 
 
+
     const showDatePicker = () => {
         setDatePickerVisibility(true);
     };
@@ -85,10 +93,41 @@ const AddProductStepthree = ({ navigation }) => {
         setDatePickerVisibility(false);
     };
 
-    // const handleConfirm = (date) => {
-    //     console.warn("A date has been picked: ", date);
-    //     hideDatePicker();
-    // };
+    const handleConfirm = (date) => {
+        console.warn("A date has been picked: ", date);
+        hideDatePicker();
+    };
+
+
+
+    const backfunction = () => {
+
+
+        Alert.alert(
+            'Alert',
+            'Are You Sure You Want TO Exit',
+            [
+                { text: 'Cancel', onPress: () => console.warn("You Backed") },
+                { text: 'OK', onPress: () => { navigation.navigate('BottomTabNavigations'), global.apiData = [] } },
+            ],
+            { cancelable: false }
+        )
+    }
+
+
+
+
+    const nextscreen = () => {
+        let temp = {
+            ...global.apiData, dataofpurchased: "05-04-199", dataofexpiry: expirydate + ' ' + expirymonth + ' ' + expiryyear,
+            extendwarranty: { providername: providername, duration: expirydate + ' ' + expirymonth + ' ' + expiryyear }
+        }
+
+        global.apiData = temp
+        navigation.navigate('Addproductstepfourcategory')
+    }
+
+
 
 
 
@@ -98,7 +137,7 @@ const AddProductStepthree = ({ navigation }) => {
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }}>
                     <View style={{ flex: 1 }}>
                         <View style={{ height: rh(4), marginTop: rh(2) }}>
-                            <TouchableOpacity onPress={() => navigation.goBack()}>
+                            <TouchableOpacity onPress={() => backfunction()}>
                                 <YellowBackSvg width={'20.67px'} height={'20.67px'} />
                             </TouchableOpacity>
                         </View>
@@ -116,7 +155,7 @@ const AddProductStepthree = ({ navigation }) => {
 
                             <View style={[Styles.dateandpurchasesdinnerview, { marginTop: rh(2) }]}>
                                 <TouchableOpacity onPress={() => showDatePicker()} >
-                                    <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>99</Text>
+                                    <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>pick date</Text>
                                 </TouchableOpacity>
                                 <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>{[expirydate, '/', expirymonth, '/', expiryyear]}</Text>
                             </View>
@@ -127,8 +166,8 @@ const AddProductStepthree = ({ navigation }) => {
                             date={date}
                             isVisible={isDatePickerVisible}
                             mode="date"
-                        // onConfirm={()=>handleConfirm()}
-                        //  onCancel={()=>hideDatePicker()}
+                            onConfirm={handleConfirm}
+                            onCancel={hideDatePicker}
                         />
 
 
@@ -222,7 +261,7 @@ const AddProductStepthree = ({ navigation }) => {
                                                 <View style={{ flex: 1 }}>
                                                     <Text style={Styles.addproductparttext}>Provider name</Text>
                                                     <View style={Styles.addproductpartview}>
-                                                        <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprductname(e)} />
+                                                        <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprovidername(e)} />
                                                     </View>
 
                                                     <View style={{ flex: 1 }}>
@@ -535,7 +574,7 @@ const AddProductStepthree = ({ navigation }) => {
                 </ScrollView>
             </View >
             <View style={[Styles.nextanssavedbuttonview, { marginHorizontal: rw(3) }]}>
-                <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('Addproductstepfourcategory')}>
+                <TouchableOpacity style={Styles.bottombtn} onPress={() => nextscreen()}>
                     <Text style={Styles.bottombtntext}>Next</Text>
                 </TouchableOpacity>
             </View>

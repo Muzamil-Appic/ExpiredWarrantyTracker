@@ -191,11 +191,11 @@ const Createcategory = ({ navigation }) => {
         { categoryname: 'mzml', categorycolour: '#52ECE3', id: '7' },
 
     ]
-    const renderfunction = ({ item }) => {
+    const renderfunction = ({ item, index }) => {
         // console.log(item)
         return (
             <View style={{ marginTop: rh(3), flexDirection: "row", marginHorizontal: rw(3) }} >
-                <TouchableOpacity style={{ height: rh(7), width: rw(18) }} onPress={() => setcategorycolour(item.categorycolour)}>
+                <TouchableOpacity style={{ height: rh(7), width: rw(18) }} onPress={() => hitsize(item, index)}>
                     <MaterialIcons name='folder' size={40} color={item.categorycolour} />
                 </TouchableOpacity>
 
@@ -205,7 +205,9 @@ const Createcategory = ({ navigation }) => {
 
 
 
+    const hitsize = (item, index) => {
 
+    }
 
 
 

@@ -24,12 +24,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const Signin = ({ navigation }) => {
 
 
+
+
+
   useEffect(() => {
     GoogleSignin.configure({
       webClientId: '107511410686-rkub5qroeu5qv7hrpkegedurrccf5tci.apps.googleusercontent.com',
     });
 
   }, [])
+
 
 
 

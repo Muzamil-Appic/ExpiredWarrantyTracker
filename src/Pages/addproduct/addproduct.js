@@ -11,6 +11,7 @@ const Addproductstepone = ({ navigation }) => {
     const [prductname, setprductname] = useState('')
     const siz = Dimensions.get('window').height
 
+
     return (
         <SafeAreaView style={Styles.container}>
             <View style={{ flex: 1, marginHorizontal: rh(3) }}>
@@ -28,7 +29,10 @@ const Addproductstepone = ({ navigation }) => {
                     <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprductname(e)} />
                 </View>
                 <View style={Styles.nextanssavedbuttonview}>
-                    <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('addproductsteptwo',)}>
+                    <TouchableOpacity style={Styles.bottombtn} onPress={() => {
+                        global.apiData = { productName: prductname }
+                        navigation.navigate('addproductsteptwo',)
+                    }}>
                         <Text style={Styles.bottombtntext}>Next</Text>
                     </TouchableOpacity>
                 </View>

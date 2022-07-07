@@ -11,6 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import CurrencySSvg from '../../Assets/Svg/CurrencySSvg.svg'
 import CameraSvg from '../../Assets/Svg/CameraSvg.svg'
 import Gallery from '../../Assets/Svg/Gallery.svg'
+import { decode as atob, encode as btoa } from 'base-64'
 const Addproductstepfiveoptional = ({ navigation }) => {
 
 
@@ -30,6 +31,44 @@ const Addproductstepfiveoptional = ({ navigation }) => {
     const [merchantcontactno, setmerchantcontactno] = useState('')
     const [notestoggle, setnotestoggle] = useState(false)
     const [notesenabled, setnotesenabled] = useState(false)
+
+
+
+
+
+
+
+    console.log('====================================', "This is Our Global Record 5");
+    console.log(JSON.stringify(global.apiData));
+    console.log('====================================');
+
+
+    const apihit = () => {
+        let kk = JSON.stringify(global.apiData)
+        console.log(kk,
+            "oooooo")
+        const mail = 'muzamilappic@gmail.com'
+        var requestOptions = {
+            method: 'POST',
+            redirect: 'follow'
+        };
+
+        fetch(`http://waqarulhaq.com/expired-warranty-tracker/save-product-data.php?email=${mail}&data=${kk}`, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 
     return (
@@ -258,9 +297,8 @@ const Addproductstepfiveoptional = ({ navigation }) => {
                 </ScrollView>
 
             </View>
-
             <View style={[Styles.nextanssavedbuttonview, { marginHorizontal: rw(3) }]}>
-                <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('Timeline')}>
+                <TouchableOpacity style={Styles.bottombtn} onPress={() => apihit()}>
                     <Text style={Styles.bottombtntext}>Next</Text>
                 </TouchableOpacity>
             </View>

@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macbook/Desktop/ExpiredWarrantyTracker/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fi/values-fi.xml",
+            "outputFile": "/Users/macbook/Documents/ExpiredWarrantyTracker/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fi/values-fi.xml",
             "map": [
+                {
+                    "source": "/Users/macbook/Documents/ExpiredWarrantyTracker/node_modules/react-native-date-picker/android/build/intermediates/packaged_res/debug/values-fi/values-fi.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,178,236,295,339,404,453,516,572,618",
+                        "endColumns": "58,63,57,58,43,64,48,62,55,45,58",
+                        "endOffsets": "109,173,231,290,334,399,448,511,567,613,672"
+                    },
+                    "to": {
+                        "startLines": "29,49,50,54,55,56,57,58,59,62,67",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "2775,5108,5172,5539,5598,5642,5707,5756,5819,6057,6390",
+                        "endColumns": "58,63,57,58,43,64,48,62,55,45,58",
+                        "endOffsets": "2829,5167,5225,5593,5637,5702,5751,5814,5870,6098,6444"
+                    }
+                },
                 {
                     "source": "/Users/macbook/.gradle/caches/transforms-3/f4ba5a3ff76900f9d093d35a7e39019f/transformed/appcompat-1.3.0/res/values-fi/values-fi.xml",
                     "from": {
@@ -86,23 +103,6 @@
                         "startOffsets": "3827",
                         "endColumns": "149",
                         "endOffsets": "3972"
-                    }
-                },
-                {
-                    "source": "/Users/macbook/Desktop/ExpiredWarrantyTracker/node_modules/react-native-date-picker/android/build/intermediates/packaged_res/debug/values-fi/values-fi.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,114,178,236,295,339,404,453,516,572,618",
-                        "endColumns": "58,63,57,58,43,64,48,62,55,45,58",
-                        "endOffsets": "109,173,231,290,334,399,448,511,567,613,672"
-                    },
-                    "to": {
-                        "startLines": "29,49,50,54,55,56,57,58,59,62,67",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "2775,5108,5172,5539,5598,5642,5707,5756,5819,6057,6390",
-                        "endColumns": "58,63,57,58,43,64,48,62,55,45,58",
-                        "endOffsets": "2829,5167,5225,5593,5637,5702,5751,5814,5870,6098,6444"
                     }
                 },
                 {

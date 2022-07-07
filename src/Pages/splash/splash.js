@@ -8,7 +8,7 @@ const Splash = ({ navigation }) => {
 
     useEffect(() => {
         setTimeout(() => {
-            navigation.navigate('addproductsteptwo')
+            navigation.navigate('AddProductStepthree')
         }, 3000);
     }, [])
 

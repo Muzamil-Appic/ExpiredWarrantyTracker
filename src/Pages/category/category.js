@@ -14,66 +14,34 @@ import { useIsFocused } from '@react-navigation/native';
 const Category = ({ navigation }) => {
 
   const [categorydata, setcategorydata] = useState([])
-  const [userkaemail, setuserkaemail] = useState('')
   const isfocudes = useIsFocused()
   useEffect(() => {
-    asyncvalues()
     getcategories()
   }, [isfocudes])
 
 
 
-
-  const asyncvalues = async () => {
+  const getcategories = async () => {
     await AsyncStorage.getItem('userdetails').then(async value => {
       let data = JSON.parse(value);
-      console.log("------>", data);
-      setuserkaemail(data?.useremail)
+      // console.log("------>", data);
       console.log(data?.useremail);
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify()
+      };
+      await fetch(`http://waqarulhaq.com/expired-warranty-tracker/get-categories.php?email=${data?.useremail}`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          // console.log("--------------->", result);
+          setcategorydata(result.data)
+        })
+        .catch((error) => {
+          alert(error.code)
+          console.log(error);
+        })
     })
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  const getcategories = async () => {
-
-
-
-
-
-
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify()
-    };
-    fetch(`http://waqarulhaq.com/expired-warranty-tracker/get-categories.php?email=${userkaemail}`, requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        console.log("--------------->", result);
-        setcategorydata(result.data)
-      })
-      .catch((error) => {
-
-        alert(error.code)
-        console.log(error);
-      })
   }
 
 
