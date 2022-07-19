@@ -21,8 +21,34 @@ const Addproductstepfourcategory = ({ navigation }) => {
   const isfocudes = useIsFocused()
 
   useEffect(() => {
+    asyncvalues()
     getcategories()
   }, [isfocudes])
+
+
+
+const [useremail, setuseremail] = useState('')
+ 
+
+const asyncvalues = async () => {
+    await AsyncStorage.getItem('userdetails').then(async value => {
+        let data = JSON.parse(value);
+        console.log("------>", data);
+        setuseremail(data?.useremail)
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -30,13 +56,13 @@ const Addproductstepfourcategory = ({ navigation }) => {
     await AsyncStorage.getItem('userdetails').then(async value => {
       let data = JSON.parse(value);
       // console.log("------>", data);
-      console.log(data?.useremail);
+      const email = 'muzamilappic@gmail.com'
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify()
       };
-      await fetch(`http://waqarulhaq.com/expired-warranty-tracker/get-categories.php?email=${data?.useremail}`, requestOptions)
+      await fetch(`http://waqarulhaq.com/expired-warranty-tracker/get-categories.php?email=${useremail}`, requestOptions)
         .then(response => response.json())
         .then(result => {
           // console.log("--------------->", result);
@@ -67,23 +93,49 @@ const Addproductstepfourcategory = ({ navigation }) => {
 
   const enablemark = (item, index) => {
 
-    const newarraydata = categorydata.map((e, index) => {
-      console.log(e)
-      if (item.id == e.id) {
-        return {
-          ...e,
-          seleced: true
-        }
-      }
-      return {
-        ...e,
-        seleced: false
-      }
-    })
-    setcategorydata(newarraydata)
+    // const newarraydata = categorydata.map((e, index) => {
+    //   console.log(e)
+    //   if (item.id == e.id) {
+    //     return {
+    //       ...e,
+    //       seleced: true
+    //     }
+    //   }
+    //   return {
+    //     ...e,
+    //     seleced: false
+    //   }
+    // })
+    // setcategorydata(newarraydata)
 
-    // setreceipcategoryname(item.name),
-    //  setcategorycolour(muzamilkaconcate)
+    // // setreceipcategoryname(item.name),
+    // //  setcategorycolour(muzamilkaconcate)
+
+
+
+    let temp = [...categorydata];
+    for (let i = 0; i < categorydata.length; i++) {
+      if (categorydata[i].ID == item.ID) {
+        temp[i] = {
+          seleced: true,
+          name: categorydata[i].name,
+          color: categorydata[i].color,
+          ID: categorydata[i].ID,
+        };
+      } else {
+        temp[i] = {
+          seleced: false,
+          name: categorydata[i].name,
+          color: categorydata[i].color,
+          ID: categorydata[i].ID,
+        };
+      }
+    }
+    setcategorydata(temp);
+
+
+
+
   }
 
 
@@ -99,12 +151,12 @@ const Addproductstepfourcategory = ({ navigation }) => {
     console.log(muzamilkaconcate);
     return (
       <View style={{ height: rh(10), borderBottomColor: Colors.bk, borderBottomWidth: 1, justifyContent: 'center' }}>
-        <TouchableOpacity style={{ flexDirection: "row", alignItems: "center", width: rw(90), justifyContent: "space-between" }} onPress={() => { enablemark(item, index) }} >
+        <TouchableOpacity style={{ flexDirection: "row", alignItems: "center", width: rw(90), justifyContent: "space-between" }} onPress={() => { enablemark(item, index), setreceipcategoryname(item.name), setcategorycolour(item.color) }} >
           <View style={{ flexDirection: "row", alignItems: "center", width: rw(80) }}>
             <MaterialIcons name='folder' size={45} color={muzamilkaconcate} />
             <Text numberOfLines={2} style={{ fontSize: FontSize.font19, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Medium', left: rw(3), width: rw(60) }}>{item.name}</Text>
           </View>
-          {item.seleced ==true?
+          {item.seleced == true ?
             <View style={{ right: rw(2) }}>
               <AntDesign name='checkcircleo' size={20} color={Colors.yellow} />
             </View>

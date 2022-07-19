@@ -16,32 +16,42 @@ const Category = ({ navigation }) => {
   const [categorydata, setcategorydata] = useState([])
   const isfocudes = useIsFocused()
   useEffect(() => {
+    asyncvalues()
     getcategories()
   }, [isfocudes])
 
 
 
-  const getcategories = async () => {
+
+  const asyncvalues = async () => {
     await AsyncStorage.getItem('userdetails').then(async value => {
       let data = JSON.parse(value);
-      // console.log("------>", data);
-      console.log(data?.useremail);
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify()
-      };
-      await fetch(`http://waqarulhaq.com/expired-warranty-tracker/get-categories.php?email=${data?.useremail}`, requestOptions)
-        .then(response => response.json())
-        .then(result => {
-          // console.log("--------------->", result);
-          setcategorydata(result.data)
-        })
-        .catch((error) => {
-          alert(error.code)
-          console.log(error);
-        })
+      console.log("------>", data);
+      setuseremail(data?.useremail)
     })
+  }
+
+
+
+  const [useremail, setuseremail] = useState('')
+
+  const getcategories = async () => {
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify()
+    };
+    await fetch(`http://waqarulhaq.com/expired-warranty-tracker/get-categories.php?email=${useremail}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        // console.log("--------------->", result);
+        setcategorydata(result.data)
+      })
+      .catch((error) => {
+        alert(error.code)
+        console.log(error);
+      })
   }
 
 

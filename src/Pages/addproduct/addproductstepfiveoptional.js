@@ -12,9 +12,231 @@ import CurrencySSvg from '../../Assets/Svg/CurrencySSvg.svg'
 import CameraSvg from '../../Assets/Svg/CameraSvg.svg'
 import Gallery from '../../Assets/Svg/Gallery.svg'
 import { decode as atob, encode as btoa } from 'base-64'
+import Toast from 'react-native-simple-toast';
+import ImagePicker from 'react-native-image-crop-picker';
+import Entypo from 'react-native-vector-icons/Entypo'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 const Addproductstepfiveoptional = ({ navigation }) => {
 
 
+    useEffect(() => {
+        getcurrencyimages()
+        getcurrencylist()
+    }, []);
+
+
+    const getcurrencyimages = () => {
+        fetch('http://waqarulhaq.com/expired-warranty-tracker/get-payment-options.php')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                setcurrencyimages(responseJson.data);
+                //   setcurrencyimages(responseJson.da);
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+    }
+
+
+    const getcurrencylist = () => {
+        fetch('http://waqarulhaq.com/expired-warranty-tracker/get-currency-list.php')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                setFilteredDataSource(responseJson.data);
+                setMasterDataSource(responseJson.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+
+
+
+
+    /////for FIlter code
+
+    const searchFilterFunction = (text) => {
+        // Check if searched text is not blank
+        if (text) {
+            // Inserted text is not blank
+            // Filter the masterDataSource
+            // Update FilteredDataSource
+            const newData = masterDataSource.filter(
+                function (item) {
+                    const itemData = item.country
+                        ? item.country.toUpperCase()
+                        : ''.toUpperCase();
+                    const textData = text.toUpperCase();
+                    return itemData.indexOf(textData) > -1;
+                });
+            setFilteredDataSource(newData);
+            setSearch(text);
+        } else {
+            // Inserted text is blank
+            // Update FilteredDataSource with masterDataSource
+            setFilteredDataSource(masterDataSource);
+            setSearch(text);
+        }
+    };
+
+    const ItemView = ({ item }) => {
+        return (
+            <View>
+                <TouchableOpacity onPress={() => { setcountrycurrency(item.currency_code + '-' + item.country), setenabledmarkdtick(item), setcountrycurrentcode(item.currency_code) }}>
+                    <View style={{ flexDirection: "row", borderBottomWidth: 1, borderColor: '#909090', height: rh(6), alignItems: 'center', justifyContent: 'space-between' }}>
+
+                        <View style={{ flexDirection: 'row' }}>
+                            <Text style={{ fontSize: FontSize.font16, color: Colors.black }}>{item.currency_code}</Text>
+                            <Text> - </Text>
+                            <Text style={{ width: rw(60), fontSize: FontSize.font16, color: Colors.black }}>{item.country.toUpperCase()}</Text>
+                        </View>
+                        <View>
+                            {item.seleced == true ?
+                                <View style={{ right: rw(2) }}>
+                                    <AntDesign name='checkcircleo' size={20} color={Colors.yellow} />
+                                </View>
+                                :
+                                <View style={{ right: rw(2) }}>
+                                    <Entypo name='circle' size={20} color={Colors.black} />
+                                </View>
+                            }
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </View>
+
+
+        );
+    };
+
+    const ItemSeparatorView = () => {
+        return (
+            // Flat List Item Separator
+            <View
+                style={{
+                    height: 0.5,
+                    width: '100%',
+                    backgroundColor: '#C8C8C8',
+                }}
+            >
+                {/* <Text>{item.country}</Text> */}
+            </View>
+        );
+    };
+
+    const setenabledmarkdtick = (item) => {
+        let temp = [...filteredDataSource];
+        for (let i = 0; i < filteredDataSource.length; i++) {
+            if (filteredDataSource[i].country == item.country) {
+                temp[i] = {
+                    seleced: true,
+                    country: filteredDataSource[i].country,
+                    currency_code: filteredDataSource[i].currency_code,
+
+                };
+            } else {
+                temp[i] = {
+                    seleced: false,
+                    country: filteredDataSource[i].country,
+                    currency_code: filteredDataSource[i].currency_code,
+                };
+            }
+        }
+        setFilteredDataSource(temp);
+        setcurrencymodal(false)
+    }
+
+
+    const currncyselect = ({ item }) => {
+        // console.log(item);
+        return (
+            <View style={{ flexDirection: "row", borderBottomWidth: 1, borderColor: '#909090', height: rh(6), alignItems: 'center', justifyContent: 'space-between' }}>
+
+                <View style={{ flexDirection: 'row' }}>
+                    <Text style={{ fontSize: FontSize.font16, color: Colors.black }}>{item.currency_code}</Text>
+                    <Text> - </Text>
+                    <Text style={{ width: rw(60), fontSize: FontSize.font16, color: Colors.black }}>{item.country.toUpperCase()}</Text>
+                </View>
+                <View>
+                    {item.seleced == true ?
+                        <View style={{ right: rw(2) }}>
+                            <AntDesign name='checkcircleo' size={20} color={Colors.yellow} />
+                        </View>
+                        :
+                        <View style={{ right: rw(2) }}>
+                            <Entypo name='circle' size={20} color={Colors.black} />
+                        </View>
+
+                    }
+                </View>
+            </View>
+
+        )
+
+    }
+
+
+    const setmarkenabledcashimage = (item) => {
+        let temp = [...currencyimages];
+        for (let i = 0; i < currencyimages.length; i++) {
+            if (currencyimages[i].ID == item.ID) {
+                temp[i] = {
+                    seleced: true,
+                    method: currencyimages[i].method,
+                    ID: currencyimages[i].ID,
+                    image: currencyimages[i].image,
+
+                };
+            } else {
+                temp[i] = {
+                    seleced: false,
+                    method: currencyimages[i].method,
+                    ID: currencyimages[i].ID,
+                    image: currencyimages[i].image,
+                };
+            }
+        }
+        setcurrencyimages(temp);
+        setpaymentmethodmodal(false)
+    }
+
+    const currencyimagesrenderfunction = ({ item }) => {
+        console.log(item);
+        return (
+            <View >
+                <TouchableOpacity style={{ flexDirection: 'row', justifyContent: "space-between", height: rh(8), borderBottomColor: Colors.bk, borderBottomWidth: 1, alignItems: 'center' }} onPress={() => { setmarkenabledcashimage(item), setshowdumyimage(item.image) }}>
+                    <View style={{ flexDirection: "row", alignItems: 'center' }}>
+                        <Image source={{ uri: item.image }} style={{ height: 60, width: 60 }} resizeMode={'contain'} resizeMethod={'resize'} />
+                        <Text style={{ fontSize: FontSize.font16, color: Colors.black, marginLeft: rw(3) }}>{item.method}</Text>
+                    </View>
+                    <View>
+                        {item.seleced == true ?
+                            <View style={{ right: rw(2) }}>
+                                <AntDesign name='checkcircleo' size={20} color={Colors.yellow} />
+                            </View>
+                            :
+                            <View style={{ right: rw(2) }}>
+                                <Entypo name='circle' size={20} color={Colors.black} />
+                            </View>
+                        }
+                    </View>
+                </TouchableOpacity>
+            </View>
+
+        )
+
+    }
+
+
+
+
+    const [search, setSearch] = useState('');
+    const [filteredDataSource, setFilteredDataSource] = useState([]);
+    const [masterDataSource, setMasterDataSource] = useState([]);
+    const [countrycurrency, setcountrycurrency] = useState('')
+    const [countrycurrentcode, setcountrycurrentcode] = useState('PKR')
+    const [currencyimages, setcurrencyimages] = useState([])
     const [productinfoenabled, setproductinfoenabled] = useState(false)
     const [produtinfotoggled, setprodutinfotoggled] = useState(false)
     const [modelno, setmodelno] = useState('')
@@ -31,10 +253,15 @@ const Addproductstepfiveoptional = ({ navigation }) => {
     const [merchantcontactno, setmerchantcontactno] = useState('')
     const [notestoggle, setnotestoggle] = useState(false)
     const [notesenabled, setnotesenabled] = useState(false)
+    const [notes, setnotes] = useState('')
+    const [currencymodal, setcurrencymodal] = useState(false)
+    const [paymentmethodmodal, setpaymentmethodmodal] = useState(false)
+    const [showdumyimage, setshowdumyimage] = useState('https://waqarulhaq.com//expired-warranty-tracker/currency-images/22-1.png')
 
-
-
-
+    const [Img, setImg] = useState('')
+    const [isCamera, setisCamera] = useState('')
+    const [images, setimages] = useState('')
+    const [receiptspath, setreceiptspath] = useState('')
 
 
 
@@ -43,7 +270,74 @@ const Addproductstepfiveoptional = ({ navigation }) => {
     console.log('====================================');
 
 
+    const selectimagefromgallery = () => {
+        setTimeout(() => {
+            ImagePicker.openPicker({
+                width: 200,
+                height: 200,
+                cropping: false,
+                //  compressImageQuality: 0.4,
+            }).then(async image => {
+                setImg(image.path);
+                setisCamera(false);
+                setimages(image)
+                uplodFile(image);
+            });
+        }, 400);
+    };
+
+
+    const uplodFile = async (image) => {
+        console.log("yes entered");
+        var formdata = new FormData();
+        var filename = image.path.replace(/^.*[\\\/]/, '');
+        formdata.append('file', {
+            uri: image.path,
+            name: filename, type: image.mime
+        });
+        console.log({
+            uri: image.path,
+            name: filename, type: image.mime
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
+        console.log("requestOptions", requestOptions);
+        await fetch("http://waqarulhaq.com/expired-warranty-tracker/upload-img.php?", requestOptions)
+            .then(response => setreceiptspath(response.text()))
+            .catch(error => console.log('error', error));
+    };
+
+    const opencamera = () => {
+        ImagePicker.openCamera({
+            width: 200,
+            height: 200,
+            // cropping: true,
+            // compressImageQuality: 0.4,
+        }).then(async image => {
+            setImg(image.path)
+            setisCamera(false);
+            const ref = new Date().getTime();
+            setimages(image)
+            uplodFile(image);
+        });
+    }
+
+
+
+
     const apihit = () => {
+        let temp = {
+            ...global.apiData, modelno: modelno, serialno: serialno,
+            price: productprice, merchantname: merchantname,
+            merchantlocation: merchantlocation, merchantwebsite: merchantwebsite,
+            merchantcontactno: merchantcontactno, notes: notes, paymentmethodimage: showdumyimage,
+            productprice: productprice, pricecodeandpricename: countrycurrency, productimage: receiptspath
+        }
+        global.apiData = temp
         let kk = JSON.stringify(global.apiData)
         console.log(kk,
             "oooooo")
@@ -52,20 +346,19 @@ const Addproductstepfiveoptional = ({ navigation }) => {
             method: 'POST',
             redirect: 'follow'
         };
-
         fetch(`http://waqarulhaq.com/expired-warranty-tracker/save-product-data.php?email=${mail}&data=${kk}`, requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
+            .then(response => response.text(),
+                Toast.show("Record Added Successfull"),
+                navigation.navigate('Receiptsdetails'),
+                global.apiData = []
+            )
+            .then(result => console.log(result),
+            // empty()
+        )
             .catch(error => console.log('error', error));
 
 
     }
-
-
-
-
-
-
 
 
 
@@ -117,18 +410,18 @@ const Addproductstepfiveoptional = ({ navigation }) => {
                                 <View style={{ width: rw(80) }}>
                                     <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmodelno(e)} />
                                 </View>
-                                <TouchableOpacity>
+                                {/* <TouchableOpacity>
                                     <MaterialCommunityIcons name='line-scan' size={30} color={Colors.yellow} />
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
                             </View>
                             <Text style={[Styles.addproductparttext, { marginTop: rh(1), }]}>Serial Number</Text>
                             <View style={Styles.productproductmerchantnotes}>
                                 <View style={{ width: rw(80) }}>
                                     <TextInput style={Styles.addproductparttextinput} onChangeText={e => setserialno(e)} />
                                 </View>
-                                <TouchableOpacity>
+                                {/* <TouchableOpacity>
                                     <MaterialCommunityIcons name='line-scan' size={30} color={Colors.yellow} />
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
                             </View>
                             <View style={{ marginTop: rh(1) }} >
 
@@ -138,17 +431,17 @@ const Addproductstepfiveoptional = ({ navigation }) => {
                                 </View>
 
                                 <View style={{ flexDirection: 'row', width: rw(90), justifyContent: 'space-between', height: rh(5), marginTop: rh(1) }}>
-                                    <TouchableOpacity style={{ width: rw(15), borderBottomWidth: 2, borderBottomColor: Colors.bk, height: rh(5), flexDirection: "row", alignItems: 'center' }}>
-                                        <Text style={{ color: Colors.black, textAlign: 'center' }}>{currency}</Text>
+                                    <TouchableOpacity style={{ width: rw(15), borderBottomWidth: 2, borderBottomColor: Colors.bk, height: rh(5), flexDirection: "row", alignItems: 'center' }} onPress={() => setcurrencymodal(true)}>
+                                        <Text style={{ color: Colors.black, textAlign: 'center' }}>{countrycurrentcode}</Text>
                                         <MaterialIcons name='arrow-drop-down' size={30} />
                                     </TouchableOpacity>
 
                                     <View style={{ width: rw(40), borderBottomWidth: 2, borderBottomColor: Colors.bk, height: rh(5), alignItems: 'center' }}>
-                                        <TextInput style={{ fontSize: FontSize.font17, color: Colors.black, padding: 0, paddingTop: rh(1) }} placeholder={"Price"} onChangeText={e => setproductprice(e)} />
+                                        <TextInput style={Styles.addproductparttextinput} placeholder={"Price"} onChangeText={e => setproductprice(e)} />
                                     </View>
 
-                                    <TouchableOpacity style={{ width: rw(16), borderRadius: 5, justifyContent: 'center', alignContent: 'center', backgroundColor: '#C4C4C4', height: rh(4) }}>
-                                        <MaterialCommunityIcons name='currency-usd' size={25} color={Colors.black} style={{ alignSelf: 'center' }} />
+                                    <TouchableOpacity onPress={() => setpaymentmethodmodal(true)} style={{ bottom: rh(1) }}>
+                                        <Image source={{ uri: showdumyimage }} style={{ height: 50, width: 50 }} resizeMode={'contain'} resizeMethod={'resize'} />
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -159,10 +452,9 @@ const Addproductstepfiveoptional = ({ navigation }) => {
 
                     <View style={{ height: rh(5), width: rw(90), flexDirection: "row", alignContent: 'center', alignItems: 'center', justifyContent: "space-between", marginTop: rh(1) }}>
                         <View>
-                            <Text style={Styles.innersecondhadding}>Product Images</Text>
+                            <Text style={Styles.innersecondhadding}>Product Image</Text>
                         </View>
                         {productimagestoggles ?
-
 
                             <View style={Styles.toggleouterviewmain}>
                                 <TouchableOpacity onPress={() => { { setproductimagestoggles(false), setproductimagesenabled(false) } }} style={{ justifyContent: 'center' }}>
@@ -181,9 +473,10 @@ const Addproductstepfiveoptional = ({ navigation }) => {
 
                     </View>
                     {productimagesenabled ?
-                        <View style={{ flex: 1 }}>
+                        <View>
+
                             <View style={{ flexDirection: "row", height: rh(10), marginTop: rh(3), justifyContent: 'center' }}>
-                                <TouchableOpacity >
+                                <TouchableOpacity onPress={() => opencamera()}>
                                     <View style={{ borderRightWidth: 1, borderColor: Colors.gry, height: rh(10), width: rw(50), flexDirection: "row", alignItems: 'center', }}>
                                         <View style={{ marginLeft: rw(6) }}>
                                             <CameraSvg width={'55px'} height={'55px'} />
@@ -191,7 +484,7 @@ const Addproductstepfiveoptional = ({ navigation }) => {
                                         <Text style={{ color: Colors.gry, fontWeight: '500', fontSize: FontSize.font18, fontFamily: 'Inter-Medium', textAlign: 'center', marginLeft: rw(2) }}>Camera</Text>
                                     </View>
                                 </TouchableOpacity>
-                                <TouchableOpacity >
+                                <TouchableOpacity onPress={() => selectimagefromgallery()}>
                                     <View style={{ borderRightWidth: 1, borderColor: Colors.gry, height: rh(10), width: rw(50), flexDirection: "row", alignItems: 'center', }}>
                                         <View style={{ marginLeft: rw(5) }}>
                                             <Gallery width={'57px'} height={'55px'} />
@@ -200,6 +493,8 @@ const Addproductstepfiveoptional = ({ navigation }) => {
                                     </View>
                                 </TouchableOpacity>
                             </View>
+
+
                             <View style={{ marginTop: rh(2), }}>
                                 <TouchableOpacity style={{ position: 'absolute', right: rw(5), bottom: rw(80), top: rw(70), left: rw(80) }}>
                                     {/* <View style={{ backgroundColor: Colors.red, height: rw(10), width: rw(10), borderRadius: 100, bottom: rw(10), justifyContent: "center", alignItems: 'center' }}>
@@ -207,10 +502,19 @@ const Addproductstepfiveoptional = ({ navigation }) => {
                             </View>
                         </View> */}
                                 </TouchableOpacity>
-                                <Image source={require('../../Assets/photos/Oicone.png')} style={{ width: rw(90), resizeMode: 'stretch' }} />
+                                {Img === '' ?
+                                    <View>
+                                    </View>
+                                    :
+
+                                    <Image source={{ uri: Img }} style={{ width: rw(90), resizeMode: 'stretch', height: rh(40) }} />
+                                }
+
                             </View>
 
                         </View>
+
+
                         :
                         null
 
@@ -284,10 +588,14 @@ const Addproductstepfiveoptional = ({ navigation }) => {
 
                     </View>
                     {notesenabled ?
-                        <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'center' }}>
-                            <View style={{ width: rw(88), height: rh(25), borderColor: Colors.bk, borderWidth: 1, borderRadius: 10 }}>
-                                <TextInput style={Styles.addproductparttextinput} />
-                            </View>
+                        <View style={{ flex: 1, borderWidth: 1, borderColor: Colors.bk, borderRadius: 10 }}>
+                            <TextInput
+                                multiline
+                                numberOfLines={10}
+                                style={Styles.input}
+                                onChangeText={e => setnotes(e)}
+                                value={notes}
+                            />
                         </View>
                         : null
                     }
@@ -302,6 +610,68 @@ const Addproductstepfiveoptional = ({ navigation }) => {
                     <Text style={Styles.bottombtntext}>Next</Text>
                 </TouchableOpacity>
             </View>
+
+
+            {currencymodal ?
+                <Modal>
+                    <View style={{ flex: 1, marginHorizontal: rw(5) }}>
+                        <View style={{ marginTop: rh(2), }}>
+                            <TouchableOpacity onPress={() => setcurrencymodal(false)} style={{ right: 6 }}>
+                                <Entypo name='cross' size={30} color={Colors.yellow} />
+                            </TouchableOpacity>
+                            <View style={{ marginTop: rh(1) }}>
+                                <Text style={{ fontSize: FontSize.font19, color: Colors.gry }}>What was the currency used?</Text>
+                            </View>
+                            <View style={{ height: rh(6), width: rw(90), backgroundColor: '#D6D2D2', borderRadius: 7, alignContent: 'center', justifyContent: "center", marginTop: rh(0.5) }}>
+                                <TextInput placeholder='Search' style={{ padding: 0, fontSize: FontSize.font17, color: Colors.black, paddingLeft: rw(4) }} onChangeText={(text) => searchFilterFunction(text)}
+                                    value={search} />
+                            </View>
+
+
+                            <View>
+                                <FlatList
+                                    data={filteredDataSource}
+                                    keyExtractor={(item, index) => index.toString()}
+                                    ItemSeparatorComponent={ItemSeparatorView}
+                                    renderItem={ItemView}
+                                />
+                            </View>
+
+                        </View>
+                    </View>
+                </Modal>
+                :
+                null}
+
+
+
+            {paymentmethodmodal ?
+                <Modal>
+                    <View style={{ flex: 1, marginHorizontal: rw(5) }}>
+                        <View style={{ marginTop: rh(2), }}>
+                            <TouchableOpacity onPress={() => setpaymentmethodmodal(false)} style={{ right: 6 }}>
+                                <Entypo name='cross' size={30} color={Colors.yellow} />
+                            </TouchableOpacity>
+                            <View style={{ marginTop: rh(1) }}>
+                                <Text style={{ fontSize: FontSize.font19, color: Colors.gry }}>How did you pay for your item?</Text>
+                            </View>
+
+
+
+
+                            <FlatList
+                                data={currencyimages}
+                                keyExtractor={item => item.id}
+                                renderItem={currencyimagesrenderfunction}
+                                contentContainerStyle={{ marginTop: rh(2), justifyContent: "center" }}
+                            />
+
+
+                        </View>
+                    </View>
+                </Modal>
+                :
+                null}
 
         </SafeAreaView>
     )

@@ -15,18 +15,27 @@ const Createcategory = ({ navigation }) => {
     const [loader, setloader] = useState(false)
     const [categorycolour, setcategorycolour] = useState('')
     const [email, setemail] = useState('')
+    const [records, setrecords] = useState([])
 
 
     useEffect(() => {
         asyncvalues()
+        getcolours()
     }, [])
 
 
 
-
-
-
-
+    const getcolours = () => {
+        fetch('https://waqarulhaq.com/expired-warranty-tracker/get-category-colors.php')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                //  console.log(responseJson);
+                setrecords(responseJson.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
     const asyncvalues = async () => {
         await AsyncStorage.getItem('userdetails').then(async value => {
             let data = JSON.parse(value);
@@ -147,57 +156,19 @@ const Createcategory = ({ navigation }) => {
 
 
 
-
-    //     <View style={{ width: rw(87), marginTop: rh(2), flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center' }} >
-    //     < TouchableOpacity style={{ marginHorizontal: rw(2.5) }} onPress={() => setcategorycolour('#4DCB70')}>
-    //         <MaterialIcons name='folder' size={40} color={'#4DCB70'} />
-    //     </TouchableOpacity>
-    //     < TouchableOpacity style={{ marginHorizontal: rw(2.5) }} onPress={() => setcategorycolour('#6289D6')}>
-    //         <MaterialIcons name='folder' size={40} color={'#6289D6'} />
-    //     </TouchableOpacity>
-    //     < TouchableOpacity style={{ marginHorizontal: rw(2.5) }} onPress={() => setcategorycolour('#CB4DBE')}>
-    //         <MaterialIcons name='folder' size={40} color={'#CB4DBE'} />
-    //     </TouchableOpacity>
-
-    //     < TouchableOpacity style={{ marginHorizontal: rw(2.5) }} onPress={() => setcategorycolour('#EC525B')}>
-    //         <MaterialIcons name='folder' size={40} color={'#EC525B'} />
-    //     </TouchableOpacity>
-    // </View>
-    // <View style={{ width: rw(87), marginTop: rh(2), flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center' }} >
-    //     < TouchableOpacity style={{ marginHorizontal: rw(2.5) }} onPress={() => setcategorycolour('#9B4DCB')}>
-    //         <MaterialIcons name='folder' size={40} color={'#9B4DCB'} />
-    //     </TouchableOpacity>
-    //     < TouchableOpacity style={{ marginHorizontal: rw(2.5) }} onPress={() => setcategorycolour('#F3A65F')}>
-    //         <MaterialIcons name='folder' size={40} color={'#F3A65F'} />
-    //     </TouchableOpacity>
-    //     < TouchableOpacity style={{ marginHorizontal: rw(2.5) }} onPress={() => setcategorycolour('#E2E45A')}>
-    //         <MaterialIcons name='folder' size={40} color={'#E2E45A'} />
-    //     </TouchableOpacity>
-
-    //     < TouchableOpacity style={{ marginHorizontal: rw(2.5) }} onPress={() => setcategorycolour('#52ECE3')}>
-    //         <MaterialIcons name='folder' size={40} color={'#52ECE3'} />
-    //     </TouchableOpacity>
-    // </View>
-
-
-    const datas = [
-        { categoryname: 'green', categorycolour: '#4DCB70', id: '0' },
-        { categoryname: 'blue', categorycolour: '#6289D6', id: '1' },
-        { categoryname: 'pink', categorycolour: '#CB4DBE', id: '2' },
-        { categoryname: 'orange', categorycolour: '#EC525B', id: '3' },
-        { categoryname: 'jaman', categorycolour: '#9B4DCB', id: '4' },
-        { categoryname: 'wooden', categorycolour: '#F3A65F', id: '5' },
-        { categoryname: 'halfyellow', categorycolour: '#E2E45A', id: '6' },
-        { categoryname: 'mzml', categorycolour: '#52ECE3', id: '7' },
-
-    ]
-    const renderfunction = ({ item, index }) => {
-        // console.log(item)
+    const renderfunction = ({ item }) => {
+        console.log(item)
         return (
             <View style={{ marginTop: rh(3), flexDirection: "row", marginHorizontal: rw(3) }} >
-                <TouchableOpacity style={{ height: rh(7), width: rw(18) }} onPress={() => hitsize(item, index)}>
-                    <MaterialIcons name='folder' size={40} color={item.categorycolour} />
-                </TouchableOpacity>
+                {item.seleced == true ?
+                    <TouchableOpacity style={{ height: rh(7), width: rw(18) }} onPress={() => { hitsize(item), setcategorycolour(item.code), setcategoryname(item.name) }}>
+                        <MaterialIcons name='folder' size={50} color={item.code} />
+                    </TouchableOpacity>
+                    :
+                    <TouchableOpacity style={{ height: rh(10), width: rw(18) }} onPress={() => hitsize(item)}>
+                        <MaterialIcons name='folder' size={30} color={item.code} />
+                    </TouchableOpacity>
+                }
 
             </View >
         )
@@ -205,7 +176,28 @@ const Createcategory = ({ navigation }) => {
 
 
 
-    const hitsize = (item, index) => {
+    const hitsize = (item) => {
+
+        let temp = [...records];
+        for (let i = 0; i < records.length; i++) {
+            if (records[i].code == item.code) {
+                temp[i] = {
+                    seleced: true,
+                    code: records[i].code,
+                    name: records[i].name,
+
+                };
+            } else {
+                temp[i] = {
+                    seleced: false,
+                    code: records[i].code,
+                    name: records[i].name,
+
+                };
+            }
+
+        }
+        setrecords(temp);
 
     }
 
@@ -234,7 +226,7 @@ const Createcategory = ({ navigation }) => {
                     </View>
 
                     <FlatList
-                        data={datas}
+                        data={records}
                         renderItem={renderfunction}
                         keyExtractor={item => item.id}
                         numColumns={4}

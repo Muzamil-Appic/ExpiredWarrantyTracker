@@ -10,13 +10,14 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import DatePicker from 'react-native-date-picker'
 import moment from 'moment';
 const AddProductStepthree = ({ navigation }) => {
 
 
-    // console.log('====================================', "This is Our Global Record");
-    // console.log(global.apiData);
-    // console.log('====================================');
+    console.log('====================================', "This is Our Global Record 3");
+    console.log(global.apiData);
+    console.log('====================================');
     const [prductname, setprductname] = useState('')
     const [durationenabled, setdurationenabled] = useState(true)
     const [durationsyears, setdurationsyears] = useState(0)
@@ -32,38 +33,85 @@ const AddProductStepthree = ({ navigation }) => {
     const [multipartfirstenabled, setmultipartfirstenabled] = useState(false)
     const siz = Dimensions.get('window').height
     const [calenderdat, setcalenderdat] = useState('')
-    const [date, setDate] = useState(moment().format("DD/MM/YYYY"))
+    const [date, setDate] = useState(new Date())
+    const [first, setfirst] = useState("Select Date")
     const [open, setOpen] = useState(false)
-    const [newdate, setnewdate] = useState('');
     const [providername, setprovidername] = useState('')
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
     const [expirydate, setexpirydate] = useState(new Date().getDate())
     const [expirymonth, setexpirymonth] = useState(new Date().getMonth() + 1)
     const [expiryyear, setexpiryyear] = useState(new Date().getFullYear())
+    const [newdate, setnewdate] = useState('');
+    const [extenddurationsyears, setextenddurationsyears] = useState('0')
+    const [extenddurationsmonths, setextenddurationsmonths] = useState('0')
+    const [newextenddurationsyears, setnewextenddurationsyears] = useState(new Date().getFullYear())
+    const [newextenddurationsmonths, setnewextenddurationsmonths] = useState(new Date().getMonth() + 1)
 
 
 
 
-
-    console.log(date);
-    // console.log(expirydate, expirymonth, expiryyear);
 
     const addyears = () => {
         setdurationsyears(parseInt(durationsyears + 1))
         setexpiryyear(expiryyear + 1)
+        setnewextenddurationsyears(newextenddurationsyears + 1)
     }
     const lessyears = () => {
         if (durationsyears === 0) {
             setdurationsyears(0)
         } else {
             setdurationsyears(parseInt(durationsyears - 1))
+            setnewextenddurationsyears(newextenddurationsyears - 1)
             setexpiryyear(expiryyear - 1)
         }
     }
 
+
+
+    const extenddurationsyearsaddyears = () => {
+        setextenddurationsyears(parseInt(extenddurationsyears + 1))
+        setnewextenddurationsyears(newextenddurationsyears + 1)
+        setexpiryyear(expiryyear + 1)
+    }
+    const extenddurationsyearslessyears = () => {
+        if (extenddurationsyears === 0) {
+            setdurationsyears(0)
+        } else {
+            setextenddurationsyears(parseInt(extenddurationsyears - 1))
+            setnewextenddurationsyears(newextenddurationsyears - 1)
+            setexpiryyear(expiryyear - 1)
+        }
+    }
+
+
+
+
+    const extenddurationsmonthsaddmonth = () => {
+        setextenddurationsmonths(parseInt(extenddurationsmonths + 1))
+        setnewextenddurationsmonths(newextenddurationsmonths + 1)
+        setexpirymonth(expirymonth + 1)
+    }
+
+    const extenddurationsmonthslessmonth = () => {
+        if (extenddurationsmonths === 0) {
+            setextenddurationsmonths(0)
+        }
+        // if (monthsdurations === 13) {
+        //     setexpiryyear(expiryyear + 1) 
+        // }
+
+        else {
+            setextenddurationsmonths(parseInt(extenddurationsmonths - 1))
+            setnewextenddurationsmonths(newextenddurationsmonths - 1)
+            setexpirymonth(expirymonth - 1)
+        }
+    }
+
+
     const addmonth = () => {
         setmonthsdurations(parseInt(monthsdurations + 1))
         setexpirymonth(expirymonth + 1)
+        setnewextenddurationsmonths(newextenddurationsmonths + 1)
     }
 
     const lessmonth = () => {
@@ -77,6 +125,7 @@ const AddProductStepthree = ({ navigation }) => {
         else {
             setmonthsdurations(parseInt(monthsdurations - 1))
             setexpirymonth(expirymonth - 1)
+            setnewextenddurationsmonths(newextenddurationsmonths - 1)
         }
     }
 
@@ -94,15 +143,19 @@ const AddProductStepthree = ({ navigation }) => {
     };
 
     const handleConfirm = (date) => {
-        console.warn("A date has been picked: ", date);
+
+        // setDate(moment(date).format('DD-MM-YYYY'));
+        setfirst(moment(date).format('DD-MM-YYYY'))
+        console.log("----->", first);
+        // setDate(first)
+        console.log(date);
         hideDatePicker();
     };
 
 
 
+
     const backfunction = () => {
-
-
         Alert.alert(
             'Alert',
             'Are You Sure You Want TO Exit',
@@ -118,13 +171,27 @@ const AddProductStepthree = ({ navigation }) => {
 
 
     const nextscreen = () => {
-        let temp = {
-            ...global.apiData, dataofpurchased: "05-04-199", dataofexpiry: expirydate + ' ' + expirymonth + ' ' + expiryyear,
-            extendwarranty: { providername: providername, duration: expirydate + ' ' + expirymonth + ' ' + expiryyear }
+
+        if (durationenabled == true) {
+            let temp = {
+                ...global.apiData, dataofpurchased: date, dataofexpiry: expirydate + ' ' + expirymonth + ' ' + expiryyear,
+                providername: providername, duration: expirydate + ' ' + newextenddurationsmonths + ' ' + newextenddurationsyears,
+                noofdays: warrantydays
+            }
+
+            global.apiData = temp
+            navigation.navigate('Addproductstepfourcategory')
+        }
+        else {
+            let temp = {
+                ...global.apiData, dataofpurchased: date, dataofexpiry: expirydate + ' ' + expirymonth + ' ' + expiryyear,
+                noofdays: warrantydays,
+            }
+            global.apiData = temp
+            navigation.navigate('Addproductstepfourcategory')
         }
 
-        global.apiData = temp
-        navigation.navigate('Addproductstepfourcategory')
+
     }
 
 
@@ -152,10 +219,9 @@ const AddProductStepthree = ({ navigation }) => {
                                 <Text style={[Styles.headingtext,]}>Date of Purchase</Text>
                                 <Text style={Styles.headingtext}>Date of Expiry</Text>
                             </View>
-
                             <View style={[Styles.dateandpurchasesdinnerview, { marginTop: rh(2) }]}>
                                 <TouchableOpacity onPress={() => showDatePicker()} >
-                                    <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>pick date</Text>
+                                    <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>{first}</Text>
                                 </TouchableOpacity>
                                 <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>{[expirydate, '/', expirymonth, '/', expiryyear]}</Text>
                             </View>
@@ -164,6 +230,7 @@ const AddProductStepthree = ({ navigation }) => {
 
                         <DateTimePickerModal
                             date={date}
+                            maximumDate={moment().toDate()}
                             isVisible={isDatePickerVisible}
                             mode="date"
                             onConfirm={handleConfirm}
@@ -272,38 +339,40 @@ const AddProductStepthree = ({ navigation }) => {
 
                                                         <View style={Styles.monthandyearbuttonouterview}>
                                                             <View style={Styles.monthsandyearbuttoninerview}>
-                                                                <View style={{ width: rw(20), marginLeft: rw(7) }}>
-                                                                    <Text style={Styles.headingtext}>{durationsyears} Years</Text>
+                                                                <View style={{ width: rw(20), marginLeft: rw(2) }}>
+                                                                    <Text style={Styles.headingtext}>{extenddurationsyears} Years</Text>
                                                                 </View>
                                                                 <View style={Styles.inneryellewbuttons}>
-                                                                    <TouchableOpacity onPress={() => lessyears()}>
+                                                                    <TouchableOpacity onPress={() => extenddurationsyearslessyears()}>
                                                                         <AntDesign name='minuscircleo' size={20} color={Colors.black} />
                                                                     </TouchableOpacity>
-                                                                    <Text>{durationsyears}</Text>
-                                                                    <TouchableOpacity onPress={() => addyears()}>
+                                                                    <Text>{extenddurationsyears}</Text>
+                                                                    <TouchableOpacity onPress={() => extenddurationsyearsaddyears()}>
                                                                         <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
                                                                     </TouchableOpacity>
                                                                 </View>
                                                             </View>
                                                             <View style={Styles.monthsandyearbuttoninerview}>
-                                                                <View style={{ width: rw(20), marginLeft: rw(7) }}>
-                                                                    <Text style={Styles.headingtext}>{monthsdurations} Months</Text>
+                                                                <View style={{ width: rw(20), marginLeft: rw(2) }}>
+                                                                    <Text style={Styles.headingtext}>{extenddurationsmonths} Months</Text>
                                                                 </View>
                                                                 <View style={Styles.inneryellewbuttons}>
-                                                                    <TouchableOpacity onPress={() => lessmonth()}>
+                                                                    <TouchableOpacity onPress={() => extenddurationsmonthslessmonth()}>
                                                                         <AntDesign name='minuscircleo' size={20} color={Colors.black} />
                                                                     </TouchableOpacity>
-                                                                    <Text>{monthsdurations}</Text>
-                                                                    <TouchableOpacity onPress={() => addmonth()}>
+                                                                    <Text>{extenddurationsmonths}</Text>
+                                                                    <TouchableOpacity onPress={() => extenddurationsmonthsaddmonth()}>
                                                                         <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
                                                                     </TouchableOpacity>
                                                                 </View>
                                                             </View>
 
                                                         </View>
-                                                        <View>
-                                                        </View>
 
+                                                        <View style={{ left: rw(2) }}>
+                                                            <Text>Date of Expiry</Text>
+                                                            <Text style={[Styles.txtdate, { textAlign: 'left', marginTop: rh(1) }]}>{[expirydate, '/', newextenddurationsmonths, '/', newextenddurationsyears]}</Text>
+                                                        </View>
 
 
 
@@ -319,9 +388,9 @@ const AddProductStepthree = ({ navigation }) => {
                                                 null
                                             }
 
-                                            <View style={{ flex: 1 }}>
+                                            <View style={{ flex: 1, }}>
                                                 <View style={Styles.warrantymultipartexpiryview}>
-                                                    <View style={{ top: 5 }}>
+                                                    <View style={{ top: 7 }}>
                                                         <Text style={[Styles.innersecondhadding]}>Multipart Warranty</Text>
                                                     </View>
 

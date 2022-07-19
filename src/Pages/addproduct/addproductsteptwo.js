@@ -1,5 +1,5 @@
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
-import { Image, Dimensions, FlatList, ScrollView, Modal, StyleSheet, View, Text, TouchableOpacity, TextInput, PermissionsAndroid } from 'react-native'
+import { Image, Alert, Dimensions, FlatList, ScrollView, Modal, StyleSheet, View, Text, TouchableOpacity, TextInput, PermissionsAndroid } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Colors from '../../Global/Colors';
 import FontSize from '../../Global/Fonts';
@@ -19,11 +19,14 @@ const Addproductsteptwo = ({ navigation }) => {
     const [receiptspath, setreceiptspath] = useState('')
     const [imageloader, setimageloader] = useState(false)
 
+    const imageheight = Dimensions.get('window').height
+    const imagwidth = Dimensions.get('window').width
 
 
 
-
-
+    console.log('====================================', "This is Our Global Record 2");
+    console.log(JSON.stringify(global.apiData));
+    console.log('====================================');
 
 
 
@@ -46,6 +49,7 @@ const Addproductsteptwo = ({ navigation }) => {
 
 
     const uplodFile = async (image) => {
+
         console.log("yes entered");
         var formdata = new FormData();
         var filename = image.path.replace(/^.*[\\\/]/, '');
@@ -57,44 +61,58 @@ const Addproductsteptwo = ({ navigation }) => {
             uri: image.path,
             name: filename, type: image.mime
         });
-        setimageloader(true)
+
         var requestOptions = {
             method: 'POST',
             body: formdata,
             redirect: 'follow'
         };
-        console.log("requestOptions", requestOptions);
+        // console.log("requestOptions", requestOptions);
+        setimageloader(true)
         await fetch("http://waqarulhaq.com/expired-warranty-tracker/upload-img.php?", requestOptions)
-            .then(response => setreceiptspath(response.text()))
-            .catch(error => console.log('error', error), setimageloader(false));
+            .then(response => setreceiptspath(response.text(), setimageloader(false)))
+            .catch(error => console.log('error', error),);
     };
 
-
-
-
-
     const opencamera = () => {
-        ImagePicker.openCamera({
-            width: 200,
-            height: 200,
-            // cropping: true,
-            // compressImageQuality: 0.4,
-        }).then(async image => {
-            setImg(image.path)
-            setisCamera(false);
-            const ref = new Date().getTime();
-            setimages(image)
-            uplodFile(image);
-        });
+
+        setTimeout(() => {
+            ImagePicker.openCamera({
+                width: 200,
+                height: 200,
+                // cropping: true,
+                // compressImageQuality: 0.4,
+            }).then(async image => {
+                setImg(image.path)
+                setisCamera(false);
+                const ref = new Date().getTime();
+                setimages(image)
+                uplodFile(image);
+            });
+        }, 400);
     }
 
 
 
 
+    const nextscreendata = () => {
+        let temp = { ...global.apiData, imagepath: receiptspath };
+        global.apiData = temp;
+        navigation.navigate('AddProductStepthree')
+    }
 
 
-
-
+    const backfunction = () => {
+        Alert.alert(
+            'Alert',
+            'Are You Sure You Want TO Exit',
+            [
+                { text: 'Cancel', onPress: () => console.warn("You Backed") },
+                { text: 'OK', onPress: () => { navigation.navigate('BottomTabNavigations'), global.apiData = [] } },
+            ],
+            { cancelable: false }
+        )
+    }
 
 
 
@@ -108,7 +126,7 @@ const Addproductsteptwo = ({ navigation }) => {
         <SafeAreaView style={Styles.container}>
             <View style={{ flex: 1, marginHorizontal: rh(3) }}>
                 <View style={{ height: rh(4), marginTop: rh(2) }}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <TouchableOpacity onPress={() => backfunction()}>
                         <YellowBackSvg width={'20.67px'} height={'20.67px'} />
                     </TouchableOpacity>
                 </View>
@@ -155,7 +173,9 @@ const Addproductsteptwo = ({ navigation }) => {
                         </View>
                         :
 
-                        <Image source={{ uri: Img }} style={{ width: rw(90), resizeMode: 'stretch', height: rh(40) }} />
+                        <Image source={{ uri: Img }} resizeMode={'contain'} resizeMethod={'resize'} style={{ height: imageheight / 2, width: imagwidth / 2, borderLeftWidth: 1, borderRadius: 5, alignSelf: "center" }} />
+
+
                     }
 
                 </View>
@@ -171,11 +191,7 @@ const Addproductsteptwo = ({ navigation }) => {
                     {imageloader ?
                         <Loaders />
                         :
-                        <TouchableOpacity style={Styles.bottombtn} onPress={() => {
-                            let temp = { ...global.apiData, imagepath: receiptspath };
-                            global.apiData = temp;
-                            navigation.navigate('AddProductStepthree')
-                        }}>
+                        <TouchableOpacity style={Styles.bottombtn} onPress={() => nextscreendata()}>
                             <Text style={Styles.bottombtntext}>Next</Text>
                         </TouchableOpacity>
                     }

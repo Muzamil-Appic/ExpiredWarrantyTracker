@@ -27,8 +27,8 @@ const Styles = StyleSheet.create({
     dateandpurchasedouterview: { width: rw(88), marginTop: rh(2) },
     dateandpurchasesdinnerview: { flexDirection: "row", justifyContent: "space-between", width: rw(88), },
     durationview: { flexDirection: "row", height: rh(4), justifyContent: 'flex-start', alignContent: "center", alignItems: 'center', },
-    monthandyearbuttonouterview: { height: rh(13), width: rw(100), justifyContent: 'space-between', marginTop: rh(2) },
-    monthsandyearbuttoninerview: { flexDirection: "row", height: rh(5), width: rw(100), justifyContent: "space-between" },
+    monthandyearbuttonouterview: { height: rh(12), width: rw(100), justifyContent: 'space-between', marginTop: rh(2) },
+    monthsandyearbuttoninerview: { flexDirection: "row", width: rw(100), justifyContent: "space-between" },
     inneryellewbuttons: { flexDirection: "row", height: rh(7), width: rw(25), justifyContent: 'space-between', right: rw(12) },
     bottomlineview: { backgroundColor: Colors.borderbottomcolor, width: rw(88), height: rh(0.5), marginTop: rh(2) },
     toggleouterviewmain: { height: rw(5), width: rw(10), backgroundColor: Colors.togglebackgroundcolor, borderRadius: 20, justifyContent: 'center', alignContent: 'center' },
@@ -42,16 +42,24 @@ const Styles = StyleSheet.create({
     addproductparttextinput: { padding: 0, fontSize: FontSize.font21, color: Colors.black },
     warrantymultipartexpiryview: { height: rh(5), width: rw(89), flexDirection: "row", alignContent: 'center', alignItems: 'center', justifyContent: "space-between", top: rh(0.5) },
     addadditionalpartouterview: { height: rh(5), backgroundColor: '#DCDBDB', width: rw(89), borderRadius: 5, justifyContent: 'center', top: rh(2) },
-    productproductmerchantnotes: { flexDirection: 'row', borderBottomWidth: 2, borderColor: Colors.bk, width: rw(90), height: rh(6), justifyContent: 'center', alignContent: 'center', alignItems: "center", },
+    productproductmerchantnotes: { flexDirection: 'row', borderBottomWidth: 2, borderColor: Colors.bk, width: rw(90), height: rh(6), },
     merchantinputouterview: { borderBottomColor: Colors.bk, width: rw(90), borderBottomWidth: 2, height: rh(6), justifyContent: 'center' },
     pagefiveheadings: { color: Colors.black, fontWeight: '600', fontFamily: 'Inter-Regular', fontSize: FontSize.font17 },
+    input: {
 
+        padding: 20,
+        fontSize: FontSize.font21, color: Colors.black
+
+    },
     txtinputsheaddings: { fontFamily: 'Inter-Light', fontSize: FontSize.font14, color: Colors.gry, marginTop: rh(0.5) },
 
     datePickerStyle: {
         width: rh(50),
         marginTop: 25,
     },
+    itemStyle: {
+        padding: 10,
+      },
 }
 )
 export default Styles;

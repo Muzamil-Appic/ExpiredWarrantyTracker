@@ -11,42 +11,77 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontSize from '../../Global/Fonts'
 const Addadditionalpart = ({ navigation }) => {
     const [addpart, setaddpart] = useState('')
-    const [durationsyears, setdurationsyears] = useState(true)
-    const [monthsdurations, setmonthsdurations] = useState(true)
     const [extendwarrantyenabled, setextendwarrantyenabled] = useState(true)
     const [durationenabled, setdurationenabled] = useState(true)
+    const [adddurationyers, setadddurationyers] = useState(0)
+    const [adddurationmonths, setadddurationmonths] = useState(0)
+    const [expirydate, setexpirydate] = useState(new Date().getDate())
+    const [durationsyears, setdurationsyears] = useState(new Date().getFullYear())
+    const [monthsdurations, setmonthsdurations] = useState(new Date().getMonth() + 1)
+    const [showdurationyears, setshowdurationyears] = useState('')
 
 
 
 
+    const adddata = () => {
 
+        if (durationenabled == true) {
+            let temp = {
+                ...global.apiData, productnamemultipart: addpart, durationmultipart: expirydate + ' ' + monthsdurations + ' ' + durationsyears,
+            }
+            global.apiData = temp
+            navigation.navigate('AddProductStepthree')
+        }
+        else {
+            let temp = {
+                ...global.apiData, duration: "Life Time Warranty", productnamemultipart: addpart,
+            }
+            global.apiData = temp
+            navigation.navigate('AddProductStepthree')
+        }
+    }
 
 
 
     const addyears = () => {
-        setdurationsyears(parseInt(durationsyears + 1))
+        setadddurationyers(parseInt(adddurationyers + 1))
+        setdurationsyears(durationsyears + 1)
     }
+
+
+
     const lessyears = () => {
-        if (durationsyears === 0) {
-            setdurationsyears(0)
-        } else {
-            setdurationsyears(parseInt(durationsyears - 1))
+        if (adddurationyers === 0) {
+            setadddurationyers(0)
+        }
+        // if (monthsdurations === 13) {
+        //     setexpiryyear(expiryyear + 1) 
+        // }
+
+        else {
+            setadddurationyers(parseInt(adddurationyers - 1))
+            setdurationsyears(durationsyears - 1)
         }
     }
 
     const addmonth = () => {
         setmonthsdurations(parseInt(monthsdurations + 1))
+        setadddurationmonths(adddurationmonths + 1)
     }
 
     const lessmonth = () => {
-        if (monthsdurations === 0) {
-            setmonthsdurations(0)
-        } else {
+        if (adddurationmonths === 0) {
+            setadddurationmonths(0)
+        }
+        // if (monthsdurations === 13) {
+        //     setexpiryyear(expiryyear + 1) 
+        // }
+
+        else {
             setmonthsdurations(parseInt(monthsdurations - 1))
+            setadddurationmonths(adddurationmonths - 1)
         }
     }
-
-
 
     return (
         <SafeAreaView style={Styles.container}>
@@ -79,13 +114,13 @@ const Addadditionalpart = ({ navigation }) => {
                             <View style={Styles.monthandyearbuttonouterview}>
                                 <View style={Styles.monthsandyearbuttoninerview}>
                                     <View style={{ width: rw(20), marginLeft: rw(7) }}>
-                                        <Text style={Styles.headingtext}>{durationsyears} Years</Text>
+                                        <Text style={Styles.headingtext}>{adddurationyers} Years</Text>
                                     </View>
                                     <View style={Styles.inneryellewbuttons}>
                                         <TouchableOpacity onPress={() => lessyears()}>
                                             <AntDesign name='minuscircleo' size={20} color={Colors.black} />
                                         </TouchableOpacity>
-                                        <Text>{durationsyears}</Text>
+                                        <Text>{adddurationyers}</Text>
                                         <TouchableOpacity onPress={() => addyears()}>
                                             <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
                                         </TouchableOpacity>
@@ -93,13 +128,13 @@ const Addadditionalpart = ({ navigation }) => {
                                 </View>
                                 <View style={Styles.monthsandyearbuttoninerview}>
                                     <View style={{ width: rw(20), marginLeft: rw(7) }}>
-                                        <Text style={Styles.headingtext}>{monthsdurations} Months</Text>
+                                        <Text style={Styles.headingtext}>{adddurationmonths} Months</Text>
                                     </View>
                                     <View style={Styles.inneryellewbuttons}>
                                         <TouchableOpacity onPress={() => lessmonth()}>
                                             <AntDesign name='minuscircleo' size={20} color={Colors.black} />
                                         </TouchableOpacity>
-                                        <Text>{monthsdurations}</Text>
+                                        <Text>{adddurationmonths}</Text>
                                         <TouchableOpacity onPress={() => addmonth()}>
                                             <AntDesign name='pluscircleo' size={20} color={Colors.yellow} />
                                         </TouchableOpacity>
@@ -120,7 +155,8 @@ const Addadditionalpart = ({ navigation }) => {
 
                             <View style={{ height: rh(10), marginTop: rh(2) }}>
                                 <Text style={Styles.headingtext}>Date OF Expiry</Text>
-                                <Text style={styless.dat} >05-04-199F</Text>
+                                <Text style={[Styles.txtdate, { textAlign: 'left' }]}>{[expirydate, '/', monthsdurations, '/', durationsyears]}</Text>
+
                             </View>
 
 
@@ -153,7 +189,7 @@ const Addadditionalpart = ({ navigation }) => {
 
                 </View>
                 <View style={Styles.nextanssavedbuttonview}>
-                    <TouchableOpacity style={Styles.bottombtn} onPress={() => navigation.navigate('addproductsteptwo')}>
+                    <TouchableOpacity style={Styles.bottombtn} onPress={() => adddata()}>
                         <Text style={Styles.bottombtntext}>Add</Text>
                     </TouchableOpacity>
                 </View>
