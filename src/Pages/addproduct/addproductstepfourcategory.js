@@ -27,16 +27,16 @@ const Addproductstepfourcategory = ({ navigation }) => {
 
 
 
-const [useremail, setuseremail] = useState('')
- 
+  const [useremail, setuseremail] = useState('')
 
-const asyncvalues = async () => {
+
+  const asyncvalues = async () => {
     await AsyncStorage.getItem('userdetails').then(async value => {
-        let data = JSON.parse(value);
-        console.log("------>", data);
-        setuseremail(data?.useremail)
+      let data = JSON.parse(value);
+      console.log("------>", data);
+      setuseremail(data?.useremail)
     })
-}
+  }
 
 
 
@@ -140,7 +140,12 @@ const asyncvalues = async () => {
 
 
   const datachangedagain = () => {
-    let temp = { ...global.apiData, receiptcategory: receipcategoryname, receiptcategorycolour: categorycolour }
+
+    if (receipcategoryname === '') {
+      alert("Please seletect category first")
+      return;
+    }
+    let temp = { ...global.apiData, receiptkicategory: receipcategoryname, receiptcategorycolour: categorycolour }
     global.apiData = temp
     navigation.navigate('Addproductstepfiveoptional')
   }

@@ -46,9 +46,9 @@ const Styles = StyleSheet.create({
     merchantinputouterview: { borderBottomColor: Colors.bk, width: rw(90), borderBottomWidth: 2, height: rh(6), justifyContent: 'center' },
     pagefiveheadings: { color: Colors.black, fontWeight: '600', fontFamily: 'Inter-Regular', fontSize: FontSize.font17 },
     input: {
+        
+        fontSize: FontSize.font21, color: Colors.black,
 
-        padding: 20,
-        fontSize: FontSize.font21, color: Colors.black
 
     },
     txtinputsheaddings: { fontFamily: 'Inter-Light', fontSize: FontSize.font14, color: Colors.gry, marginTop: rh(0.5) },
@@ -59,7 +59,7 @@ const Styles = StyleSheet.create({
     },
     itemStyle: {
         padding: 10,
-      },
+    },
 }
 )
 export default Styles;

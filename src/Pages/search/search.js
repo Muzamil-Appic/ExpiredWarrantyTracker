@@ -9,43 +9,80 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontSize from '../../Global/Fonts'
 import Styles from './search.Styles'
+import { useIsFocused } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 
 
 
 
 const Search = ({ navigation }) => {
+  const [newapireoced, setnewapireoced] = useState('')
 
-  const search = [
-    {
-      receiptid: 0,
-      recipedexpirydate: "364 days left",
-      receiptsdatecompleted: 'Expires on 6 Feb 2023',
-      receipttitle: 'Mobile',
-    },
-    {
-      receiptid: '1',
-      recipedexpirydate: "364 days left",
-      receiptsdatecompleted: 'Expires on 6 Feb 2023',
-      receipttitle: 'Washing Machine',
-    }
-  ]
+
+  const isfocudes = useIsFocused()
+
+
+  const [useremail, setuseremail] = useState('')
+  const asyncvalues = async () => {
+    await AsyncStorage.getItem('userdetails').then(async value => {
+      let data = JSON.parse(value);
+      console.log("------>", data);
+      setuseremail(data?.useremail)
+    })
+  }
+
+  useEffect(() => {
+    asyncvalues()
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch(`http://waqarulhaq.com/expired-warranty-tracker/get-products.php?email=${useremail}`, requestOptions)
+      .then(response => response.json())
+      .then(result => setapirecord(result.data))
+      // .then(result =>
+      //   setapirecord(result))
+      // .then(jssss())
+      .catch(error => console.log('error', error));
+  }, [isfocudes])
+
+
+  const jssss = () => {
+    console.log("entered");
+
+    console.log(apirecord);
+    const obj = JSON.parse(apirecord);
+    setnewapireoced(obj)
+
+
+  }
+
+
+
   const [searchbox, setsearchbox] = useState('')
   const [crossenabled, setcrossenabled] = useState(false)
+  const [apirecord, setapirecord] = useState([])
 
 
   const serarchrecordrendorfunction = ({ item }) => {
-    console.log(item);
+
+    const dd = JSON.parse(item.data)
+    console.log("909090909090909090900909", dd.dataofexpiry);
     return (
       <View>
-        <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetails')}>
+
+        <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetails', dd)}>
           <View style={{ width: rw(90), height: rh(11), borderBottomColor: Colors.bk, borderBottomWidth: 2, marginTop: rh(1), alignContent: "center", justifyContent: "center", }}>
-            <Text style={{ fontSize: FontSize.font18, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium' }}>{item.receipttitle}</Text>
+            <Text style={{ fontSize: FontSize.font18, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium' }}>{dd.productkaname}</Text>
             <View style={{ flexDirection: 'row', marginTop: rh(1) }}>
               <Text style={{ color: Colors.gry, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', }}>
-                {item.recipedexpirydate}</Text>
+                {dd.dateofpurchaseditem}</Text>
               <Text style={{ color: Colors.gry, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', left: rw(3) }}>
-                {item.receiptsdatecompleted}
+                {dd.dataofexpiry}
               </Text>
             </View>
           </View>
@@ -69,8 +106,8 @@ const Search = ({ navigation }) => {
       </View>
 
       <ScrollView style={{ flexGrow: 1 }} showsHorizontalScrollIndicator={false}>
-        <FlatList data={search}
-          keyExtractor={item => item.id}
+        <FlatList data={apirecord}
+          // keyExtractor={item => item.id}
           renderItem={serarchrecordrendorfunction}
           contentContainerStyle={{ justifyContent: 'center', alignContent: 'center', alignSelf: "center" }} />
       </ScrollView>

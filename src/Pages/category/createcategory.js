@@ -13,7 +13,8 @@ const Createcategory = ({ navigation }) => {
 
     const [categoryname, setcategoryname] = useState('')
     const [loader, setloader] = useState(false)
-    const [categorycolour, setcategorycolour] = useState('')
+    const [categorykacolour, setcategorykacolour] = useState("")
+
     const [email, setemail] = useState('')
     const [records, setrecords] = useState([])
 
@@ -46,27 +47,32 @@ const Createcategory = ({ navigation }) => {
 
     const empty = () => {
         setemail('')
-        setcategorycolour('')
+        setcategorykacolour('')
         setcategoryname('')
     }
 
     const AddCategory = async () => {
+
+        console.log('====================================');
+        console.log(categoryname, categorykacolour);
+        console.log('====================================');
         if (categoryname === '') {
             alert("Please Enter Category First")
-            return;
-        }
-        if (categorycolour === '') {
-            alert("Please Select  Category Colour First")
             return;
         }
         if (email === '') {
             alert("email is not added")
             return;
         }
+        if (categorykacolour === '') {
+            alert("colour")
+            return;
 
-        console.log("-------->", email, categorycolour, categoryname);
+        }
 
-        const ss = categorycolour.split('#')
+        console.log("-------->", email, categorykacolour, categoryname);
+
+        const ss = categorykacolour.split('#')
         console.log(ss[1]);
         const clr = ss[1]
         //  https://waqarulhaq.com/expired-warranty-tracker/create-category.php?email=soohaibster@gmail.com&name=Home&color=#f54e42
@@ -161,7 +167,7 @@ const Createcategory = ({ navigation }) => {
         return (
             <View style={{ marginTop: rh(3), flexDirection: "row", marginHorizontal: rw(3) }} >
                 {item.seleced == true ?
-                    <TouchableOpacity style={{ height: rh(7), width: rw(18) }} onPress={() => { hitsize(item), setcategorycolour(item.code), setcategoryname(item.name) }}>
+                    <TouchableOpacity style={{ height: rh(7), width: rw(18) }} onPress={() => { setcategoryname(item.name), hitsize(item) }}>
                         <MaterialIcons name='folder' size={50} color={item.code} />
                     </TouchableOpacity>
                     :
@@ -187,6 +193,7 @@ const Createcategory = ({ navigation }) => {
                     name: records[i].name,
 
                 };
+                setcategorykacolour(records[i].code)
             } else {
                 temp[i] = {
                     seleced: false,
@@ -198,6 +205,7 @@ const Createcategory = ({ navigation }) => {
 
         }
         setrecords(temp);
+
 
     }
 

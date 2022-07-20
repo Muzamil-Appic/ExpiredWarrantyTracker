@@ -16,13 +16,27 @@ import Toast from 'react-native-simple-toast';
 import ImagePicker from 'react-native-image-crop-picker';
 import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import AutoHeightImage from 'react-native-auto-height-image';
+import Loaders from '../../Components/Loaders'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Addproductstepfiveoptional = ({ navigation }) => {
 
 
     useEffect(() => {
         getcurrencyimages()
         getcurrencylist()
+        asyncvalues()
     }, []);
+
+    const [useremail, setuseremail] = useState('')
+    const asyncvalues = async () => {
+        await AsyncStorage.getItem('userdetails').then(async value => {
+            let data = JSON.parse(value);
+            console.log("------>", data);
+            setuseremail(data?.useremail)
+        })
+    }
 
 
     const getcurrencyimages = () => {
@@ -257,7 +271,7 @@ const Addproductstepfiveoptional = ({ navigation }) => {
     const [currencymodal, setcurrencymodal] = useState(false)
     const [paymentmethodmodal, setpaymentmethodmodal] = useState(false)
     const [showdumyimage, setshowdumyimage] = useState('https://waqarulhaq.com//expired-warranty-tracker/currency-images/22-1.png')
-
+    const [imageloader, setimageloader] = useState(false)
     const [Img, setImg] = useState('')
     const [isCamera, setisCamera] = useState('')
     const [images, setimages] = useState('')
@@ -305,10 +319,11 @@ const Addproductstepfiveoptional = ({ navigation }) => {
             body: formdata,
             redirect: 'follow'
         };
-        console.log("requestOptions", requestOptions);
+        setimageloader(true)
         await fetch("http://waqarulhaq.com/expired-warranty-tracker/upload-img.php?", requestOptions)
-            .then(response => setreceiptspath(response.text()))
-            .catch(error => console.log('error', error));
+            .then(response => response.json())
+            .then(result => { setreceiptspath(result), setimageloader(false) })
+            .catch(error => console.log('error', error),);
     };
 
     const opencamera = () => {
@@ -330,6 +345,14 @@ const Addproductstepfiveoptional = ({ navigation }) => {
 
 
     const apihit = () => {
+
+        if (productprice === '') {
+            alert("Please Complete Price Method")
+            return;
+        }
+
+
+
         let temp = {
             ...global.apiData, modelno: modelno, serialno: serialno,
             price: productprice, merchantname: merchantname,
@@ -346,10 +369,10 @@ const Addproductstepfiveoptional = ({ navigation }) => {
             method: 'POST',
             redirect: 'follow'
         };
-        fetch(`http://waqarulhaq.com/expired-warranty-tracker/save-product-data.php?email=${mail}&data=${kk}`, requestOptions)
+        fetch(`http://waqarulhaq.com/expired-warranty-tracker/save-product-data.php?email=${useremail}&data=${kk}`, requestOptions)
             .then(response => response.text(),
                 Toast.show("Record Added Successfull"),
-                navigation.navigate('Receiptsdetails'),
+                navigation.navigate('BottomTabNavigations'),
                 global.apiData = []
             )
             .then(result => console.log(result),
@@ -507,7 +530,15 @@ const Addproductstepfiveoptional = ({ navigation }) => {
                                     </View>
                                     :
 
-                                    <Image source={{ uri: Img }} style={{ width: rw(90), resizeMode: 'stretch', height: rh(40) }} />
+                                    // <Image source={{ uri: Img }} style={{ width: rw(90), resizeMode: 'stretch', height: rh(40) }} />
+                                    <View style={{ justifyContent: "center", alignItems: "center" }}>
+                                        <AutoHeightImage
+                                            resizeMode="stretch"
+                                            width={200}
+                                            style={{ borderRadius: 10 }}
+                                            source={{ uri: Img }}
+                                        />
+                                    </View>
                                 }
 
                             </View>
@@ -533,6 +564,9 @@ const Addproductstepfiveoptional = ({ navigation }) => {
                             </View>
                             :
                             <View style={Styles.toggleouterviewmain}>
+
+
+
                                 <TouchableOpacity onPress={() => { setmerchanttoggle(true), setmerchantenabled(true) }} style={{ justifyContent: 'center' }}>
                                     <View style={Styles.toggleoffstyle}>
                                     </View>
@@ -555,11 +589,11 @@ const Addproductstepfiveoptional = ({ navigation }) => {
                             </View>
                             <Text style={Styles.txtinputsheaddings}>Website</Text>
                             <View style={[Styles.merchantinputouterview]}>
-                                <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmerchantwebsite(e)} />
+                                <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmerchantwebsite(e)} keyboardType={'url'} />
                             </View>
                             <Text style={Styles.txtinputsheaddings}>Contact Number</Text>
                             <View style={[Styles.merchantinputouterview]}>
-                                <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmerchantwebsite(e)} />
+                                <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmerchantcontactno(e)} keyboardType={'phone-pad'} />
                             </View>
                         </View>
                         : null
@@ -588,7 +622,7 @@ const Addproductstepfiveoptional = ({ navigation }) => {
 
                     </View>
                     {notesenabled ?
-                        <View style={{ flex: 1, borderWidth: 1, borderColor: Colors.bk, borderRadius: 10 }}>
+                        <View style={{ flex: 1, borderWidth: 1, borderColor: Colors.bk, borderRadius: 10, justifyContent: "flex-start", alignContent: "flex-start" }}>
                             <TextInput
                                 multiline
                                 numberOfLines={10}
@@ -606,9 +640,15 @@ const Addproductstepfiveoptional = ({ navigation }) => {
 
             </View>
             <View style={[Styles.nextanssavedbuttonview, { marginHorizontal: rw(3) }]}>
-                <TouchableOpacity style={Styles.bottombtn} onPress={() => apihit()}>
-                    <Text style={Styles.bottombtntext}>Next</Text>
-                </TouchableOpacity>
+
+                {imageloader ?
+                    <Loaders />
+                    :
+
+                    <TouchableOpacity style={Styles.bottombtn} onPress={() => apihit()}>
+                        <Text style={Styles.bottombtntext}>Next</Text>
+                    </TouchableOpacity>
+                }
             </View>
 
 

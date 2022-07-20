@@ -174,9 +174,9 @@ const AddProductStepthree = ({ navigation }) => {
 
         if (durationenabled == true) {
             let temp = {
-                ...global.apiData, dataofpurchased: date, dataofexpiry: expirydate + ' ' + expirymonth + ' ' + expiryyear,
+                ...global.apiData, dateofpurchaseditem: moment(date).format('DD-MM-YYYY'), dataofexpiry: expirydate + ' ' + expirymonth + ' ' + expiryyear,
                 providername: providername, duration: expirydate + ' ' + newextenddurationsmonths + ' ' + newextenddurationsyears,
-                noofdays: warrantydays
+                noofdaysbeforeexpiredwarning: warrantydays
             }
 
             global.apiData = temp
@@ -184,7 +184,7 @@ const AddProductStepthree = ({ navigation }) => {
         }
         else {
             let temp = {
-                ...global.apiData, dataofpurchased: date, dataofexpiry: expirydate + ' ' + expirymonth + ' ' + expiryyear,
+                ...global.apiData, dateofpurchaseditem: moment(date).format('DD-MM-YYYY'), dataofexpiry: expirydate + ' ' + expirymonth + ' ' + expiryyear,
                 noofdays: warrantydays,
             }
             global.apiData = temp

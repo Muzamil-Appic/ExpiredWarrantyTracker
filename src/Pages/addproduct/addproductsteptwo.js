@@ -11,7 +11,8 @@ import Styles from './addproduct.Styles'
 import Loaders from '../../Components/Loaders'
 
 import ImagePicker from 'react-native-image-crop-picker';
-
+import FullWidthImage from 'react-native-fullwidth-image'
+import AutoHeightImage from 'react-native-auto-height-image';
 const Addproductsteptwo = ({ navigation }) => {
     const [Img, setImg] = useState('')
     const [isCamera, setisCamera] = useState('')
@@ -22,7 +23,8 @@ const Addproductsteptwo = ({ navigation }) => {
     const imageheight = Dimensions.get('window').height
     const imagwidth = Dimensions.get('window').width
 
-
+    const win = Dimensions.get('window');
+    const ratio = win.width / 541;
 
     console.log('====================================', "This is Our Global Record 2");
     console.log(JSON.stringify(global.apiData));
@@ -70,8 +72,11 @@ const Addproductsteptwo = ({ navigation }) => {
         // console.log("requestOptions", requestOptions);
         setimageloader(true)
         await fetch("http://waqarulhaq.com/expired-warranty-tracker/upload-img.php?", requestOptions)
-            .then(response => setreceiptspath(response.text(), setimageloader(false)))
+            .then(response => response.json())
+            .then(result => { setreceiptspath(result), setimageloader(false) })
             .catch(error => console.log('error', error),);
+
+
     };
 
     const opencamera = () => {
@@ -96,7 +101,7 @@ const Addproductsteptwo = ({ navigation }) => {
 
 
     const nextscreendata = () => {
-        let temp = { ...global.apiData, imagepath: receiptspath };
+        let temp = { ...global.apiData, receiptkiphoto: receiptspath };
         global.apiData = temp;
         navigation.navigate('AddProductStepthree')
     }
@@ -124,7 +129,9 @@ const Addproductsteptwo = ({ navigation }) => {
 
     return (
         <SafeAreaView style={Styles.container}>
+
             <View style={{ flex: 1, marginHorizontal: rh(3) }}>
+
                 <View style={{ height: rh(4), marginTop: rh(2) }}>
                     <TouchableOpacity onPress={() => backfunction()}>
                         <YellowBackSvg width={'20.67px'} height={'20.67px'} />
@@ -173,10 +180,19 @@ const Addproductsteptwo = ({ navigation }) => {
                         </View>
                         :
 
-                        <Image source={{ uri: Img }} resizeMode={'contain'} resizeMethod={'resize'} style={{ height: imageheight / 2, width: imagwidth / 2, borderLeftWidth: 1, borderRadius: 5, alignSelf: "center" }} />
-
+                        // <Image source={{ uri: Img }} resizeMode={'contain'} resizeMethod={'resize'} style={{ height: imageheight / 2, width: imagwidth / 2, borderLeftWidth: 1, borderRadius: 5, alignSelf: "center" }} />
+                        // <FullWidthImage  source={{ uri: Img }} ratio={3/3} />
+                        <View style={{ justifyContent: "center", alignItems: "center" }}>
+                            <AutoHeightImage
+                                resizeMode="stretch"
+                                width={200}
+                                style={{ borderRadius: 10 }}
+                                source={{ uri: Img }}
+                            />
+                        </View>
 
                     }
+
 
                 </View>
 
@@ -196,6 +212,7 @@ const Addproductsteptwo = ({ navigation }) => {
                         </TouchableOpacity>
                     }
                 </View>
+
             </View>
 
         </SafeAreaView >
