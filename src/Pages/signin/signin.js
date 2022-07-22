@@ -236,14 +236,16 @@ const Signin = ({ navigation }) => {
       ///   console.log(userinfo)
       // Sign-in the user with the credential
       .then((loggeduser) => {
-        console.log("9", loggeduser.user.email);
-        AsyncStorage.setItem(
-          'userdetails',
-          JSON.stringify({
-            useremail: loggeduser.user.email,
-            userid: loggeduser.user.email,
-          })
-        )
+
+        
+          //  console.log("9", loggeduser.user.email);
+          AsyncStorage.setItem(
+            'userdetails',
+            JSON.stringify({
+              useremail: loggeduser.user.email,
+              userid: loggeduser.user.email,
+            })
+          )
         if (loggeduser.additionalUserInfo.isNewUser === true) {
           console.log("New User");
           console.log(loggeduser.user.email)

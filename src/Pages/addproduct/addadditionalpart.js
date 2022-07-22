@@ -27,14 +27,14 @@ const Addadditionalpart = ({ navigation }) => {
 
         if (durationenabled == true) {
             let temp = {
-                ...global.apiData, productnamemultipart: addpart, durationmultipart: expirydate + ' ' + monthsdurations + ' ' + durationsyears,
+                ...global.apiData, name_multipart: addpart, duration_multipart: durationsyears + '-' + monthsdurations + '-' + expirydate,
             }
             global.apiData = temp
             navigation.navigate('AddProductStepthree')
         }
         else {
             let temp = {
-                ...global.apiData, duration: "Life Time Warranty", productnamemultipart: addpart,
+                ...global.apiData, duration_multipart: "Life Time Warranty", name_multipart: addpart,
             }
             global.apiData = temp
             navigation.navigate('AddProductStepthree')

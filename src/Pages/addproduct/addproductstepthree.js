@@ -33,8 +33,7 @@ const AddProductStepthree = ({ navigation }) => {
     const [multipartfirstenabled, setmultipartfirstenabled] = useState(false)
     const siz = Dimensions.get('window').height
     const [calenderdat, setcalenderdat] = useState('')
-    const [date, setDate] = useState(new Date())
-    const [first, setfirst] = useState("Select Date")
+
     const [open, setOpen] = useState(false)
     const [providername, setprovidername] = useState('')
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -51,7 +50,15 @@ const AddProductStepthree = ({ navigation }) => {
 
 
 
+    const [date, setDate] = useState(new Date())
+    const [first, setfirst] = useState("Select Date")
+    const [expiryreceiptdate, setexpiryreceiptdate] = useState(new Date())
+
+
+
+
     const addyears = () => {
+
         setdurationsyears(parseInt(durationsyears + 1))
         setexpiryyear(expiryyear + 1)
         setnewextenddurationsyears(newextenddurationsyears + 1)
@@ -143,12 +150,16 @@ const AddProductStepthree = ({ navigation }) => {
     };
 
     const handleConfirm = (date) => {
-
-        // setDate(moment(date).format('DD-MM-YYYY'));
         setfirst(moment(date).format('DD-MM-YYYY'))
-        console.log("----->", first);
-        // setDate(first)
-        console.log(date);
+        setDate(date)
+
+
+        console.log(date.getDate());
+        setexpirydate(date.getDate() - 1)
+        setexpirymonth(date.getMonth() + 1)
+        setexpiryyear(date.getFullYear())
+
+
         hideDatePicker();
     };
 
@@ -174,18 +185,17 @@ const AddProductStepthree = ({ navigation }) => {
 
         if (durationenabled == true) {
             let temp = {
-                ...global.apiData, dateofpurchaseditem: moment(date).format('DD-MM-YYYY'), dataofexpiry: expirydate + ' ' + expirymonth + ' ' + expiryyear,
-                providername: providername, duration: expirydate + ' ' + newextenddurationsmonths + ' ' + newextenddurationsyears,
-                noofdaysbeforeexpiredwarning: warrantydays
+                ...global.apiData, purchase_date: moment(date).format('DD-MM-YYYY'), expiry_date: expiryyear + '-' + expirymonth + '-' + expirydate,
+                provider_name: providername, duration: newextenddurationsyears + '-' + newextenddurationsmonths + '-' + expirydate,
+                no_of_days_before_expiry_warning: warrantydays, duration_years: durationsyears + ' years' + monthsdurations + ' Month',
             }
-
             global.apiData = temp
             navigation.navigate('Addproductstepfourcategory')
         }
         else {
             let temp = {
-                ...global.apiData, dateofpurchaseditem: moment(date).format('DD-MM-YYYY'), dataofexpiry: expirydate + ' ' + expirymonth + ' ' + expiryyear,
-                noofdays: warrantydays,
+                ...global.apiData, purchase_date: moment(date).format('DD-MM-YYYY'), expiry_date: expiryyear + '-' + expirymonth + '-' + expirydate,
+                no_of_days_before_expiry_warning: warrantydays
             }
             global.apiData = temp
             navigation.navigate('Addproductstepfourcategory')

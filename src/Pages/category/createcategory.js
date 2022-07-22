@@ -14,7 +14,7 @@ const Createcategory = ({ navigation }) => {
     const [categoryname, setcategoryname] = useState('')
     const [loader, setloader] = useState(false)
     const [categorykacolour, setcategorykacolour] = useState("")
-
+    const [loaders, setloaders] = useState(false)
     const [email, setemail] = useState('')
     const [records, setrecords] = useState([])
 
@@ -27,13 +27,15 @@ const Createcategory = ({ navigation }) => {
 
 
     const getcolours = () => {
+        setloaders(true)
         fetch('https://waqarulhaq.com/expired-warranty-tracker/get-category-colors.php')
             .then((response) => response.json())
             .then((responseJson) => {
-                //  console.log(responseJson);
+                setloaders(false)
                 setrecords(responseJson.data);
             })
             .catch((error) => {
+                setloaders(false)
                 console.error(error);
             });
     }
@@ -61,7 +63,7 @@ const Createcategory = ({ navigation }) => {
             return;
         }
         if (email === '') {
-            alert("email is not added")
+            alert("Please Login Again And Enter ")
             return;
         }
         if (categorykacolour === '') {
@@ -167,7 +169,7 @@ const Createcategory = ({ navigation }) => {
         return (
             <View style={{ marginTop: rh(3), flexDirection: "row", marginHorizontal: rw(3) }} >
                 {item.seleced == true ?
-                    <TouchableOpacity style={{ height: rh(7), width: rw(18) }} onPress={() => { setcategoryname(item.name), hitsize(item) }}>
+                    <TouchableOpacity style={{ height: rh(9), width: rw(18), bottom: rh(1) }} onPress={() => { setcategoryname(item.name), hitsize(item) }}>
                         <MaterialIcons name='folder' size={50} color={item.code} />
                     </TouchableOpacity>
                     :
@@ -233,14 +235,20 @@ const Createcategory = ({ navigation }) => {
                         <Text style={styles.addproductparttext}>Pick a color</Text>
                     </View>
 
-                    <FlatList
-                        data={records}
-                        renderItem={renderfunction}
-                        keyExtractor={item => item.id}
-                        numColumns={4}
-                        contentContainerStyle={{ width: rw(90), justifyContent: 'center', }}
+                    {loaders ?
+                        <View style={{ flex: 1, alignSelf: "center", justifyContent: 'center' }}>
+                            <Loaders />
+                        </View>
+                        :
+                        <FlatList
+                            data={records}
+                            renderItem={renderfunction}
+                            keyExtractor={item => item.id}
+                            numColumns={4}
+                            contentContainerStyle={{ width: rw(90), justifyContent: 'center', }}
 
-                    />
+                        />
+                    }
 
 
 
@@ -248,7 +256,9 @@ const Createcategory = ({ navigation }) => {
                 </ScrollView>
                 <View style={styles.nextanssavedbuttonview}>
                     {loader ?
+
                         <Loaders />
+
                         :
                         <TouchableOpacity style={styles.bottombtn} onPress={() => AddCategory()}>
                             <Text style={styles.bottombtntext}>Add</Text>

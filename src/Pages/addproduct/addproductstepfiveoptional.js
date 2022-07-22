@@ -20,8 +20,12 @@ import AutoHeightImage from 'react-native-auto-height-image';
 import Loaders from '../../Components/Loaders'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Addproductstepfiveoptional = ({ navigation }) => {
+const Addproductstepfiveoptional = ({ navigation, route }) => {
 
+
+    console.log('====================================');
+    console.log(route?.params);
+    console.log('====================================');
 
     useEffect(() => {
         getcurrencyimages()
@@ -279,9 +283,7 @@ const Addproductstepfiveoptional = ({ navigation }) => {
 
 
 
-    console.log('====================================', "This is Our Global Record 5");
-    console.log(JSON.stringify(global.apiData));
-    console.log('====================================');
+
 
 
     const selectimagefromgallery = () => {
@@ -350,34 +352,38 @@ const Addproductstepfiveoptional = ({ navigation }) => {
             alert("Please Complete Price Method")
             return;
         }
-
+        const useremail = "muzamilqureshiarid@gmail.com"
 
 
         let temp = {
-            ...global.apiData, modelno: modelno, serialno: serialno,
-            price: productprice, merchantname: merchantname,
-            merchantlocation: merchantlocation, merchantwebsite: merchantwebsite,
-            merchantcontactno: merchantcontactno, notes: notes, paymentmethodimage: showdumyimage,
-            productprice: productprice, pricecodeandpricename: countrycurrency, productimage: receiptspath
+            ...global.apiData, model_number: modelno, serial_number: serialno,
+            merchant_name: merchantname,
+            merchant_location: merchantlocation, merchant_website: merchantwebsite,
+            merchant_contact_no: merchantcontactno, notes: notes, paymentmethod_image: showdumyimage,
+            product_price: productprice, pricecode_and_pricename: countrycurrency, product_image: receiptspath
         }
         global.apiData = temp
         let kk = JSON.stringify(global.apiData)
-        console.log(kk,
-            "oooooo")
-        const mail = 'muzamilappic@gmail.com'
+
         var requestOptions = {
             method: 'POST',
             redirect: 'follow'
         };
         fetch(`http://waqarulhaq.com/expired-warranty-tracker/save-product-data.php?email=${useremail}&data=${kk}`, requestOptions)
-            .then(response => response.text(),
-                Toast.show("Record Added Successfull"),
-                navigation.navigate('BottomTabNavigations'),
-                global.apiData = []
-            )
-            .then(result => console.log(result),
-            // empty()
-        )
+            .then(response => response.json()).then(result => {
+                console.log("tttt", result.issuccess);
+                if (result.issuccess == true) {
+                    console.log('====================================');
+                    console.log(result);
+                    console.log('====================================');
+                    Toast.show("Record Added Successfull"),
+                        navigation.navigate('BottomTabNavigations'),
+                        global.apiData = []
+                }
+                else {
+                    alert("Record Not Added")
+                }
+            })
             .catch(error => console.log('error', error));
 
 
@@ -718,6 +724,10 @@ const Addproductstepfiveoptional = ({ navigation }) => {
 }
 
 export default Addproductstepfiveoptional
+
+
+
+
 
 
 

@@ -17,7 +17,7 @@ const Addproductstepone = ({ navigation }) => {
             return;
         }
         {
-            global.apiData = { productkaname: prductname },
+            global.apiData = { name: prductname },
                 navigation.navigate('addproductsteptwo',)
             setprductname('')
         }

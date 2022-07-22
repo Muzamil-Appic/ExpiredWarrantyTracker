@@ -11,7 +11,6 @@ import Styles from './addproduct.Styles'
 import Loaders from '../../Components/Loaders'
 
 import ImagePicker from 'react-native-image-crop-picker';
-import FullWidthImage from 'react-native-fullwidth-image'
 import AutoHeightImage from 'react-native-auto-height-image';
 const Addproductsteptwo = ({ navigation }) => {
     const [Img, setImg] = useState('')
@@ -38,7 +37,7 @@ const Addproductsteptwo = ({ navigation }) => {
             ImagePicker.openPicker({
                 width: 200,
                 height: 200,
-                cropping: false,
+                cropping: true,
                 //  compressImageQuality: 0.4,
             }).then(async image => {
                 setImg(image.path);
@@ -101,7 +100,7 @@ const Addproductsteptwo = ({ navigation }) => {
 
 
     const nextscreendata = () => {
-        let temp = { ...global.apiData, receiptkiphoto: receiptspath };
+        let temp = { ...global.apiData, receipt_img: receiptspath };
         global.apiData = temp;
         navigation.navigate('AddProductStepthree')
     }

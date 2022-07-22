@@ -17,9 +17,18 @@ import { ImageHeaderScrollView, TriggeringView } from 'react-native-image-header
 const imageheight = Dimensions.get('window').height
 const imagwidth = Dimensions.get('window').width
 import AutoHeightImage from 'react-native-auto-height-image';
+import { useIsFocused } from '@react-navigation/native';
 const Receiptsdetails = ({ navigation, route }) => {
 
-    const categoryfoldercolour = '#' + route.params.receiptcategorycolour
+    const isfocudes = useIsFocused()
+
+
+
+    useEffect(() => {
+
+    }, [isfocudes])
+
+    const categoryfoldercolour = '#' + route.params.category_color
 
     console.log('====================================');
     console.log(route?.params);
@@ -29,7 +38,7 @@ const Receiptsdetails = ({ navigation, route }) => {
     const openDialScreen = () => {
         let number = '';
         if (Platform.OS === 'ios') {
-            number = 'telprompt:${091123456789}';
+            number = 'telprompt:${route?.params}';
         } else {
             number = 'tel:${091123456789}';
         }
@@ -38,19 +47,32 @@ const Receiptsdetails = ({ navigation, route }) => {
 
 
 
+    const onPressMobileNumberClick = (number) => {
+
+        let phoneNumber = '';
+        if (Platform.OS === 'android') {
+            phoneNumber = `tel:${number}`;
+        } else {
+            phoneNumber = `telprompt:${number}`;
+        }
+
+        Linking.openURL(phoneNumber);
+    }
+
+
     return (
         <SafeAreaView style={Styles.container}>
             <ImageHeaderScrollView
                 maxHeight={350}
                 minHeight={0}
-                showsVerticalScrollIndicator={false}
-                // minOverlayOpacity={0.5}
-                // overlayColor={Colors.gry}
-                //  disableHeaderGrow={true}
-                // headerImage={() => <Image source={require('../../Assets/photos/Oicone.png')} style={{ height: rh(20), width: rw(20) }} resizeMode={'cover'} />}
+                //   showsVerticalScrollIndicator={false}
+                //   minOverlayOpacity={0.5}
+                //   overlayColor={Colors.gry}
+                //   disableHeaderGrow={true}
+                headerImage={{ uri: route?.params?.receipt_img }}
 
 
-                headerImage={<Image source={route?.params?.imagepath} style={{ height: 20, width: Dimensions.get('window').width }} />}
+                // headerImage={<Image source={route?.params?.receipt_img} style={{ height: 20, width: Dimensions.get('window').width }} />}
                 renderForeground={() => (
                     <View style={{ height: rh(8), flexDirection: "row", marginHorizontal: rw(2), width: rw(94), alignItems: 'center', justifyContent: 'space-between', bottom: rh(1), }} >
                         <View>
@@ -76,21 +98,21 @@ const Receiptsdetails = ({ navigation, route }) => {
                     <View style={{ height: rh(10), borderBottomWidth: 1, borderColor: Colors.gry, marginHorizontal: rw(4), flexDirection: 'row', justifyContent: 'space-between', alignItems: "center" }}>
                         <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: 'space-between' }} >
                             <MaterialIcons name='folder' size={45} color={categoryfoldercolour} />
-                            <Text style={{ fontSize: FontSize.font16, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium', left: rw(3) }}>{route?.params.receiptkicategory}</Text>
+                            <Text style={{ fontSize: FontSize.font16, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium', left: rw(3) }}>{route?.params.category_name}</Text>
                         </View>
                         <View>
-                            <Text style={{ fontSize: FontSize.font16, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Medium', marginTop: rh(1) }}>{route?.params?.dateofpurchaseditem}</Text>
+                            <Text style={{ fontSize: FontSize.font16, color: Colors.black, fontWeight: '500', fontFamily: 'Inter-Medium', marginTop: rh(1) }}>{route?.params?.purchase_date}</Text>
                             <Text style={{ color: Colors.gry, fontSize: FontSize.font12, }}>Purchase Date</Text>
                         </View>
                     </View>
                     <View style={{ width: rw(100), borderBottomColor: Colors.gry, borderBottomWidth: 3, }}>
                         <View style={{ marginHorizontal: rw(4), }}>
                             <View style={{ backgroundColor: Colors.red, width: rw(25), alignItems: 'center', marginTop: rh(1.5), borderRadius: 4 }}>
-                                <Text style={{ color: Colors.white, fontSize: FontSize.font12 }}>360 days left</Text>
+                                <Text style={{ color: Colors.white, fontSize: FontSize.font12 }}>{route?.params?.datediff} days left</Text>
                             </View>
                             <View style={{ marginTop: rh(3), marginBottom: rh(2.5) }}>
-                                <Text style={Styles.boldheadding}>{route?.params?.productkaname}</Text>
-                                <Text style={Styles.textsubhadding}>1 year warranty . Expires on 6 Feb 2023</Text>
+                                <Text style={Styles.boldheadding}>{route?.params?.name}</Text>
+                                <Text style={Styles.textsubhadding}>{route?.params?.duration_years} Expires {route?.params?.expiry_date}</Text>
                             </View>
                         </View>
 
@@ -100,10 +122,10 @@ const Receiptsdetails = ({ navigation, route }) => {
                             <Text style={Styles.boldheadding}>Product Info</Text>
 
                             <Text style={[Styles.textsubhadding, { marginTop: rh(1) }]}>Modal Number</Text>
-                            <Text style={[Styles.lightbold,]}>{route?.params?.modelno}</Text>
+                            <Text style={[Styles.lightbold,]}>{route?.params?.model_number}</Text>
 
                             <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Price</Text>
-                            <Text style={Styles.lightbold}>{route?.params?.price}</Text>
+                            <Text style={Styles.lightbold}>{route?.params?.product_price}</Text>
                             <View style={{ height: rh(2) }}>
                             </View>
                         </View>
@@ -117,8 +139,8 @@ const Receiptsdetails = ({ navigation, route }) => {
                             <Text style={Styles.textsubhadding}>Duration</Text>
                         </View>
                         <View style={{ flexDirection: "row", width: rw(80), justifyContent: 'space-between' }}>
-                            <Text style={[Styles.lightbold,]}>{route?.params?.dateofpurchaseditem}</Text>
-                            <Text style={[Styles.lightbold,]}>15 year</Text>
+                            <Text style={[Styles.lightbold,]}>{route?.params?.purchase_date}</Text>
+                            <Text style={[Styles.lightbold,]}>{route?.params?.duration}</Text>
                         </View>
                         <View style={{ height: rh(2) }}>
                         </View>
@@ -133,7 +155,7 @@ const Receiptsdetails = ({ navigation, route }) => {
                         </View>
                         <View style={{ flexDirection: "row", width: rw(80), justifyContent: 'space-between' }}>
                             <Text style={[Styles.lightbold,]}>{route?.params?.providername}</Text>
-                            <Text style={[Styles.lightbold,]}>1 year</Text>
+                            <Text style={[Styles.lightbold,]}>{route?.params?.duration}</Text>
                         </View>
                         <View style={{ height: rh(2) }}>
                         </View>
@@ -147,19 +169,18 @@ const Receiptsdetails = ({ navigation, route }) => {
                             <Text style={Styles.boldheadding}>Merchant</Text>
                         </View>
 
-                        <Text style={[Styles.textsubhadding, { marginTop: rh(1) }]}>Provider</Text>
-                        <Text style={[Styles.lightbold,]}>{route?.params?.providername}</Text>
-
+                        <Text style={[Styles.textsubhadding, { marginTop: rh(1) }]}>Name</Text>
+                        <Text style={[Styles.lightbold,]}>{route?.params?.merchant_name}</Text>
                         <View>
                             <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Location</Text>
-                            <Text style={[Styles.lightbold,]}>{route?.params?.merchantlocation}</Text>
+                            <Text style={[Styles.lightbold,]}>{route?.params?.merchant_location}</Text>
                         </View>
 
                         <View >
                             <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Contact Number</Text>
                             <View style={{ flexDirection: "row", width: rw(90), justifyContent: 'space-between', alignItems: "center", alignContent: "center", }}>
-                                <Text style={[Styles.lightbold,]}>{route?.params?.merchantcontactno}</Text>
-                                <TouchableOpacity onPress={() => openDialScreen()}>
+                                <Text style={[Styles.lightbold,]}>{route?.params?.merchant_contact_no}</Text>
+                                <TouchableOpacity onPress={() => onPressMobileNumberClick(route?.params?.merchant_contact_no)}>
                                     <MaterialIcons name='call' size={30} color={Colors.yellow} />
                                 </TouchableOpacity>
                             </View>
@@ -194,7 +215,7 @@ const Receiptsdetails = ({ navigation, route }) => {
                                     resizeMode="stretch"
                                     width={300}
                                     style={{ borderRadius: 10 }}
-                                    source={{ uri: route?.params?.productimage }}
+                                    source={{ uri: route?.params?.receipt_img }}
                                 />
                             </View>
                         </TouchableOpacity>
@@ -209,7 +230,7 @@ const Receiptsdetails = ({ navigation, route }) => {
                                     resizeMode="stretch"
                                     width={300}
                                     style={{ borderRadius: 10 }}
-                                    source={{ uri: route?.params?.receiptkiphoto }}
+                                    source={{ uri: route?.params?.receipt_img }}
                                 />
                             </View>
                         </TouchableOpacity>
