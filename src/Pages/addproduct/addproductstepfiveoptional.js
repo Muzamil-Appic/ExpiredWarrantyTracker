@@ -30,15 +30,16 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
     useEffect(() => {
         getcurrencyimages()
         getcurrencylist()
-        asyncvalues()
     }, []);
 
     const [useremail, setuseremail] = useState('')
-    const asyncvalues = async () => {
+    const [buttonloader, setbuttonloader] = useState(false)
+
+    const Addrecord = async () => {
         await AsyncStorage.getItem('userdetails').then(async value => {
             let data = JSON.parse(value);
             console.log("------>", data);
-            setuseremail(data?.useremail)
+            apihit(data?.useremail)
         })
     }
 
@@ -330,10 +331,10 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
 
     const opencamera = () => {
         ImagePicker.openCamera({
-            width: 200,
-            height: 200,
-            // cropping: true,
-            // compressImageQuality: 0.4,
+            width: 400,
+            height: 400,
+            cropping: true,
+            compressImageQuality: 1,
         }).then(async image => {
             setImg(image.path)
             setisCamera(false);
@@ -346,15 +347,13 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
 
 
 
-    const apihit = () => {
+    const apihit = (useremail) => {
 
+        console.log(useremail);
         if (productprice === '') {
             alert("Please Complete Price Method")
             return;
         }
-        const useremail = "muzamilqureshiarid@gmail.com"
-
-
         let temp = {
             ...global.apiData, model_number: modelno, serial_number: serialno,
             merchant_name: merchantname,
@@ -364,27 +363,30 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
         }
         global.apiData = temp
         let kk = JSON.stringify(global.apiData)
-
         var requestOptions = {
             method: 'POST',
             redirect: 'follow'
         };
-        fetch(`http://waqarulhaq.com/expired-warranty-tracker/save-product-data.php?email=${useremail}&data=${kk}`, requestOptions)
-            .then(response => response.json()).then(result => {
-                console.log("tttt", result.issuccess);
-                if (result.issuccess == true) {
-                    console.log('====================================');
-                    console.log(result);
-                    console.log('====================================');
-                    Toast.show("Record Added Successfull"),
-                        navigation.navigate('BottomTabNavigations'),
-                        global.apiData = []
-                }
-                else {
-                    alert("Record Not Added")
-                }
-            })
-            .catch(error => console.log('error', error));
+        setbuttonloader(true),
+            fetch(`http://waqarulhaq.com/expired-warranty-tracker/save-product-data.php?email=${useremail}&data=${kk}`, requestOptions)
+                .then(response => response.json()).then(result => {
+                    console.log("tttt", result.issuccess);
+                    if (result.issuccess == true) {
+
+                        console.log('====================================');
+                        console.log(result);
+                        console.log('====================================');
+                        Toast.show("Record Added Successfull"),
+                            navigation.navigate('BottomTabNavigations'),
+                            setbuttonloader(false),
+                            global.apiData = []
+                    }
+                    else {
+                        alert("Record Not Added"),
+                            setbuttonloader(false)
+                    }
+                })
+                .catch(error => console.log('error', error));
 
 
     }
@@ -647,11 +649,11 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
             </View>
             <View style={[Styles.nextanssavedbuttonview, { marginHorizontal: rw(3) }]}>
 
-                {imageloader ?
+                {buttonloader ?
                     <Loaders />
                     :
 
-                    <TouchableOpacity style={Styles.bottombtn} onPress={() => apihit()}>
+                    <TouchableOpacity style={Styles.bottombtn} onPress={() => Addrecord()}>
                         <Text style={Styles.bottombtntext}>Next</Text>
                     </TouchableOpacity>
                 }

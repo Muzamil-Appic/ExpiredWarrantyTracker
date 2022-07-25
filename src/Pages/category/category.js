@@ -61,7 +61,7 @@ const Category = ({ navigation }) => {
 
 
   const categoriesrenderfunction = ({ item }) => {
-    console.log(item);
+   // console.log(item);
     let muzamilkaconcate = '#' + item.color
     console.log(muzamilkaconcate);
     return (

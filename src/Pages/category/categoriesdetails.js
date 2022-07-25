@@ -41,11 +41,14 @@ const Categoriesdetails = ({ navigation, route }) => {
 
     const receiptsfunction = ({ item }) => {
         console.log(item)
+        const imk = item.product_image
         return (
             <View >
                 <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetails', item)}>
                     <View style={{ height: rh(17), marginHorizontal: rw(2), borderRadius: 10, flexDirection: "row", backgroundColor: '#EEEBEB', marginTop: rh(2), justifyContent: "flex-start", }}>
-                        <Image source={{ uri: item.product_image }} style={{ height: 110, width: 100, borderRadius: 10 }} resizeMode={"center"} />
+
+
+                        <Image source={{ uri: imk }} style={{ height: 110, width: 100, borderRadius: 10 }} resizeMode={"center"} />
 
                         {/* <AutoHeightImage
                             resizeMode="stretch"

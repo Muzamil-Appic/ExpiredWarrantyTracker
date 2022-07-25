@@ -18,10 +18,11 @@ const imageheight = Dimensions.get('window').height
 const imagwidth = Dimensions.get('window').width
 import AutoHeightImage from 'react-native-auto-height-image';
 import { useIsFocused } from '@react-navigation/native';
+import Loaders from '../../Components/Loaders';
 const Receiptsdetails = ({ navigation, route }) => {
 
     const isfocudes = useIsFocused()
-
+    const [imageloader, setimageloader] = useState(false)
 
 
     useEffect(() => {
@@ -31,7 +32,7 @@ const Receiptsdetails = ({ navigation, route }) => {
     const categoryfoldercolour = '#' + route.params.category_color
 
     console.log('====================================');
-    console.log(route?.params);
+    console.log(route?.params?.ID);
     console.log('====================================');
     const kk = "03452163841"
 
@@ -69,9 +70,7 @@ const Receiptsdetails = ({ navigation, route }) => {
                 //   minOverlayOpacity={0.5}
                 //   overlayColor={Colors.gry}
                 //   disableHeaderGrow={true}
-                headerImage={{ uri: route?.params?.receipt_img }}
-
-
+                headerImage={{ uri: route?.params?.product_image }}
                 // headerImage={<Image source={route?.params?.receipt_img} style={{ height: 20, width: Dimensions.get('window').width }} />}
                 renderForeground={() => (
                     <View style={{ height: rh(8), flexDirection: "row", marginHorizontal: rw(2), width: rw(94), alignItems: 'center', justifyContent: 'space-between', bottom: rh(1), }} >
@@ -82,7 +81,7 @@ const Receiptsdetails = ({ navigation, route }) => {
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: "space-between", width: rw(20) }}>
                             <ShareSvg width={'24px'} height={'22px'} />
-                            <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
+                            <TouchableOpacity onPress={() => navigation.navigate('Edit', route?.params?.ID)}>
                                 <EditPencilSvg width={'24px'} height={'26px'} />
                             </TouchableOpacity>
                         </View>
@@ -140,7 +139,7 @@ const Receiptsdetails = ({ navigation, route }) => {
                         </View>
                         <View style={{ flexDirection: "row", width: rw(80), justifyContent: 'space-between' }}>
                             <Text style={[Styles.lightbold,]}>{route?.params?.purchase_date}</Text>
-                            <Text style={[Styles.lightbold,]}>{route?.params?.duration}</Text>
+                            <Text style={[Styles.lightbold,]}>{route?.params?.warranty_details_duration}</Text>
                         </View>
                         <View style={{ height: rh(2) }}>
                         </View>
@@ -154,8 +153,8 @@ const Receiptsdetails = ({ navigation, route }) => {
                             <Text style={Styles.textsubhadding}>Duration</Text>
                         </View>
                         <View style={{ flexDirection: "row", width: rw(80), justifyContent: 'space-between' }}>
-                            <Text style={[Styles.lightbold,]}>{route?.params?.providername}</Text>
-                            <Text style={[Styles.lightbold,]}>{route?.params?.duration}</Text>
+                            <Text style={[Styles.lightbold,]}>{route?.params?.warranty_provider_name}</Text>
+                            <Text style={[Styles.lightbold,]}>{route?.params?.extended_warranty_duration}</Text>
                         </View>
                         <View style={{ height: rh(2) }}>
                         </View>
@@ -215,15 +214,18 @@ const Receiptsdetails = ({ navigation, route }) => {
                                     resizeMode="stretch"
                                     width={300}
                                     style={{ borderRadius: 10 }}
-                                    source={{ uri: route?.params?.receipt_img }}
+                                    source={{ uri: route?.params?.product_image }}
                                 />
+
+                                {/* <Image source={{ uri: route?.params?.product_image }} style={{ height: 500, width: 300, }} /> */}
+                                {/* <Image source={{ uri: route?.params?.receipt_img }} style={{ height: 500, width: 300, }} /> */}
                             </View>
                         </TouchableOpacity>
                     </View>
 
                     <View style={{ marginHorizontal: rw(4), justifyContent: "center", alignContent: "center" }}>
                         <Text style={[Styles.boldheadding, { marginTop: rh(1) }]}>Receipts</Text>
-                        <TouchableOpacity style={{ alignSelf: 'center', marginTop: rh(3) }}>
+                        {/* <TouchableOpacity style={{ alignSelf: 'center', marginTop: rh(3) }}> */}
 
                             <View style={{ justifyContent: "center", alignItems: "center" }}>
                                 <AutoHeightImage
@@ -232,8 +234,10 @@ const Receiptsdetails = ({ navigation, route }) => {
                                     style={{ borderRadius: 10 }}
                                     source={{ uri: route?.params?.receipt_img }}
                                 />
+
+                                {/* <Image source={{ uri: route?.params?.product_image }} style={{ height: 500, width: 300, }} /> */}
                             </View>
-                        </TouchableOpacity>
+                        {/* </TouchableOpacity> */}
                     </View>
 
 

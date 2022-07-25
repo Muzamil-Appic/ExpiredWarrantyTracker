@@ -38,7 +38,7 @@ const Search = ({ navigation }) => {
       let data = JSON.parse(value);
       console.log("------>", data);
       const recorddd = data?.useremail
-      getitemsvalues()
+      getitemsvalues(recorddd)
     })
   }
 
@@ -65,13 +65,13 @@ const Search = ({ navigation }) => {
     asyncvalues()
   }, [isfocudes])
 
-  const getitemsvalues = async () => {
+  const getitemsvalues = async (useremail) => {
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
     setloader(true)
-    await fetch(`https://waqarulhaq.com/expired-warranty-tracker/category-based-products.php?categoryID=41`, requestOptions)
+    await fetch(`https://waqarulhaq.com/expired-warranty-tracker/get-products.php?email=${useremail}`, requestOptions)
       .then(response => response.json())
       .then(result => {
         setFilteredDataSource(result?.data),
@@ -127,8 +127,15 @@ const Search = ({ navigation }) => {
           <View style={{ width: rw(90), height: rh(11), borderBottomColor: Colors.bk, borderBottomWidth: 2, marginTop: rh(1), alignContent: "center", justifyContent: "center", }}>
             <Text style={{ fontSize: FontSize.font18, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium' }}>{item.name}</Text>
             <View style={{ flexDirection: 'row', marginTop: rh(1) }}>
-              <Text style={{ color: Colors.gry, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', }}>
-                {item.datediff} days left</Text>
+
+              {item.datediff <= 0 ?
+                <Text style={{ color: Colors.red, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', }}>
+                  Expired</Text>
+                :
+                <Text style={{ color: Colors.gry, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', }}>
+                  {item.datediff} days left</Text>
+              }
+
               <Text style={{ color: Colors.gry, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', left: rw(3) }}>
                 Expires on {item.expiry_date}
               </Text>

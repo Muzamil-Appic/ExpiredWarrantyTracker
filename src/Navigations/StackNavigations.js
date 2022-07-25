@@ -31,6 +31,7 @@ import Editproductadditionalstep from '../Pages/editproduct/editproductadditiona
 import Forgotpasswordemailscreen from '../Pages/forgotpassword/forgotpasswordemailscreen';
 import Forgotpasswordotpscreen from '../Pages/forgotpassword/forgotpasswordotpscreen';
 import Forgotpasswordchangepasswordscreen from '../Pages/forgotpassword/forgotpasswordchangepasswordxcreen';
+import Receiptsdetailstimeline from '../Pages/edit/receiptdetsilstimeline/receiptdetsilstimeline';
 
 
 const Stack = createNativeStackNavigator();
@@ -67,9 +68,7 @@ const StackNavigations = () => {
         <Stack.Screen name='Forgotpasswordemailscreen' component={Forgotpasswordemailscreen} />
         <Stack.Screen name='Forgotpasswordotpscreen' component={Forgotpasswordotpscreen} />
         <Stack.Screen name='Forgotpasswordchangepasswordscreen' component={Forgotpasswordchangepasswordscreen} />
-
-
-
+        <Stack.Screen name='Receiptsdetailstimeline' component={Receiptsdetailstimeline} />
       </Stack.Navigator>
     </NavigationContainer>
   )

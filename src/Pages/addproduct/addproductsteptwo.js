@@ -82,10 +82,10 @@ const Addproductsteptwo = ({ navigation }) => {
 
         setTimeout(() => {
             ImagePicker.openCamera({
-                width: 200,
-                height: 200,
-                // cropping: true,
-                // compressImageQuality: 0.4,
+                width: 500,
+                height: 500,
+               // cropping: true,
+                compressImageQuality:0,
             }).then(async image => {
                 setImg(image.path)
                 setisCamera(false);

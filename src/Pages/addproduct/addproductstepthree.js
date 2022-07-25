@@ -151,9 +151,10 @@ const AddProductStepthree = ({ navigation }) => {
 
     const handleConfirm = (date) => {
         setfirst(moment(date).format('DD-MM-YYYY'))
+        console.log(date);
         setDate(date)
-
-
+        setdurationsyears(0)
+        setmonthsdurations(0)
         console.log(date.getDate());
         setexpirydate(date.getDate() - 1)
         setexpirymonth(date.getMonth() + 1)
@@ -185,9 +186,10 @@ const AddProductStepthree = ({ navigation }) => {
 
         if (durationenabled == true) {
             let temp = {
-                ...global.apiData, purchase_date: moment(date).format('DD-MM-YYYY'), expiry_date: expiryyear + '-' + expirymonth + '-' + expirydate,
-                provider_name: providername, duration: newextenddurationsyears + '-' + newextenddurationsmonths + '-' + expirydate,
-                no_of_days_before_expiry_warning: warrantydays, duration_years: durationsyears + ' years' + monthsdurations + ' Month',
+                ...global.apiData, purchase_date: moment(date).format('YYYY-MM-DD'), expiry_date: expiryyear + '-' + expirymonth + '-' + expirydate,
+                warranty_provider_name: providername, extended_warranty_duration: extenddurationsyears + ' Years ' + extenddurationsmonths + ' Months',
+                no_of_days_before_expiry_warning: warrantydays,
+                warranty_details_duration: durationsyears + ' Years ' + monthsdurations + ' Months ', expiry_year: expiryyear
             }
             global.apiData = temp
             navigation.navigate('Addproductstepfourcategory')

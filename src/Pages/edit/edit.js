@@ -13,8 +13,38 @@ import DeleteSvg from '../../Assets/Svg/DeleteSvg.svg'
 import ReceiptSvg from '../../Assets/Svg/ReceiptSvg.svg'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Styles from './edit.Styles';
+import Toast from 'react-native-simple-toast';
 import WarrantyDetailsSvg from '../../Assets/Svg/WarrantyDetailsSvg.svg'
-const Edit = ({ navigation }) => {
+const Edit = ({ navigation, route }) => {
+
+
+
+
+    const deleteitem = () => {
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+
+        fetch(`https://waqarulhaq.com/expired-warranty-tracker/delete-product.php?id=${route?.params}`, requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                if (result.isssuccess != false) {
+                    Toast.show("Receipt Deleted")
+                    navigation.navigate('BottomTabNavigations')
+                } else {
+                    alert("Record Not Deleted Something Wrong")
+                }
+            }
+            )
+
+            .catch(error => console.log('error', error));
+    }
+
+
+    console.log('====================================eho mal');
+    console.log(route?.params);
+    console.log('====================================');
     return (
         <SafeAreaView style={Styles.container}>
             <View style={{ height: rh(8), borderBottomWidth: 2, borderColor: Colors.bk, justifyContent: 'center' }}>
@@ -76,7 +106,7 @@ const Edit = ({ navigation }) => {
 
                             [
                                 { text: 'Cancel', onPress: () => console.warn("Cancel") },
-                                { text: 'OK', onPress: () => console.warn("Deleted") },
+                                { text: 'OK', onPress: () => deleteitem() },
 
                             ],
                             { cancelable: false }
