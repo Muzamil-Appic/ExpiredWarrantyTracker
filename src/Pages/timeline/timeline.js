@@ -60,7 +60,7 @@ const Timeline = ({ navigation }) => {
 
 
   const receiptsfunction = ({ item }) => {
-    //  console.log(item)
+    // console.log(item)
 
     return (
       // <View >
@@ -87,8 +87,9 @@ const Timeline = ({ navigation }) => {
         <Text style={{ color: Colors.red, textAlign: "center", fontWeight: '500', fontSize: 20 }}>{item.data[0].expiry_year}</Text>
         <Text style={{ textAlign: "center", fontSize: FontSize.font16, color: '#909090' }}>{item.count} item</Text>
         {item.count == '1' ?
+
           <View >
-            <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetailstimeline', item?.data)} onLongPress={longpressedmethod} >
+            <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetails', item?.data[0])}  >
               <View style={{ height: rh(17), marginHorizontal: rw(2), borderRadius: 10, flexDirection: "row", backgroundColor: '#EEEBEB', justifyContent: "flex-start", }}>
                 <Image source={{ uri: item.data[0].product_image }} style={{ height: 110, width: 100, borderRadius: 10 }} resizeMode={"center"} />
                 {/* <AutoHeightImage
@@ -170,7 +171,7 @@ const Timeline = ({ navigation }) => {
         :
         <FlatList
           data={record}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={item => item.ID}
           renderItem={receiptsfunction}
         // contentContainerStyle={{ justifyContent: 'center', alignContent: 'center', alignSelf: "center" }}
         />

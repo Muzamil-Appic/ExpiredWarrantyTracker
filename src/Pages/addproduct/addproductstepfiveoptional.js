@@ -102,7 +102,7 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
     const ItemView = ({ item }) => {
         return (
             <View>
-                <TouchableOpacity onPress={() => { setcountrycurrency(item.currency_code + '-' + item.country), setenabledmarkdtick(item), setcountrycurrentcode(item.currency_code) }}>
+                <TouchableOpacity onPress={() => { setcountrycurrency(item.currency_code), setenabledmarkdtick(item), setcountrycurrentcode(item.currency_code) }}>
                     <View style={{ flexDirection: "row", borderBottomWidth: 1, borderColor: '#909090', height: rh(6), alignItems: 'center', justifyContent: 'space-between' }}>
 
                         <View style={{ flexDirection: 'row' }}>

@@ -21,17 +21,15 @@ import Createcategory from '../Pages/category/createcategory';
 import Categoriesdetails from '../Pages/category/categoriesdetails';
 import Receiptsdetails from '../Pages/receiptsdetails/receiptsdetails';
 import Edit from '../Pages/edit/edit';
-import Editproduct from '../Pages/editproduct/editproduct';
-import Editproductimage from '../Pages/editproduct/editproductimage';
-import Editproductcategory from '../Pages/editproduct/editproductcategory';
 import EditproductName from '../Pages/editproduct/editproduct';
 import Editproductwarrantydetailsandnotifications from '../Pages/editproduct/editproductwarrantydetailsandnotifications';
 import Editadditionalpart from '../Pages/editproduct/editadditionalpart';
-import Editproductadditionalstep from '../Pages/editproduct/editproductadditionalstep';
 import Forgotpasswordemailscreen from '../Pages/forgotpassword/forgotpasswordemailscreen';
 import Forgotpasswordotpscreen from '../Pages/forgotpassword/forgotpasswordotpscreen';
 import Forgotpasswordchangepasswordscreen from '../Pages/forgotpassword/forgotpasswordchangepasswordxcreen';
-import Receiptsdetailstimeline from '../Pages/edit/receiptdetsilstimeline/receiptdetsilstimeline';
+import EditProductCategory from '../Pages/editproduct/editproductcategory';
+import EditReceiptImage from '../Pages/editproduct/editproductimage';
+import EditProductAddtionalStep from '../Pages/editproduct/editproductadditionalstep';
 
 
 const Stack = createNativeStackNavigator();
@@ -50,6 +48,7 @@ const StackNavigations = () => {
         <Stack.Screen name='defaultcurrency' component={Defaultcurrency} />
         <Stack.Screen name="feedback" component={Feedback} />
         <Stack.Screen name='about' component={About} />
+        <Stack.Screen name='Addproduct' component={Addproduct} />
         <Stack.Screen name='addproductsteptwo' component={Addproductsteptwo} />
         <Stack.Screen name='AddProductStepthree' component={AddProductStepthree} />
         <Stack.Screen name='Addadditionalpart' component={Addadditionalpart} />
@@ -59,16 +58,15 @@ const StackNavigations = () => {
         <Stack.Screen name='Categoriesdetails' component={Categoriesdetails} />
         <Stack.Screen name='Receiptsdetails' component={Receiptsdetails} />
         <Stack.Screen name='Edit' component={Edit} />
-        <Stack.Screen name='EditproductName' component={EditproductName} />
-        <Stack.Screen name='Editproductimage' component={Editproductimage} />
-        <Stack.Screen name='Editproductcategory' component={Editproductcategory} />
-        <Stack.Screen name='Editproductwarrantydetailsandnotifications' component={Editproductwarrantydetailsandnotifications} />
+        <Stack.Screen name='EditProductName' component={EditproductName} />
+        <Stack.Screen name='EditReceiptImage' component={EditReceiptImage} />
+        <Stack.Screen name='EditProductCategory' component={EditProductCategory} />
+        <Stack.Screen name='EditProductWarrantyDetailsAndNotification' component={Editproductwarrantydetailsandnotifications} />
         <Stack.Screen name='Editadditionalpart' component={Editadditionalpart} />
-        <Stack.Screen name='Editproductadditionalstep' component={Editproductadditionalstep} />
+        <Stack.Screen name='EditProductAddtionalStep' component={EditProductAddtionalStep} />
         <Stack.Screen name='Forgotpasswordemailscreen' component={Forgotpasswordemailscreen} />
         <Stack.Screen name='Forgotpasswordotpscreen' component={Forgotpasswordotpscreen} />
         <Stack.Screen name='Forgotpasswordchangepasswordscreen' component={Forgotpasswordchangepasswordscreen} />
-        <Stack.Screen name='Receiptsdetailstimeline' component={Receiptsdetailstimeline} />
       </Stack.Navigator>
     </NavigationContainer>
   )

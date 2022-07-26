@@ -66,6 +66,7 @@ const Search = ({ navigation }) => {
   }, [isfocudes])
 
   const getitemsvalues = async (useremail) => {
+    console.log(useremail);
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'

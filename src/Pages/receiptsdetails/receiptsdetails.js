@@ -32,7 +32,7 @@ const Receiptsdetails = ({ navigation, route }) => {
     const categoryfoldercolour = '#' + route.params.category_color
 
     console.log('====================================');
-    console.log(route?.params?.ID);
+    console.log(route?.params);
     console.log('====================================');
     const kk = "03452163841"
 
@@ -81,7 +81,7 @@ const Receiptsdetails = ({ navigation, route }) => {
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: "space-between", width: rw(20) }}>
                             <ShareSvg width={'24px'} height={'22px'} />
-                            <TouchableOpacity onPress={() => navigation.navigate('Edit', route?.params?.ID)}>
+                            <TouchableOpacity onPress={() => navigation.navigate('Edit', route?.params)}>
                                 <EditPencilSvg width={'24px'} height={'26px'} />
                             </TouchableOpacity>
                         </View>
@@ -113,21 +113,40 @@ const Receiptsdetails = ({ navigation, route }) => {
                                 <Text style={Styles.boldheadding}>{route?.params?.name}</Text>
                                 <Text style={Styles.textsubhadding}>{route?.params?.duration_years} Expires {route?.params?.expiry_date}</Text>
                             </View>
+                            {route?.params?.name_multipart != '' ?
+                                <View style={{ marginBottom: rh(2.5) }}>
+                                    <Text style={Styles.boldheadding}>{route?.params?.name_multipart}</Text>
+                                    <Text style={Styles.textsubhadding}>{route?.params?.duration_multiparts} Expires {route?.params?.expiry_date}</Text>
+                                </View>
+                                : null}
                         </View>
 
                     </View>
                     <View style={{ marginHorizontal: rw(4), borderBottomColor: Colors.gry, borderBottomWidth: 1 }}>
                         <View style={{ marginTop: rh(2) }}>
                             <Text style={Styles.boldheadding}>Product Info</Text>
-
-                            <Text style={[Styles.textsubhadding, { marginTop: rh(1) }]}>Modal Number</Text>
-                            <Text style={[Styles.lightbold,]}>{route?.params?.model_number}</Text>
-
+                            {route?.params?.model_number != '' ?
+                                <View>
+                                    <Text style={[Styles.textsubhadding, { marginTop: rh(1) }]}>Modal Number</Text>
+                                    <Text style={[Styles.lightbold,]}>{route?.params?.model_number}</Text>
+                                </View>
+                                :
+                                null}
+                            {route?.params?.serial_number != '' ?
+                                <View>
+                                    <Text style={[Styles.textsubhadding, { marginTop: rh(1) }]}>Serial Number</Text>
+                                    <Text style={[Styles.lightbold,]}>{route?.params?.serial_number}</Text>
+                                </View>
+                                :
+                                null}
                             <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Price</Text>
-                            <Text style={Styles.lightbold}>{route?.params?.product_price}</Text>
-                            <View style={{ height: rh(2) }}>
+                            <View style={{ flexDirection: "row", width: rw(90), justifyContent: "space-between" }}>
+                                <Text style={Styles.lightbold}> {route?.params?.pricecode_and_pricename} {route?.params?.product_price}</Text>
+                                <Image source={{ uri: route?.params?.paymentmethod_image }} style={{ height: 50, width: 50, bottom: rh(2) }} resizeMode={'contain'} resizeMethod={'resize'} />
                             </View>
+
                         </View>
+
                     </View>
                     <View style={{ marginHorizontal: rw(4), borderBottomColor: Colors.gry, borderBottomWidth: 1, }}>
                         <View style={{ marginTop: rh(2) }}>
@@ -159,31 +178,60 @@ const Receiptsdetails = ({ navigation, route }) => {
                         <View style={{ height: rh(2) }}>
                         </View>
                     </View>
+                    {route?.params?.no_of_days_before_expiry_warning != '' ?
 
+                        <View style={{ marginHorizontal: rw(4), borderBottomColor: Colors.gry, borderBottomWidth: 1, }}>
+                            <View style={{ marginTop: rh(2) }}>
+                                <Text style={Styles.boldheadding}>Reminder</Text>
+                            </View>
+                            <View style={{ marginTop: rh(0.5), flexDirection: "row", width: rw(80), justifyContent: 'space-between' }}>
+                                <Text style={[Styles.lightbold,]}>{route?.params?.no_of_days_before_expiry_warning} Days ,Before The Warrant Expired</Text>
+                            </View>
 
+                            <View style={{ height: rh(2) }}>
+                            </View>
+                        </View>
+                        : null}
 
 
                     <View style={{ marginHorizontal: rw(4), borderBottomColor: Colors.gry, borderBottomWidth: 1, }}>
                         <View style={{ marginTop: rh(2) }}>
                             <Text style={Styles.boldheadding}>Merchant</Text>
                         </View>
+                        {route?.params?.merchant_name != '' ?
 
-                        <Text style={[Styles.textsubhadding, { marginTop: rh(1) }]}>Name</Text>
-                        <Text style={[Styles.lightbold,]}>{route?.params?.merchant_name}</Text>
-                        <View>
-                            <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Location</Text>
-                            <Text style={[Styles.lightbold,]}>{route?.params?.merchant_location}</Text>
-                        </View>
-
-                        <View >
-                            <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Contact Number</Text>
-                            <View style={{ flexDirection: "row", width: rw(90), justifyContent: 'space-between', alignItems: "center", alignContent: "center", }}>
-                                <Text style={[Styles.lightbold,]}>{route?.params?.merchant_contact_no}</Text>
-                                <TouchableOpacity onPress={() => onPressMobileNumberClick(route?.params?.merchant_contact_no)}>
-                                    <MaterialIcons name='call' size={30} color={Colors.yellow} />
-                                </TouchableOpacity>
+                            <View>
+                                <Text style={[Styles.textsubhadding, { marginTop: rh(1) }]}>Name</Text>
+                                <Text style={[Styles.lightbold,]}>{route?.params?.merchant_name}</Text>
                             </View>
-                        </View>
+                            :
+                            null}
+                        {route?.params?.merchant_location != '' ?
+                            <View>
+                                <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Location</Text>
+                                <Text style={[Styles.lightbold,]}>{route?.params?.merchant_location}</Text>
+                            </View>
+                            :
+                            null}
+                        {route?.params?.merchant_website != '' ?
+                            <View>
+                                <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Website</Text>
+                                <Text style={[Styles.lightbold,]}>{route?.params?.merchant_website}</Text>
+                            </View>
+                            :
+                            null}
+                        {route?.params?.merchant_contact_no != '' ?
+
+                            <View >
+                                <Text style={[Styles.textsubhadding, { marginTop: rh(2) }]}>Contact Number</Text>
+                                <View style={{ flexDirection: "row", width: rw(90), justifyContent: 'space-between', alignItems: "center", alignContent: "center", }}>
+                                    <Text style={[Styles.lightbold,]}>{route?.params?.merchant_contact_no}</Text>
+                                    <TouchableOpacity onPress={() => onPressMobileNumberClick(route?.params?.merchant_contact_no)}>
+                                        <MaterialIcons name='call' size={30} color={Colors.yellow} />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            : null}
 
 
 
@@ -204,11 +252,10 @@ const Receiptsdetails = ({ navigation, route }) => {
                         </View>
 
                     }
-
-
-                    <View style={{ marginHorizontal: rw(4), justifyContent: "center", alignContent: "center", borderBottomColor: Colors.gry, borderBottomWidth: 1, paddingBottom: rh(2) }}>
-                        <Text style={[Styles.boldheadding, { marginTop: rh(1) }]}>Product Images</Text>
-                        <TouchableOpacity style={{ alignSelf: 'center', marginTop: rh(3) }}>
+                    {route?.params?.product_image != '' ?
+                        <View style={{ marginHorizontal: rw(4), justifyContent: "center", alignContent: "center", borderBottomColor: Colors.gry, borderBottomWidth: 1, paddingBottom: rh(2) }}>
+                            <Text style={[Styles.boldheadding, { marginTop: rh(1) }]}>Product Images</Text>
+                            {/* <TouchableOpacity style={{ alignSelf: 'center', marginTop: rh(3) }}> */}
                             <View style={{ justifyContent: "center", alignItems: "center" }}>
                                 <AutoHeightImage
                                     resizeMode="stretch"
@@ -220,12 +267,13 @@ const Receiptsdetails = ({ navigation, route }) => {
                                 {/* <Image source={{ uri: route?.params?.product_image }} style={{ height: 500, width: 300, }} /> */}
                                 {/* <Image source={{ uri: route?.params?.receipt_img }} style={{ height: 500, width: 300, }} /> */}
                             </View>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={{ marginHorizontal: rw(4), justifyContent: "center", alignContent: "center" }}>
-                        <Text style={[Styles.boldheadding, { marginTop: rh(1) }]}>Receipts</Text>
-                        {/* <TouchableOpacity style={{ alignSelf: 'center', marginTop: rh(3) }}> */}
+                            {/* </TouchableOpacity> */}
+                        </View>
+                        : null}
+                    {route?.params?.receipt_img != '' ?
+                        <View style={{ marginHorizontal: rw(4), justifyContent: "center", alignContent: "center" }}>
+                            <Text style={[Styles.boldheadding, { marginTop: rh(1) }]}>Receipts</Text>
+                            {/* <TouchableOpacity style={{ alignSelf: 'center', marginTop: rh(3) }}> */}
 
                             <View style={{ justifyContent: "center", alignItems: "center" }}>
                                 <AutoHeightImage
@@ -237,9 +285,10 @@ const Receiptsdetails = ({ navigation, route }) => {
 
                                 {/* <Image source={{ uri: route?.params?.product_image }} style={{ height: 500, width: 300, }} /> */}
                             </View>
-                        {/* </TouchableOpacity> */}
-                    </View>
-
+                            {/* </TouchableOpacity> */}
+                        </View>
+                        : null
+                    }
 
                 </ScrollView>
             </ImageHeaderScrollView>
