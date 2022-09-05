@@ -15,12 +15,6 @@ import Loaders from '../../Components/Loaders'
 
 
 
-
-
-
-
-
-
 const Search = ({ navigation }) => {
 
   const isfocudes = useIsFocused()
@@ -134,12 +128,17 @@ const Search = ({ navigation }) => {
                   Expired</Text>
                 :
                 <Text style={{ color: Colors.gry, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', }}>
-                  {item.datediff} days left</Text>
+                  {item.datediff} days </Text>
               }
-
-              <Text style={{ color: Colors.gry, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', left: rw(3) }}>
-                Expires on {item.expiry_date}
-              </Text>
+              {item.expiry_date === "9999-01-01" ?
+                <Text style={{ color: Colors.gry, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', left: rw(3) }}>
+                  LIfe Time Warranty
+                </Text>
+                :
+                <Text style={{ color: Colors.gry, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', left: rw(3) }}>
+                  Expires on {item.expiry_date}
+                </Text>
+              }
             </View>
           </View>
         </TouchableOpacity>
@@ -159,13 +158,15 @@ const Search = ({ navigation }) => {
             <Entypo name='cross' color={Colors.yellow} size={20} />
           </TouchableOpacity>
         </View> */}
-        <View style={{ width: rw(90), height: rh(6), backgroundColor: '#D6D2D2', borderRadius: 8, flexDirection: "row", alignSelf: "center" }}>
-          <TextInput placeholder='Search Receipt' style={{ padding: 0, fontSize: FontSize.font17, color: Colors.black, paddingLeft: rw(4) }} onChangeText={(text) => searchFilterFunction(text)}
+        {/* <View style={{ width: rw(90), height: rh(6), backgroundColor: '#D6D2D2', borderRadius: 8, flexDirection: "row", alignSelf: "center" }}>
+          <TextInput placeholder='Search Receipt' style={{ padding: 0, fontSize: FontSize.font17, color: Colors.black, paddingLeft: rw(4), textAlign: "left" }} onChangeText={(text) => searchFilterFunction(text)}
             value={search} />
+        </View> */}
+        <View style={{ width: rw(90), height: rh(6), backgroundColor: '#D6D2D2', alignSelf: 'center', justifyContent: 'center', borderRadius: 8, flexDirection: "row", alignItems: 'center', }}>
+          <TextInput value={searchbox} placeholder="Search item" placeholderTextColor={Colors.gry} style={{ width: rw(80), fontSize: FontSize.font17, color: Colors.black }} onChangeText={(text) => searchFilterFunction(text)} />
         </View>
       </View>
 
-      {/* <ScrollView style={{ flexGrow: 1 }} showsHorizontalScrollIndicator={false}> */}
 
       {loader ?
 
@@ -186,7 +187,7 @@ const Search = ({ navigation }) => {
 
 
       }
-      {/* </ScrollView> */}
+
     </SafeAreaView>
   )
 }

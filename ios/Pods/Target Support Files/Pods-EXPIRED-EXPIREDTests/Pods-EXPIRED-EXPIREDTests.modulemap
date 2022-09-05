@@ -1,4 +1,4 @@
-module Pods_EXPIRED_EXPIREDTests {
+framework module Pods_EXPIRED_EXPIREDTests {
   umbrella header "Pods-EXPIRED-EXPIREDTests-umbrella.h"
 
   export *

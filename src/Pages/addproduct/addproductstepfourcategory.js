@@ -1,5 +1,5 @@
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
-import { Dimensions, FlatList, ScrollView, Modal, StyleSheet, View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { Alert, Dimensions, FlatList, ScrollView, Modal, StyleSheet, View, Text, TouchableOpacity, TextInput } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Colors from '../../Global/Colors';
 import FontSize from '../../Global/Fonts';
@@ -26,7 +26,17 @@ const Addproductstepfourcategory = ({ navigation }) => {
     asyncvalues()
   }, [isfocudes])
 
-
+  const backfunction = () => {
+    Alert.alert(
+      'Alert',
+      'Are You Sure You Want To Exit',
+      [
+        { text: 'Cancel', onPress: () => console.warn("You Backed") },
+        { text: 'OK', onPress: () => { navigation.navigate('BottomTabNavigations', { screen: 'Timeline' }), global.apiData = [] } },
+      ],
+      { cancelable: false }
+    )
+  }
 
   const [useremail, setuseremail] = useState('')
   const [categoryid, setcategoryid] = useState('')
@@ -179,7 +189,7 @@ const Addproductstepfourcategory = ({ navigation }) => {
     <SafeAreaView style={Styles.container}>
       <View style={{ flex: 1, marginHorizontal: rw(5) }}>
         <View style={{ height: rh(4), marginTop: rh(2) }}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={() => backfunction()}>
             <YellowBackSvg width={'20.67px'} height={'20.67px'} />
           </TouchableOpacity>
         </View>
@@ -195,13 +205,12 @@ const Addproductstepfourcategory = ({ navigation }) => {
         </View>
 
         {/* <ScrollView style={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}> */}
-
         {loader ?
           <Loaders />
           :
           <FlatList data={categorydata}
             renderItem={categoriesrenderfunction}
-            keyExtractor={item => item.id}
+            keyExtractor={(item, index) => index}
             contentContainerStyle={{ alignSelf: "center", }} />
         }
         <View style={{ marginBottom: rh(10) }}>

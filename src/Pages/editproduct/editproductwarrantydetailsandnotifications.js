@@ -12,30 +12,35 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import DatePicker from 'react-native-date-picker'
 import moment from 'moment';
-const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
+import Loaders from '../../Components/Loaders';
+import Toast from 'react-native-simple-toast';
+
+const EditProductWarrantyDetailsAndNotification = ({ navigation, route }) => {
 
 
-    console.log('====================================', "This is Our Global Record 3");
-    console.log(global.apiData);
     console.log('====================================');
+    console.log(route?.params);
+    console.log('====================================');
+
+    const [buttonloader, setbuttonloader] = useState(false)
     const [prductname, setprductname] = useState('')
     const [durationenabled, setdurationenabled] = useState(true)
     const [durationsyears, setdurationsyears] = useState(0)
     const [monthsdurations, setmonthsdurations] = useState(0)
-    const [warrantydays, setwarrantydays] = useState('')
+    const [warrantydays, setwarrantydays] = useState(route?.params?.no_of_days_before_expiry_warning)
     const [multipletoggled, setmultipletoggled] = useState(true)
-    const [additionalpart, setadditionalpart] = useState(false)
-    const [allowexpirynotificationstoggled, setallowexpirynotificationstoggled] = useState(true)
-    const [allowexpirynotifications, setallowexpirynotifications] = useState(false)
-    const [extendwarrantyenabled, setextendwarrantyenabled] = useState(true)
-    const [enabledextendwarranty, setenabledextendwarranty] = useState(false)
-    const [multiparttoggles, setmultiparttoggles] = useState(false)
+    const [additionalpart, setadditionalpart] = useState(true)
+    const [allowexpirynotificationstoggled, setallowexpirynotificationstoggled] = useState(false)
+    const [allowexpirynotifications, setallowexpirynotifications] = useState(true)
+    const [extendwarrantyenabled, setextendwarrantyenabled] = useState(false)
+    const [enabledextendwarranty, setenabledextendwarranty] = useState(true)
+    const [multiparttoggles, setmultiparttoggles] = useState(true)
     const [multipartfirstenabled, setmultipartfirstenabled] = useState(false)
     const siz = Dimensions.get('window').height
     const [calenderdat, setcalenderdat] = useState('')
 
     const [open, setOpen] = useState(false)
-    const [providername, setprovidername] = useState('')
+    const [providername, setprovidername] = useState(route?.params?.warranty_provider_name)
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
     const [expirydate, setexpirydate] = useState(new Date().getDate())
     const [expirymonth, setexpirymonth] = useState(new Date().getMonth() + 1)
@@ -50,140 +55,355 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
 
 
 
-    const [date, setDate] = useState(new Date())
-    const [first, setfirst] = useState("Select Date")
+    const [first, setfirst] = useState("select Date")
     const [expiryreceiptdate, setexpiryreceiptdate] = useState(new Date())
 
 
 
 
-    const addyears = () => {
-
-        setdurationsyears(parseInt(durationsyears + 1))
-        setexpiryyear(expiryyear + 1)
-        setnewextenddurationsyears(newextenddurationsyears + 1)
-    }
-    const lessyears = () => {
-        if (durationsyears === 0) {
-            setdurationsyears(0)
-        } else {
-            setdurationsyears(parseInt(durationsyears - 1))
-            setnewextenddurationsyears(newextenddurationsyears - 1)
-            setexpiryyear(expiryyear - 1)
-        }
-    }
-
-
-
-    const extenddurationsyearsaddyears = () => {
-        setextenddurationsyears(parseInt(extenddurationsyears + 1))
-        setnewextenddurationsyears(newextenddurationsyears + 1)
-        setexpiryyear(expiryyear + 1)
-    }
-    const extenddurationsyearslessyears = () => {
-        if (extenddurationsyears === 0) {
-            setdurationsyears(0)
-        } else {
-            setextenddurationsyears(parseInt(extenddurationsyears - 1))
-            setnewextenddurationsyears(newextenddurationsyears - 1)
-            setexpiryyear(expiryyear - 1)
-        }
-    }
 
 
 
 
-    const extenddurationsmonthsaddmonth = () => {
-        setextenddurationsmonths(parseInt(extenddurationsmonths + 1))
-        setnewextenddurationsmonths(newextenddurationsmonths + 1)
-        setexpirymonth(expirymonth + 1)
-    }
-
-    const extenddurationsmonthslessmonth = () => {
-        if (extenddurationsmonths === 0) {
-            setextenddurationsmonths(0)
-        }
-        // if (monthsdurations === 13) {
-        //     setexpiryyear(expiryyear + 1) 
-        // }
-
-        else {
-            setextenddurationsmonths(parseInt(extenddurationsmonths - 1))
-            setnewextenddurationsmonths(newextenddurationsmonths - 1)
-            setexpirymonth(expirymonth - 1)
-        }
-    }
-
-
-    const addmonth = () => {
-        setmonthsdurations(parseInt(monthsdurations + 1))
-        setexpirymonth(expirymonth + 1)
-        setnewextenddurationsmonths(newextenddurationsmonths + 1)
-    }
-
-    const lessmonth = () => {
-        if (monthsdurations === 0) {
-            setmonthsdurations(0)
-        }
-        // if (monthsdurations === 13) {
-        //     setexpiryyear(expiryyear + 1) 
-        // }
-
-        else {
-            setmonthsdurations(parseInt(monthsdurations - 1))
-            setexpirymonth(expirymonth - 1)
-            setnewextenddurationsmonths(newextenddurationsmonths - 1)
-        }
-    }
 
 
 
 
+
+
+
+
+
+
+
+    const [date, setDate] = useState(new Date())
+    const [dateofpurchased, setdateofpurchased] = useState('Select')
+    const [dateofexpiry, setdateofexpiry] = useState('Set Date')
+    const [addyaerssecond, setaddyaerssecond] = useState('')
+    const [addyearssecondwtoutlessdate, setaddyearssecondwtoutlessdate] = useState('')
+    const [extendeddurationsyears, setextendeddurationsyears] = useState('')
+    const [setnewextendeddurationsyears, setsetnewextendeddurationsyears] = useState('')
+
+
+
+
+
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
 
 
     const showDatePicker = () => {
         setDatePickerVisibility(true);
     };
 
-    const hideDatePicker = () => {
-        setDatePickerVisibility(false);
-    };
-
     const handleConfirm = (date) => {
-        setfirst(moment(date).format('DD-MM-YYYY'))
-        console.log(date);
         setDate(date)
+        setdateofpurchased(moment(date).format('D-M-YYYY'))
+
+
+        let d = date
+        console.log('Today is: ' + d.toLocaleString());
+        d.setDate(d.getDate() - 1);
+        console.log('1 days ago was: ' + d.toLocaleString());
+        //setaddyaerssecond(d)
+        setaddyearssecondwtoutlessdate(d)
+
+        setdateofexpiry(moment(d).format('D-M-YYYY'))
+        setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+
+
         setdurationsyears(0)
         setmonthsdurations(0)
-        console.log(date.getDate());
-        setexpirydate(date.getDate() - 1)
-        setexpirymonth(date.getMonth() + 1)
-        setexpiryyear(date.getFullYear())
-
+        setextenddurationsyears(0)
+        setextenddurationsmonths(0)
+        setsetnewextendeddurationsyears(d)
 
         hideDatePicker();
     };
-
-
-
-
     const backfunction = () => {
         Alert.alert(
             'Alert',
             'Are You Sure You Want TO Exit',
             [
                 { text: 'Cancel', onPress: () => console.warn("You Backed") },
-                { text: 'OK', onPress: () => { navigation.navigate('BottomTabNavigations'), global.apiData = [] } },
+                { text: 'OK', onPress: () => { navigation.navigate('BottomTabNavigations', { screen: 'Timeline' }), global.apiData = [] } },
             ],
             { cancelable: false }
         )
     }
 
 
+    const addyears = () => {
+        if (dateofexpiry === 'Set Date') {
+            alert("Please click purchased date first")
+            return;
+        }
+        else {
+            setdurationsyears(parseInt(durationsyears + 1))
+            let d = addyearssecondwtoutlessdate
+            d.setFullYear(d.getFullYear(), d.getMonth() + 12);
+            setdateofexpiry(moment(d).format('D-M-YYYY'))
+            setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+            setsetnewextendeddurationsyears(d)
+
+            setaddyearssecondwtoutlessdate(d)
+            console.log('====================================', dateofexpiry);
+
+        }
+    }
+
+
+
+    const lessyears = () => {
+        if (dateofexpiry === 'Set Date') {
+            alert("Please click purchased date first")
+            return;
+        }
+        else {
+
+            if (durationsyears === 0) {
+                return;
+            }
+            else {
+                setdurationsyears(parseInt(durationsyears - 1))
+                let d = addyearssecondwtoutlessdate
+                d.setFullYear(d.getFullYear(), d.getMonth() - 12);
+                setdateofexpiry(moment(d).format('D-M-YYYY'))
+                setaddyearssecondwtoutlessdate(d)
+                setsetnewextendeddurationsyears(d)
+                setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+                console.log('====================================', dateofexpiry);
+            }
+        }
+    }
+
+
+
+    const addmonth = () => {
+        if (dateofexpiry === 'Set Date') {
+            alert("Please click purchased date first")
+            return;
+        }
+        else {
+
+            setmonthsdurations(parseInt(monthsdurations + 1))
+            let d = addyearssecondwtoutlessdate
+            d.setFullYear(d.getFullYear(), d.getMonth() + 1);
+            setdateofexpiry(moment(d).format('D-M-YYYY'))
+            setaddyearssecondwtoutlessdate(d)
+            setsetnewextendeddurationsyears(d)
+            setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+            console.log('====================================', dateofexpiry);
+
+        }
+    }
+
+
+    const lessmonth = () => {
+        if (dateofexpiry === 'Set Date') {
+            alert("Please click purchased date first")
+            return;
+        }
+        else {
+            if (monthsdurations === 0) {
+                return;
+            }
+            else {
+                setmonthsdurations(parseInt(monthsdurations - 1))
+                let d = addyearssecondwtoutlessdate
+                d.setFullYear(d.getFullYear(), d.getMonth() - 1);
+                setdateofexpiry(moment(d).format('D-M-YYYY'))
+                setaddyearssecondwtoutlessdate(d)
+                setsetnewextendeddurationsyears(d)
+                setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+                console.log('====================================', dateofexpiry);
+            }
+        }
+    }
+
+
+    const extenddurationsyearsaddyears = () => {
+        if (dateofexpiry === 'Set Date') {
+            alert("Please click purchased date first")
+            return;
+        }
+        else {
+            setextenddurationsyears(parseInt(extenddurationsyears + 1))
+            let d = setnewextendeddurationsyears
+            d.setFullYear(d.getFullYear(), d.getMonth() + 12);
+            (moment(d).format('D-M-YYYY'))
+            setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+            setsetnewextendeddurationsyears(d)
+        }
+    }
+
+    const extenddurationsyearslessyears = () => {
+        if (dateofexpiry === 'Set Date') {
+            alert("Please click purchased date first")
+            return;
+        }
+        else {
+
+            if (extenddurationsyears === 0) {
+                return;
+            }
+            else {
+                setextenddurationsyears(parseInt(extenddurationsyears - 1))
+                let d = setnewextendeddurationsyears
+                d.setFullYear(d.getFullYear(), d.getMonth() - 12);
+                (moment(d).format('D-M-YYYY'))
+                setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+                setsetnewextendeddurationsyears(d)
+            }
+
+        }
+    }
+
+
+    const extenddurationsmonthsaddmonth = () => {
+        if (dateofexpiry === 'Set Date') {
+            alert("Please click purchased date first")
+            return;
+        }
+        else {
+            setextenddurationsmonths(parseInt(extenddurationsmonths + 1))
+            let d = setnewextendeddurationsyears
+            d.setFullYear(d.getFullYear(), d.getMonth() + 1);
+            (moment(d).format('D-M-YYYY'))
+            setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+            setsetnewextendeddurationsyears(d)
+        }
+    }
+
+    const extenddurationsmonthslessmonth = () => {
+        if (dateofexpiry === 'Set Date') {
+            alert("Please click purchased date first")
+            return;
+        }
+
+
+        else {
+            if (extenddurationsmonths === 0) {
+                return;
+            }
+            else
+
+                setextenddurationsmonths(parseInt(extenddurationsmonths - 1))
+            let d = setnewextendeddurationsyears
+            d.setFullYear(d.getFullYear(), d.getMonth() - 1);
+            (moment(d).format('D-M-YYYY'))
+            setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+            setsetnewextendeddurationsyears(d)
+
+
+
+
+        }
+    }
+
+
+
+
+
+    const updatedata = async () => {
+
+        if (dateofpurchased === 'Select') {
+            alert("Please Select Date Of Purchased First")
+            return;
+        }
+
+
+        const purchased = moment(moment(dateofpurchased, 'D-M-YYYY')).format('YYYY-MM-DD')
+        const expiry = moment(moment(dateofexpiry, 'D-M-YYYY')).format('YYYY-MM-DD')
+        const receiptexpiredyear = moment(expiry).year()
+        const warrantyproviderexpirydate = moment(moment(extendeddurationsyears, 'D-M-YYYY')).format('YYYY-MM-DD')
+
+
+        if (durationenabled == true) {
+            let temp = {
+                ...global.apiData, purchase_date: purchased, expiry_date: expiry,
+                extended_warranty_provider_expirydate: warrantyproviderexpirydate,
+                warranty_provider_name: providername, extended_warranty_duration: extenddurationsyears + ' Years ' + extenddurationsmonths + ' Months',
+                no_of_days_before_expiry_warning: warrantydays,
+                warranty_details_duration: durationsyears + ' Years ' + monthsdurations + ' Months ', expiry_year: receiptexpiredyear
+            }
+            var jsonrecord = JSON.stringify(temp)
+            var requestOptions = {
+                method: 'POST',
+                redirect: 'follow'
+            };
+            setbuttonloader(true),
+                fetch(`https://waqarulhaq.com/expired-warranty-tracker/edit-warranty-data.php?ID=${route?.params?.ID}&data=${jsonrecord}`, requestOptions)
+                    .then(response => response.json()).then(result => {
+                        console.log("tttt", result.issuccess);
+                        if (result.issuccess == true) {
+
+                            console.log('====================================');
+                            console.log(result);
+                            console.log('====================================');
+                            Toast.show(" Updated Successfull"),
+                                setbuttonloader(false),
+                                navigation.goBack()
+                            // global.apiData = []
+                        }
+                        else {
+                            alert("Not Updated"),
+                                setbuttonloader(false)
+                        }
+                    })
+                    .catch(error => console.log('error', error));
+
+        }
+        else {
+            const purchased = moment(moment(dateofpurchased, 'D-M-YYYY')).format('YYYY-MM-DD')
+
+            let temp = {
+                ...global.apiData, purchase_date: purchased, expiry_date: "9999-01-01",
+                no_of_days_before_expiry_warning: warrantydays, expiry_year: "9999"
+            }
+            var jsonrecord = JSON.stringify(temp)
+            var requestOptions = {
+                method: 'POST',
+                redirect: 'follow'
+            };
+            setbuttonloader(true),
+                fetch(`https://waqarulhaq.com/expired-warranty-tracker/edit-warranty-data.php?ID=${route?.params?.ID}&data=${jsonrecord}`, requestOptions)
+                    .then(response => response.json()).then(result => {
+                        console.log("tttt", result.issuccess);
+                        if (result.issuccess == true) {
+
+                            console.log('====================================');
+                            console.log(result);
+                            console.log('====================================');
+                            Toast.show(" Updated Successfull"),
+                                setbuttonloader(false),
+                                navigation.goBack()
+                            // global.apiData = []
+                        }
+                        else {
+                            alert("Not Updated"),
+                                setbuttonloader(false)
+                        }
+                    })
+                    .catch(error => console.log('error', error));
+
+        }
+
+
+
+
+
+    }
+
+
 
 
     const nextscreen = () => {
-
+        console.log('====================================000000000000');
+        console.log(moment(date).format('YYYY-MM-DD'));
+        console.log('====================================');
         if (durationenabled == true) {
             let temp = {
                 ...global.apiData, purchase_date: moment(date).format('YYYY-MM-DD'), expiry_date: expiryyear + '-' + expirymonth + '-' + expirydate,
@@ -196,8 +416,8 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
         }
         else {
             let temp = {
-                ...global.apiData, purchase_date: moment(date).format('DD-MM-YYYY'), expiry_date: expiryyear + '-' + expirymonth + '-' + expirydate,
-                no_of_days_before_expiry_warning: warrantydays
+                ...global.apiData, purchase_date: moment(date).format('YYYY-MM-DD'), expiry_date: "9999-01-01",
+                no_of_days_before_expiry_warning: warrantydays, expiry_year: "9999"
             }
             global.apiData = temp
             navigation.navigate('Addproductstepfourcategory')
@@ -232,9 +452,9 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
                             </View>
                             <View style={[Styles.dateandpurchasesdinnerview, { marginTop: rh(2) }]}>
                                 <TouchableOpacity onPress={() => showDatePicker()} >
-                                    <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>{first}</Text>
+                                    <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>{dateofpurchased}</Text>
                                 </TouchableOpacity>
-                                <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>{[expirydate, '/', expirymonth, '/', expiryyear]}</Text>
+                                <Text style={[Styles.txtdate, { bottom: rh(0), borderBottomWidth: 1, borderbottomcolor: Colors.bk }]}>{dateofexpiry}</Text>
                             </View>
                         </View>
 
@@ -268,7 +488,7 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
 
                                     <View style={Styles.monthandyearbuttonouterview}>
                                         <View style={Styles.monthsandyearbuttoninerview}>
-                                            <View style={{ width: rw(20), marginLeft: rw(7) }}>
+                                            <View style={{ width: rw(25), marginLeft: rw(7) }}>
                                                 <Text style={Styles.headingtext}>{durationsyears} Years</Text>
                                             </View>
                                             <View style={Styles.inneryellewbuttons}>
@@ -282,7 +502,7 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
                                             </View>
                                         </View>
                                         <View style={Styles.monthsandyearbuttoninerview}>
-                                            <View style={{ width: rw(20), marginLeft: rw(7) }}>
+                                            <View style={{ width: rw(25), marginLeft: rw(7) }}>
                                                 <Text style={Styles.headingtext}>{monthsdurations} Months</Text>
                                             </View>
                                             <View style={Styles.inneryellewbuttons}>
@@ -339,7 +559,7 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
                                                 <View style={{ flex: 1 }}>
                                                     <Text style={Styles.addproductparttext}>Provider name</Text>
                                                     <View style={Styles.addproductpartview}>
-                                                        <TextInput style={Styles.addproductparttextinput} onChangeText={e => setprovidername(e)} />
+                                                        <TextInput value={providername} style={Styles.addproductparttextinput} onChangeText={e => setprovidername(e)} />
                                                     </View>
 
                                                     <View style={{ flex: 1 }}>
@@ -382,16 +602,8 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
 
                                                         <View style={{ left: rw(2) }}>
                                                             <Text>Date of Expiry</Text>
-                                                            <Text style={[Styles.txtdate, { textAlign: 'left', marginTop: rh(1) }]}>{[expirydate, '/', newextenddurationsmonths, '/', newextenddurationsyears]}</Text>
+                                                            <Text style={[Styles.txtdate, { textAlign: 'left', marginTop: rh(1) }]}>{extendeddurationsyears}</Text>
                                                         </View>
-
-
-
-
-
-
-
-
 
                                                     </View>
                                                 </View>
@@ -433,7 +645,7 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
 
                                             {additionalpart ?
                                                 <View style={Styles.addadditionalpartouterview}>
-                                                    <TouchableOpacity style={{ alignContent: 'center', flexDirection: 'row' }} onPress={() => navigation.navigate('Addadditionalpart')}>
+                                                    <TouchableOpacity style={{ alignContent: 'center', flexDirection: 'row' }} onPress={() => navigation.navigate('Editadditionalpart', route?.params)}>
                                                         <View style={{ flexDirection: "row", width: rw(50), alignItems: "center", left: rw(5) }}>
                                                             <AntDesign name='pluscircle' size={siz * 0.02} color={Colors.yellow} />
                                                             <Text style={{ fontSize: siz * 0.02, color: Colors.black, left: rw(4) }}>Add additional part</Text>
@@ -494,7 +706,7 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
                                                     <View style={{ height: rh(8), width: rw(30), marginTop: rh(5) }}>
                                                         <Text>Number of Days</Text>
                                                         <View style={{ borderBottomColor: Colors.yellow, borderBottomWidth: 1, }}>
-                                                            <TextInput value={warrantydays} placeholder={'0'} style={{ padding: 0, paddingTop: rh(2), fontSize: siz * 0.02 }} />
+                                                            <TextInput keyboardType='number-pad' value={warrantydays} placeholder={'0'} style={{ padding: 0, paddingTop: rh(2), fontSize: siz * 0.02 }} />
                                                         </View>
                                                     </View>
                                                 </View>
@@ -627,7 +839,7 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
                                             <View style={{ height: rh(8), width: rw(30), marginTop: rh(5) }}>
                                                 <Text>Number of Days</Text>
                                                 <View style={{ borderBottomColor: Colors.yellow, borderBottomWidth: 1, }}>
-                                                    <TextInput value={warrantydays} placeholder={'0'} style={{ padding: 0, paddingTop: rh(2), fontSize: siz * 0.02 }} />
+                                                    <TextInput keyboardType='number-pad' value={warrantydays} placeholder={'0'} style={{ padding: 0, paddingTop: rh(2), fontSize: siz * 0.02 }} onChangeText={e => setwarrantydays(e)} />
                                                 </View>
                                             </View>
                                         </View>
@@ -650,18 +862,24 @@ const EditProductWarrantyDetailsAndNotification = ({ navigation }) => {
 
                     <View style={{ height: rh(15), width: rw(90), }}>
                     </View>
-
                 </ScrollView>
             </View >
-            <View style={[Styles.nextanssavedbuttonview, { marginHorizontal: rw(3) }]}>
-                <TouchableOpacity style={Styles.bottombtn} onPress={() => nextscreen()}>
-                    <Text style={Styles.bottombtntext}>Save</Text>
-                </TouchableOpacity>
+            <View style={[Styles.nextanssavedbuttonview, { right: rw(3) }]}>
+                {buttonloader ?
+                    <View style={{ height: rh(10) }}>
+                        <Loaders />
+                    </View>
+                    :
+                    <TouchableOpacity style={Styles.bottombtn} onPress={() => updatedata()}>
+                        <Text style={Styles.bottombtntext}>Save</Text>
+                    </TouchableOpacity>
+                }
             </View>
         </SafeAreaView >
     )
 }
 
 export default EditProductWarrantyDetailsAndNotification
+
 
 

@@ -15,27 +15,73 @@ import InfooSvg from '../../Assets/Svg/InfooSvg.svg'
 import CurrencySvg from '../../Assets/Svg/CurrencySvg.svg'
 import ExpiryBellSvg from '../../Assets/Svg/ExpiryBellSvg.svg'
 import DownloadSvg from '../../Assets/Svg/DownloadSvg.svg'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Settings = ({ navigation }) => {
-
   const [taogelenabled, settaogelenabled] = useState(true)
+
+
+  const nullasync = async () => {
+
+    global.apiData = []
+    AsyncStorage.setItem(
+      'userdetails',
+      JSON.stringify({
+        useremail: '',
+        userid: ''
+        //  onboardingbit: 1,
+      })
+    )
+    navigation.replace('signin')
+
+    // await AsyncStorage.getItem('userdetails').then(async value => {
+    //   let data = JSON.parse(value);
+    //   console.log("---------->", data);
+    //   var usermail = data?.useremail;
+    //   // await AsyncStorage.removeItem(usermail);
+    //   // navigation.replace('signin')
+    //   removeItemValue(usermail)
+    // })
+
+
+
+
+
+    //  await AsyncStorage.clear().userdetails()
+
+  }
+
+
+
+  const removeItemValue = async (usermail) => {
+    try {
+      await AsyncStorage.removeItem(usermail);
+      console.log("Done");
+      navigation.replace('signin')
+      return true;
+    }
+    catch (exception) {
+      console.log("Not Done");
+      return false;
+    }
+
+  }
 
   return (
     <SafeAreaView style={Styles.container}>
       <View style={{ height: rh(9), justifyContent: "center", borderBottomColor: Colors.bk, borderBottomWidth: 2 }}>
         <Text style={{ fontFamily: 'Inter-Medium', fontWeight: '700', fontSize: FontSize.font24, color: Colors.black, paddingLeft: rw(5) }}>Settings</Text>
       </View>
-
-      <LinearGradient colors={['#F205DBB2', '#9411E8B2', '#0B23FBB2']} style={{ marginTop: rh(1.5), marginHorizontal: rw(5), height: rh(19), borderRadius: 12 }}>
+      {/* <LinearGradient colors={['#F205DBB2', '#9411E8B2', '#0B23FBB2']} style={{ marginTop: rh(1.5), marginHorizontal: rw(5), height: rh(19), borderRadius: 12 }}>
         <View style={{ justifyContent: 'space-evenly', height: rh(19), alignItems: 'center' }}>
           <Text style={{ fontFamily: 'Inter-Medium', fontWeight: '500', fontSize: FontSize.font22, color: Colors.white, textAlign: 'center' }}>EXPIRED PRO</Text>
           <TouchableOpacity style={{ backgroundColor: Colors.green, height: rh(7), width: rw(35), justifyContent: 'center', borderRadius: 10, elevation: 5 }} onPress={() => navigation.navigate('upgradetoexpiredpro')}>
             <Text style={{ textAlign: 'center', color: Colors.white, fontSize: FontSize.fon15 }}>Upgrade Now</Text>
           </TouchableOpacity>
         </View>
-      </LinearGradient>
+      </LinearGradient> */}
       <View style={{ flex: 1, marginTop: rh(3) }}>
-        <View style={[Styles.innerview,]}>
+        {/* <View style={[Styles.innerview,]}>
           <View style={{ width: rw(6) }}>
             <DownloadSvg height={'20px'} width={'20px'} />
           </View>
@@ -43,11 +89,10 @@ const Settings = ({ navigation }) => {
             <Text style={Styles.innertext}>Backup & Restore</Text>
           </View>
           <Text style={{ textAlign: 'right', fontSize: FontSize.font12, color: Colors.yellow, }}>Requires Pro</Text>
-        </View>
-        <View style={[Styles.innerview,]}>
+        </View> */}
+        {/* <View style={[Styles.innerview,]}>
           <ExpiryBellSvg height={'25px'} width={'25px'} />
           <View style={{ width: rw(71) }}>
-
             <Text style={Styles.innertext}>Expiry Notifications</Text>
           </View>
           {taogelenabled ?
@@ -68,8 +113,8 @@ const Settings = ({ navigation }) => {
             </View>
 
           }
-        </View>
-        <View style={[Styles.innerview,]}>
+        </View> */}
+        {/* <View style={[Styles.innerview,]}>
           <CurrencySvg width={'22px'} height={'22px'} />
           <View style={{ width: rw(72) }}>
             <TouchableOpacity onPress={() => navigation.navigate('defaultcurrency')}>
@@ -77,7 +122,7 @@ const Settings = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           <Text style={{ textAlign: 'right', fontSize: FontSize.font12, color: Colors.yellow, }}>Not Set</Text>
-        </View>
+        </View> */}
         <View style={[Styles.innerview]}>
           <View>
             <FeedbackSvg height={'20.5'} width={'21'} />
@@ -94,14 +139,14 @@ const Settings = ({ navigation }) => {
         </View>
         <View style={[Styles.innerview,]}>
           <View>
-            <  InfooSvg height={'20'} width={'21'} />
+            <InfooSvg height={'20'} width={'21'} />
           </View>
           <TouchableOpacity onPress={() => navigation.navigate('about')}>
             <Text style={Styles.innertext}>About</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={{ marginLeft: rw(5), marginTop: rh(2) }} onPress={() => navigation.navigate('signin')}>
-          <Text style={{ color: Colors.yellow, fontSize: 20, fontFamily: 'Inter-Regular', fontWeight: '600', }}>Log Out </Text>
+        <TouchableOpacity style={{ marginLeft: rw(5), marginTop: rh(10) }} onPress={() => nullasync()}>
+          <Text style={{ color: Colors.yellow, fontSize: 20, fontFamily: 'Inter-Regular', fontWeight: '600', textAlign: "center" }}>Log Out </Text>
         </TouchableOpacity>
       </View>
 

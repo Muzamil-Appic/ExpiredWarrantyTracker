@@ -60,7 +60,7 @@ const Timeline = ({ navigation }) => {
 
 
   const receiptsfunction = ({ item }) => {
-    // console.log(item)
+    console.log(item)
 
     return (
       // <View >
@@ -84,14 +84,22 @@ const Timeline = ({ navigation }) => {
       //   </TouchableOpacity>
       // </View>
       <View style={{ marginBottom: rh(2) }}>
-        <Text style={{ color: Colors.red, textAlign: "center", fontWeight: '500', fontSize: 20 }}>{item.data[0].expiry_year}</Text>
+        {item.data[0].expiry_year === '9999' ?
+          <Text style={{ color: Colors.red, textAlign: "center", fontWeight: '500', fontSize: 20 }}>Life Time Warranty</Text>
+          :
+          <Text style={{ color: Colors.red, textAlign: "center", fontWeight: '500', fontSize: 20 }}>{item.data[0].expiry_year}</Text>
+        }
         <Text style={{ textAlign: "center", fontSize: FontSize.font16, color: '#909090' }}>{item.count} item</Text>
         {item.count == '1' ?
 
           <View >
             <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetails', item?.data[0])}  >
               <View style={{ height: rh(17), marginHorizontal: rw(2), borderRadius: 10, flexDirection: "row", backgroundColor: '#EEEBEB', justifyContent: "flex-start", }}>
-                <Image source={{ uri: item.data[0].product_image }} style={{ height: 110, width: 100, borderRadius: 10 }} resizeMode={"center"} />
+                {item.data[0].product_image == '' ?
+                  <Image source={require('../../Assets/photos/DummyImage.png')} style={{ resizeMode: 'cover', borderRadius: 10, height: rh(17), width: rw(27) }} />
+                  :
+                  <Image source={{ uri: item.data[0].product_image }} style={{ resizeMode: 'cover', borderRadius: 10, height: rh(17), width: rw(27) }} />
+                }
                 {/* <AutoHeightImage
                         resizeMode="stretch"
                         width={105}
@@ -101,14 +109,17 @@ const Timeline = ({ navigation }) => {
                 <View style={{ marginLeft: rw(4) }}>
                   <Text style={{ fontSize: FontSize.font21, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium', marginTop: rh(3) }}>{item.data[0].name}</Text>
                   <View style={{ marginTop: rh(1) }}>
-
                     {item.data[0].datediff <= 0 ?
                       <Text style={{ color: Colors.red, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', }}>
                         Expired</Text>
                       :
-                      <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light', }}>{item.data[0].datediff} days left</Text>
+                      <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light', }}>{item.data[0].datediff} </Text>
                     }
-                    <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>Expires on {item.data[0].expiry_date}</Text>
+                    {item.data[0].expiry_date === "9999-01-01" ?
+                      <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>Life Time Warranty</Text>
+                      :
+                      <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>{item.data[0].expiry_date}</Text>
+                    }
                   </View>
                 </View>
               </View>
@@ -120,10 +131,11 @@ const Timeline = ({ navigation }) => {
               <View>
                 <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetails', user)} >
                   <View style={{ height: rh(17), marginHorizontal: rw(2), borderRadius: 10, flexDirection: "row", backgroundColor: '#EEEBEB', marginTop: rh(2), justifyContent: "flex-start", }}>
-                    {/* <Image source={{ uri: user.product_image }} style={{ height: 110, width: 100, borderRadius: 10 }} resizeMode={"center"} /> */}
-                    <Image source={{ uri: user.product_image }} style={{ height: 110, width: 100, borderRadius: 10 }} resizeMode={"center"} />
-
-
+                    {user.product_image === '' ?
+                      <Image source={require('../../Assets/photos/DummyImage.png')} style={{ resizeMode: 'contain', borderRadius: 10, height: rh(17), width: rw(27) }} />
+                      :
+                      <Image source={{ uri: user.product_image }} style={{ resizeMode: 'contain', borderRadius: 10, height: rh(17), width: rw(27) }} />
+                    }
                     {/* <AutoHeightImage
                         resizeMode="stretch"
                         width={105}
@@ -138,9 +150,15 @@ const Timeline = ({ navigation }) => {
                           <Text style={{ color: Colors.red, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', }}>
                             Expired</Text>
                           :
-                          <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light', }}>{user.datediff} days left</Text>
+                          <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light', }}>{user.datediff}</Text>
                         }
-                        <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>Expires on {user.expiry_date}</Text>
+
+                        {user.expiry_date === "9999-01-01" ?
+                          <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>Life Time Warranty</Text>
+                          :
+                          <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>{user.expiry_date}</Text>
+                        }
+
                       </View>
                     </View>
                   </View>
@@ -171,8 +189,10 @@ const Timeline = ({ navigation }) => {
         :
         <FlatList
           data={record}
-          keyExtractor={item => item.ID}
+          // keyExtractor={item => item.data}
           renderItem={receiptsfunction}
+          // keyExtractor={(item, index) => index.toString()}
+          keyExtractor={(item, index) => index}
         // contentContainerStyle={{ justifyContent: 'center', alignContent: 'center', alignSelf: "center" }}
         />
       }
@@ -182,3 +202,7 @@ const Timeline = ({ navigation }) => {
 }
 
 export default Timeline
+
+
+
+// renderimage:{ resizeMode:'cover'  , height: rh(17), borderTopLeftRadius: 10, borderBottomLeftRadius: 10 ,width:rw(27)}

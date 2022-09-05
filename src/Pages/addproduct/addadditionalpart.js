@@ -9,6 +9,7 @@ import Colors from '../../Global/Colors'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontSize from '../../Global/Fonts'
+import moment from 'moment';
 const Addadditionalpart = ({ navigation }) => {
     const [addpart, setaddpart] = useState('')
     const [extendwarrantyenabled, setextendwarrantyenabled] = useState(true)
@@ -21,13 +22,22 @@ const Addadditionalpart = ({ navigation }) => {
     const [showdurationyears, setshowdurationyears] = useState('')
 
 
+    const [date, setDate] = useState(new Date())
+    const [dateofpurchased, setdateofpurchased] = useState(moment(new Date()).format('D-M-YYYY'))
+    const [dateofexpiry, setdateofexpiry] = useState('Set Date')
+    const [addyaerssecond, setaddyaerssecond] = useState('')
+    const [addyearssecondwtoutlessdate, setaddyearssecondwtoutlessdate] = useState(new Date())
+    const [extendeddurationsyears, setextendeddurationsyears] = useState('')
+    const [setnewextendeddurationsyears, setsetnewextendeddurationsyears] = useState('')
 
 
     const adddata = () => {
 
+
         if (durationenabled == true) {
+            const expiry = moment(moment(dateofexpiry, 'D-M-YYYY')).format('YYYY-MM-DD')
             let temp = {
-                ...global.apiData, name_multipart: addpart, duration_multipart: durationsyears + '-' + monthsdurations + '-' + expirydate,
+                ...global.apiData, name_multipart: addpart, duration_multipart: expiry,
             }
             global.apiData = temp
             navigation.navigate('AddProductStepthree')
@@ -43,45 +53,83 @@ const Addadditionalpart = ({ navigation }) => {
 
 
 
+
     const addyears = () => {
+
         setadddurationyers(parseInt(adddurationyers + 1))
-        setdurationsyears(durationsyears + 1)
+        let d = addyearssecondwtoutlessdate
+        d.setFullYear(d.getFullYear(), d.getMonth() + 12);
+        setdateofexpiry(moment(d).format('D-M-YYYY'))
+        setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+        setsetnewextendeddurationsyears(d)
+
+        setaddyearssecondwtoutlessdate(d)
+        console.log('====================================', dateofexpiry);
+
+
     }
 
 
 
     const lessyears = () => {
-        if (adddurationyers === 0) {
-            setadddurationyers(0)
-        }
-        // if (monthsdurations === 13) {
-        //     setexpiryyear(expiryyear + 1) 
-        // }
 
+
+        if (adddurationyers === 0) {
+            return;
+        }
         else {
             setadddurationyers(parseInt(adddurationyers - 1))
-            setdurationsyears(durationsyears - 1)
+            let d = addyearssecondwtoutlessdate
+            d.setFullYear(d.getFullYear(), d.getMonth() - 12);
+            setdateofexpiry(moment(d).format('D-M-YYYY'))
+            setaddyearssecondwtoutlessdate(d)
+            setsetnewextendeddurationsyears(d)
+            setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+            console.log('====================================', dateofexpiry);
         }
+
     }
+
+
 
     const addmonth = () => {
-        setmonthsdurations(parseInt(monthsdurations + 1))
-        setadddurationmonths(adddurationmonths + 1)
+
+
+
+        setadddurationmonths(parseInt(adddurationmonths + 1))
+        let d = addyearssecondwtoutlessdate
+        d.setFullYear(d.getFullYear(), d.getMonth() + 1);
+        setdateofexpiry(moment(d).format('D-M-YYYY'))
+        setaddyearssecondwtoutlessdate(d)
+        setsetnewextendeddurationsyears(d)
+        setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+        console.log('====================================', dateofexpiry);
+
+
     }
+
 
     const lessmonth = () => {
-        if (adddurationmonths === 0) {
-            setadddurationmonths(0)
-        }
-        // if (monthsdurations === 13) {
-        //     setexpiryyear(expiryyear + 1) 
-        // }
 
+
+        if (adddurationmonths === 0) {
+            return;
+        }
         else {
-            setmonthsdurations(parseInt(monthsdurations - 1))
-            setadddurationmonths(adddurationmonths - 1)
+            setadddurationmonths(parseInt(adddurationmonths - 1))
+            let d = addyearssecondwtoutlessdate
+            d.setFullYear(d.getFullYear(), d.getMonth() - 1);
+            setdateofexpiry(moment(d).format('D-M-YYYY'))
+            setaddyearssecondwtoutlessdate(d)
+            setsetnewextendeddurationsyears(d)
+            setextendeddurationsyears(moment(d).format('D-M-YYYY'))
+            console.log('====================================', dateofexpiry);
+
         }
     }
+
+
+
 
     return (
         <SafeAreaView style={Styles.container}>
@@ -103,7 +151,6 @@ const Addadditionalpart = ({ navigation }) => {
 
                     {durationenabled ?
                         <View style={{ width: rw(100), flex: 1 }}>
-
                             <View style={Styles.durationview}>
                                 <TouchableOpacity onPress={() => setdurationenabled(true)}>
                                     <FontAwesome name='circle' size={20} color={Colors.yellow} />
@@ -155,7 +202,7 @@ const Addadditionalpart = ({ navigation }) => {
 
                             <View style={{ height: rh(10), marginTop: rh(2) }}>
                                 <Text style={Styles.headingtext}>Date OF Expiry</Text>
-                                <Text style={[Styles.txtdate, { textAlign: 'left' }]}>{[expirydate, '/', monthsdurations, '/', durationsyears]}</Text>
+                                <Text style={[Styles.txtdate, { textAlign: 'left' }]}>{dateofexpiry}</Text>
 
                             </View>
 

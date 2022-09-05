@@ -14,7 +14,7 @@ import AutoHeightImage from 'react-native-auto-height-image';
 
 const Categoriesdetails = ({ navigation, route }) => {
     console.log('====================================');
-    console.log(route?.params.ID);
+    console.log(route);
     console.log('====================================');
 
     const [record, setrecord] = useState([])
@@ -39,35 +39,119 @@ const Categoriesdetails = ({ navigation, route }) => {
     const imagwidth = Dimensions.get('window').width
 
 
+    const hitsize = (item) => {
+        let temp = [...categorydata];
+        for (let i = 0; i < categorydata.length; i++) {
+            if (categorydata[i].code == item.code) {
+                temp[i] = {
+                    seleced: true,
+                    code: categorydata[i].code,
+                    name: categorydata[i].name,
+                    items: categorydata[i].items,
+                    ID: categorydata[i].ID
+
+                };
+            } else {
+                temp[i] = {
+                    seleced: false,
+                    code: categorydata[i].code,
+                    name: categorydata[i].name,
+                    items: categorydata[i].items,
+                    ID: categorydata[i].ID
+
+                };
+            }
+
+        }
+        setcategorydata(temp);
+
+
+    }
+
+
     const receiptsfunction = ({ item }) => {
-        console.log(item)
+        console.log("----------->", item)
         const imk = item.product_image
         return (
             <View >
-                <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetails', item)}>
-                    <View style={{ height: rh(17), marginHorizontal: rw(2), borderRadius: 10, flexDirection: "row", backgroundColor: '#EEEBEB', marginTop: rh(2), justifyContent: "flex-start", }}>
+                {item.slected ?
+                    <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetails', item)}>
+                        <View style={{ height: rh(17), marginHorizontal: rw(2), borderRadius: 10, flexDirection: "row", backgroundColor: '#EEEBEB', marginTop: rh(2), justifyContent: "flex-start", }}>
+
+                            {imk === '' ?
+                                <Image source={require('../../Assets/photos/DummyImage.png')} style={{ resizeMode: 'cover', borderRadius: 10, height: rh(17), width: rw(27) }} />
+                                :
+                                <Image source={{ uri: imk }} style={{ resizeMode: 'cover', borderRadius: 10, height: rh(17), width: rw(27) }} />
+                            }
 
 
-                        <Image source={{ uri: imk }} style={{ height: 110, width: 100, borderRadius: 10 }} resizeMode={"center"} />
-
-                        {/* <AutoHeightImage
+                            {/* <AutoHeightImage
                             resizeMode="stretch"
                             width={105}
                             style={{ borderRadius: 5 }}
                             source={{ uri: item.product_image }}
                         /> */}
-                        <View style={{ marginLeft: rw(4) }}>
-                            <Text style={{ fontSize: FontSize.font21, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium', marginTop: rh(3) }}>{item.name}</Text>
-                            <View style={{ marginTop: rh(1) }}>
-                                <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light', }}>{item.datediff}</Text>
-                                <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>{item.expiry_date}</Text>
+                            <View style={{ marginLeft: rw(4) }}>
+                                <Text style={{ fontSize: FontSize.font21, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium', marginTop: rh(3) }}>{item.name}</Text>
+                                <View style={{ marginTop: rh(1) }}>
+
+                                    {item.datediff <= 0 ?
+                                        <Text style={{ color: Colors.red, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', }}>
+                                            Expired</Text>
+                                        :
+                                        <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light', }}>{item.datediff} </Text>
+                                    }
+
+                                    {item.expiry_date === "9999-01-01" ?
+                                        <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>Life Time Warranty</Text>
+                                        :
+                                        <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>{item.expiry_date}</Text>
+                                    }
+                                </View>
                             </View>
                         </View>
-                    </View>
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                    :
+                    <TouchableOpacity onPress={() => navigation.navigate('Receiptsdetails', item)} onLongPress={() => hitsize(item)}>
+                        <View style={{ height: rh(17), marginHorizontal: rw(2), borderRadius: 10, flexDirection: "row", backgroundColor: '#EEEBEB', marginTop: rh(2), justifyContent: "flex-start", }}>
+                            {imk === '' ?
+                                <Image source={require('../../Assets/photos/DummyImage.png')} style={{ resizeMode: 'cover', borderRadius: 10, height: rh(17), width: rw(27) }} />
+                                :
+                                <Image source={{ uri: imk }} style={{ resizeMode: 'cover', borderRadius: 10, height: rh(17), width: rw(27) }} />
+                            }
+                            {/* <AutoHeightImage
+                        resizeMode="stretch"
+                        width={105}
+                        style={{ borderRadius: 5 }}
+                        source={{ uri: item.product_image }}
+                    /> */}
+                            <View style={{ marginLeft: rw(4) }}>
+                                <Text style={{ fontSize: FontSize.font21, color: Colors.black, fontWeight: '700', fontFamily: 'Inter-Medium', marginTop: rh(3) }}>{item.name}</Text>
+                                <View style={{ marginTop: rh(1) }}>
+
+                                    {item.datediff <= 0 ?
+                                        <Text style={{ color: Colors.red, fontSize: FontSize.font14, fontWeight: '500', fontFamily: 'Inter-Light', }}>
+                                            Expired</Text>
+                                        :
+                                        <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light', }}>{item.datediff} </Text>
+                                    }
+
+                                    {item.expiry_date === "9999-01-01" ?
+                                        <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>Life Time Warranty</Text>
+                                        :
+                                        <Text style={{ fontSize: FontSize.font17, color: Colors.gry, fontWeight: '400', fontFamily: 'Inter-Light' }}>{item.expiry_date}</Text>
+                                    }
+                                </View>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                }
+
             </View>
         )
     }
+
+
     return (
         <SafeAreaView style={Styles.container}>
             <View style={{ height: rh(8), borderBottomWidth: 2, borderColor: Colors.bk, justifyContent: 'center' }}>

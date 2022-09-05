@@ -54,7 +54,6 @@ const Createcategory = ({ navigation }) => {
     }
 
     const AddCategory = async () => {
-
         console.log('====================================');
         console.log(categoryname, categorykacolour);
         console.log('====================================');
@@ -216,7 +215,7 @@ const Createcategory = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={{ flex: 1, marginHorizontal: rw(5) }}>
-                <ScrollView style={{ flexGrow: 1 }}>
+               
                     <View style={{ height: rh(4), marginTop: rh(2) }}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <YellowBackSvg width={'20.67px'} height={'20.67px'} />
@@ -243,7 +242,7 @@ const Createcategory = ({ navigation }) => {
                         <FlatList
                             data={records}
                             renderItem={renderfunction}
-                            keyExtractor={item => item.id}
+                            keyExtractor={item => item.code}
                             numColumns={4}
                             contentContainerStyle={{ width: rw(90), justifyContent: 'center', }}
 
@@ -253,7 +252,7 @@ const Createcategory = ({ navigation }) => {
 
 
 
-                </ScrollView>
+              
                 <View style={styles.nextanssavedbuttonview}>
                     {loader ?
 

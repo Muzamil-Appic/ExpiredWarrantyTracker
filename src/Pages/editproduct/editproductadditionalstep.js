@@ -20,6 +20,7 @@ import AutoHeightImage from 'react-native-auto-height-image';
 import Loaders from '../../Components/Loaders'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 const EditProductAddtionalStep = ({ navigation, route }) => {
 
 
@@ -252,9 +253,9 @@ const EditProductAddtionalStep = ({ navigation, route }) => {
     const selectimagefromgallery = () => {
         setTimeout(() => {
             ImagePicker.openPicker({
-                width: 200,
-                height: 200,
-                cropping: false,
+                width: 500,
+                height: 500,
+                cropping: true,
                 //  compressImageQuality: 0.4,
             }).then(async image => {
                 setImg(image.path);
@@ -264,6 +265,34 @@ const EditProductAddtionalStep = ({ navigation, route }) => {
             });
         }, 400);
     };
+
+
+    // const uplodFile = async (image) => {
+    //     console.log("yes entered");
+    //     var formdata = new FormData();
+    //     var filename = image.path.replace(/^.*[\\\/]/, '');
+    //     formdata.append('file', {
+    //         uri: image.path,
+    //         name: filename, type: image.mime
+    //     });
+    //     // console.log({
+    //     //     uri: image.path,
+    //     //     name: filename, type: image.mime
+    //     // });
+
+    //     var requestOptions = {
+    //         method: 'POST',
+    //         body: formdata,
+    //         redirect: 'follow'
+    //     };
+    //     setimageloader(true)
+    //     await fetch("http://waqarulhaq.com/expired-warranty-tracker/upload-img.php?", requestOptions)
+    //         .then(response => response.json())
+    //         .then(result => { setreceiptspath(result), setimageloader(false), console.log(result) })
+    //         .catch(error => console.log('error', error),);
+    // };
+
+
 
 
     const uplodFile = async (image) => {
@@ -278,25 +307,31 @@ const EditProductAddtionalStep = ({ navigation, route }) => {
             uri: image.path,
             name: filename, type: image.mime
         });
-
+        setbuttonloader(true)
+        console.log(buttonloader);
         var requestOptions = {
             method: 'POST',
             body: formdata,
             redirect: 'follow'
         };
-        setimageloader(true)
+        // console.log("requestOptions", requestOptions);
+
+
         await fetch("http://waqarulhaq.com/expired-warranty-tracker/upload-img.php?", requestOptions)
             .then(response => response.json())
-            .then(result => { setreceiptspath(result), setimageloader(false) })
-            .catch(error => console.log('error', error),);
+            .then(result => { setreceiptspath(result), console.log(result), setbuttonloader(false) })
+            .catch(error => { console.log('error', error), setbuttonloader(true) });
+
     };
+
+
+
 
     const opencamera = () => {
         ImagePicker.openCamera({
-            width: 400,
-            height: 400,
+            width: 500,
+            height: 500,
             cropping: true,
-            compressImageQuality: 1,
         }).then(async image => {
             setImg(image.path)
             setisCamera(false);
@@ -350,7 +385,7 @@ const EditProductAddtionalStep = ({ navigation, route }) => {
     return (
         <SafeAreaView style={Styles.container}>
             <View style={{ marginHorizontal: rw(5) }}>
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} keyboardDismissMode='on-drag'>
                     <View style={{ height: rh(4), marginTop: rh(2) }}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <YellowBackSvg width={'20.67px'} height={'20.67px'} />
@@ -589,6 +624,7 @@ const EditProductAddtionalStep = ({ navigation, route }) => {
                                 style={Styles.input}
                                 onChangeText={e => setnotes(e)}
                                 value={notes}
+                            //keyboardType={"email-address"}
                             />
                         </View>
                         : null

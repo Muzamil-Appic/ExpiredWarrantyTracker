@@ -1,5 +1,5 @@
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
-import { Image, Alert, Dimensions, FlatList, ScrollView, Modal, StyleSheet, View, Text, TouchableOpacity, TextInput, PermissionsAndroid } from 'react-native'
+import { ActivityIndicator, Image, Alert, Dimensions, FlatList, ScrollView, Modal, StyleSheet, View, Text, TouchableOpacity, TextInput, PermissionsAndroid } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Colors from '../../Global/Colors';
 import FontSize from '../../Global/Fonts';
@@ -18,7 +18,8 @@ const Addproductsteptwo = ({ navigation }) => {
     const [images, setimages] = useState('')
     const [receiptspath, setreceiptspath] = useState('')
     const [imageloader, setimageloader] = useState(false)
-
+    const [loader, setloader] = useState(false)
+    const [buttonloader, setbuttonloader] = useState(false)
     const imageheight = Dimensions.get('window').height
     const imagwidth = Dimensions.get('window').width
 
@@ -35,10 +36,15 @@ const Addproductsteptwo = ({ navigation }) => {
     const selectimagefromgallery = () => {
         setTimeout(() => {
             ImagePicker.openPicker({
-                width: 200,
-                height: 200,
-                cropping: true,
-                //  compressImageQuality: 0.4,
+                width: 500,
+                height: 500,
+               cropping: true,
+                // //  compressImageQuality: 0.4,
+
+                // width: 200,
+                // height: 200,
+                // cropping: true,
+                // compressImageQuality: 0.4,
             }).then(async image => {
                 setImg(image.path);
                 setisCamera(false);
@@ -51,6 +57,8 @@ const Addproductsteptwo = ({ navigation }) => {
 
     const uplodFile = async (image) => {
 
+
+
         console.log("yes entered");
         var formdata = new FormData();
         var filename = image.path.replace(/^.*[\\\/]/, '');
@@ -62,30 +70,54 @@ const Addproductsteptwo = ({ navigation }) => {
             uri: image.path,
             name: filename, type: image.mime
         });
-
+        setbuttonloader(true)
+        console.log(buttonloader);
         var requestOptions = {
             method: 'POST',
             body: formdata,
             redirect: 'follow'
         };
         // console.log("requestOptions", requestOptions);
-        setimageloader(true)
+
+
         await fetch("http://waqarulhaq.com/expired-warranty-tracker/upload-img.php?", requestOptions)
             .then(response => response.json())
-            .then(result => { setreceiptspath(result), setimageloader(false) })
-            .catch(error => console.log('error', error),);
-
+            .then(result => { setreceiptspath(result), console.log("yh ja rh ahay", result), setbuttonloader(false) })
+            .catch(error => { console.log('error', error), setbuttonloader(true) });
 
     };
 
-    const opencamera = () => {
+    // const opencamera = () => {
 
+    //     setTimeout(() => {
+    //         ImagePicker.openCamera({
+    //             // width: 500,
+    //             // height: 500,
+    //             // cropping: true,
+    //             // // compressImageQuality: 0,
+    //             width: 200,
+    //             height: 200,
+    //             cropping: true,
+    //             compressImageQuality: 0.4,
+    //         }).then(async image => {
+    //             setImg(image.path)
+    //             setisCamera(false);
+    //             const ref = new Date().getTime();
+    //             setimages(image)
+    //             uplodFile(image);
+    //         });
+    //     }, 800);
+    // }
+
+    const opencamera = () => {
         setTimeout(() => {
             ImagePicker.openCamera({
+
                 width: 500,
                 height: 500,
-               // cropping: true,
-                compressImageQuality:0,
+                cropping: true,
+
+                // compressImageQuality: 0.4,
             }).then(async image => {
                 setImg(image.path)
                 setisCamera(false);
@@ -95,8 +127,6 @@ const Addproductsteptwo = ({ navigation }) => {
             });
         }, 400);
     }
-
-
 
 
     const nextscreendata = () => {
@@ -112,7 +142,7 @@ const Addproductsteptwo = ({ navigation }) => {
             'Are You Sure You Want TO Exit',
             [
                 { text: 'Cancel', onPress: () => console.warn("You Backed") },
-                { text: 'OK', onPress: () => { navigation.navigate('BottomTabNavigations'), global.apiData = [] } },
+                { text: 'OK', onPress: () => { navigation.navigate('BottomTabNavigations', { screen: 'Timeline' }), global.apiData = [] } },
             ],
             { cancelable: false }
         )
@@ -128,9 +158,7 @@ const Addproductsteptwo = ({ navigation }) => {
 
     return (
         <SafeAreaView style={Styles.container}>
-
             <View style={{ flex: 1, marginHorizontal: rh(3) }}>
-
                 <View style={{ height: rh(4), marginTop: rh(2) }}>
                     <TouchableOpacity onPress={() => backfunction()}>
                         <YellowBackSvg width={'20.67px'} height={'20.67px'} />
@@ -202,8 +230,10 @@ const Addproductsteptwo = ({ navigation }) => {
                     source={{ uri: filePath.uri }}
                     style={Styles.imageStyle}
                 /> */}
+
                 <View style={Styles.nextanssavedbuttonview}>
-                    {imageloader ?
+
+                    {buttonloader ?
                         <Loaders />
                         :
                         <TouchableOpacity style={Styles.bottombtn} onPress={() => nextscreendata()}>

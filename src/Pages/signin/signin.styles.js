@@ -17,12 +17,12 @@ const Styles = StyleSheet.create({
 
     },
     loginsignuptext: { color: Colors.white, fontFamily: 'Inter-Regular', fontWeight: '500', fontSize: FontSize.font16 },
-    txtinptinner: { padding: 0, fontSize: FontSize.font02, paddingLeft: rw(1), marginTop: rh(2), height: rh(6), },
+    txtinptinner: { padding: 0, fontSize: FontSize.font02, paddingLeft: rw(1), marginTop: rh(2), height: rh(6), color: Colors.black },
     txtinptouterview: { borderColor: Colors.borderbottomcolor, height: rh(7), alignContent: "center", borderBottomWidth: 2, },
     loginsignupbtn: { backgroundColor: Colors.yellow, justifyContent: "center", alignItems: 'center', height: rh(7), borderRadius: 8, marginHorizontal: rw(5) },
     loginsignupbtntext: { color: Colors.white, fontSize: FontSize.font16, fontWeight: '500', fontFamily: 'Inter-Regular' },
     fbgoogletext: {
-        fontSize: FontSize.font14,
+        fontSize: FontSize.fon15,
         color: Colors.black,
         fontWeight: '600',
         textAlign: 'center'

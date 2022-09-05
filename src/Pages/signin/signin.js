@@ -9,33 +9,15 @@ import Signinsvg from '../../Assets/Svg/Signinsvg.svg'
 import Evyiconopensvg from '../../Assets/Svg/Evyiconopensvg.svg'
 import Loaders from '../../Components/Loaders'
 import auth from '@react-native-firebase/auth';
-import { firebase } from '@react-native-firebase/auth'
-import firestore from '@react-native-firebase/firestore'
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import GOogleGSvg from '../../Assets/Svg/GOogleGSvg.svg'
 import Toast from 'react-native-simple-toast';
-
 import ClosedEyeSvg from '../../Assets/Svg/ClosedEyeSvg.svg'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AppleButton } from '@invertase/react-native-apple-authentication';
+import { appleAuth } from '@invertase/react-native-apple-authentication';
+import OneSignal from 'react-native-onesignal';
 const Signin = ({ navigation }) => {
-
-
-
-
-
-  useEffect(() => {
-    GoogleSignin.configure({
-      webClientId: '107511410686-rkub5qroeu5qv7hrpkegedurrccf5tci.apps.googleusercontent.com',
-    });
-
-  }, [])
-
-
-
 
   const [firstname, setfirstname] = useState('')
   const [signinenables, setsigninenables] = useState(true)
@@ -53,26 +35,126 @@ const Signin = ({ navigation }) => {
   const [googleloader, setfirst] = useState(false)
 
 
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '41658588833-26s33sig9lsbc405jdss6r333fqcdbm3.apps.googleusercontent.com',
+    });
+  }, [])
+
+  async function onAppleButtonPress() {
+    // Start the sign-in request
+    console.log("Step 1---->");
+    const appleAuthRequestResponse = await appleAuth.performRequest({
+      requestedOperation: appleAuth.Operation.LOGIN,
+      requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+    });
+
+    // Ensure Apple returned a user identityToken
+    if (!appleAuthRequestResponse.identityToken) {
+      throw new Error('Apple Sign-In failed - no identify token returned');
+    }
+    console.log("Step 2---->");
+    //  Create a Firebase credential from the response
+    const { identityToken, nonce } = appleAuthRequestResponse;
+    const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
+    console.log('====================================');
+    console.log(appleCredential);
+    console.log('====================================');
+    //  Sign the user in with the credential
+    await auth().signInWithCredential(appleCredential)
+      .then((loggeduser) => {
+        console.log("Step 3---->", loggeduser)
+        // console.log('====================================');
+        // console.log("----->", loggeduser.additionalUserInfo);
+        // console.log('====================================');
+        // console.log("Step 4---->");
+        // console.log('====================================');
+        // console.log("----->", loggeduser.user);
+        // console.log('====================================');
+        // const userdata = firestore_ref.doc(loggeduser.user.email)
+        // userdata.set({
+        //   email: loggeduser.user.email,
+        //   id: loggeduser.user.email,
+        //   name: '',
+        //   phonenumber: '',
+        //   country: '',
+        //   city: '',
+        //   address: '',
+        // }, { merge: true }).then(
+        // AsyncStorage.setItem(
+        //   'userdetails',
+        //   JSON.stringify({
+        //     useremail: loggeduser.user.email,
+        //     userid: loggeduser.user.email,
+        //     //  onboardingbit: 1,
+        //   })
+        // )
+
+
+
+        if (loggeduser.additionalUserInfo?.isNewUser === true) {
+          console.log("New User");
+          console.log(loggeduser?.user?.email)
+          const userkamail = loggeduser?.user?.email;
+          // console.log(loggeduser?.additionalUserInfo?.profile?.family_name)
+          // console.log(loggeduser?.additionalUserInfo?.profile?.given_name)
+          //  OneSignal.sendTag("usermail", loggeduser.user.email);
+
+          AsyncStorage.setItem(
+            'userdetails',
+            JSON.stringify({
+              useremail: userkamail,
+              userid: userkamail,
+              //  onboardingbit: 1,
+            })
+          )
+          const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify()
+          };
+          fetch(`http://waqarulhaq.com/expired-warranty-tracker/save-user-info.php?email=${userkamail}&fname=${''}&lname=${''}&joinType=apple`, requestOptions)
+            .then(response => response.json())
+            .then(data => console.log("--------------kkkkkk>", data))
+
+          navigation.replace('BottomTabNavigations')
+        }
+        else {
+          console.log(loggeduser?.user?.email)
+          //  OneSignal.sendTag("usermail", loggeduser?.user?.email);
+
+          const userkamail = loggeduser?.user?.email;
+          console.log("Old user");
+          AsyncStorage.setItem(
+            'userdetails',
+            JSON.stringify({
+              useremail: userkamail,
+              userid: userkamail,
+              //  onboardingbit: 1,
+            })
+          )
+          navigation.replace('BottomTabNavigations')
+        }
 
 
 
 
 
+      })
+      .catch((error) => {
+        alert(error)
+        console.log("Error---->", error);
+      })
 
 
-
-
-
-
-
-
-
+  }
 
   const LoginFunction = async () => {
     const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
     const emailresult = (pattern.test(signemail))
     if (emailresult === false) {
       alert("Email Type must be Email")
+      return;
     }
     if (signemail === '') {
       alert("Please Enter Email First")
@@ -95,7 +177,7 @@ const Signin = ({ navigation }) => {
     fetch(`http://waqarulhaq.com/expired-warranty-tracker/login.php?email=${signemail}&password=${signinpasswprd}`, requestOptions)
       .then(response => response.json())
       .then(result => {
-        console.log(result?.data?.email);
+        console.log(result);
         if (result.msg === "User does not exist!") {
           alert("User does not exist!")
           signinempty()
@@ -108,14 +190,15 @@ const Signin = ({ navigation }) => {
         }
         if (result.msg === "Signed in successfully!") {
           signinempty()
+          OneSignal.sendTag("usermail", result.data?.email)
           AsyncStorage.setItem(
             'userdetails',
             JSON.stringify({
               useremail: result.data?.email,
-              userid: result.data?.ID,
+              userid: result.data?.email,
+              // onboardingbit: 1,
             })
           )
-
           navigation.navigate('BottomTabNavigations')
           signinempty()
           setloginloader(false)
@@ -126,7 +209,7 @@ const Signin = ({ navigation }) => {
       .catch((error) => {
         signinempty()
         setloginloader(false)
-        alert(error.code)
+        alert(error)
         console.log(error);
       })
   }
@@ -212,12 +295,11 @@ const Signin = ({ navigation }) => {
       .catch((error) => {
         signupempty()
         setsignuploader(false)
-        alert(error.code)
+       
+        alert(error)
         console.log(error);
       })
   }
-
-
 
   async function onGoogleButtonPress() {
     console.log("Step 1");
@@ -236,16 +318,16 @@ const Signin = ({ navigation }) => {
       ///   console.log(userinfo)
       // Sign-in the user with the credential
       .then((loggeduser) => {
-
-        
-          //  console.log("9", loggeduser.user.email);
-          AsyncStorage.setItem(
-            'userdetails',
-            JSON.stringify({
-              useremail: loggeduser.user.email,
-              userid: loggeduser.user.email,
-            })
-          )
+        //  console.log("9", loggeduser.user.email);
+        AsyncStorage.setItem(
+          'userdetails',
+          JSON.stringify({
+            useremail: loggeduser.user.email,
+            userid: loggeduser.user.email,
+            //  onboardingbit: 1,
+          })
+        )
+        OneSignal.sendTag("usermail", loggeduser.user.email);
         if (loggeduser.additionalUserInfo.isNewUser === true) {
           console.log("New User");
           console.log(loggeduser.user.email)
@@ -256,6 +338,7 @@ const Signin = ({ navigation }) => {
             JSON.stringify({
               useremail: loggeduser.user.email,
               userid: loggeduser.user.email,
+              //  onboardingbit: 1,
             })
           )
           const requestOptions = {
@@ -283,11 +366,9 @@ const Signin = ({ navigation }) => {
       })
   }
 
-
-
   return (
     <SafeAreaView style={Styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }} keyboardDismissMode='on-drag' >
         {signinenables ?
           <View style={Styles.loginsignupbutton}>
             <View style={{ flexDirection: "row", width: rw('40'), justifyContent: 'space-around', }}>
@@ -332,13 +413,13 @@ const Signin = ({ navigation }) => {
                 <TextInput value={signinpasswprd} onChangeText={e => setsigninpasswprd(e)} placeholder='Password' secureTextEntry={signineye} placeholderTextColor={Colors.borderbottomcolor} style={[Styles.txtinptinner, { width: rw(90) }]} />
                 {signineye ?
                   <View>
-                    <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(4) }} onPress={() => setsignineye(false)}>
+                    <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(4), height: rh(8), width: rw(8) }} onPress={() => { setsignineye(false), console.log("Eye opne") }}>
                       < Evyiconopensvg width={'22px'} height={'15px'} />
                     </TouchableOpacity>
                   </View>
                   :
                   <View>
-                    <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(4) }} onPress={() => setsignineye(true)}>
+                    <TouchableOpacity style={{ right: rw(8), alignSelf: "center", marginTop: rh(4), height: rh(8), width: rw(8) }} onPress={() => { setsignineye(true), console.log("eye closed") }}>
                       < ClosedEyeSvg width={'22px'} height={'17px'} />
                     </TouchableOpacity>
                   </View>
@@ -364,31 +445,23 @@ const Signin = ({ navigation }) => {
 
             <View style={{ flex: 1, justifyContent: 'center', alignItems: "center" }}>
 
-
-
-
-
-
-
-
-
               {Platform.OS === 'ios' && Platform.Version >= 13 ?
-                <View style={{ height: rh(16), width: rw(100), justifyContent: 'space-between', alignContent: "center", bottom: rh(10), alignItems: 'center' }}>
-
-                  <Text style={{ color: Colors.black, fontSize: FontSize.font14 }}>or continue with</Text>
-                  <AppleButton
-                    buttonStyle={AppleButton.Style.WHITE}
-                    buttonType={AppleButton.Type.SIGN_IN}
-                    style={{
-                      width: 160,
-                      height: 45,
-                    }}
-                    onPress={() => onAppleButtonPress()}
-                  />
-                  {googleloader ?
-                    <Loaders />
-                    :
-
+                <View style={{ justifyContent: "center", alignItems: "center", }} >
+                  <View style={{ bottom: rh(5) }}>
+                    <Text style={{ color: Colors.black, fontSize: FontSize.font14 }}>or continue with</Text>
+                  </View>
+                  <View style={{ height: rh(15), justifyContent: "space-between" }}>
+                    <AppleButton
+                      buttonStyle={AppleButton.Style.WHITE}
+                      buttonType={AppleButton.Type.SIGN_IN}
+                      style={{
+                        width: 160,
+                        height: 45,
+                        borderRadius: 6,
+                        borderWidth: 1
+                      }}
+                      onPress={() => onAppleButtonPress()}
+                    />
                     <TouchableOpacity style={{
                       width: 160,
                       height: 45,
@@ -398,18 +471,17 @@ const Signin = ({ navigation }) => {
                       alignContent: 'center',
                       alignItems: 'center',
                       borderRadius: 6,
-                      borderWidth: 1
-
+                      borderWidth: 1,
 
                     }}
                       onPress={() => onGoogleButtonPress()}
                     >
-                      <View >
-                        <GOogleGSvg height={'15px'} width={'15px'} />
+                      <View>
+                        <GOogleGSvg height={'12px'} width={'12px'} />
                       </View>
-                      <Text style={Styles.fbgoogletext}>Continue with Google</Text>
+                      <Text style={Styles.fbgoogletext}>Sign in With Google</Text>
                     </TouchableOpacity>
-                  }
+                  </View>
 
                 </View>
                 :
@@ -421,7 +493,7 @@ const Signin = ({ navigation }) => {
                     <Loaders />
                     :
                     <TouchableOpacity style={{
-                      width: 160,
+                      width: 180,
                       height: 45,
                       flexDirection: 'row',
                       backgroundColor: Colors.white,
@@ -442,12 +514,6 @@ const Signin = ({ navigation }) => {
 
                 </View>
               }
-
-
-
-
-
-
 
             </View>
           </View>
@@ -500,7 +566,6 @@ const Signin = ({ navigation }) => {
             </View>
             <View style={{ height: rh(9), marginTop: rh(5) }}>
               {signuploader ?
-
                 <Loaders />
                 :
                 <TouchableOpacity style={Styles.loginsignupbtn} onPress={() => SignupFunction()}>
@@ -513,7 +578,12 @@ const Signin = ({ navigation }) => {
 
           </View>
         }
+
+
+
+
       </ScrollView>
+
     </SafeAreaView >
   )
 }

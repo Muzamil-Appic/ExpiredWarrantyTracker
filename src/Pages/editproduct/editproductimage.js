@@ -49,9 +49,9 @@ const EditReceiptImage = ({ navigation, route }) => {
                         console.log(result);
                         console.log('====================================');
                         Toast.show("Receipt Image Updated Successfull")
-                        setbuttonloader(false)
-                        navigation.goBack()
-                        
+                        setbuttonloader(false),
+                            navigation.goBack()
+
                     }
                     else {
                         alert("Receipt Image Not Updated"),
@@ -73,7 +73,7 @@ const EditReceiptImage = ({ navigation, route }) => {
                 width: 200,
                 height: 200,
                 cropping: true,
-                //  compressImageQuality: 0.4,
+                // compressImageQuality: 0.4,
             }).then(async image => {
                 setImg(image.path);
                 setisCamera(false);
@@ -117,10 +117,10 @@ const EditReceiptImage = ({ navigation, route }) => {
 
         setTimeout(() => {
             ImagePicker.openCamera({
-                width: 500,
-                height: 500,
-                // cropping: true,
-                compressImageQuality: 0,
+                width: 200,
+                height: 200,
+                cropping: true,
+                compressImageQuality: 0.4,
             }).then(async image => {
                 setImg(image.path)
                 setisCamera(false);

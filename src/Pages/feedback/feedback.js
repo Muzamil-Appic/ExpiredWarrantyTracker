@@ -6,8 +6,44 @@ import FontSize from '../../Global/Fonts';
 import Styles from './feedback.Styles';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import YellowBackSvg from '../../Assets/Svg/YellowBackSvg.svg'
+import Toast from 'react-native-simple-toast';
 
 const Feedback = ({ navigation }) => {
+
+    const [username, setusername] = useState('')
+    const [useremail, setuseremail] = useState('')
+    const [userfeedback, setuserfeedback] = useState('')
+    const [loader, setloader] = useState(false)
+
+    const empty = () => {
+        setuseremail('')
+        setusername('')
+        setuserfeedback('')
+    }
+
+
+    const apihit = async () => {
+
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+        setloader(true)
+        await fetch(`https://waqarulhaq.com/expired-warranty-tracker/send-feedback.php?email=${useremail}&name=${useremail}&msg=${userfeedback}`, requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+            },
+                Toast.show("Login Successfull"),
+                empty(),
+                setloader(false))
+            // .then(result =>
+            //   setapirecord(result))
+            // .then(jssss())
+
+            .catch(error => console.log('error', error));
+    }
+
     return (
         <SafeAreaView style={Styles.container}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
@@ -23,19 +59,21 @@ const Feedback = ({ navigation }) => {
                 </View>
                 <View style={{ flex: 1, marginTop: rh(1), marginHorizontal: rw(6) }}>
                     <View style={Styles.txtboxview}>
-                        <TextInput placeholder='Name' numberOfLines={1} placeholderTextColor={Colors.gry} style={Styles.txtboxinpt} />
+                        <TextInput value={username} placeholder='Name' numberOfLines={1} placeholderTextColor={Colors.gry} style={Styles.txtboxinpt} onChangeText={e => setusername(e)} />
                     </View>
                     <View style={Styles.txtboxview}>
-                        <TextInput placeholder='Email' numberOfLines={1} placeholderTextColor={Colors.gry} style={Styles.txtboxinpt} />
+                        <TextInput value={useremail} placeholder='Email' numberOfLines={1} placeholderTextColor={Colors.gry} style={Styles.txtboxinpt} onChangeText={e => setuseremail(e)} />
                     </View>
                     <View style={{ height: rh(25), borderWidth: 1, borderRadius: 7, borderColor: Colors.borderbottomcolor, marginTop: rh(4) }}>
                         <TextInput numberOfLines={10}
+                            value={userfeedback}
+                            onChangeText={e => setuserfeedback(e)}
                             multiline={true} placeholder='Type your message here...' placeholderTextColor={Colors.borderbottomcolor} style={{ padding: 10, fontSize: FontSize.font16, color: Colors.black, textAlignVertical: 'top' }} />
                     </View>
 
                 </View>
                 <View style={{ flex: 1, alignSelf: 'flex-end', justifyContent: 'flex-end' }}>
-                    <TouchableOpacity style={{ backgroundColor: Colors.yellow, margin: rh(2), height: rh(7), justifyContent: 'center', width: rw(25), borderRadius: 7 }}>
+                    <TouchableOpacity style={{ backgroundColor: Colors.yellow, margin: rh(2), height: rh(7), justifyContent: 'center', width: rw(25), borderRadius: 7 }} onPress={() => apihit()} >
                         <Text style={{ textAlign: 'center', color: Colors.white, fontSize: FontSize.font16 }}>Send</Text>
                     </TouchableOpacity>
                 </View>

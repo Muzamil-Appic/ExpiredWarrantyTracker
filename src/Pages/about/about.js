@@ -1,5 +1,5 @@
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
-import { Dimensions, FlatList, ScrollView, TextInput, Modal, StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { Dimensions, FlatList, ScrollView, TextInput, Linking, Modal, StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Colors from '../../Global/Colors';
 import FontSize from '../../Global/Fonts';
@@ -35,20 +35,24 @@ const About = ({ navigation }) => {
 
 
                     <View style={{ height: rh(10), borderBottomWidth: 1, borderTopWidth: 1, marginTop: rh(3) }}>
-                        <TouchableOpacity style={{ paddingTop: rh(4) }}>
+                        <TouchableOpacity style={{ paddingTop: rh(4) }} onPress={() => {
+                            Linking.openURL('https://waqarulhaq.com/expired-warranty-tracker/privacy-policy.php');
+                        }}>
                             <Text style={{ fontSize: FontSize.fon15, color: Colors.black, fontFamily: 'Inter-Regular', fontWeight: '400' }}>Privacy Policy</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{ height: rh(10), borderBottomWidth: 1, }}>
-                        <TouchableOpacity style={{ paddingTop: rh(4) }}>
+                        <TouchableOpacity style={{ paddingTop: rh(4) }} onPress={() => {
+                            Linking.openURL('https://waqarulhaq.com/expired-warranty-tracker/terms-and-conditions.php');
+                        }}>
                             <Text style={{ fontSize: FontSize.fon15, color: Colors.black, fontFamily: 'Inter-Regular', fontWeight: '400' }}>Terms and Conditions</Text>
                         </TouchableOpacity>
                     </View>
-                    <View style={{ height: rh(10), borderBottomWidth: 1, }}>
+                    {/* <View style={{ height: rh(10), borderBottomWidth: 1, }}>
                         <TouchableOpacity style={{ paddingTop: rh(4) }}>
                             <Text style={{ fontSize: FontSize.fon15, color: Colors.black, fontFamily: 'Inter-Regular', fontWeight: '400' }}>Open Source Attributions</Text>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
                 </View>
                 <View style={{ flex: 1, justifyContent: 'flex-end' }}>
                     <View style={{ marginBottom: rh(2) }}>

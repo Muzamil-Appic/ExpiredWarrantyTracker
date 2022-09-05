@@ -30,6 +30,8 @@ const Addproductstepone = ({ navigation }) => {
         console.log('====================================');
         console.log("Ok");
         console.log('====================================');
+        // navigation.navigate('BottomTabNavigations')
+        navigation.jumpTo('Timeline')
         // Alert.alert(
         //     'Alert',
         //     'Are You Sure You Want TO Exit',
@@ -39,7 +41,6 @@ const Addproductstepone = ({ navigation }) => {
         //     ],
         //     { cancelable: false }
         // )
-
     }
 
 
@@ -51,11 +52,13 @@ const Addproductstepone = ({ navigation }) => {
 
 
 
+
+
     return (
         <SafeAreaView style={Styles.container}>
             <View style={{ flex: 1, marginHorizontal: rh(3) }}>
                 <View style={{ height: rh(4), marginTop: rh(2) }}>
-                    <TouchableOpacity onPress={() => backfunction()}>
+                    <TouchableOpacity onPress={() => navigation.jumpTo('Timeline')} style={{ width: rw(80) }}>
                         <YellowBackSvg width={'20.67px'} height={'20.67px'} />
                     </TouchableOpacity>
                 </View>

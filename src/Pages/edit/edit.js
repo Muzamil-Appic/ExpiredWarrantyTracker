@@ -71,9 +71,8 @@ const Edit = ({ navigation, route }) => {
             })
     }
 
-    console.log('====================================eho mal');
-    console.log(route?.params.ID);
-    console.log('====================================hang');
+
+    
     return (
         <SafeAreaView style={Styles.container}>
             {loader ?

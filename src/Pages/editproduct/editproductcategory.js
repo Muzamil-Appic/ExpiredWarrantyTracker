@@ -57,8 +57,8 @@ const EditProductCategory = ({ navigation, route }) => {
             console.log(result);
             console.log('====================================');
             Toast.show("Category Updated Successfull"),
-            setbuttonloader(false),
-            navigation.goBack()
+              setbuttonloader(false),
+              navigation.goBack()
             // global.apiData = []
           }
           else {

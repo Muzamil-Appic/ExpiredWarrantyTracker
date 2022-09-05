@@ -1,5 +1,5 @@
 import { responsiveHeight as rh, responsiveWidth as rw } from 'react-native-responsive-dimensions'
-import { Dimensions, FlatList, ScrollView, Modal, StyleSheet, Image, View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { Alert, Dimensions, FlatList, ScrollView, Modal, StyleSheet, Image, View, Text, TouchableOpacity, TextInput, Platform } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Colors from '../../Global/Colors';
 import FontSize from '../../Global/Fonts';
@@ -11,7 +11,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import CurrencySSvg from '../../Assets/Svg/CurrencySSvg.svg'
 import CameraSvg from '../../Assets/Svg/CameraSvg.svg'
 import Gallery from '../../Assets/Svg/Gallery.svg'
-import { decode as atob, encode as btoa } from 'base-64'
 import Toast from 'react-native-simple-toast';
 import ImagePicker from 'react-native-image-crop-picker';
 import Entypo from 'react-native-vector-icons/Entypo'
@@ -23,9 +22,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const Addproductstepfiveoptional = ({ navigation, route }) => {
 
 
-    console.log('====================================');
-    console.log(route?.params);
-    console.log('====================================');
+    const tt = true;
+    const ff = false;
 
     useEffect(() => {
         getcurrencyimages()
@@ -34,6 +32,7 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
 
     const [useremail, setuseremail] = useState('')
     const [buttonloader, setbuttonloader] = useState(false)
+    const [imglod, setimglod] = useState(false)
 
     const Addrecord = async () => {
         await AsyncStorage.getItem('userdetails').then(async value => {
@@ -276,32 +275,68 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
     const [currencymodal, setcurrencymodal] = useState(false)
     const [paymentmethodmodal, setpaymentmethodmodal] = useState(false)
     const [showdumyimage, setshowdumyimage] = useState('https://waqarulhaq.com//expired-warranty-tracker/currency-images/22-1.png')
-    const [imageloader, setimageloader] = useState(false)
+
     const [Img, setImg] = useState('')
     const [isCamera, setisCamera] = useState('')
     const [images, setimages] = useState('')
     const [receiptspath, setreceiptspath] = useState('')
+    const [first, setfirst] = useState(false)
 
 
-
+    const [muzamilloader, setmuzamilloader] = useState(false)
 
 
 
     const selectimagefromgallery = () => {
         setTimeout(() => {
             ImagePicker.openPicker({
-                width: 200,
-                height: 200,
-                cropping: false,
-                //  compressImageQuality: 0.4,
+                // width: 200,
+                // height: 200,
+                // cropping: false,
+                // //  compressImageQuality: 0.4,
+                width: 500,
+                height: 500,
+                cropping: true,
+                //compressImageQuality: 0.4,
             }).then(async image => {
                 setImg(image.path);
                 setisCamera(false);
                 setimages(image)
+
                 uplodFile(image);
+
             });
         }, 400);
     };
+
+
+    // const uplodFile = async (image) => {
+    //     console.log("yes entered");
+    //     var formdata = new FormData();
+    //     var filename = image.path.replace(/^.*[\\\/]/, '');
+    //     formdata.append('file', {
+    //         uri: image.path,
+    //         name: filename, type: image.mime
+    //     });
+    //     // console.log({
+    //     //     uri: image.path,
+    //     //     name: filename, type: image.mime
+    //     // });
+
+    //     console.log("--->first", muzamilloader);
+    //     var requestOptions = {
+    //         method: 'POST',
+    //         body: formdata,
+    //         redirect: 'follow'
+    //     };
+
+    //     await fetch("http://waqarulhaq.com/expired-warranty-tracker/upload-img.php?", requestOptions)
+    //         .then(response => response.json())
+    //         .then(result => { setreceiptspath(result), console.log(result), console.log("--->second", muzamilloader); })
+    //         .catch(error => console.log('error', error), setmuzamilloader(false));
+    // };
+
+
 
 
     const uplodFile = async (image) => {
@@ -316,25 +351,35 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
             uri: image.path,
             name: filename, type: image.mime
         });
-
+        setbuttonloader(true)
+        console.log(buttonloader);
         var requestOptions = {
             method: 'POST',
             body: formdata,
             redirect: 'follow'
         };
-        setimageloader(true)
+        // console.log("requestOptions", requestOptions);
+
+
         await fetch("http://waqarulhaq.com/expired-warranty-tracker/upload-img.php?", requestOptions)
             .then(response => response.json())
-            .then(result => { setreceiptspath(result), setimageloader(false) })
-            .catch(error => console.log('error', error),);
+            .then(result => { setreceiptspath(result), console.log(result), setbuttonloader(false) })
+            .catch(error => { console.log('error', error), setbuttonloader(true) });
+
     };
+
 
     const opencamera = () => {
         ImagePicker.openCamera({
-            width: 400,
-            height: 400,
+            // width: 400,
+            // height: 400,
+            // cropping: true,
+            // compressImageQuality: 1,
+            width: 500,
+            height: 500,
             cropping: true,
-            compressImageQuality: 1,
+            // compressImageQuality: 0.4,
+
         }).then(async image => {
             setImg(image.path)
             setisCamera(false);
@@ -377,7 +422,7 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
                         console.log(result);
                         console.log('====================================');
                         Toast.show("Record Added Successfull"),
-                            navigation.navigate('BottomTabNavigations'),
+                            navigation.navigate('BottomTabNavigations', { screen: 'Timeline' }),
                             setbuttonloader(false),
                             global.apiData = []
                     }
@@ -392,15 +437,27 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
     }
 
 
+    const backfunction = () => {
+        Alert.alert(
+            'Alert',
+            'Are You Sure You Want To Exit',
+            [
+                { text: 'Cancel', onPress: () => console.warn("You Backed") },
+                { text: 'OK', onPress: () => { navigation.navigate('BottomTabNavigations', { screen: 'Timeline' }), global.apiData = [] } },
+            ],
+            { cancelable: false }
+        )
+    }
+
 
 
 
     return (
         <SafeAreaView style={Styles.container}>
             <View style={{ marginHorizontal: rw(5) }}>
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} keyboardDismissMode='on-drag'>
                     <View style={{ height: rh(4), marginTop: rh(2) }}>
-                        <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <TouchableOpacity onPress={() => backfunction()}>
                             <YellowBackSvg width={'20.67px'} height={'20.67px'} />
                         </TouchableOpacity>
                     </View>
@@ -439,7 +496,7 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
                             <Text style={[Styles.addproductparttext, { marginTop: rh(1), }]}>Model Number</Text>
                             <View style={Styles.productproductmerchantnotes}>
                                 <View style={{ width: rw(80) }}>
-                                    <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmodelno(e)} />
+                                    <TextInput style={[Styles.addproductparttextinput, { paddingTop: rh(1) }]} onChangeText={e => setmodelno(e)} />
                                 </View>
                                 {/* <TouchableOpacity>
                                     <MaterialCommunityIcons name='line-scan' size={30} color={Colors.yellow} />
@@ -448,7 +505,7 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
                             <Text style={[Styles.addproductparttext, { marginTop: rh(1), }]}>Serial Number</Text>
                             <View style={Styles.productproductmerchantnotes}>
                                 <View style={{ width: rw(80) }}>
-                                    <TextInput style={Styles.addproductparttextinput} onChangeText={e => setserialno(e)} />
+                                    <TextInput style={[Styles.addproductparttextinput, { paddingTop: rh(1) }]} onChangeText={e => setserialno(e)} />
                                 </View>
                                 {/* <TouchableOpacity>
                                     <MaterialCommunityIcons name='line-scan' size={30} color={Colors.yellow} />
@@ -558,6 +615,54 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
                         null
 
                     }
+
+
+
+                    <View style={{ height: rh(5), width: rw(90), flexDirection: "row", alignContent: 'center', alignItems: 'center', justifyContent: "space-between", marginTop: rh(2) }}>
+                        <View>
+                            <Text style={Styles.innersecondhadding}>Notes</Text>
+                        </View>
+                        {notesenabled ?
+
+                            <View style={Styles.toggleouterviewmain}>
+                                <TouchableOpacity onPress={() => { { setnotestoggle(false), setnotesenabled(false) } }} style={{ justifyContent: 'center' }}>
+                                    <View style={Styles.toggleonstyle}>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                            :
+                            <View style={Styles.toggleouterviewmain}>
+                                <TouchableOpacity onPress={() => { setnotestoggle(true), setnotesenabled(true) }} style={{ justifyContent: 'center' }}>
+                                    <View style={Styles.toggleoffstyle}>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                        }
+
+                    </View>
+                    {notesenabled ?
+
+
+
+                        <View style={{ height: rh(25), borderWidth: 1, borderRadius: 10, borderColor: Colors.bk, marginTop: rh(4) }}>
+                            <TextInput numberOfLines={10} onChangeText={e => setnotes(e)} keyboardType={"email-address"}
+                                multiline={true} placeholder='Notes' placeholderTextColor={Colors.borderbottomcolor} style={{ padding: 10, fontSize: FontSize.font16, color: Colors.black, textAlignVertical: 'top' }} />
+                        </View>
+
+                        // <View style={{ flex: 1, borderWidth: 1, borderColor: Colors.bk, borderRadius: 10, justifyContent: "flex-start", alignContent: "flex-start" }}>
+                        //     <TextInput
+                        //         multiline
+                        //         numberOfLines={10}
+                        //         style={Styles.input}
+                        //         onChangeText={e => setnotes(e)}
+                        //         value={notes}
+                        //     />
+                        // </View>
+                        : null
+                    }
+
+
+
                     <View style={{ height: rh(5), width: rw(90), flexDirection: "row", alignContent: 'center', alignItems: 'center', justifyContent: "space-between", marginTop: rh(2) }}>
                         <View>
                             <Text style={Styles.pagefiveheadings}>Merchant</Text>
@@ -595,58 +700,38 @@ const Addproductstepfiveoptional = ({ navigation, route }) => {
                             <View style={Styles.merchantinputouterview}>
                                 <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmerchantlocation(e)} />
                             </View>
+
+
+                            <Text style={Styles.txtinputsheaddings}>Contact Number</Text>
+                            {Platform.OS === 'ios' ?
+                                <View style={[Styles.merchantinputouterview]}>
+                                    <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmerchantcontactno(e)} keyboardType={'numbers-and-punctuation'} />
+                                </View>
+                                :
+                                <View style={[Styles.merchantinputouterview]}>
+                                    <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmerchantcontactno(e)} keyboardType={'phone-pad'} />
+                                </View>
+                            }
+
                             <Text style={Styles.txtinputsheaddings}>Website</Text>
                             <View style={[Styles.merchantinputouterview]}>
                                 <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmerchantwebsite(e)} keyboardType={'url'} />
                             </View>
-                            <Text style={Styles.txtinputsheaddings}>Contact Number</Text>
-                            <View style={[Styles.merchantinputouterview]}>
-                                <TextInput style={Styles.addproductparttextinput} onChangeText={e => setmerchantcontactno(e)} keyboardType={'phone-pad'} />
-                            </View>
+
+
                         </View>
                         : null
                     }
 
-                    <View style={{ height: rh(5), width: rw(90), flexDirection: "row", alignContent: 'center', alignItems: 'center', justifyContent: "space-between", marginTop: rh(2) }}>
-                        <View>
-                            <Text style={Styles.innersecondhadding}>Notes</Text>
-                        </View>
-                        {notesenabled ?
 
-                            <View style={Styles.toggleouterviewmain}>
-                                <TouchableOpacity onPress={() => { { setnotestoggle(false), setnotesenabled(false) } }} style={{ justifyContent: 'center' }}>
-                                    <View style={Styles.toggleonstyle}>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
-                            :
-                            <View style={Styles.toggleouterviewmain}>
-                                <TouchableOpacity onPress={() => { setnotestoggle(true), setnotesenabled(true) }} style={{ justifyContent: 'center' }}>
-                                    <View style={Styles.toggleoffstyle}>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
-                        }
-
-                    </View>
-                    {notesenabled ?
-                        <View style={{ flex: 1, borderWidth: 1, borderColor: Colors.bk, borderRadius: 10, justifyContent: "flex-start", alignContent: "flex-start" }}>
-                            <TextInput
-                                multiline
-                                numberOfLines={10}
-                                style={Styles.input}
-                                onChangeText={e => setnotes(e)}
-                                value={notes}
-                            />
-                        </View>
-                        : null
-                    }
 
                     <View style={{ height: rh(15), width: rw(90), }}>
                     </View>
                 </ScrollView>
 
             </View>
+
+
             <View style={[Styles.nextanssavedbuttonview, { marginHorizontal: rw(3) }]}>
 
                 {buttonloader ?

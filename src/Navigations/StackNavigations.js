@@ -30,6 +30,8 @@ import Forgotpasswordchangepasswordscreen from '../Pages/forgotpassword/forgotpa
 import EditProductCategory from '../Pages/editproduct/editproductcategory';
 import EditReceiptImage from '../Pages/editproduct/editproductimage';
 import EditProductAddtionalStep from '../Pages/editproduct/editproductadditionalstep';
+import PdfView from '../Pages/receiptsdetails/pdfview';
+import EditCategory from '../Pages/category/editcategory';
 
 
 const Stack = createNativeStackNavigator();
@@ -67,6 +69,8 @@ const StackNavigations = () => {
         <Stack.Screen name='Forgotpasswordemailscreen' component={Forgotpasswordemailscreen} />
         <Stack.Screen name='Forgotpasswordotpscreen' component={Forgotpasswordotpscreen} />
         <Stack.Screen name='Forgotpasswordchangepasswordscreen' component={Forgotpasswordchangepasswordscreen} />
+        <Stack.Screen name='PdfView' component={PdfView} />
+        <Stack.Screen name='EditCategory' component={EditCategory} />
       </Stack.Navigator>
     </NavigationContainer>
   )
