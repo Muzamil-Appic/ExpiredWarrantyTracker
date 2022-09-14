@@ -158,12 +158,12 @@ const Search = ({ navigation }) => {
             <Entypo name='cross' color={Colors.yellow} size={20} />
           </TouchableOpacity>
         </View> */}
-        {/* <View style={{ width: rw(90), height: rh(6), backgroundColor: '#D6D2D2', borderRadius: 8, flexDirection: "row", alignSelf: "center" }}>
+         {/* <View style={{ width: rw(90), height: rh(6), backgroundColor: '#D6D2D2', borderRadius: 8, flexDirection: "row", alignSelf: "center" }}>
           <TextInput placeholder='Search Receipt' style={{ padding: 0, fontSize: FontSize.font17, color: Colors.black, paddingLeft: rw(4), textAlign: "left" }} onChangeText={(text) => searchFilterFunction(text)}
-            value={search} />
-        </View> */}
+            value={search} /> 
+        </View>  */}
         <View style={{ width: rw(90), height: rh(6), backgroundColor: '#D6D2D2', alignSelf: 'center', justifyContent: 'center', borderRadius: 8, flexDirection: "row", alignItems: 'center', }}>
-          <TextInput value={searchbox} placeholder="Search item" placeholderTextColor={Colors.gry} style={{ width: rw(80), fontSize: FontSize.font17, color: Colors.black }} onChangeText={(text) => searchFilterFunction(text)} />
+          <TextInput value={search} placeholder="Search item" placeholderTextColor={Colors.gry} style={{ width: rw(80), fontSize: FontSize.font17, color: Colors.black }} onChangeText={(text) => searchFilterFunction(text)} />
         </View>
       </View>
 

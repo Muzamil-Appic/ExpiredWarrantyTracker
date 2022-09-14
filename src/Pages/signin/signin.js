@@ -528,7 +528,7 @@ const Signin = ({ navigation }) => {
                 <TextInput value={firstname} onChangeText={e => setfirstname(e)} placeholder='First Name' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
               </View>
               <View style={Styles.txtinptouterview}>
-                <TextInput value={surename} onChangeText={e => setsurename(e)} placeholder='Sure Name' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
+                <TextInput value={surename} onChangeText={e => setsurename(e)} placeholder='SurName' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
               </View>
               <View style={Styles.txtinptouterview}>
                 <TextInput value={signupemail} onChangeText={e => setsignupemail(e)} keyboardType='email-address' placeholder='Email' placeholderTextColor={Colors.borderbottomcolor} style={Styles.txtinptinner} />
